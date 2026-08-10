@@ -1,0 +1,241 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#fdfaf2">
+<meta name="robots" content="noindex,nofollow,noarchive,nosnippet">
+<meta name="referrer" content="no-referrer">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<title>旅行スタンプラリー</title>
+<link rel="stylesheet" href="./css/base.css">
+<link rel="stylesheet" href="./css/layout.css">
+<link rel="stylesheet" href="./css/map.css">
+<link rel="stylesheet" href="./css/fx.css">
+</head>
+<body>
+
+<!-- ================================================================
+     ねこの さしこみ口（ここ1か所だけ）
+     イラスト担当（_design/character/_採用/*.png）から とどいた 6枚を、
+     この <svg id="catDefs"> の 中の <image href> と まるごと 入れかえるだけで 全部の ねこが 切りかわります。
+     とどいていない id は cat-guide に おちるので、こわれません。
+     ちぎり方の やくそく：symbol の viewBox は "0 0 120 120"、
+     画像は 正方形に 近い ので x/y/width/height で 120x120 の 中に おさめ、
+     preserveAspectRatio で つぶれないように している。
+     ================================================================ -->
+<svg id="catDefs" width="0" height="0" aria-hidden="true" style="position:absolute">
+  <symbol id="cat-guide" viewBox="0 0 120 120">
+    <image href="./assets/cat/cat_guide.png" x="0" y="0" width="120" height="120" preserveAspectRatio="xMidYMax meet"/>
+  </symbol>
+  <symbol id="cat-travel" viewBox="0 0 120 120">
+    <image href="./assets/cat/cat_travel.png" x="0" y="0" width="120" height="120" preserveAspectRatio="xMidYMax meet"/>
+  </symbol>
+  <symbol id="cat-cheer" viewBox="0 0 120 120">
+    <image href="./assets/cat/cat_cheer.png" x="0" y="0" width="120" height="120" preserveAspectRatio="xMidYMax meet"/>
+  </symbol>
+  <symbol id="cat-trouble" viewBox="0 0 120 120">
+    <image href="./assets/cat/cat_trouble.png" x="0" y="0" width="120" height="120" preserveAspectRatio="xMidYMax meet"/>
+  </symbol>
+  <symbol id="cat-sleep" viewBox="0 0 120 120">
+    <image href="./assets/cat/cat_sleep.png" x="0" y="0" width="120" height="120" preserveAspectRatio="xMidYMax meet"/>
+  </symbol>
+  <symbol id="cat-trophy" viewBox="0 0 120 120">
+    <image href="./assets/cat/cat_trophy.png" x="0" y="0" width="120" height="120" preserveAspectRatio="xMidYMax meet"/>
+  </symbol>
+</svg>
+
+<div class="boot" id="boot">
+  <div id="bootCat"></div>
+  <h1><ruby>旅行<rt>りょこう</rt></ruby>スタンプラリー</h1>
+  <p>2026年8月12日〜15日<br><span id="bootTotalNum">30</span>この スタンプを あつめよう。</p>
+  <p class="catprov" id="bootCatNote"></p>
+  <button class="go" id="bootGo">タップして はじめる</button>
+  <p class="fine">さいしょに1回タップすると、スタンプの おと が でるようになります（iPhone は さいしょのタップまで おと を だせません）。</p>
+</div>
+
+<div class="boot" id="passSetup">
+  <h1>あいことばを<br>つかいますか？</h1>
+  <p>じぶん の きろく を まもりたい ときに つかいます。つかわなくても ふつうに あそべます。</p>
+  <div class="passdigits" id="passDigitsWrap">
+    <p class="fine">すきな 4つの すうじを きめてください。</p>
+    <input type="tel" inputmode="numeric" pattern="[0-9]*" maxlength="4" class="passinput" id="passDigitsInput" placeholder="0000">
+    <button class="go" id="passDigitsOk">きめる</button>
+  </div>
+  <button class="go" id="passUseBtn">あいことばを つかう</button>
+  <button class="subbtn" id="passNoBtn" style="max-width:296px">つかわない</button>
+</div>
+
+<div class="boot" id="passGate">
+  <h1>あいことば</h1>
+  <p>きめた 4つの すうじを いれてください。</p>
+  <input type="tel" inputmode="numeric" pattern="[0-9]*" maxlength="4" class="passinput" id="gateInput" placeholder="0000">
+  <p class="fine" id="gateMsg" style="color:var(--warn)"></p>
+  <button class="go" id="gateOk">すすむ</button>
+  <a class="fine" href="#" id="gateForget">わすれた（あいことばを つかわない に する）</a>
+</div>
+
+<div class="app" id="app" aria-hidden="true">
+
+  <div class="top">
+    <h1 id="topTtl"><span id="topName">旅行スタンプラリー</span><span class="sub" id="topSub">8がつ14にち（きん）12:25 ・ いずも</span></h1>
+    <button class="iconbtn" id="btnSound" aria-pressed="true" aria-label="おとを けす／だす">
+      <svg viewBox="0 0 24 24" id="sndIcon"><path d="M4 9.4h3.4L12 5.4v13.2L7.4 14.6H4Z"/><path id="sndWave" d="M16 9.2a4 4 0 0 1 0 5.6M18.6 6.6a7.6 7.6 0 0 1 0 10.8"/></svg>
+    </button>
+    <button class="iconbtn" id="btnState" aria-label="がめんの じょうたい をきりかえる（デモ）">
+      <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3.2"/><path d="M12 3v2.4M12 18.6V21M3 12h2.4M18.6 12H21M5.6 5.6l1.7 1.7M16.7 16.7l1.7 1.7M18.4 5.6l-1.7 1.7M7.3 16.7l-1.7 1.7"/></svg>
+    </button>
+  </div>
+
+  <main>
+
+    <section class="scr on" id="scr1" aria-label="ぜんたいの ちず">
+      <div class="bar" id="dayBar"></div>
+      <div class="mapbody">
+        <div class="mapv" id="mapv"><div class="mapfit" id="mapfit"></div></div>
+        <div class="lblv" id="mapLbl" aria-hidden="true"></div>
+        <div class="legend">
+          <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2 8h9" stroke="#4a5b6e" stroke-width="2" stroke-linecap="round"/><path d="M9 4.5 14 8l-5 3.5Z" fill="#4a5b6e"/></svg>
+          <span>やじるし＝すすむ むき</span>
+        </div>
+        <div class="mctl mctl-top">
+          <div class="zoom">
+            <button class="zb" data-z="in" aria-label="ちずを おおきくする">＋</button>
+            <button class="zb" data-z="out" aria-label="ちずを ちいさくする">−</button>
+            <button class="zb small" data-z="fit" aria-label="ちず ぜんたい をみる">ぜんぶ</button>
+          </div>
+        </div>
+        <!-- 下の情報は この1枚だけ。しらせ（くろい おび）は この1行目に まとめた -->
+        <div class="nextcard" id="nextcard">
+          <div class="nowline" id="nowline">
+            <span class="dot"></span>
+            <span class="tx" id="nowtx">いま 8/14 12:25 ・ いずもたいしゃ の けいだい</span>
+          </div>
+          <div class="nrow">
+            <div class="ntx">
+              <span class="k">こんやの とまり</span>
+              <span class="v">フォレストリア<span class="rbwrap"><span class="rbkana">もちがせ</span><span class="rbtxt">用瀬</span></span></span>
+            </div>
+            <div class="nm"><b>18:15</b><span>141km さき</span></div>
+          </div>
+          <div class="prog">
+            <div class="progbar"><i id="pbar1" style="width:0%"></i></div>
+            <div class="n" id="pnum1">0 / 30</div>
+          </div>
+        </div>
+        <div class="mctl mctl-bot">
+          <button class="fab" id="btnHere" aria-label="いま いるところ に もどる">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><circle cx="12" cy="12" r="8.4"/><path d="M12 1.6V4M12 20v2.4M1.6 12H4M20 12h2.4"/></svg>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <section class="scr" id="scr2" aria-label="スポットの まわり">
+      <div class="bar" id="areaBar"></div>
+      <div class="mapbody">
+        <div class="mapv" id="spotv"><div class="mapfit" id="spotfit"></div></div>
+        <div class="lblv" id="spotLbl" aria-hidden="true"></div>
+        <div class="mctl mctl-top mctl-left">
+          <div class="zoom">
+            <button class="zb" data-z2="in" aria-label="ちずを おおきくする">＋</button>
+            <button class="zb" data-z2="out" aria-label="ちずを ちいさくする">−</button>
+            <button class="zb small" data-z2="fit" aria-label="ちず ぜんたい をみる">ぜんぶ</button>
+          </div>
+        </div>
+        <div class="sheet" id="sheet">
+          <div class="grip" id="grip">
+            <div class="bar2"></div>
+            <div class="ttl">
+              <h2 id="areaTtl"><span class="rbwrap"><span class="rbkana">いずもたいしゃ</span><span class="rbtxt">出雲大社</span></span> の まわり</h2>
+              <div class="cnt" id="izCnt">スタンプ 1 / 4</div>
+            </div>
+          </div>
+          <div class="sheetbody" id="sheetBody"></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="scr" id="scr3" aria-label="スタンプちょう">
+      <div class="book">
+        <div class="bhead">
+          <div class="ring">
+            <svg viewBox="0 0 96 96" aria-hidden="true">
+              <circle cx="48" cy="48" r="40" fill="none" stroke="#d9dfe8" stroke-width="8"/>
+              <circle id="ringArc" cx="48" cy="48" r="40" fill="none" stroke="#d1332e" stroke-width="8"
+                stroke-linecap="round" stroke-dasharray="0 252"
+                style="transition:stroke-dasharray 500ms cubic-bezier(0.05,0.7,0.1,1)"/>
+            </svg>
+            <div class="num"><b id="ringNum">0</b><span>／<span id="ringTotalNum">30</span>こ</span></div>
+          </div>
+          <div class="tx">
+            <h2>スタンプちょう</h2>
+            <p id="bookLead">のこり 30こ。</p>
+          </div>
+        </div>
+        <div class="pages" id="pages"></div>
+        <div class="pdots" id="pdots"></div>
+      </div>
+    </section>
+
+  </main>
+
+  <nav class="tabs" role="tablist" aria-label="がめんの きりかえ">
+    <button class="tab" role="tab" aria-selected="true" data-scr="1">
+      <svg viewBox="0 0 24 24"><path d="M3 6.4 9 3.6l6 2.8 6-2.8v14l-6 2.8-6-2.8-6 2.8Z"/><path d="M9 3.6v14M15 6.4v14"/></svg>
+      <span class="lb">ちず</span><span class="dotmark"></span>
+    </button>
+    <button class="tab" role="tab" aria-selected="false" data-scr="2">
+      <svg viewBox="0 0 24 24"><path d="M12 21.4S4.8 14.6 4.8 9.6A7.2 7.2 0 0 1 19.2 9.6c0 5-7.2 11.8-7.2 11.8Z"/><circle cx="12" cy="9.4" r="2.6"/></svg>
+      <span class="lb">まわり</span><span class="dotmark"></span>
+    </button>
+    <button class="tab" role="tab" aria-selected="false" data-scr="3">
+      <svg viewBox="0 0 24 24"><path d="M4.4 4.6A2.4 2.4 0 0 1 6.8 3.2h12.8v14.4H6.8a2.4 2.4 0 0 0-2.4 2.4Z"/><circle cx="12.6" cy="10" r="3.4"/></svg>
+      <span class="lb">スタンプ</span><span class="dotmark"></span>
+    </button>
+  </nav>
+
+  <div class="state" id="state" role="alertdialog" aria-modal="true" aria-labelledby="stTtl">
+    <div id="stIcon"></div>
+    <h2 id="stTtl"></h2>
+    <p id="stMsg"></p>
+    <button class="act" id="stAct"></button>
+    <p class="catprov" id="stCatNote"></p>
+  </div>
+
+  <div class="picker" id="picker">
+    <div class="pbox">
+      <h2>がめんの じょうたい（デモ）</h2>
+      <!-- ねらい：受入基準20「5つの状態にそれぞれ専用の表示がある」を その場で 確かめる ための デモ切替 -->
+      <p class="lead">5つの じょうたい を その場で 見るための きりかえ です。ほんばん では じどうで 出ます。</p>
+      <div id="pList"></div>
+      <button id="pClose" style="background:var(--surf2);text-align:center;margin-top:12px">とじる</button>
+    </div>
+  </div>
+
+  <div class="reward" id="reward">
+    <div id="rewardArt"></div>
+    <h2>コンプリート！</h2>
+    <p><span id="rewardTotalNum">30</span>この スタンプ ぜんぶ あつまりました。<br>3ぱく4かの たび、おつかれさま。</p>
+    <button class="act" id="rwClose">とじる</button>
+  </div>
+
+  <!-- F-38（Q-80）：子どもの画面には出さない導線。おとなが自分で開く折りたたみの中にだけ置く -->
+  <details class="adultbox" id="adultBox">
+    <summary>おとなの人へ</summary>
+    <div class="adultpanel">
+      <a class="adultlink" href="../index.html" target="_blank" rel="noopener">もとの しおりを ひらく</a>
+      <button class="adultbtn" id="btnExport">きろくを ほぞんする</button>
+      <button class="adultbtn" id="btnPasscode">あいことばの せってい</button>
+    </div>
+  </details>
+
+</div>
+
+<canvas id="fx" aria-hidden="true"></canvas>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+<div class="catcheer" id="catCheer" aria-hidden="true"></div>
+
+<script type="module" src="./js/boot.js"></script>
+</body>
+</html>
