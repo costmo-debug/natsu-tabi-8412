@@ -108,8 +108,10 @@ function onPosition(pos){
   var moving = computeMoving(pos);
   var proj = pickBestProjection(lat, lon);
   setME([lat, lon]);
+  /* 段4是正：どこかの はんてい円 から はなれた ときに、まえの ばしょが
+     「おせる」まま はりつかない ように、null（何も 近くにない） も そのまま 反映する */
   var pk = nearestPushable([lat, lon]);
-  if (pk) setPushable(pk);
+  setPushable(pk);
 
   setLive({
     have: true,
