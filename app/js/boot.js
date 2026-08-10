@@ -5,6 +5,7 @@ import { listStamps, drainEmergency, addPerson, setCurrentPerson, exportAll, exp
 import { gateThenEnter, openPasscodeSettings } from './ui/passcode.js';
 import { getPersonId } from './core/person.js';
 import { startLiveTracking } from './geo/live.js';
+import { renderNextCard } from './ui/nextcard.js';
 import { buildNetMap, NET_LABELS, NETW, NETH, NET_ME } from './map/netmap.js';
 import { buildAreaMap, SPOT_LABELS, AREAS } from './map/areamap.js';
 import { curArea } from './ui/sheet.js';
@@ -32,6 +33,7 @@ export function rebuildMaps(){
   bindPins(); applyFilter();
   if(LBL1) LBL1.now();
   if(LBL2) LBL2.now();
+  renderNextCard();
 }
 /* 端末の中(IndexedDB)の記録を読みこんで GOT へ反映する。1台=1人分（F-46廃止）。 */
 async function loadPersisted(){
@@ -61,6 +63,7 @@ export async function boot(){
   LBL2=makeLabelLayer('spotv','spotLbl', function(){return SPOT_LABELS;},
         ['#scr2 .mctl','#sheet','.tabs']);
 
+  renderNextCard();
   V1=makeView('mapv','mapfit',NETW,NETH,0,function(){ LBL1.update(); });
   V2=makeView('spotv','spotfit',m0.w,m0.h,152,function(){ LBL2.update(); });
   V1.ready(); applyFilter();
