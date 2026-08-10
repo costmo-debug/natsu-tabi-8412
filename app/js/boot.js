@@ -138,14 +138,6 @@ export async function boot(){
   window.addEventListener('resize',function(){ sizeFx(); if(LBL1)LBL1.now(); if(LBL2)LBL2.now(); });
   window.addEventListener('orientationchange',sizeFx);
 
-  /* いま いるところ ボタン は 下カードの 上に おく（かさなり を なくす） */
-  function placeFab(){
-    var c=el('nextcard'), f=document.querySelector('#scr1 .mctl-bot');
-    if(c&&f) f.style.bottom=(c.offsetHeight+24)+'px';
-  }
-  placeFab();
-  window.addEventListener('resize',placeFab);
-
   /* GPS→ちず の 接続。地図の 作りなおしは 間引かれた ペースで rebuildMaps() から 呼ばれる */
   startLiveTracking(function(){
     rebuildMaps();
