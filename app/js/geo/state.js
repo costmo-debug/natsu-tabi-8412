@@ -7,6 +7,7 @@ export var LIVE = {
   lat: null, lon: null,
   abstract: null,        /* {x,y}（広い ちずの NP と 同じ スケール） */
   routeId: null,
+  fromKey: null, toKey: null, segFraction: null, /* いま いちばん 近い ルート区間（下カードの 現在地文に つかう） */
   accuracy: null,
   moving: false,         /* 段4：直近の GPS の うごきから 判定（cat-travel に つかう） */
   updatedAt: 0           /* さいごに ここが 書きかわった 時こく（表示の 更新には つかわない） */

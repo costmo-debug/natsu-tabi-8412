@@ -1,7 +1,7 @@
 "use strict";
 import { el } from '../util.js';
+import { nowText } from '../geo/live.js';
 export var toastT=0, nowT=0;
-export var NOW_BASE='いま 8/14 12:25 ・ いずもたいしゃ の けいだい';
 /* ちず画面（scr1）では くろい おび を 出さず、下カードの 1行目 に 出す。
    下パネル＋くろい おび＋タブバー の 3だん重ね を なくす ため（下の 情報 は 1つ だけ） */
 export function toast(msg){
@@ -11,7 +11,7 @@ export function toast(msg){
     el('nowline').classList.add('hot');
     clearTimeout(nowT);
     nowT=setTimeout(function(){
-      el('nowtx').textContent=NOW_BASE; el('nowline').classList.remove('hot');
+      el('nowtx').textContent=nowText(); el('nowline').classList.remove('hot');
     },2500);
     return;
   }

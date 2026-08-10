@@ -11,9 +11,39 @@ import { SPEC } from './routeData.js';
 import { LIVE, setLive } from './state.js';
 import { setME, nearestPushable, setPushable } from '../data/stamps.js';
 import { showState, hideState } from '../ui/states.js';
+import { NODES } from '../data/nodes.js';
+import { el } from '../util.js';
 
 var RP = create(SPEC);
 var ROUTE_IDS = RP.routeIds();
+
+var NODE_NAME = {};
+NODES.forEach(function(n){ NODE_NAME[n.k] = n.n; });
+
+function pad2(n){ return (n < 10 ? '0' : '') + n; }
+function nowTimestamp(){
+  var d = new Date();
+  return (d.getMonth()+1) + '/' + d.getDate() + ' ' + pad2(d.getHours()) + ':' + pad2(d.getMinutes());
+}
+
+/* 下カードの 現在地文を、実際の GPS状態（LIVE）から つくる。
+   ルート上に のっている ときだけ 地名を 出す。のっていない・まだ とれていない ときは
+   ない 地名を でっちあげず、当たり障りの ない 表現に とどめる。 */
+export function describeNow(live){
+  var ts = nowTimestamp();
+  if (!live || !live.have) return 'いま いちじょうほう を さがしています…';
+  if (live.status !== 'on_route' || !live.fromKey || !live.toKey) {
+    return 'いま ' + ts + ' ・ いどうちゅう';
+  }
+  var nearKey = (live.segFraction != null && live.segFraction > 0.5) ? live.toKey : live.fromKey;
+  var name = NODE_NAME[nearKey];
+  if (!name) return 'いま ' + ts + ' ・ いどうちゅう';
+  return 'いま ' + ts + ' ・ ' + name + ' ふきん';
+}
+
+export function nowText(){
+  return describeNow(LIVE);
+}
 
 var watchId = null;
 var lastRebuildAt = 0;
@@ -87,9 +117,20 @@ function onPosition(pos){
     lat: lat, lon: lon,
     abstract: proj ? proj.abstract : LIVE.abstract,
     routeId: proj ? proj.routeId : null,
+    fromKey: proj ? proj.fromKey : null,
+    toKey: proj ? proj.toKey : null,
+    segFraction: proj ? proj.segFraction : null,
     accuracy: acc,
     moving: moving
   }, true);
+
+  /* 下カードの 現在地文を、その場で 最新に する。トーストが 出ている あいだ（hot）は
+     さわらない（トーストの 一時文が 一瞬で 消えてしまうのを ふせぐ）。トースト側の
+     もどし先は toast.js が nowText() を つかうので、そこで 最新の 値に なる。 */
+  var nowLine = el('nowline'), nowTx = el('nowtx');
+  if (nowTx && (!nowLine || !nowLine.classList.contains('hot'))) {
+    nowTx.textContent = nowText();
+  }
 
   if (deniedShown || failShown) { hideState(); deniedShown = false; failShown = false; }
 
