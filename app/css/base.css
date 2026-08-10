@@ -227,7 +227,7 @@ main{flex:1 1 auto;position:relative;overflow:hidden}
   padding:8px;border:2px dashed var(--line);background:var(--surf2);
   transition:transform 150ms var(--ez1)}
 .slot .en{font-size:28px;line-height:1.5;filter:grayscale(1) opacity(.3);display:block;
-  width:40px;height:40px;margin:0 auto;border-radius:50%;overflow:hidden}
+  width:88px;height:88px;margin:0 auto;border-radius:50%;overflow:hidden}
 .slot .sn{font-size:11px;font-weight:700;color:var(--ink3);line-height:1.5;text-align:center}
 .slot .sd{font-size:11px;color:var(--ink3);line-height:1.5}
 .slot.got{border:0;background:var(--surf);transform:rotate(var(--rot,0deg))}
