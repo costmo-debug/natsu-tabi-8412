@@ -91,15 +91,15 @@ main{flex:1 1 auto;position:relative;overflow:hidden}
 .mctl-top{top:16px}
 .mctl-left{left:16px;right:auto}
 .mctl-bot{bottom:16px}
-.fab{width:56px;height:56px;border-radius:var(--r4);background:var(--surf);color:var(--pop);
+.fab{width:44px;height:44px;border-radius:var(--r4);background:var(--surf);color:var(--pop);
   box-shadow:var(--sh1);display:flex;align-items:center;justify-content:center;
   transition:transform 100ms var(--ez1)}
 .fab:active{transform:scale(0.94)}
-.fab svg{width:28px;height:28px;fill:none;stroke:currentColor;stroke-width:1.8;
+.fab svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.8;
   stroke-linecap:round;stroke-linejoin:round}
 .zoom{display:flex;flex-direction:column;border-radius:var(--r2);overflow:hidden;
   background:var(--surf);box-shadow:var(--sh1)}
-.zb{width:56px;height:44px;display:flex;align-items:center;justify-content:center;
+.zb{width:44px;height:36px;display:flex;align-items:center;justify-content:center;
   font-size:20px;font-weight:700;color:var(--ink2);transition:background-color 100ms var(--ez1)}
 .zb:active{background:var(--surf2)}
 .zb+.zb{border-top:1px solid var(--line)}

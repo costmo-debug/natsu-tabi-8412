@@ -21,7 +21,6 @@ import { toast } from './ui/toast.js';
 import { showState, hideState, STATES } from './ui/states.js';
 import { sizeFx } from './fx/confetti.js';
 import { initScrollLinked } from './ui/book.js';
-import { G, iso } from './map/iso.js';
 export var V1=null, V2=null, LBL1=null, LBL2=null, AREA_M0=null;
 /* ちず2まい を まとめて 作りなおす（スタンプが ふえた ときなど） */
 export function rebuildMaps(){
@@ -87,8 +86,7 @@ export async function boot(){
     });
   });
   el('btnHere').addEventListener('click',function(){
-    var g=G('izumo'), p=iso(g[0]-1.0,g[1]+6.4,0);
-    V1.centerOn(p[0],p[1],V1.minScale()*2.4,true);
+    V1.centerOn(NET_ME[0],NET_ME[1],V1.minScale()*2.4,true);
     toast('いま いるところ に もどりました');
   });
   el('btnSound').addEventListener('click',function(){
