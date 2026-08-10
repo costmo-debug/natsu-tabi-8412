@@ -1,0 +1,915 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex,nofollow,noarchive,nosnippet">
+<meta name="googlebot" content="noindex,nofollow">
+<meta name="referrer" content="no-referrer">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#070b18">
+<title>ルートマップ・スタンプラリー｜2026年8月12日〜15日</title>
+<style>:root{
+    --bg1:#16204a; --bg2:#0a0f22; --bg3:#070b18;
+    --card:#141c39; --card2:#0f1730; --line:#27325e;
+    --tx:#e9edf8; --tx2:#a6b0d0;
+    --acc:#ffd166; --acc2:#7cc4ff; --ok:#5fd39a; --warn:#ff8f7a; --pk:#ff9ecb;
+  }
+  *{box-sizing:border-box;-webkit-text-size-adjust:100%;-webkit-tap-highlight-color:transparent}
+  body{margin:0;background:radial-gradient(ellipse at 50% -5%,var(--bg1) 0%,var(--bg2) 45%,var(--bg3) 100%);
+       background-attachment:fixed;color:var(--tx);
+       font-family:"Hiragino Sans","Yu Gothic",-apple-system,"Segoe UI",sans-serif;
+       line-height:1.72;font-size:16px;padding-bottom:env(safe-area-inset-bottom)}
+  .wrap{max-width:760px;margin:0 auto;padding:0 14px 70px}
+
+  /* ---------- header ---------- */
+  header{text-align:center;padding:30px 6px 22px}
+  h1{font-size:1.5rem;margin:0 0 12px;line-height:1.4;letter-spacing:.03em}
+  .dates{display:inline-block;background:var(--acc);color:#1a1400;font-weight:900;
+         border-radius:999px;padding:5px 18px;font-size:.9rem;letter-spacing:.02em}
+  .route{color:var(--tx2);font-size:.85rem;margin:14px 0 0;line-height:1.85}
+  .route b{color:var(--acc2)}
+
+  /* ---------- controls ---------- */
+  .ctl{display:flex;gap:8px;margin:6px 0 14px}
+  .ctl button{flex:1;background:var(--card2);border:1px solid #3f5a99;border-radius:10px;
+              color:var(--acc2);font-weight:800;font-size:.83rem;padding:10px 8px;cursor:pointer;
+              font-family:inherit}
+  .ctl button:active{background:#16224a}
+
+  /* ---------- accordion ---------- */
+  details{background:var(--card);border:1px solid var(--line);border-radius:14px;
+          margin:9px 0;overflow:hidden}
+  details[open]{border-color:#3d4d86}
+  summary{list-style:none;cursor:pointer;padding:15px 16px;display:flex;align-items:center;gap:12px;
+          font-weight:800;font-size:1.06rem;line-height:1.45;position:relative;padding-right:44px}
+  summary::-webkit-details-marker{display:none}
+  summary:after{content:"";position:absolute;right:18px;top:50%;width:9px;height:9px;
+                border-right:2.5px solid var(--acc2);border-bottom:2.5px solid var(--acc2);
+                transform:translateY(-70%) rotate(45deg);transition:.22s}
+  details[open]>summary:after{transform:translateY(-20%) rotate(225deg)}
+  summary .em{font-size:1.3rem;line-height:1;flex:0 0 auto}
+  summary .h{flex:1;min-width:0}
+  summary .h .n{display:block;color:var(--tx)}
+  summary .h .s{display:block;font-size:.76rem;font-weight:600;color:var(--tx2);margin-top:2px;line-height:1.5}
+  .day>summary{background:linear-gradient(90deg,#1c2652,#141c39)}
+  .day>summary .n{color:var(--acc)}
+  .inner{padding:2px 15px 18px;border-top:1px solid var(--line)}
+  .today>summary{box-shadow:inset 4px 0 0 var(--ok)}
+  .today>summary .h .s:before{content:"今日 ";color:var(--ok);font-weight:900}
+
+  /* ---------- timeline ---------- */
+  .tl{position:relative;margin:14px 0 4px;padding-left:2px}
+  .ev{display:flex;gap:11px;padding:0 0 15px;position:relative}
+  .ev:before{content:"";position:absolute;left:36px;top:22px;bottom:-4px;width:2px;background:var(--line)}
+  .ev:last-child:before{display:none}
+  .tm{flex:0 0 62px;text-align:right;font-size:.78rem;font-weight:800;color:var(--acc2);
+      font-variant-numeric:tabular-nums;line-height:1.45;padding-top:2px;position:relative}
+  .tm:after{content:"";position:absolute;right:-13px;top:7px;width:9px;height:9px;border-radius:50%;
+            background:var(--bg3);border:2.5px solid var(--line)}
+  .ev.key .tm:after{background:var(--acc);border-color:var(--acc)}
+  .ev.opt .tm:after{background:var(--bg3);border-style:dashed}
+  .bd{flex:1;min-width:0;padding-left:10px}
+  .ttl{font-weight:800;font-size:.97rem;margin:0 0 3px;line-height:1.5}
+  .ev.key .ttl{color:var(--acc)}
+  .ds{font-size:.845rem;color:var(--tx2);margin:0;line-height:1.72}
+  .ds strong{color:var(--tx)}
+  .ds .ok{color:var(--ok)}.ds .no{color:var(--warn)}
+
+  /* ---------- boxes ---------- */
+  .box{border-radius:11px;padding:12px 14px;margin:13px 0;font-size:.87rem;line-height:1.72}
+  .box p{margin:0}
+  .ans{background:#102a22;border:1px solid #2f6b4f;border-left:5px solid var(--ok)}
+  .info{background:#101d33;border:1px solid #2c4468;border-left:5px solid var(--acc2)}
+  .alert{background:#2a1420;border:1px solid #74304a;border-left:5px solid var(--warn)}
+  .big{font-size:.97rem;font-weight:800;color:var(--acc);display:block;margin-bottom:6px;line-height:1.5}
+  .box ul,.box ol{padding-left:1.2em;margin:5px 0}
+  .box li{margin:4px 0}
+
+  /* ---------- table ---------- */
+  .tbl{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:12px 0;
+       border-radius:9px;border:1px solid var(--line)}
+  table{border-collapse:collapse;width:100%;min-width:430px;font-size:.83rem}
+  th,td{border:1px solid var(--line);padding:8px 9px;text-align:left;vertical-align:top;line-height:1.62}
+  th{background:#1a2447;color:var(--acc2);font-size:.79rem;white-space:nowrap;font-weight:800}
+  td.t{white-space:nowrap;color:var(--acc2);font-weight:800;font-variant-numeric:tabular-nums}
+  tr.sum td{background:#1a2447;font-weight:800}
+
+  /* ---------- checklist ---------- */
+  .it{background:var(--card2);border:1px solid var(--line);border-radius:10px;margin:7px 0;transition:.2s}
+  .it.done{opacity:.4;border-color:#2f6b4f}
+  .it label{display:flex;gap:11px;padding:11px 12px;cursor:pointer;align-items:flex-start}
+  .it input{display:none}
+  .cbx{flex:0 0 22px;width:22px;height:22px;border-radius:7px;border:2px solid #3f5a99;
+       background:#0b1128;margin-top:1px;position:relative;transition:.18s}
+  .it.done .cbx{background:var(--ok);border-color:var(--ok)}
+  .it.done .cbx:after{content:"✓";position:absolute;inset:0;display:flex;align-items:center;
+                      justify-content:center;color:#06121d;font-weight:900;font-size:.92rem}
+  .it .cbody{flex:1;min-width:0}
+  .it .ct{font-weight:700;font-size:.92rem;margin:0;line-height:1.5}
+  .it.done .ct{text-decoration:line-through}
+  .it .cd{color:var(--tx2);font-size:.8rem;margin:2px 0 0;line-height:1.65}
+  .it .cd strong{color:var(--tx)}
+  .must .ct:before{content:"必須";background:var(--warn);color:#2a0d0d;font-size:.63rem;font-weight:900;
+                   border-radius:999px;padding:1px 7px;margin-right:6px;vertical-align:2px;display:inline-block}
+  .pgr{display:flex;align-items:center;gap:9px;margin:10px 0 4px}
+  .pgr .c{font-size:.86rem;font-weight:900;color:var(--acc);white-space:nowrap;font-variant-numeric:tabular-nums}
+  .bar{flex:1;height:7px;background:#1a2547;border-radius:99px;overflow:hidden}
+  .bar i{display:block;height:100%;width:0;background:linear-gradient(90deg,#7cc4ff,#5fd39a);
+         border-radius:99px;transition:width .4s}
+
+
+  /* ---------- 地図 ---------- */
+  .mapwrap{background:#fdf6e3;border-radius:14px;padding:10px 8px 6px;margin:14px 0;
+           box-shadow:inset 0 0 0 3px #e8dcc0, 0 4px 16px rgba(0,0,0,.35)}
+  .mapwrap svg{display:block;width:100%;height:auto;
+               font-family:"Hiragino Maru Gothic ProN","Yu Gothic",sans-serif}
+  .maptitle{text-align:center;color:#7a6a4a;font-size:.8rem;font-weight:800;margin:2px 0 6px;
+            font-family:"Hiragino Maru Gothic ProN",sans-serif}
+  .mapnote{color:var(--tx2);font-size:.8rem;margin:8px 2px 0;line-height:1.7}
+  .legend{display:flex;flex-wrap:wrap;gap:5px;margin:8px 0 2px;justify-content:center}
+  .legend i{font-style:normal;font-size:.71rem;font-weight:800;border-radius:999px;
+            padding:3px 9px;color:#2a1e05}
+  /* ---------- スタンプ ---------- */
+  .stampgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(96px,1fr));gap:8px;margin:12px 0}
+  .st{background:#fdf6e3;border-radius:12px;padding:9px 5px 7px;text-align:center;cursor:pointer;
+      box-shadow:inset 0 0 0 2px #e2d4b0;position:relative;transition:.18s;user-select:none;
+      font-family:"Hiragino Maru Gothic ProN",sans-serif}
+  .st:active{transform:scale(.94)}
+  .st .ring{width:52px;height:52px;margin:0 auto 5px;border-radius:50%;border:2.5px dashed #c9b68a;
+            display:flex;align-items:center;justify-content:center;font-size:1.5rem;
+            background:#fffdf6;transition:.2s}
+  .st .nm{font-size:.7rem;font-weight:800;color:#5a4a2a;line-height:1.35;display:block}
+  .st .tm2{font-size:.62rem;color:#9b8a66;display:block;margin-top:1px;font-variant-numeric:tabular-nums}
+  .st.got .ring{border:3px solid #d94f3d;border-style:solid;background:#fff0ec;transform:rotate(-8deg)}
+  .st.got:after{content:"すんだ！";position:absolute;top:5px;right:5px;background:#d94f3d;color:#fff;
+                font-size:.56rem;font-weight:900;border-radius:999px;padding:1px 6px;transform:rotate(8deg)}
+  .st.got .nm{color:#a8321f}
+  .stbar{display:flex;align-items:center;gap:9px;margin:10px 0 2px}
+  .stbar .c{font-size:.85rem;font-weight:900;color:var(--acc);white-space:nowrap;font-variant-numeric:tabular-nums}
+
+  /* ---------- ポケモン路線図 ---------- */
+  .line{position:relative;padding:4px 0 4px 46px;margin:10px 0}
+  .line:before{content:"";position:absolute;left:19px;top:12px;bottom:12px;width:9px;border-radius:9px;
+               background:repeating-linear-gradient(180deg,#5b6a92 0 14px,#7385ad 14px 28px)}
+  .sta{position:relative;background:#fdf6e3;border-radius:12px;padding:9px 11px;margin:9px 0;
+       box-shadow:inset 0 0 0 2px #e2d4b0;cursor:pointer;transition:.16s;
+       font-family:"Hiragino Maru Gothic ProN","Yu Gothic",sans-serif}
+  .sta:active{transform:scale(.985)}
+  .sta:before{content:"";position:absolute;left:-32px;top:50%;transform:translateY(-50%);
+              width:17px;height:17px;border-radius:50%;background:#fff;border:4px solid #98a8cc;z-index:2}
+  .sta.got:before{background:#d94f3d;border-color:#d94f3d}
+  .sta.got{box-shadow:inset 0 0 0 3px #d94f3d;background:#fff3ef}
+  .sta .d{font-size:.63rem;font-weight:900;color:#fff;background:#98a8cc;border-radius:999px;
+          padding:1px 7px;display:inline-block;margin-bottom:3px}
+  .sta .n2{font-size:.9rem;font-weight:900;color:#3d3222;display:block;line-height:1.4}
+  .sta .p2{margin-top:4px;display:flex;flex-wrap:wrap;gap:4px}
+  .sta .p2 b{font-size:.7rem;font-weight:800;background:#ffe3f0;color:#a83a6e;border:1.5px solid #f0a8c8;
+             border-radius:6px;padding:1px 7px}
+  .sta .p2 b.leg{background:#fff2c9;color:#8a6a10;border-color:#e8c860}
+  .sta .p2 b.dup{background:#eceff5;color:#8a93a8;border-color:#ccd3e0}
+  .sta.got:after{content:"押した！";position:absolute;top:7px;right:9px;background:#d94f3d;color:#fff;
+                 font-size:.58rem;font-weight:900;border-radius:999px;padding:1px 7px}
+  .sta .no{font-size:.66rem;color:#8a7a5a;display:block;margin-top:3px;line-height:1.5}
+
+  .roadbox{background:#080d22;border-radius:14px;padding:8px 6px 4px;margin:10px 0;
+           box-shadow:inset 0 0 0 2px #1d2750, 0 4px 14px rgba(0,0,0,.5)}
+  .roadbox svg{display:block;width:100%;height:auto;
+      font-family:"Hiragino Sans","Yu Gothic",sans-serif}
+  .roadttl{display:flex;align-items:center;gap:8px;margin:2px 4px 6px}
+  .roadttl b{font-size:.86rem;font-weight:900;color:var(--tx)}
+  .roadttl i{font-style:normal;font-size:.66rem;font-weight:900;border-radius:999px;padding:2px 9px;color:#101733}
+  .rsa .dot{transition:.2s}
+  .rsa.got .dot{fill:#d94f3d;stroke:#ffd9d2}
+  .rkey{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin:10px 0 2px;
+        font-size:.72rem;color:var(--tx2)}
+  .rkey span{display:flex;align-items:center;gap:4px}
+  .rkey b{display:inline-block;width:13px;height:13px;background:#fff8e1;border:2.5px solid #ffd166;border-radius:3px}
+  .rkey em{display:inline-block;width:11px;height:11px;background:#0d1430;border:2.2px solid #cdd7f5;transform:rotate(45deg)}
+  .rkey u{display:inline-block;width:11px;height:11px;border-radius:50%;background:#fff;border:2.5px solid #7cc4ff}
+  .rkey s{display:inline-block;width:11px;height:11px;border-radius:50%;background:#5fe39a;box-shadow:0 0 7px #5fe39a}
+
+  #netwrap svg{display:block;width:100%;height:auto;font-family:"Hiragino Sans","Yu Gothic",sans-serif}
+  .daybtns{display:flex;flex-wrap:wrap;gap:5px;margin:10px 0 4px}
+  .daybtns button{flex:1 1 auto;min-width:62px;border:1.5px solid #3f5a99;background:#0f1730;color:var(--tx2);
+    font-family:inherit;font-weight:900;font-size:.74rem;border-radius:9px;padding:8px 4px;cursor:pointer;transition:.15s}
+  .daybtns button.on{color:#101733}
+  .daybtns button[data-d=all].on{background:#cdd7f5;border-color:#cdd7f5}
+  .daybtns button[data-d=d12].on{background:#ffb84d;border-color:#ffb84d}
+  .daybtns button[data-d=d13].on{background:#7cc4ff;border-color:#7cc4ff}
+  .daybtns button[data-d=d14].on{background:#8fd68a;border-color:#8fd68a}
+  .daybtns button[data-d=d15].on{background:#f7a8c8;border-color:#f7a8c8}
+  #netwrap.f-d12 .rt:not(.d12),#netwrap.f-d13 .rt:not(.d13),
+  #netwrap.f-d14 .rt:not(.d14),#netwrap.f-d15 .rt:not(.d15){opacity:.06}
+  #netwrap .rt{transition:opacity .25s}
+
+  .mv{position:relative;background:#070d24;border-radius:14px;overflow:auto;-webkit-overflow-scrolling:touch;
+      box-shadow:inset 0 0 0 2px #1d2750;touch-action:pan-x pan-y;cursor:grab}
+  .mv.drag{cursor:grabbing}
+  .mv svg{display:block;height:auto}
+  .zbar{display:flex;gap:6px;margin:8px 0 4px;align-items:center}
+  .zbar button{border:1.5px solid #3f5a99;background:#0f1730;color:var(--acc2);font-family:inherit;
+    font-weight:900;font-size:.8rem;border-radius:9px;padding:9px 0;cursor:pointer;flex:1}
+  .zbar button:active{background:#16224a}
+  .zbar .zl{flex:2;color:var(--tx2);font-size:.72rem;font-weight:700;text-align:center}
+  .hint{color:var(--tx2);font-size:.76rem;text-align:center;margin:6px 0 0}
+  /* ---------- misc ---------- */
+  h3{font-size:.98rem;margin:22px 0 6px;color:var(--acc2);line-height:1.5}
+  .lead{color:var(--tx2);font-size:.85rem;margin:8px 0}
+  ul{padding-left:1.2em;font-size:.87rem}li{margin:4px 0}
+  a{color:var(--acc2);word-break:break-word}
+  .ok{color:var(--ok)}.no{color:var(--warn)}
+  .chip{display:inline-block;font-size:.66rem;font-weight:900;padding:1px 8px;border-radius:999px;
+        margin-left:5px;vertical-align:2px}
+  .cf{background:var(--ok);color:#06121d}.cb{background:var(--acc);color:#1a1400}
+  .ce{background:#2b3765;color:var(--tx2)}
+  .pkm{display:inline-block;background:#3a2740;border:1px solid #7d4f6a;color:var(--pk);
+       font-size:.72rem;font-weight:800;border-radius:6px;padding:1px 7px;margin:1px 3px 1px 0}
+  .lnk{margin:12px 0 0;font-size:.82rem}
+  .lnk a{display:inline-block;background:var(--card2);border:1px solid #3f5a99;border-radius:8px;
+         padding:6px 11px;margin:0 5px 5px 0;text-decoration:none;font-weight:700}
+  .lnk a.tel{background:#0d2a1f;border-color:#2f6b4f;color:var(--ok)}
+  .top{position:fixed;right:12px;bottom:calc(14px + env(safe-area-inset-bottom));z-index:99;
+       background:var(--acc);color:#1a1400;font-weight:900;font-size:.78rem;border-radius:999px;
+       padding:10px 15px;text-decoration:none;box-shadow:0 3px 14px rgba(0,0,0,.55);
+       opacity:0;pointer-events:none;transition:.25s;border:none;cursor:pointer;font-family:inherit}
+  .top.on{opacity:1;pointer-events:auto}
+  footer{margin-top:36px;padding-top:16px;border-top:1px solid var(--line);
+         color:var(--tx2);font-size:.77rem;line-height:1.75}
+  @media(max-width:400px){
+    .wrap{padding:0 10px 60px} h1{font-size:1.3rem}
+    summary{font-size:.99rem;padding:13px 40px 13px 13px} .inner{padding:2px 12px 16px}
+    .tm{flex:0 0 54px;font-size:.74rem} .ev:before{left:29px}
+  }
+</style>
+</head>
+<body>
+<a href="index.html" class="top on" style="left:12px;right:auto;background:#7cc4ff;color:#04203a">← しおりへ</a>
+<div class="wrap">
+<header>
+  <h1>🗺 ルートマップ</h1>
+  <span class="dates">2026年8月12日（水）〜15日（土）</span>
+  <p class="route">全体の道のり・日ごとの路線図・エリアの絵地図・スタンプラリー</p>
+</header>
+
+<h3>① 高速道路 全体マップ</h3>
+<div class="box info">
+  <span class="big">🛣 サービスエリアの案内板と同じ描き方です</span>
+  <p><strong>道はぜんぶ直線と直角。でも東西南北の位置関係は本物どおり。</strong>出雲が左（西）、京都と堺が右（東）、日本海が上、瀬戸内海が下。<strong class="ok">4日ぶんの道のりが、この1枚に全部のっています。</strong><br>
+  <strong>緑の光が進む方向に走ります。</strong>日を選ぶとその日だけ光ります。<strong>指でスワイプして動かせます。＋で大きく。</strong></p>
+</div>
+<div class="daybtns">
+  <button data-d="all" class="on">全部</button>
+  <button data-d="d12">① 8/12</button>
+  <button data-d="d13">② 8/13</button>
+  <button data-d="d14">③ 8/14</button>
+  <button data-d="d15">④ 8/15</button>
+</div>
+<div class="zbar">
+  <button id="zfit">全体</button><button id="zout">−</button><button id="zin">＋</button>
+  <span class="zl" id="zlab">スワイプで動かせます</span>
+</div>
+<div class="mv" id="mv" style="max-height:66vh"><div id="netwrap"><svg viewBox="0 0 1000 730" xmlns="http://www.w3.org/2000/svg" id="netmap"><defs><filter id="ng" x="-70%" y="-70%" width="240%" height="240%"><feGaussianBlur stdDeviation="6" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs><g id="terrain">
+<defs>
+<linearGradient id="bg-sea-grad" x1="0" y1="0" x2="0" y2="1">
+<stop offset="0" stop-color="#020a16"/><stop offset="1" stop-color="#041525"/></linearGradient>
+<linearGradient id="bg-land-grad" x1="0" y1="0" x2="0.35" y2="1">
+<stop offset="0" stop-color="#121d47"/><stop offset="0.5" stop-color="#1b2a5c"/><stop offset="1" stop-color="#141f4a"/></linearGradient>
+<linearGradient id="bg-plain-grad" x1="0" y1="0" x2="0" y2="1">
+<stop offset="0" stop-color="#22336a" stop-opacity="0.9"/><stop offset="1" stop-color="#18254f" stop-opacity="0.25"/></linearGradient>
+<pattern id="bg-wave" width="40" height="14" patternUnits="userSpaceOnUse">
+<path d="M0 7 q10 -5 20 0 t20 0" fill="none" stroke="#2a5b86" stroke-width="0.9" stroke-opacity="0.32"/></pattern>
+<pattern id="bg-dots-sea" width="14" height="14" patternUnits="userSpaceOnUse">
+<circle cx="3" cy="3" r="0.9" fill="#2f6a9a" fill-opacity="0.3"/><circle cx="10" cy="10" r="0.9" fill="#2f6a9a" fill-opacity="0.2"/></pattern>
+<pattern id="bg-dots-low" width="16" height="16" patternUnits="userSpaceOnUse">
+<circle cx="4" cy="4" r="0.8" fill="#3c5590" fill-opacity="0.26"/></pattern>
+<pattern id="bg-dots-mid" width="11" height="11" patternUnits="userSpaceOnUse">
+<circle cx="3" cy="3" r="0.9" fill="#4a68a8" fill-opacity="0.3"/><circle cx="8" cy="8" r="0.6" fill="#4a68a8" fill-opacity="0.2"/></pattern>
+<pattern id="bg-hatch-high" width="8" height="8" patternUnits="userSpaceOnUse" patternTransform="rotate(35)">
+<line x1="0" y1="0" x2="0" y2="8" stroke="#5878b8" stroke-width="0.8" stroke-opacity="0.28"/></pattern>
+<filter id="bg-soft" x="-25%" y="-25%" width="150%" height="150%"><feGaussianBlur stdDeviation="14"/></filter>
+<clipPath id="bg-clip-land"><path d="M0 52 C 60 40, 130 60, 200 66 C 270 72, 330 58, 400 70 C 470 82, 520 62, 580 74 C 650 88, 712 96, 772 118 C 834 140, 908 148, 1000 146 L 1000 596 C 950 590, 906 600, 884 636 C 866 666, 872 690, 880 706 L 700 700 C 640 686, 600 664, 540 660 C 470 655, 420 676, 350 678 C 280 680, 230 664, 170 668 C 100 673, 50 690, 0 692 Z"/></clipPath>
+<clipPath id="bg-clip-chugoku"><path d="M70 372 C 140 318, 210 300, 280 306 C 350 312, 410 336, 470 344 C 530 352, 580 344, 630 326 C 646 372, 622 414, 560 436 C 490 460, 420 448, 350 442 C 280 436, 200 442, 140 428 C 100 418, 78 398, 70 372 Z"/></clipPath>
+</defs>
+
+<rect x="0" y="0" width="1000" height="730" fill="url(#bg-sea-grad)"/>
+<rect x="0" y="0" width="1000" height="730" fill="url(#bg-wave)"/>
+<rect x="0" y="640" width="1000" height="90" fill="url(#bg-dots-sea)"/>
+<rect x="820" y="580" width="180" height="150" fill="url(#bg-dots-sea)"/>
+
+<path d="M0 52 C 60 40, 130 60, 200 66 C 270 72, 330 58, 400 70 C 470 82, 520 62, 580 74 C 650 88, 712 96, 772 118 C 834 140, 908 148, 1000 146 L 1000 596 C 950 590, 906 600, 884 636 C 866 666, 872 690, 880 706 L 700 700 C 640 686, 600 664, 540 660 C 470 655, 420 676, 350 678 C 280 680, 230 664, 170 668 C 100 673, 50 690, 0 692 Z"
+ fill="url(#bg-land-grad)" stroke="#5b82c4" stroke-width="2" stroke-opacity="0.95"/>
+<path d="M0 66 C 60 54, 130 74, 200 80 C 270 86, 330 72, 400 84 C 470 96, 520 76, 580 88 C 648 102, 710 110, 768 132"
+ fill="none" stroke="#2a5b86" stroke-width="0.7" stroke-opacity="0.32"/>
+<path d="M0 706 C 50 704, 100 687, 170 682 C 230 678, 280 694, 350 692 C 420 690, 470 669, 540 674 C 600 678, 640 700, 700 714"
+ fill="none" stroke="#2a5b86" stroke-width="0.7" stroke-opacity="0.28"/>
+
+<g clip-path="url(#bg-clip-land)" opacity="0.75">
+<path d="M210 92 C 270 84, 330 92, 372 116 C 340 150, 270 156, 214 138 Z" fill="url(#bg-plain-grad)"/>
+<path d="M300 560 C 400 546, 480 560, 540 590 C 520 646, 420 664, 320 650 C 270 626, 268 588, 300 560 Z" fill="url(#bg-plain-grad)"/>
+<path d="M540 540 C 620 526, 700 540, 748 566 C 730 626, 640 648, 560 632 C 522 604, 516 566, 540 540 Z" fill="url(#bg-plain-grad)"/>
+<path d="M812 452 C 890 440, 960 456, 990 486 C 984 566, 930 620, 862 616 C 812 578, 796 506, 812 452 Z" fill="url(#bg-plain-grad)"/>
+<path d="M842 214 C 906 204, 964 216, 992 240 C 976 300, 912 324, 856 306 C 830 278, 826 240, 842 214 Z" fill="url(#bg-plain-grad)"/>
+<path d="M448 92 C 520 84, 580 96, 616 122 C 578 152, 500 156, 444 136 Z" fill="url(#bg-plain-grad)"/>
+</g>
+
+<g filter="url(#bg-soft)" opacity="0.6">
+<ellipse cx="200" cy="400" rx="150" ry="52" fill="#2b3d78"/>
+<ellipse cx="420" cy="392" rx="160" ry="50" fill="#2b3d78"/>
+<ellipse cx="590" cy="398" rx="110" ry="44" fill="#273768"/>
+</g>
+
+<g clip-path="url(#bg-clip-chugoku)">
+<rect x="60" y="290" width="600" height="180" fill="#26386e" fill-opacity="0.55"/>
+<rect x="60" y="290" width="600" height="180" fill="url(#bg-dots-low)"/>
+</g>
+<path d="M70 372 C 140 318, 210 300, 280 306 C 350 312, 410 336, 470 344 C 530 352, 580 344, 630 326 C 646 372, 622 414, 560 436 C 490 460, 420 448, 350 442 C 280 436, 200 442, 140 428 C 100 418, 78 398, 70 372 Z" fill="none" stroke="#5a7fc4" stroke-width="1.4" stroke-opacity="0.8"/>
+<path d="M104 372 C 166 330, 226 316, 288 322 C 350 328, 404 348, 458 356 C 512 364, 558 356, 600 342 C 612 378, 592 410, 540 426 C 480 444, 418 434, 356 428 C 296 422, 224 428, 172 416 C 138 408, 112 392, 104 372 Z" fill="none" stroke="#6088cc" stroke-width="1.3" stroke-opacity="0.72"/>
+<path d="M140 372 C 194 342, 244 332, 296 338 C 350 344, 398 360, 446 368 C 494 376, 534 368, 570 358 C 578 384, 560 406, 518 418 C 468 432, 414 422, 362 416 C 310 410, 250 414, 204 404 C 174 398, 148 388, 140 372 Z" fill="none" stroke="#6a94d6" stroke-width="1.3" stroke-opacity="0.66"/>
+<path d="M180 372 C 224 352, 264 346, 306 352 C 350 358, 390 370, 430 378 C 470 386, 502 380, 532 372 C 538 392, 522 408, 490 416 C 450 426, 406 418, 364 412 C 322 406, 274 408, 238 400 C 212 394, 188 386, 180 372 Z" fill="none" stroke="#7aa4e2" stroke-width="1.3" stroke-opacity="0.6"/>
+<g clip-path="url(#bg-clip-chugoku)">
+<path d="M140 372 C 194 342, 244 332, 296 338 C 350 344, 398 360, 446 368 C 494 376, 534 368, 570 358 C 578 384, 560 406, 518 418 C 468 432, 414 422, 362 416 C 310 410, 250 414, 204 404 C 174 398, 148 388, 140 372 Z" fill="url(#bg-dots-mid)"/>
+<path d="M180 372 C 224 352, 264 346, 306 352 C 350 358, 390 370, 430 378 C 470 386, 502 380, 532 372 C 538 392, 522 408, 490 416 C 450 426, 406 418, 364 412 C 322 406, 274 408, 238 400 C 212 394, 188 386, 180 372 Z" fill="url(#bg-hatch-high)"/>
+</g>
+<g stroke="#8fb0e8" stroke-width="1.4" stroke-opacity="0.6" stroke-linecap="round">
+<path d="M200 366 l10 -14"/><path d="M236 360 l10 -14"/><path d="M272 356 l10 -14"/>
+<path d="M308 358 l10 -14"/><path d="M344 364 l10 -14"/><path d="M380 370 l10 -14"/>
+<path d="M416 374 l10 -14"/><path d="M452 378 l10 -14"/><path d="M488 376 l10 -14"/></g>
+
+<g opacity="0.66">
+<path d="M60 250 C 110 226, 160 230, 200 250 C 172 274, 100 276, 60 250 Z" fill="#1d2b5e" stroke="#5a7fc4" stroke-width="1.1" stroke-opacity="0.55"/>
+<path d="M640 260 C 690 236, 740 248, 768 276 C 730 300, 668 292, 640 260 Z" fill="#1d2b5e" stroke="#5a7fc4" stroke-width="1.1" stroke-opacity="0.55"/>
+<path d="M100 600 C 150 578, 210 588, 240 614 C 200 640, 132 632, 100 600 Z" fill="#1d2b5e" stroke="#5a7fc4" stroke-width="1.1" stroke-opacity="0.5"/>
+<path d="M700 330 C 760 306, 820 320, 848 352 C 806 380, 736 368, 700 330 Z" fill="#1d2b5e" stroke="#5a7fc4" stroke-width="1.1" stroke-opacity="0.5"/></g>
+
+<g>
+<ellipse cx="330" cy="176" rx="80" ry="26" fill="#18234c" opacity="0.6" filter="url(#bg-soft)"/>
+<circle cx="330" cy="150" r="62" fill="#27396f" fill-opacity="0.6"/>
+<circle cx="330" cy="150" r="62" fill="url(#bg-dots-low)"/>
+<circle cx="330" cy="150" r="62" fill="none" stroke="#3b5a94" stroke-width="1" stroke-opacity="0.45"/>
+<circle cx="330" cy="150" r="48" fill="none" stroke="#44659f" stroke-width="0.9" stroke-opacity="0.45"/>
+<circle cx="330" cy="150" r="35" fill="url(#bg-dots-mid)" stroke="#4d70ac" stroke-width="0.9" stroke-opacity="0.45"/>
+<circle cx="330" cy="150" r="23" fill="url(#bg-hatch-high)" stroke="#5a7fbe" stroke-width="0.9" stroke-opacity="0.5"/>
+<circle cx="330" cy="150" r="12" fill="#33488a" stroke="#9dbcf0" stroke-width="1.4" stroke-opacity="0.9"/>
+<path d="M330 140 l8 14 h-16 Z" fill="#cfe0ff" fill-opacity="0.85"/></g>
+
+<g>
+<path d="M150 108 C 168 96, 196 94, 212 104 C 214 118, 190 126, 166 122 C 154 120, 148 114, 150 108 Z" fill="#0d3a5e" stroke="#5aa0cc" stroke-width="1.2" stroke-opacity="0.8"/>
+<path d="M226 100 C 246 92, 266 98, 270 112 C 268 124, 246 128, 230 120 C 222 114, 220 104, 226 100 Z" fill="#0d3a5e" stroke="#5aa0cc" stroke-width="1.2" stroke-opacity="0.8"/>
+<path d="M212 106 L226 108" stroke="#3a6f9c" stroke-width="1.2" stroke-opacity="0.45"/></g>
+
+<g fill="none" stroke="#4fa3d8" stroke-width="1.8" stroke-opacity="0.75" stroke-linecap="round">
+<path d="M520 236 C 514 206, 526 176, 520 148 C 517 132, 520 120, 520 108"/>
+<path d="M300 300 C 306 356, 292 400, 316 452 C 344 512, 388 574, 420 634 C 434 660, 444 682, 450 700"/>
+<path d="M160 566 C 156 600, 174 628, 186 656 C 194 674, 198 690, 200 702"/>
+<path d="M330 176 C 326 156, 316 140, 306 128 C 302 122, 300 116, 300 110"/>
+<path d="M410 452 C 420 502, 444 552, 462 604 C 472 634, 478 664, 480 686" stroke-opacity="0.36"/>
+<path d="M600 470 C 596 510, 592 550, 596 586 C 598 616, 600 644, 600 668" stroke-opacity="0.36"/></g>
+
+<g>
+<path d="M120 730 C 200 712, 300 706, 400 710 C 500 714, 580 706, 660 716 C 700 720, 730 726, 752 730 Z" fill="#141f4a" stroke="#5b82c4" stroke-width="1.4" stroke-opacity="0.75"/>
+<path d="M772 668 C 796 654, 820 664, 826 686 C 828 708, 810 724, 788 726 C 768 714, 762 686, 772 668 Z" fill="#141f4a" stroke="#5b82c4" stroke-width="1.3" stroke-opacity="0.7"/></g>
+</g><g stroke="#2b3d70" stroke-width="1" opacity=".22"><line x1="50" y1="0" x2="50" y2="730"/><line x1="100" y1="0" x2="100" y2="730"/><line x1="150" y1="0" x2="150" y2="730"/><line x1="200" y1="0" x2="200" y2="730"/><line x1="250" y1="0" x2="250" y2="730"/><line x1="300" y1="0" x2="300" y2="730"/><line x1="350" y1="0" x2="350" y2="730"/><line x1="400" y1="0" x2="400" y2="730"/><line x1="450" y1="0" x2="450" y2="730"/><line x1="500" y1="0" x2="500" y2="730"/><line x1="550" y1="0" x2="550" y2="730"/><line x1="600" y1="0" x2="600" y2="730"/><line x1="650" y1="0" x2="650" y2="730"/><line x1="700" y1="0" x2="700" y2="730"/><line x1="750" y1="0" x2="750" y2="730"/><line x1="800" y1="0" x2="800" y2="730"/><line x1="850" y1="0" x2="850" y2="730"/><line x1="900" y1="0" x2="900" y2="730"/><line x1="950" y1="0" x2="950" y2="730"/><line x1="0" y1="50" x2="1000" y2="50"/><line x1="0" y1="100" x2="1000" y2="100"/><line x1="0" y1="150" x2="1000" y2="150"/><line x1="0" y1="200" x2="1000" y2="200"/><line x1="0" y1="250" x2="1000" y2="250"/><line x1="0" y1="300" x2="1000" y2="300"/><line x1="0" y1="350" x2="1000" y2="350"/><line x1="0" y1="400" x2="1000" y2="400"/><line x1="0" y1="450" x2="1000" y2="450"/><line x1="0" y1="500" x2="1000" y2="500"/><line x1="0" y1="550" x2="1000" y2="550"/><line x1="0" y1="600" x2="1000" y2="600"/><line x1="0" y1="650" x2="1000" y2="650"/><line x1="0" y1="700" x2="1000" y2="700"/></g><text x="480" y="40" font-size="20" fill="#3f6f9e" font-weight="800" text-anchor="middle" letter-spacing="12" opacity=".85">日 本 海</text><text x="300" y="722" font-size="17" fill="#3f6f9e" font-weight="800" letter-spacing="8" opacity=".8">瀬 戸 内 海</text><text x="905" y="700" font-size="15" fill="#3f6f9e" font-weight="800" letter-spacing="4" opacity=".8">大阪湾</text><path d="M90 110 L300 110 L520 110" fill="none" stroke="#04081c" stroke-width="30" stroke-linecap="round" stroke-linejoin="round"/><path d="M300 110 L300 210 L300 300 L300 470" fill="none" stroke="#04081c" stroke-width="30" stroke-linecap="round" stroke-linejoin="round"/><path d="M520 110 L520 230 L520 470" fill="none" stroke="#04081c" stroke-width="30" stroke-linecap="round" stroke-linejoin="round"/><path d="M160 470 L300 470 L410 470 L520 470 L600 470 L680 470 L770 470 L830 530 L900 530" fill="none" stroke="#04081c" stroke-width="30" stroke-linecap="round" stroke-linejoin="round"/><path d="M770 470 L770 380 L900 380" fill="none" stroke="#04081c" stroke-width="30" stroke-linecap="round" stroke-linejoin="round"/><path d="M900 270 L900 380 L900 460 L900 530" fill="none" stroke="#04081c" stroke-width="30" stroke-linecap="round" stroke-linejoin="round"/><path d="M900 530 L900 652" fill="none" stroke="#04081c" stroke-width="30" stroke-linecap="round" stroke-linejoin="round"/><path d="M600 470 L600 592" fill="none" stroke="#04081c" stroke-width="30" stroke-linecap="round" stroke-linejoin="round"/><path d="M600 592 L470 592" fill="none" stroke="#04081c" stroke-width="30" stroke-linecap="round" stroke-linejoin="round"/><path d="M160 470 L160 570" fill="none" stroke="#04081c" stroke-width="30" stroke-linecap="round" stroke-linejoin="round"/><path d="M90 110 L300 110 L520 110" fill="none" stroke="#2b3765" stroke-width="19" stroke-linecap="round" stroke-linejoin="round"/><path d="M300 110 L300 210 L300 300 L300 470" fill="none" stroke="#2b3765" stroke-width="19" stroke-linecap="round" stroke-linejoin="round"/><path d="M520 110 L520 230 L520 470" fill="none" stroke="#2b3765" stroke-width="19" stroke-linecap="round" stroke-linejoin="round"/><path d="M160 470 L300 470 L410 470 L520 470 L600 470 L680 470 L770 470 L830 530 L900 530" fill="none" stroke="#2b3765" stroke-width="19" stroke-linecap="round" stroke-linejoin="round"/><path d="M770 470 L770 380 L900 380" fill="none" stroke="#2b3765" stroke-width="19" stroke-linecap="round" stroke-linejoin="round"/><path d="M900 270 L900 380 L900 460 L900 530" fill="none" stroke="#2b3765" stroke-width="19" stroke-linecap="round" stroke-linejoin="round"/><path d="M900 530 L900 652" fill="none" stroke="#2b3765" stroke-width="19" stroke-linecap="round" stroke-linejoin="round"/><path d="M600 470 L600 592" fill="none" stroke="#2b3765" stroke-width="19" stroke-linecap="round" stroke-linejoin="round"/><path d="M600 592 L470 592" fill="none" stroke="#2b3765" stroke-width="19" stroke-linecap="round" stroke-linejoin="round"/><path d="M160 470 L160 570" fill="none" stroke="#2b3765" stroke-width="19" stroke-linecap="round" stroke-linejoin="round"/><path d="M160 570 L160 672" fill="none" stroke="#2b3765" stroke-width="9" stroke-dasharray="12 11" stroke-linecap="round"/><path class="rt d12" id="rt-d12" d="M900 652 L900 530 L900 460 L900 380 L900 270" fill="none" stroke="#ffb84d" stroke-width="13" stroke-linecap="round" stroke-linejoin="round" opacity=".92"/><path class="rt d12" d="M900 652 L900 530 L900 460 L900 380 L900 270" fill="none" stroke="#f2fff8" stroke-width="13" stroke-linecap="butt" stroke-dasharray="7 56" opacity=".85"><animate attributeName="stroke-dashoffset" from="63" to="0" dur="1s" repeatCount="indefinite"/></path><g class="rt d12"><circle r="15" fill="#5fe39a" filter="url(#ng)"/><animateMotion dur="7s" repeatCount="indefinite"><mpath href="#rt-d12"/></animateMotion></g><g class="rt d12"><circle r="6" fill="#fff"/><animateMotion dur="7s" repeatCount="indefinite"><mpath href="#rt-d12"/></animateMotion></g><path class="rt d13" id="rt-d13" d="M900 270 L900 380 L770 380 L770 470 L680 470 L600 470 L520 470 L410 470 L300 470 L300 300" fill="none" stroke="#7cc4ff" stroke-width="13" stroke-linecap="round" stroke-linejoin="round" opacity=".92"/><path class="rt d13" d="M900 270 L900 380 L770 380 L770 470 L680 470 L600 470 L520 470 L410 470 L300 470 L300 300" fill="none" stroke="#f2fff8" stroke-width="13" stroke-linecap="butt" stroke-dasharray="7 56" opacity=".85"><animate attributeName="stroke-dashoffset" from="63" to="0" dur="1s" repeatCount="indefinite"/></path><g class="rt d13"><circle r="15" fill="#5fe39a" filter="url(#ng)"/><animateMotion dur="13s" repeatCount="indefinite"><mpath href="#rt-d13"/></animateMotion></g><g class="rt d13"><circle r="6" fill="#fff"/><animateMotion dur="13s" repeatCount="indefinite"><mpath href="#rt-d13"/></animateMotion></g><path class="rt d13" id="rt-d13n" d="M300 300 L300 470 L160 470 L160 570 L160 672" fill="none" stroke="#7cc4ff" stroke-width="13" stroke-linecap="round" stroke-linejoin="round" opacity=".92"/><path class="rt d13" d="M300 300 L300 470 L160 470 L160 570 L160 672" fill="none" stroke="#f2fff8" stroke-width="13" stroke-linecap="butt" stroke-dasharray="7 56" opacity=".85"><animate attributeName="stroke-dashoffset" from="63" to="0" dur="1s" repeatCount="indefinite"/></path><g class="rt d13"><circle r="15" fill="#5fe39a" filter="url(#ng)"/><animateMotion dur="6s" repeatCount="indefinite"><mpath href="#rt-d13n"/></animateMotion></g><g class="rt d13"><circle r="6" fill="#fff"/><animateMotion dur="6s" repeatCount="indefinite"><mpath href="#rt-d13n"/></animateMotion></g><path class="rt d14" id="rt-d14" d="M300 300 L300 210 L300 110 L90 110 M90 110 L300 110 L520 110 L520 230" fill="none" stroke="#8fd68a" stroke-width="13" stroke-linecap="round" stroke-linejoin="round" opacity=".92"/><path class="rt d14" d="M300 300 L300 210 L300 110 L90 110 M90 110 L300 110 L520 110 L520 230" fill="none" stroke="#f2fff8" stroke-width="13" stroke-linecap="butt" stroke-dasharray="7 56" opacity=".85"><animate attributeName="stroke-dashoffset" from="63" to="0" dur="1s" repeatCount="indefinite"/></path><g class="rt d14"><circle r="15" fill="#5fe39a" filter="url(#ng)"/><animateMotion dur="12s" repeatCount="indefinite"><mpath href="#rt-d14"/></animateMotion></g><g class="rt d14"><circle r="6" fill="#fff"/><animateMotion dur="12s" repeatCount="indefinite"><mpath href="#rt-d14"/></animateMotion></g><path class="rt d15" id="rt-d15" d="M520 230 L520 470 L600 470 L600 592 M600 592 L470 592 M470 592 L600 592 L600 470 L680 470 L770 470 L830 530 L900 530 L900 652" fill="none" stroke="#f7a8c8" stroke-width="13" stroke-linecap="round" stroke-linejoin="round" opacity=".92"/><path class="rt d15" d="M520 230 L520 470 L600 470 L600 592 M600 592 L470 592 M470 592 L600 592 L600 470 L680 470 L770 470 L830 530 L900 530 L900 652" fill="none" stroke="#f2fff8" stroke-width="13" stroke-linecap="butt" stroke-dasharray="7 56" opacity=".85"><animate attributeName="stroke-dashoffset" from="63" to="0" dur="1s" repeatCount="indefinite"/></path><g class="rt d15"><circle r="15" fill="#5fe39a" filter="url(#ng)"/><animateMotion dur="14s" repeatCount="indefinite"><mpath href="#rt-d15"/></animateMotion></g><g class="rt d15"><circle r="6" fill="#fff"/><animateMotion dur="14s" repeatCount="indefinite"><mpath href="#rt-d15"/></animateMotion></g><text x="180" y="96" font-size="17" font-weight="900" fill="#7183ae">山陰道</text><text x="318" y="170" font-size="17" font-weight="900" fill="#7183ae">米子道</text><text x="538" y="180" font-size="17" font-weight="900" fill="#7183ae">鳥取道</text><text x="345" y="452" font-size="17" font-weight="900" fill="#7183ae">中国道</text><text x="800" y="364" font-size="17" font-weight="900" fill="#7183ae">新名神</text><text x="918" y="330" font-size="17" font-weight="900" fill="#7183ae">名神</text><text x="918" y="600" font-size="17" font-weight="900" fill="#7183ae">近畿道</text><text x="176" y="524" font-size="17" font-weight="900" fill="#7183ae">岡山道</text><text transform="rotate(-90 578 540)" x="578" y="540" font-size="17" font-weight="900" fill="#7183ae" text-anchor="middle">播磨道</text><g><rect x="36.0" y="83" width="108" height="54" rx="27" fill="#fff"/><text x="90" y="121" font-size="32" font-weight="900" text-anchor="middle" fill="#101733">出雲</text></g><text x="90" y="156" font-size="15" font-weight="700" fill="#9fb0e8" text-anchor="middle">8/14 出雲大社</text><g><rect x="286" y="96" width="28" height="28" rx="4" transform="rotate(45 300 110)" fill="#070d24" stroke="#c3cdf0" stroke-width="5.5"/><text x="300" y="152" font-size="15" font-weight="900" fill="#aab6dd" text-anchor="middle"><tspan x="300" dy="0.0">米</tspan><tspan x="300" dy="15.9">子</tspan><tspan x="300" dy="15.9">J</tspan><tspan x="300" dy="15.9">C</tspan><tspan x="300" dy="15.9">T</tspan></text></g><g><circle cx="520" cy="110" r="12" fill="#fff" stroke="#7cc4ff" stroke-width="6"/><text x="520" y="152" font-size="16" font-weight="900" fill="#dfe6fb" text-anchor="middle"><tspan x="520" dy="0.0">鳥</tspan><tspan x="520" dy="17.0">取</tspan></text></g><g class="rsa" data-k="sa7" style="cursor:pointer"><rect x="276" y="186" width="48" height="48" rx="12" fill="#fff8e1" stroke="#ffd166" stroke-width="6"/><text x="300" y="221" font-size="26" text-anchor="middle">🐄</text><circle class="dot" cx="325" cy="185" r="12" fill="#3a4470" stroke="#8f9cc4" stroke-width="3.5"/><text x="336" y="217" font-size="19" font-weight="900" fill="#ffd166">蒜山高原SA</text><text x="336" y="240" font-size="13" fill="#8f9cc4" text-anchor="start">8/14 08:50</text></g><g><rect x="246.0" y="273" width="108" height="54" rx="27" fill="#fff"/><text x="300" y="311" font-size="32" font-weight="900" text-anchor="middle" fill="#101733">湯原</text></g><text x="300" y="346" font-size="15" font-weight="700" fill="#9fb0e8" text-anchor="middle">8/13・14 菊之湯</text><g><rect x="466.0" y="203" width="108" height="54" rx="27" fill="#fff"/><text x="520" y="241" font-size="32" font-weight="900" text-anchor="middle" fill="#101733">用瀬</text></g><text x="520" y="276" font-size="15" font-weight="700" fill="#9fb0e8" text-anchor="middle">8/14 フォレストリア</text><g><rect x="286" y="456" width="28" height="28" rx="4" transform="rotate(45 300 470)" fill="#070d24" stroke="#c3cdf0" stroke-width="5.5"/><text x="300" y="512" font-size="15" font-weight="900" fill="#aab6dd" text-anchor="middle"><tspan x="300" dy="0.0">落</tspan><tspan x="300" dy="15.9">合</tspan><tspan x="300" dy="15.9">J</tspan><tspan x="300" dy="15.9">C</tspan><tspan x="300" dy="15.9">T</tspan></text></g><g><rect x="146" y="456" width="28" height="28" rx="4" transform="rotate(45 160 470)" fill="#070d24" stroke="#c3cdf0" stroke-width="5.5"/><text x="124" y="477" font-size="15" font-weight="900" fill="#aab6dd" text-anchor="end">北房JCT</text></g><g class="rsa" data-k="sa4" style="cursor:pointer"><rect x="386" y="446" width="48" height="48" rx="12" fill="#fff8e1" stroke="#ffd166" stroke-width="6"/><text x="410" y="481" font-size="26" text-anchor="middle">⛽</text><circle class="dot" cx="435" cy="445" r="12" fill="#3a4470" stroke="#8f9cc4" stroke-width="3.5"/><text x="410" y="512" font-size="19" font-weight="900" fill="#ffd166" text-anchor="middle"><tspan x="410" dy="0.0">勝</tspan><tspan x="410" dy="20.1">央</tspan><tspan x="410" dy="20.1">S</tspan><tspan x="410" dy="20.1">A</tspan></text><text x="410" y="614.56" font-size="13" fill="#8f9cc4" text-anchor="middle">8/13 13:30</text></g><g><rect x="506" y="456" width="28" height="28" rx="4" transform="rotate(45 520 470)" fill="#070d24" stroke="#c3cdf0" stroke-width="5.5"/><text x="520" y="512" font-size="15" font-weight="900" fill="#aab6dd" text-anchor="middle"><tspan x="520" dy="0.0">佐</tspan><tspan x="520" dy="15.9">用</tspan><tspan x="520" dy="15.9">J</tspan><tspan x="520" dy="15.9">C</tspan><tspan x="520" dy="15.9">T</tspan></text></g><g><rect x="586" y="456" width="28" height="28" rx="4" transform="rotate(45 600 470)" fill="#070d24" stroke="#c3cdf0" stroke-width="5.5"/><text x="600" y="442" font-size="15" font-weight="900" fill="#aab6dd" text-anchor="middle">播磨JCT</text></g><g class="rsa" data-k="sa3" style="cursor:pointer"><rect x="656" y="446" width="48" height="48" rx="12" fill="#fff8e1" stroke="#ffd166" stroke-width="6"/><text x="680" y="481" font-size="26" text-anchor="middle">🍽</text><circle class="dot" cx="705" cy="445" r="12" fill="#3a4470" stroke="#8f9cc4" stroke-width="3.5"/><text x="680" y="512" font-size="19" font-weight="900" fill="#ffd166" text-anchor="middle"><tspan x="680" dy="0.0">加</tspan><tspan x="680" dy="20.1">西</tspan><tspan x="680" dy="20.1">S</tspan><tspan x="680" dy="20.1">A</tspan></text><text x="680" y="614.56" font-size="13" fill="#8f9cc4" text-anchor="middle">8/13 昼／8/15 夜</text></g><g><rect x="756" y="456" width="28" height="28" rx="4" transform="rotate(45 770 470)" fill="#070d24" stroke="#c3cdf0" stroke-width="5.5"/><text x="770" y="442" font-size="15" font-weight="900" fill="#aab6dd" text-anchor="middle">神戸JCT</text></g><g class="rsa" data-k="sa2" style="cursor:pointer"><rect x="746" y="356" width="48" height="48" rx="12" fill="#fff8e1" stroke="#ffd166" stroke-width="6"/><text x="770" y="391" font-size="26" text-anchor="middle">⚡</text><circle class="dot" cx="795" cy="355" r="12" fill="#3a4470" stroke="#8f9cc4" stroke-width="3.5"/><text x="734" y="387" font-size="19" font-weight="900" fill="#ffd166" text-anchor="end">宝塚北SA</text><text x="734" y="410" font-size="13" fill="#8f9cc4" text-anchor="end">8/13 10:10</text></g><g><rect x="886" y="366" width="28" height="28" rx="4" transform="rotate(45 900 380)" fill="#070d24" stroke="#c3cdf0" stroke-width="5.5"/><text x="936" y="387" font-size="15" font-weight="900" fill="#aab6dd">高槻JCT</text></g><g><rect x="846.0" y="243" width="108" height="54" rx="27" fill="#fff"/><text x="900" y="281" font-size="32" font-weight="900" text-anchor="middle" fill="#101733">京都</text></g><text x="900" y="316" font-size="15" font-weight="700" fill="#9fb0e8" text-anchor="middle">8/12 さと茂旅館</text><g class="rsa" data-k="sa1" style="cursor:pointer"><rect x="876" y="436" width="48" height="48" rx="12" fill="#fff8e1" stroke="#ffd166" stroke-width="6"/><text x="900" y="471" font-size="26" text-anchor="middle">🅿️</text><circle class="dot" cx="925" cy="435" r="12" fill="#3a4470" stroke="#8f9cc4" stroke-width="3.5"/><text x="936" y="467" font-size="19" font-weight="900" fill="#ffd166">吹田SA</text><text x="936" y="490" font-size="13" fill="#8f9cc4" text-anchor="start">8/12 10:10 台紙をもらう</text></g><g><rect x="886" y="516" width="28" height="28" rx="4" transform="rotate(45 900 530)" fill="#070d24" stroke="#c3cdf0" stroke-width="5.5"/><text x="936" y="537" font-size="15" font-weight="900" fill="#aab6dd">吹田JCT</text></g><g class="rsa" data-k="sa9" style="cursor:pointer"><rect x="806" y="506" width="48" height="48" rx="12" fill="#fff8e1" stroke="#ffd166" stroke-width="6"/><text x="830" y="541" font-size="26" text-anchor="middle">🏁</text><circle class="dot" cx="855" cy="505" r="12" fill="#3a4470" stroke="#8f9cc4" stroke-width="3.5"/><text x="830" y="572" font-size="19" font-weight="900" fill="#ffd166" text-anchor="middle"><tspan x="830" dy="0.0">西</tspan><tspan x="830" dy="20.1">宮</tspan><tspan x="830" dy="20.1">名</tspan><tspan x="830" dy="20.1">塩</tspan><tspan x="830" dy="20.1">S</tspan><tspan x="830" dy="20.1">A</tspan></text><text x="830" y="714.84" font-size="13" fill="#8f9cc4" text-anchor="middle">8/15 20:20</text></g><g><rect x="863.0" y="625" width="74" height="54" rx="27" fill="#fff"/><text x="900" y="663" font-size="32" font-weight="900" text-anchor="middle" fill="#101733">堺</text></g><text x="900" y="698" font-size="15" font-weight="700" fill="#9fb0e8" text-anchor="middle">スタート＆ゴール</text><g><rect x="546.0" y="565" width="108" height="54" rx="27" fill="#fff"/><text x="600" y="603" font-size="32" font-weight="900" text-anchor="middle" fill="#101733">姫路</text></g><text x="600" y="638" font-size="15" font-weight="700" fill="#9fb0e8" text-anchor="middle">8/15 姫路城</text><g><circle cx="470" cy="592" r="12" fill="#fff" stroke="#7cc4ff" stroke-width="6"/><text x="470" y="634" font-size="16" font-weight="900" fill="#dfe6fb" text-anchor="middle"><tspan x="470" dy="0.0">太</tspan><tspan x="470" dy="17.0">子</tspan></text></g><g class="rsa" data-k="sa5" style="cursor:pointer"><rect x="136" y="546" width="48" height="48" rx="12" fill="#fff8e1" stroke="#ffd166" stroke-width="6"/><text x="160" y="581" font-size="26" text-anchor="middle">☄️</text><circle class="dot" cx="185" cy="545" r="12" fill="#3a4470" stroke="#8f9cc4" stroke-width="3.5"/><text x="196" y="577" font-size="19" font-weight="900" fill="#ffd166">高梁SA</text><text x="196" y="600" font-size="13" fill="#8f9cc4" text-anchor="start">8/13 行き＝上り／帰り＝下り</text></g><g><rect x="106.0" y="645" width="108" height="54" rx="27" fill="#fff"/><text x="160" y="683" font-size="32" font-weight="900" text-anchor="middle" fill="#101733">美星</text></g><text x="160" y="718" font-size="15" font-weight="700" fill="#9fb0e8" text-anchor="middle">8/13 夜 天文台</text></svg></div></div>
+<div class="rkey">
+  <span><b></b>SA・PA（丸をタップでスタンプ）</span><span><em></em>JCT</span><span><u></u>IC</span><span><s></s>いま走っているイメージ</span>
+</div>
+<p class="mapnote"><strong>白いカプセルが泊まる町・行く町</strong>です。<strong class="ok">高梁SAが「行き」と「帰り」で2回出てくる</strong>のも、岡山道の上を光が2往復するので見えます。灰色の点線は高速をおりてからの一般道（高梁SA → 美星天文台）。</p>
+
+<h3>② ざっくり全体図</h3>
+
+
+
+
+<div class="mapwrap">
+<p class="maptitle">🗾 4日間・約1,050km のながれ</p>
+<svg viewBox="0 0 620 310" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="全体ルートマップ">
+<defs>
+  <linearGradient id="sea" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0" stop-color="#bfe4f2"/><stop offset="1" stop-color="#9fd3e8"/>
+  </linearGradient>
+  <linearGradient id="land" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0" stop-color="#dcefc4"/><stop offset="1" stop-color="#c7e2a8"/>
+  </linearGradient>
+  <marker id="aA" markerWidth="7" markerHeight="7" refX="5.5" refY="3.2" orient="auto"><path d="M0,0 L6.5,3.2 L0,6.4 z" fill="#ffb84d"/></marker>
+  <marker id="aB" markerWidth="7" markerHeight="7" refX="5.5" refY="3.2" orient="auto"><path d="M0,0 L6.5,3.2 L0,6.4 z" fill="#7cc4ff"/></marker>
+  <marker id="aC" markerWidth="7" markerHeight="7" refX="5.5" refY="3.2" orient="auto"><path d="M0,0 L6.5,3.2 L0,6.4 z" fill="#8fd68a"/></marker>
+  <marker id="aD" markerWidth="7" markerHeight="7" refX="5.5" refY="3.2" orient="auto"><path d="M0,0 L6.5,3.2 L0,6.4 z" fill="#f7a8c8"/></marker>
+</defs>
+
+<rect width="620" height="310" fill="url(#sea)" rx="10"/>
+<!-- 波 -->
+<g stroke="#ffffff" stroke-width="1.6" fill="none" opacity=".55" stroke-linecap="round">
+  <path d="M30 28 q7 -5 14 0 t14 0"/><path d="M120 18 q7 -5 14 0 t14 0"/>
+  <path d="M470 40 q7 -5 14 0 t14 0"/><path d="M545 22 q7 -5 14 0 t14 0"/>
+  <path d="M60 292 q7 -5 14 0 t14 0"/><path d="M300 296 q7 -5 14 0 t14 0"/>
+</g>
+
+<!-- 本州（中国〜近畿）ざっくり -->
+<path d="M-10 96 C 60 62, 150 52, 235 60 C 320 68, 400 84, 470 96
+         C 530 106, 585 120, 630 128 L 630 210 C 590 214, 560 226, 545 252
+         C 530 278, 500 286, 470 276 C 430 262, 400 236, 360 226
+         C 300 210, 250 190, 200 168 C 150 146, 80 130, -10 138 Z"
+      fill="url(#land)" stroke="#8fbf6a" stroke-width="2.2"/>
+<!-- 四国 -->
+<path d="M300 268 C 350 254, 430 262, 470 286 C 430 308, 340 306, 300 290 Z"
+      fill="#d5ebbe" stroke="#8fbf6a" stroke-width="2"/>
+<text x="382" y="288" font-size="9" fill="#7fa55f" font-weight="700">四国</text>
+<text x="60" y="40" font-size="11" fill="#5b9dbd" font-weight="700">日本海</text>
+<text x="250" y="250" font-size="10" fill="#5b9dbd" font-weight="700">瀬戸内海</text>
+
+<!-- ルート -->
+<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="4.5" opacity=".95">
+  <path d="M544 278 C 556 240, 572 200, 591 184" stroke="#ffb84d" stroke-dasharray="1 9" marker-end="url(#aA)"/>
+  <path d="M591 184 C 520 176, 430 178, 340 150 C 300 138, 275 122, 256 115"
+        stroke="#7cc4ff" stroke-dasharray="1 9" marker-end="url(#aB)"/>
+  <path d="M256 115 C 200 100, 130 84, 69 87" stroke="#a6e3a1" stroke-dasharray="1 9" marker-end="url(#aC)"/>
+  <path d="M69 87 C 140 96, 240 100, 317 113" stroke="#a6e3a1" stroke-dasharray="1 9" marker-end="url(#aC)"/>
+  <path d="M317 113 C 360 150, 390 190, 409 219" stroke="#f7a8c8" stroke-dasharray="1 9" marker-end="url(#aD)"/>
+  <path d="M409 219 C 470 250, 515 268, 544 278" stroke="#f7a8c8" stroke-dasharray="1 9" marker-end="url(#aD)"/>
+  <path d="M256 115 C 235 150, 220 200, 215 245" stroke="#c9a6ff" stroke-dasharray="1 7"/>
+  <path d="M215 245 C 228 200, 244 152, 256 115" stroke="#c9a6ff" stroke-dasharray="1 7" opacity=".5"/>
+</g>
+
+<!-- 地点 -->
+<g font-weight="800">
+  <g><circle cx="544" cy="278" r="13" fill="#fff" stroke="#e8734a" stroke-width="3"/>
+     <text x="544" y="283" font-size="13" text-anchor="middle">🏠</text>
+     <text x="544" y="303" font-size="11" text-anchor="middle" fill="#3d3222">堺</text></g>
+  <g><circle cx="591" cy="184" r="13" fill="#fff" stroke="#ffb84d" stroke-width="3"/>
+     <text x="591" y="189" font-size="13" text-anchor="middle">🏮</text>
+     <text x="591" y="167" font-size="11" text-anchor="middle" fill="#3d3222">京都</text></g>
+  <g><circle cx="256" cy="115" r="13" fill="#fff" stroke="#7cc4ff" stroke-width="3"/>
+     <text x="256" y="120" font-size="13" text-anchor="middle">♨️</text>
+     <text x="256" y="97" font-size="11" text-anchor="middle" fill="#3d3222">湯原温泉</text></g>
+  <g><circle cx="215" cy="245" r="12" fill="#fff" stroke="#c9a6ff" stroke-width="3"/>
+     <text x="215" y="250" font-size="12" text-anchor="middle">☄️</text>
+     <text x="215" y="268" font-size="10.5" text-anchor="middle" fill="#3d3222">美星天文台</text></g>
+  <g><circle cx="69" cy="87" r="13" fill="#fff" stroke="#a6e3a1" stroke-width="3"/>
+     <text x="69" y="92" font-size="13" text-anchor="middle">⛩️</text>
+     <text x="69" y="69" font-size="11" text-anchor="middle" fill="#3d3222">出雲大社</text></g>
+  <g><circle cx="317" cy="113" r="13" fill="#fff" stroke="#a6e3a1" stroke-width="3"/>
+     <text x="317" y="118" font-size="13" text-anchor="middle">🏕️</text>
+     <text x="317" y="95" font-size="11" text-anchor="middle" fill="#3d3222">用瀬</text></g>
+  <g><circle cx="409" cy="219" r="13" fill="#fff" stroke="#f7a8c8" stroke-width="3"/>
+     <text x="409" y="224" font-size="13" text-anchor="middle">🏯</text>
+     <text x="409" y="243" font-size="11" text-anchor="middle" fill="#3d3222">姫路</text></g>
+</g>
+
+<!-- 番号 -->
+<g font-size="10" font-weight="900" fill="#fff">
+  <circle cx="573" cy="232" r="9.5" fill="#ffb84d"/><text x="573" y="236" text-anchor="middle">1</text>
+  <circle cx="430" cy="163" r="9.5" fill="#7cc4ff"/><text x="430" y="167" text-anchor="middle">2</text>
+  <circle cx="160" cy="93" r="9.5" fill="#a6e3a1"/><text x="160" y="97" text-anchor="middle">3</text>
+  <circle cx="480" cy="253" r="9.5" fill="#f7a8c8"/><text x="480" y="257" text-anchor="middle">4</text>
+</g>
+</svg>
+</div>
+<div class="legend">
+  <i style="background:#ffb84d">① 8/12 堺→京都</i>
+  <i style="background:#7cc4ff">② 8/13 京都→湯原＋美星</i>
+  <i style="background:#a6e3a1">③ 8/14 湯原→出雲→用瀬</i>
+  <i style="background:#f7a8c8">④ 8/15 用瀬→姫路→堺</i>
+</div>
+<p class="mapnote">※きょりや形はデフォルメしています。<strong>美星天文台（紫）だけは往復</strong>で、湯原に戻って泊まります。</p>
+
+
+
+
+<h3>③ 日ごとにくわしく見る</h3>
+<p class="lead">上の1枚で全体を、ここから下で1日ずつ。<strong>止まるSAとICが順番どおりに並びます。</strong></p>
+<div class="roadttl"><i style="background:#ffb84d">1</i><b>8/12（水）堺 → 京都</b></div>
+<div class="roadbox"><svg viewBox="0 0 340 220" xmlns="http://www.w3.org/2000/svg" class="road"><defs>
+<filter id="gl-d12" x="-60%" y="-60%" width="220%" height="220%">
+<feGaussianBlur stdDeviation="3.2" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+<linearGradient id="lg-d12" x1="0" y1="0" x2="1" y2="0">
+<stop offset="0" stop-color="#ffb84d" stop-opacity=".55"/><stop offset="1" stop-color="#ffb84d"/></linearGradient></defs><rect width="340" height="220" rx="12" fill="#0d1430"/><g stroke="#18224a" stroke-width="1"><line x1="20" y1="8" x2="20" y2="212"/><line x1="60" y1="8" x2="60" y2="212"/><line x1="100" y1="8" x2="100" y2="212"/><line x1="140" y1="8" x2="140" y2="212"/><line x1="180" y1="8" x2="180" y2="212"/><line x1="220" y1="8" x2="220" y2="212"/><line x1="260" y1="8" x2="260" y2="212"/><line x1="300" y1="8" x2="300" y2="212"/></g><path id="rd-d12" d="M34 46 L290 46 Q306 46 306 62 L306 126 Q306 142 290 142 L50 142" fill="none" stroke="#05091c" stroke-width="20" stroke-linecap="round" stroke-linejoin="round"/><path d="M34 46 L290 46 Q306 46 306 62 L306 126 Q306 142 290 142 L50 142" fill="none" stroke="#26305c" stroke-width="15" stroke-linecap="round" stroke-linejoin="round"/><path d="M34 46 L290 46 Q306 46 306 62 L306 126 Q306 142 290 142 L50 142" fill="none" stroke="url(#lg-d12)" stroke-width="7" stroke-linecap="round" stroke-linejoin="round" opacity=".9"/><path d="M34 46 L290 46 Q306 46 306 62 L306 126 Q306 142 290 142 L50 142" fill="none" stroke="#eafff2" stroke-width="7" stroke-linecap="butt"
+ stroke-dasharray="3 26" opacity=".85">
+<animate attributeName="stroke-dashoffset" from="29" to="0" dur="1.1s" repeatCount="indefinite"/></path><circle r="7" fill="#5fe39a" filter="url(#gl-d12)" opacity=".95">
+<animateMotion dur="9s" repeatCount="indefinite" rotate="auto"><mpath href="#rd-d12"/></animateMotion></circle>
+<circle r="3" fill="#ffffff">
+<animateMotion dur="9s" repeatCount="indefinite"><mpath href="#rd-d12"/></animateMotion></circle><g><rect x="42.5" y="31" width="35" height="30" rx="15" fill="#ffb84d" stroke="#fff" stroke-width="2"/><text x="60.0" y="51.5" font-size="14" font-weight="900" text-anchor="middle" fill="#101733">堺</text></g><g><circle cx="115.0" cy="46" r="5.5" fill="#fff" stroke="#ffb84d" stroke-width="3"/><text x="115.0" y="64" font-size="10.5" font-weight="900" fill="#e9edf8" text-anchor="middle"><tspan x="115.0" dy="0.0">松</tspan><tspan x="115.0" dy="11.1">原</tspan></text></g><g><rect x="163.0" y="39" width="14" height="14" rx="2" transform="rotate(45 170.0 46)" fill="#0d1430" stroke="#cdd7f5" stroke-width="2.6"/><text x="170.0" y="64" font-size="10.5" font-weight="900" fill="#e9edf8" text-anchor="middle"><tspan x="170.0" dy="0.0">吹</tspan><tspan x="170.0" dy="11.1">田</tspan></text></g><g class="rsa" data-k="sa1" style="cursor:pointer"><rect x="214.0" y="35" width="22" height="22" rx="5" fill="#fff8e1" stroke="#ffd166" stroke-width="3"/><text x="225.0" y="51" font-size="12" text-anchor="middle">⛽</text><circle class="dot" cx="236.0" cy="35" r="5.5" fill="#3a4470" stroke="#8f9cc4" stroke-width="1.6"/><text x="225.0" y="64" font-size="10.5" font-weight="900" fill="#ffd166" text-anchor="middle"><tspan x="225.0" dy="0.0">吹</tspan><tspan x="225.0" dy="11.1">田</tspan></text><text x="238.0" y="65" font-size="8" font-weight="700" fill="#8f9cc4" text-anchor="middle"><tspan x="238.0" dy="0.0">ポ</tspan><tspan x="238.0" dy="9.0">ケ</tspan><tspan x="238.0" dy="9.0">モ</tspan><tspan x="238.0" dy="9.0">ン</tspan></text></g><g><circle cx="280.0" cy="46" r="4" fill="#0d1430" stroke="#6b779e" stroke-width="2"/><text x="280.0" y="64" font-size="10.5" font-weight="900" fill="#7f8ab0" text-anchor="middle"><tspan x="280.0" dy="0.0">茨</tspan><tspan x="280.0" dy="11.1">木</tspan></text><text x="293.0" y="65" font-size="8" font-weight="700" fill="#8f9cc4" text-anchor="middle"><tspan x="293.0" dy="0.0">通</tspan><tspan x="293.0" dy="9.0">過</tspan></text></g><g><circle cx="280.0" cy="142" r="5.5" fill="#fff" stroke="#ffb84d" stroke-width="3"/><text x="280.0" y="160" font-size="10.5" font-weight="900" fill="#e9edf8" text-anchor="middle"><tspan x="280.0" dy="0.0">高</tspan><tspan x="280.0" dy="11.1">槻</tspan></text><text x="293.0" y="161" font-size="8" font-weight="700" fill="#8f9cc4" text-anchor="middle"><tspan x="293.0" dy="0.0">お</tspan><tspan x="293.0" dy="9.0">み</tspan><tspan x="293.0" dy="9.0">や</tspan><tspan x="293.0" dy="9.0">げ</tspan></text></g><g><rect x="199.66666666666669" y="135" width="14" height="14" rx="2" transform="rotate(45 206.66666666666669 142)" fill="#0d1430" stroke="#cdd7f5" stroke-width="2.6"/><text x="206.66666666666669" y="160" font-size="10.5" font-weight="900" fill="#e9edf8" text-anchor="middle"><tspan x="206.66666666666669" dy="0.0">大</tspan><tspan x="206.66666666666669" dy="11.1">山</tspan><tspan x="206.66666666666669" dy="11.1">崎</tspan></text></g><g><circle cx="133.33333333333334" cy="142" r="5.5" fill="#fff" stroke="#ffb84d" stroke-width="3"/><text x="133.33333333333334" y="160" font-size="10.5" font-weight="900" fill="#e9edf8" text-anchor="middle"><tspan x="133.33333333333334" dy="0.0">京</tspan><tspan x="133.33333333333334" dy="11.1">都</tspan><tspan x="133.33333333333334" dy="11.1">南</tspan></text></g><g><rect x="36.0" y="127" width="48" height="30" rx="15" fill="#ffb84d" stroke="#fff" stroke-width="2"/><text x="60.0" y="147.5" font-size="14" font-weight="900" text-anchor="middle" fill="#101733">京都</text></g><text x="170" y="27" font-size="10" font-weight="900" text-anchor="middle" fill="#ffb84d" opacity=".95">近畿道 ▶ 名神（京都方面）</text><text x="170" y="123" font-size="10" font-weight="900" text-anchor="middle" fill="#ffb84d" opacity=".95">名神</text></svg></div>
+<p class="mapnote"><strong>吹田SAでスタンプ用紙をもらいます。</strong>茨木ICは通過（国道171号が混むので降りません）。ひとつ先の<strong>高槻IC</strong>で降りて、おみやげのフルーツ大福を届けます。</p>
+<div class="roadttl"><i style="background:#7cc4ff">2</i><b>8/13（木）京都 → 湯原温泉</b></div>
+<div class="roadbox"><svg viewBox="0 0 340 316" xmlns="http://www.w3.org/2000/svg" class="road"><defs>
+<filter id="gl-d13" x="-60%" y="-60%" width="220%" height="220%">
+<feGaussianBlur stdDeviation="3.2" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+<linearGradient id="lg-d13" x1="0" y1="0" x2="1" y2="0">
+<stop offset="0" stop-color="#7cc4ff" stop-opacity=".55"/><stop offset="1" stop-color="#7cc4ff"/></linearGradient></defs><rect width="340" height="316" rx="12" fill="#0d1430"/><g stroke="#18224a" stroke-width="1"><line x1="20" y1="8" x2="20" y2="308"/><line x1="60" y1="8" x2="60" y2="308"/><line x1="100" y1="8" x2="100" y2="308"/><line x1="140" y1="8" x2="140" y2="308"/><line x1="180" y1="8" x2="180" y2="308"/><line x1="220" y1="8" x2="220" y2="308"/><line x1="260" y1="8" x2="260" y2="308"/><line x1="300" y1="8" x2="300" y2="308"/></g><path id="rd-d13" d="M34 46 L290 46 Q306 46 306 62 L306 126 Q306 142 290 142 L50 142 Q34 142 34 158 L34 222 Q34 238 50 238 L290 238" fill="none" stroke="#05091c" stroke-width="20" stroke-linecap="round" stroke-linejoin="round"/><path d="M34 46 L290 46 Q306 46 306 62 L306 126 Q306 142 290 142 L50 142 Q34 142 34 158 L34 222 Q34 238 50 238 L290 238" fill="none" stroke="#26305c" stroke-width="15" stroke-linecap="round" stroke-linejoin="round"/><path d="M34 46 L290 46 Q306 46 306 62 L306 126 Q306 142 290 142 L50 142 Q34 142 34 158 L34 222 Q34 238 50 238 L290 238" fill="none" stroke="url(#lg-d13)" stroke-width="7" stroke-linecap="round" stroke-linejoin="round" opacity=".9"/><path d="M34 46 L290 46 Q306 46 306 62 L306 126 Q306 142 290 142 L50 142 Q34 142 34 158 L34 222 Q34 238 50 238 L290 238" fill="none" stroke="#eafff2" stroke-width="7" stroke-linecap="butt"
+ stroke-dasharray="3 26" opacity=".85">
+<animate attributeName="stroke-dashoffset" from="29" to="0" dur="1.1s" repeatCount="indefinite"/></path><circle r="7" fill="#5fe39a" filter="url(#gl-d13)" opacity=".95">
+<animateMotion dur="9s" repeatCount="indefinite" rotate="auto"><mpath href="#rd-d13"/></animateMotion></circle>
+<circle r="3" fill="#ffffff">
+<animateMotion dur="9s" repeatCount="indefinite"><mpath href="#rd-d13"/></animateMotion></circle><g><rect x="36.0" y="31" width="48" height="30" rx="15" fill="#7cc4ff" stroke="#fff" stroke-width="2"/><text x="60.0" y="51.5" font-size="14" font-weight="900" text-anchor="middle" fill="#101733">京都</text></g><g><circle cx="133.33333333333331" cy="46" r="5.5" fill="#fff" stroke="#7cc4ff" stroke-width="3"/><text x="133.33333333333331" y="64" font-size="10.5" font-weight="900" fill="#e9edf8" text-anchor="middle"><tspan x="133.33333333333331" dy="0.0">京</tspan><tspan x="133.33333333333331" dy="11.1">都</tspan><tspan x="133.33333333333331" dy="11.1">南</tspan></text></g><g><rect x="199.66666666666666" y="39" width="14" height="14" rx="2" transform="rotate(45 206.66666666666666 46)" fill="#0d1430" stroke="#cdd7f5" stroke-width="2.6"/><text x="206.66666666666666" y="64" font-size="10.5" font-weight="900" fill="#e9edf8" text-anchor="middle"><tspan x="206.66666666666666" dy="0.0">高</tspan><tspan x="206.66666666666666" dy="11.1">槻</tspan></text></g><g class="rsa" data-k="sa2" style="cursor:pointer"><rect x="269.0" y="35" width="22" height="22" rx="5" fill="#fff8e1" stroke="#ffd166" stroke-width="3"/><text x="280.0" y="51" font-size="12" text-anchor="middle">⚡</text><circle class="dot" cx="291.0" cy="35" r="5.5" fill="#3a4470" stroke="#8f9cc4" stroke-width="1.6"/><text x="280.0" y="64" font-size="10.5" font-weight="900" fill="#ffd166" text-anchor="middle"><tspan x="280.0" dy="0.0">宝</tspan><tspan x="280.0" dy="11.1">塚</tspan><tspan x="280.0" dy="11.1">北</tspan></text><text x="293.0" y="65" font-size="8" font-weight="700" fill="#8f9cc4" text-anchor="middle"><tspan x="293.0" dy="0.0">ポ</tspan><tspan x="293.0" dy="9.0">ケ</tspan><tspan x="293.0" dy="9.0">モ</tspan><tspan x="293.0" dy="9.0">ン</tspan></text></g><g><rect x="273.0" y="135" width="14" height="14" rx="2" transform="rotate(45 280.0 142)" fill="#0d1430" stroke="#cdd7f5" stroke-width="2.6"/><text x="280.0" y="160" font-size="10.5" font-weight="900" fill="#e9edf8" text-anchor="middle"><tspan x="280.0" dy="0.0">神</tspan><tspan x="280.0" dy="11.1">戸</tspan></text></g><g class="rsa" data-k="sa3" style="cursor:pointer"><rect x="195.66666666666669" y="131" width="22" height="22" rx="5" fill="#fff8e1" stroke="#ffd166" stroke-width="3"/><text x="206.66666666666669" y="147" font-size="12" text-anchor="middle">🍽</text><circle class="dot" cx="217.66666666666669" cy="131" r="5.5" fill="#3a4470" stroke="#8f9cc4" stroke-width="1.6"/><text x="206.66666666666669" y="160" font-size="10.5" font-weight="900" fill="#ffd166" text-anchor="middle"><tspan x="206.66666666666669" dy="0.0">加</tspan><tspan x="206.66666666666669" dy="11.1">西</tspan></text><text x="219.66666666666669" y="161" font-size="8" font-weight="700" fill="#8f9cc4" text-anchor="middle"><tspan x="219.66666666666669" dy="0.0">昼</tspan><tspan x="219.66666666666669" dy="9.0">ご</tspan><tspan x="219.66666666666669" dy="9.0">は</tspan><tspan x="219.66666666666669" dy="9.0">ん</tspan></text></g><g class="rsa" data-k="sa4" style="cursor:pointer"><rect x="122.33333333333334" y="131" width="22" height="22" rx="5" fill="#fff8e1" stroke="#ffd166" stroke-width="3"/><text x="133.33333333333334" y="147" font-size="12" text-anchor="middle">⛽</text><circle class="dot" cx="144.33333333333334" cy="131" r="5.5" fill="#3a4470" stroke="#8f9cc4" stroke-width="1.6"/><text x="133.33333333333334" y="160" font-size="10.5" font-weight="900" fill="#ffd166" text-anchor="middle"><tspan x="133.33333333333334" dy="0.0">勝</tspan><tspan x="133.33333333333334" dy="11.1">央</tspan></text><text x="146.33333333333334" y="161" font-size="8" font-weight="700" fill="#8f9cc4" text-anchor="middle"><tspan x="146.33333333333334" dy="0.0">ポ</tspan><tspan x="146.33333333333334" dy="9.0">ケ</tspan><tspan x="146.33333333333334" dy="9.0">モ</tspan><tspan x="146.33333333333334" dy="9.0">ン</tspan></text></g><g><rect x="53.0" y="135" width="14" height="14" rx="2" transform="rotate(45 60.0 142)" fill="#0d1430" stroke="#cdd7f5" stroke-width="2.6"/><text x="60.0" y="160" font-size="10.5" font-weight="900" fill="#e9edf8" text-anchor="middle"><tspan x="60.0" dy="0.0">落</tspan><tspan x="60.0" dy="11.1">合</tspan></text></g><g><circle cx="60.0" cy="238" r="4" fill="#0d1430" stroke="#6b779e" stroke-width="2"/><text x="60.0" y="256" font-size="10.5" font-weight="900" fill="#7f8ab0" text-anchor="middle"><tspan x="60.0" dy="0.0">久</tspan><tspan x="60.0" dy="11.1">世</tspan></text><text x="73.0" y="257" font-size="8" font-weight="700" fill="#8f9cc4" text-anchor="middle"><tspan x="73.0" dy="0.0">神</tspan><tspan x="73.0" dy="9.0">庭</tspan><tspan x="73.0" dy="9.0">の</tspan><tspan x="73.0" dy="9.0">滝</tspan></text></g><g><circle cx="170.0" cy="238" r="5.5" fill="#fff" stroke="#7cc4ff" stroke-width="3"/><text x="170.0" y="256" font-size="10.5" font-weight="900" fill="#e9edf8" text-anchor="middle"><tspan x="170.0" dy="0.0">湯</tspan><tspan x="170.0" dy="11.1">原</tspan></text></g><g><rect x="256.0" y="223" width="48" height="30" rx="15" fill="#7cc4ff" stroke="#fff" stroke-width="2"/><text x="280.0" y="243.5" font-size="14" font-weight="900" text-anchor="middle" fill="#101733">湯原</text></g><text x="170" y="27" font-size="10" font-weight="900" text-anchor="middle" fill="#7cc4ff" opacity=".95">名神 ▶ 新名神</text><text x="170" y="123" font-size="10" font-weight="900" text-anchor="middle" fill="#7cc4ff" opacity=".95">中国道（下り）</text><text x="170" y="219" font-size="10" font-weight="900" text-anchor="middle" fill="#7cc4ff" opacity=".95">米子道</text></svg></div>
+<p class="mapnote"><strong>加西SAでお昼ごはん。</strong>久世ICは「余裕があれば神庭の滝」の降り口です。寄らなければそのまま湯原まで。</p>
+<div class="roadttl"><i style="background:#7cc4ff">2</i><b>8/13（木）夜 湯原 ⇄ 美星天文台</b></div>
+<div class="roadbox"><svg viewBox="0 0 340 220" xmlns="http://www.w3.org/2000/svg" class="road"><defs>
+<filter id="gl-d13" x="-60%" y="-60%" width="220%" height="220%">
+<feGaussianBlur stdDeviation="3.2" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+<linearGradient id="lg-d13" x1="0" y1="0" x2="1" y2="0">
+<stop offset="0" stop-color="#7cc4ff" stop-opacity=".55"/><stop offset="1" stop-color="#7cc4ff"/></linearGradient></defs><rect width="340" height="220" rx="12" fill="#0d1430"/><g stroke="#18224a" stroke-width="1"><line x1="20" y1="8" x2="20" y2="212"/><line x1="60" y1="8" x2="60" y2="212"/><line x1="100" y1="8" x2="100" y2="212"/><line x1="140" y1="8" x2="140" y2="212"/><line x1="180" y1="8" x2="180" y2="212"/><line x1="220" y1="8" x2="220" y2="212"/><line x1="260" y1="8" x2="260" y2="212"/><line x1="300" y1="8" x2="300" y2="212"/></g><path id="rd-d13" d="M34 46 L290 46 Q306 46 306 62 L306 126 Q306 142 290 142 L50 142" fill="none" stroke="#05091c" stroke-width="20" stroke-linecap="round" stroke-linejoin="round"/><path d="M34 46 L290 46 Q306 46 306 62 L306 126 Q306 142 290 142 L50 142" fill="none" stroke="#26305c" stroke-width="15" stroke-linecap="round" stroke-linejoin="round"/><path d="M34 46 L290 46 Q306 46 306 62 L306 126 Q306 142 290 142 L50 142" fill="none" stroke="url(#lg-d13)" stroke-width="7" stroke-linecap="round" stroke-linejoin="round" opacity=".9"/><path d="M34 46 L290 46 Q306 46 306 62 L306 126 Q306 142 290 142 L50 142" fill="none" stroke="#eafff2" stroke-width="7" stroke-linecap="butt"
+ stroke-dasharray="3 26" opacity=".85">
+<animate attributeName="stroke-dashoffset" from="29" to="0" dur="1.1s" repeatCount="indefinite"/></path><circle r="7" fill="#5fe39a" filter="url(#gl-d13)" opacity=".95">
+<animateMotion dur="9s" repeatCount="indefinite" rotate="auto"><mpath href="#rd-d13"/></animateMotion></circle>
+<circle r="3" fill="#ffffff">
+<animateMotion dur="9s" repeatCount="indefinite"><mpath href="#rd-d13"/></animateMotion></circle><g><rect x="36.0" y="31" width="48" height="30" rx="15" fill="#7cc4ff" stroke="#fff" stroke-width="2"/><text x="60.0" y="51.5" font-size="14" font-weight="900" text-anchor="middle" fill="#101733">湯原</text></g><g><rect x="126.33333333333331" y="39" width="14" height="14" rx="2" transform="rotate(45 133.33333333333331 46)" fill="#0d1430" stroke="#cdd7f5" stroke-width="2.6"/><text x="133.33333333333331" y="64" font-size="10.5" font-weight="900" fill="#e9edf8" text-anchor="middle"><tspan x="133.33333333333331" dy="0.0">落</tspan><tspan x="133.33333333333331" dy="11.1">合</tspan></text></g><g><rect x="199.66666666666666" y="39" width="14" height="14" rx="2" transform="rotate(45 206.66666666666666 46)" fill="#0d1430" stroke="#cdd7f5" stroke-width="2.6"/><text x="206.66666666666666" y="64" font-size="10.5" font-weight="900" fill="#e9edf8" text-anchor="middle"><tspan x="206.66666666666666" dy="0.0">北</tspan><tspan x="206.66666666666666" dy="11.1">房</tspan></text></g><g class="rsa" data-k="sa5" style="cursor:pointer"><rect x="269.0" y="35" width="22" height="22" rx="5" fill="#fff8e1" stroke="#ffd166" stroke-width="3"/><text x="280.0" y="51" font-size="12" text-anchor="middle">☄️</text><circle class="dot" cx="291.0" cy="35" r="5.5" fill="#3a4470" stroke="#8f9cc4" stroke-width="1.6"/><text x="280.0" y="64" font-size="10.5" font-weight="900" fill="#ffd166" text-anchor="middle"><tspan x="280.0" dy="0.0">高</tspan><tspan x="280.0" dy="11.1">梁</tspan></text><text x="293.0" y="65" font-size="8" font-weight="700" fill="#8f9cc4" text-anchor="middle"><tspan x="293.0" dy="0.0">上</tspan><tspan x="293.0" dy="9.0">り</tspan></text></g><g><rect x="256.0" y="127" width="48" height="30" rx="15" fill="#7cc4ff" stroke="#fff" stroke-width="2"/><text x="280.0" y="147.5" font-size="14" font-weight="900" text-anchor="middle" fill="#101733">美星</text></g><g class="rsa" data-k="sa6" style="cursor:pointer"><rect x="195.66666666666669" y="131" width="22" height="22" rx="5" fill="#fff8e1" stroke="#ffd166" stroke-width="3"/><text x="206.66666666666669" y="147" font-size="12" text-anchor="middle">🌙</text><circle class="dot" cx="217.66666666666669" cy="131" r="5.5" fill="#3a4470" stroke="#8f9cc4" stroke-width="1.6"/><text x="206.66666666666669" y="160" font-size="10.5" font-weight="900" fill="#ffd166" text-anchor="middle"><tspan x="206.66666666666669" dy="0.0">高</tspan><tspan x="206.66666666666669" dy="11.1">梁</tspan></text><text x="219.66666666666669" y="161" font-size="8" font-weight="700" fill="#8f9cc4" text-anchor="middle"><tspan x="219.66666666666669" dy="0.0">下</tspan><tspan x="219.66666666666669" dy="9.0">り</tspan></text></g><g><rect x="126.33333333333334" y="135" width="14" height="14" rx="2" transform="rotate(45 133.33333333333334 142)" fill="#0d1430" stroke="#cdd7f5" stroke-width="2.6"/><text x="133.33333333333334" y="160" font-size="10.5" font-weight="900" fill="#e9edf8" text-anchor="middle"><tspan x="133.33333333333334" dy="0.0">北</tspan><tspan x="133.33333333333334" dy="11.1">房</tspan></text></g><g><rect x="36.0" y="127" width="48" height="30" rx="15" fill="#7cc4ff" stroke="#fff" stroke-width="2"/><text x="60.0" y="147.5" font-size="14" font-weight="900" text-anchor="middle" fill="#101733">湯原</text></g><text x="170" y="27" font-size="10" font-weight="900" text-anchor="middle" fill="#7cc4ff" opacity=".95">中国道 ▶ 岡山道（上り）</text><text x="170" y="123" font-size="10" font-weight="900" text-anchor="middle" fill="#7cc4ff" opacity=".95">帰り・岡山道（下り）</text></svg></div>
+<p class="mapnote"><strong class="ok">往復するので、高梁SAを2回通ります。</strong>行きは<strong>上り</strong>（クワッス＋オクタン）、帰りは<strong>下り</strong>（ワニノコ＋イエッサン）。<strong>上下線は別の施設なので、ポケモンも別。寄り道ゼロで2種類ふえます。</strong></p>
+<div class="roadttl"><i style="background:#8fd68a">3</i><b>8/14（金）湯原 → 出雲 → 用瀬</b></div>
+<div class="roadbox"><svg viewBox="0 0 340 220" xmlns="http://www.w3.org/2000/svg" class="road"><defs>
+<filter id="gl-d14" x="-60%" y="-60%" width="220%" height="220%">
+<feGaussianBlur stdDeviation="3.2" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+<linearGradient id="lg-d14" x1="0" y1="0" x2="1" y2="0">
+<stop offset="0" stop-color="#8fd68a" stop-opacity=".55"/><stop offset="1" stop-color="#8fd68a"/></linearGradient></defs><rect width="340" height="220" rx="12" fill="#0d1430"/><g stroke="#18224a" stroke-width="1"><line x1="20" y1="8" x2="20" y2="212"/><line x1="60" y1="8" x2="60" y2="212"/><line x1="100" y1="8" x2="100" y2="212"/><line x1="140" y1="8" x2="140" y2="212"/><line x1="180" y1="8" x2="180" y2="212"/><line x1="220" y1="8" x2="220" y2="212"/><line x1="260" y1="8" x2="260" y2="212"/><line x1="300" y1="8" x2="300" y2="212"/></g><path id="rd-d14" d="M34 46 L290 46 Q306 46 306 62 L306 126 Q306 142 290 142 L50 142" fill="none" stroke="#05091c" stroke-width="20" stroke-linecap="round" stroke-linejoin="round"/><path d="M34 46 L290 46 Q306 46 306 62 L306 126 Q306 142 290 142 L50 142" fill="none" stroke="#26305c" stroke-width="15" stroke-linecap="round" stroke-linejoin="round"/><path d="M34 46 L290 46 Q306 46 306 62 L306 126 Q306 142 290 142 L50 142" fill="none" stroke="url(#lg-d14)" stroke-width="7" stroke-linecap="round" stroke-linejoin="round" opacity=".9"/><path d="M34 46 L290 46 Q306 46 306 62 L306 126 Q306 142 290 142 L50 142" fill="none" stroke="#eafff2" stroke-width="7" stroke-linecap="butt"
+ stroke-dasharray="3 26" opacity=".85">
+<animate attributeName="stroke-dashoffset" from="29" to="0" dur="1.1s" repeatCount="indefinite"/></path><circle r="7" fill="#5fe39a" filter="url(#gl-d14)" opacity=".95">
+<animateMotion dur="9s" repeatCount="indefinite" rotate="auto"><mpath href="#rd-d14"/></animateMotion></circle>
+<circle r="3" fill="#ffffff">
+<animateMotion dur="9s" repeatCount="indefinite"><mpath href="#rd-d14"/></animateMotion></circle><g><rect x="36.0" y="31" width="48" height="30" rx="15" fill="#8fd68a" stroke="#fff" stroke-width="2"/><text x="60.0" y="51.5" font-size="14" font-weight="900" text-anchor="middle" fill="#101733">湯原</text></g><g class="rsa" data-k="sa7" style="cursor:pointer"><rect x="122.33333333333331" y="35" width="22" height="22" rx="5" fill="#fff8e1" stroke="#ffd166" stroke-width="3"/><text x="133.33333333333331" y="51" font-size="12" text-anchor="middle">🐄</text><circle class="dot" cx="144.33333333333331" cy="35" r="5.5" fill="#3a4470" stroke="#8f9cc4" stroke-width="1.6"/><text x="133.33333333333331" y="64" font-size="10.5" font-weight="900" fill="#ffd166" text-anchor="middle"><tspan x="133.33333333333331" dy="0.0">蒜</tspan><tspan x="133.33333333333331" dy="11.1">山</tspan><tspan x="133.33333333333331" dy="11.1">高</tspan><tspan x="133.33333333333331" dy="11.1">原</tspan></text><text x="146.33333333333331" y="65" font-size="8" font-weight="700" fill="#8f9cc4" text-anchor="middle"><tspan x="146.33333333333331" dy="0.0">ポ</tspan><tspan x="146.33333333333331" dy="9.0">ケ</tspan><tspan x="146.33333333333331" dy="9.0">モ</tspan><tspan x="146.33333333333331" dy="9.0">ン</tspan></text></g><g><rect x="199.66666666666666" y="39" width="14" height="14" rx="2" transform="rotate(45 206.66666666666666 46)" fill="#0d1430" stroke="#cdd7f5" stroke-width="2.6"/><text x="206.66666666666666" y="64" font-size="10.5" font-weight="900" fill="#e9edf8" text-anchor="middle"><tspan x="206.66666666666666" dy="0.0">米</tspan><tspan x="206.66666666666666" dy="11.1">子</tspan></text></g><g><circle cx="280.0" cy="46" r="5.5" fill="#fff" stroke="#8fd68a" stroke-width="3"/><text x="280.0" y="64" font-size="10.5" font-weight="900" fill="#e9edf8" text-anchor="middle"><tspan x="280.0" dy="0.0">出</tspan><tspan x="280.0" dy="11.1">雲</tspan></text></g><g><rect x="256.0" y="127" width="48" height="30" rx="15" fill="#8fd68a" stroke="#fff" stroke-width="2"/><text x="280.0" y="147.5" font-size="14" font-weight="900" text-anchor="middle" fill="#101733">出雲</text></g><g><circle cx="206.66666666666669" cy="142" r="5.5" fill="#fff" stroke="#8fd68a" stroke-width="3"/><text x="206.66666666666669" y="160" font-size="10.5" font-weight="900" fill="#e9edf8" text-anchor="middle"><tspan x="206.66666666666669" dy="0.0">鳥</tspan><tspan x="206.66666666666669" dy="11.1">取</tspan></text></g><g><circle cx="133.33333333333334" cy="142" r="5.5" fill="#fff" stroke="#8fd68a" stroke-width="3"/><text x="133.33333333333334" y="160" font-size="10.5" font-weight="900" fill="#e9edf8" text-anchor="middle"><tspan x="133.33333333333334" dy="0.0">用</tspan><tspan x="133.33333333333334" dy="11.1">瀬</tspan></text></g><g><rect x="36.0" y="127" width="48" height="30" rx="15" fill="#8fd68a" stroke="#fff" stroke-width="2"/><text x="60.0" y="147.5" font-size="14" font-weight="900" text-anchor="middle" fill="#101733">用瀬</text></g><text x="170" y="27" font-size="10" font-weight="900" text-anchor="middle" fill="#8fd68a" opacity=".95">米子道 ▶ 山陰道</text><text x="170" y="123" font-size="10" font-weight="900" text-anchor="middle" fill="#8fd68a" opacity=".95">山陰道 ▶ 国道9号 ▶ 鳥取道</text></svg></div>
+<p class="mapnote"><strong>この日がいちばん長い区間</strong>（出雲→鳥取で約3時間10分）。山陰道は無料区間が続きます。</p>
+<div class="roadttl"><i style="background:#f7a8c8">4</i><b>8/15（土）用瀬 → 姫路 → 堺</b></div>
+<div class="roadbox"><svg viewBox="0 0 340 316" xmlns="http://www.w3.org/2000/svg" class="road"><defs>
+<filter id="gl-d15" x="-60%" y="-60%" width="220%" height="220%">
+<feGaussianBlur stdDeviation="3.2" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+<linearGradient id="lg-d15" x1="0" y1="0" x2="1" y2="0">
+<stop offset="0" stop-color="#f7a8c8" stop-opacity=".55"/><stop offset="1" stop-color="#f7a8c8"/></linearGradient></defs><rect width="340" height="316" rx="12" fill="#0d1430"/><g stroke="#18224a" stroke-width="1"><line x1="20" y1="8" x2="20" y2="308"/><line x1="60" y1="8" x2="60" y2="308"/><line x1="100" y1="8" x2="100" y2="308"/><line x1="140" y1="8" x2="140" y2="308"/><line x1="180" y1="8" x2="180" y2="308"/><line x1="220" y1="8" x2="220" y2="308"/><line x1="260" y1="8" x2="260" y2="308"/><line x1="300" y1="8" x2="300" y2="308"/></g><path id="rd-d15" d="M34 46 L290 46 Q306 46 306 62 L306 126 Q306 142 290 142 L50 142 Q34 142 34 158 L34 222 Q34 238 50 238 L290 238" fill="none" stroke="#05091c" stroke-width="20" stroke-linecap="round" stroke-linejoin="round"/><path d="M34 46 L290 46 Q306 46 306 62 L306 126 Q306 142 290 142 L50 142 Q34 142 34 158 L34 222 Q34 238 50 238 L290 238" fill="none" stroke="#26305c" stroke-width="15" stroke-linecap="round" stroke-linejoin="round"/><path d="M34 46 L290 46 Q306 46 306 62 L306 126 Q306 142 290 142 L50 142 Q34 142 34 158 L34 222 Q34 238 50 238 L290 238" fill="none" stroke="url(#lg-d15)" stroke-width="7" stroke-linecap="round" stroke-linejoin="round" opacity=".9"/><path d="M34 46 L290 46 Q306 46 306 62 L306 126 Q306 142 290 142 L50 142 Q34 142 34 158 L34 222 Q34 238 50 238 L290 238" fill="none" stroke="#eafff2" stroke-width="7" stroke-linecap="butt"
+ stroke-dasharray="3 26" opacity=".85">
+<animate attributeName="stroke-dashoffset" from="29" to="0" dur="1.1s" repeatCount="indefinite"/></path><circle r="7" fill="#5fe39a" filter="url(#gl-d15)" opacity=".95">
+<animateMotion dur="9s" repeatCount="indefinite" rotate="auto"><mpath href="#rd-d15"/></animateMotion></circle>
+<circle r="3" fill="#ffffff">
+<animateMotion dur="9s" repeatCount="indefinite"><mpath href="#rd-d15"/></animateMotion></circle><g><rect x="36.0" y="31" width="48" height="30" rx="15" fill="#f7a8c8" stroke="#fff" stroke-width="2"/><text x="60.0" y="51.5" font-size="14" font-weight="900" text-anchor="middle" fill="#101733">用瀬</text></g><g><rect x="126.33333333333331" y="39" width="14" height="14" rx="2" transform="rotate(45 133.33333333333331 46)" fill="#0d1430" stroke="#cdd7f5" stroke-width="2.6"/><text x="133.33333333333331" y="64" font-size="10.5" font-weight="900" fill="#e9edf8" text-anchor="middle"><tspan x="133.33333333333331" dy="0.0">佐</tspan><tspan x="133.33333333333331" dy="11.1">用</tspan></text></g><g><rect x="199.66666666666666" y="39" width="14" height="14" rx="2" transform="rotate(45 206.66666666666666 46)" fill="#0d1430" stroke="#cdd7f5" stroke-width="2.6"/><text x="206.66666666666666" y="64" font-size="10.5" font-weight="900" fill="#e9edf8" text-anchor="middle"><tspan x="206.66666666666666" dy="0.0">播</tspan><tspan x="206.66666666666666" dy="11.1">磨</tspan></text></g><g><circle cx="280.0" cy="46" r="5.5" fill="#fff" stroke="#f7a8c8" stroke-width="3"/><text x="280.0" y="64" font-size="10.5" font-weight="900" fill="#e9edf8" text-anchor="middle"><tspan x="280.0" dy="0.0">姫</tspan><tspan x="280.0" dy="11.1">路</tspan><tspan x="280.0" dy="11.1">西</tspan></text></g><g><rect x="256.0" y="127" width="48" height="30" rx="15" fill="#f7a8c8" stroke="#fff" stroke-width="2"/><text x="280.0" y="147.5" font-size="14" font-weight="900" text-anchor="middle" fill="#101733">姫路</text></g><g><circle cx="206.66666666666669" cy="142" r="5.5" fill="#fff" stroke="#f7a8c8" stroke-width="3"/><text x="206.66666666666669" y="160" font-size="10.5" font-weight="900" fill="#e9edf8" text-anchor="middle"><tspan x="206.66666666666669" dy="0.0">太</tspan><tspan x="206.66666666666669" dy="11.1">子</tspan><tspan x="206.66666666666669" dy="11.1">東</tspan></text></g><g><rect x="126.33333333333334" y="135" width="14" height="14" rx="2" transform="rotate(45 133.33333333333334 142)" fill="#0d1430" stroke="#cdd7f5" stroke-width="2.6"/><text x="133.33333333333334" y="160" font-size="10.5" font-weight="900" fill="#e9edf8" text-anchor="middle"><tspan x="133.33333333333334" dy="0.0">播</tspan><tspan x="133.33333333333334" dy="11.1">磨</tspan></text></g><g class="rsa" data-k="sa8" style="cursor:pointer"><rect x="49.0" y="131" width="22" height="22" rx="5" fill="#fff8e1" stroke="#ffd166" stroke-width="3"/><text x="60.0" y="147" font-size="12" text-anchor="middle">🍽</text><circle class="dot" cx="71.0" cy="131" r="5.5" fill="#3a4470" stroke="#8f9cc4" stroke-width="1.6"/><text x="60.0" y="160" font-size="10.5" font-weight="900" fill="#ffd166" text-anchor="middle"><tspan x="60.0" dy="0.0">加</tspan><tspan x="60.0" dy="11.1">西</tspan></text><text x="73.0" y="161" font-size="8" font-weight="700" fill="#8f9cc4" text-anchor="middle"><tspan x="73.0" dy="0.0">ポ</tspan><tspan x="73.0" dy="9.0">ケ</tspan><tspan x="73.0" dy="9.0">モ</tspan><tspan x="73.0" dy="9.0">ン</tspan></text></g><g class="rsa" data-k="sa9" style="cursor:pointer"><rect x="49.0" y="227" width="22" height="22" rx="5" fill="#fff8e1" stroke="#ffd166" stroke-width="3"/><text x="60.0" y="243" font-size="12" text-anchor="middle">🏁</text><circle class="dot" cx="71.0" cy="227" r="5.5" fill="#3a4470" stroke="#8f9cc4" stroke-width="1.6"/><text x="60.0" y="256" font-size="10.5" font-weight="900" fill="#ffd166" text-anchor="middle"><tspan x="60.0" dy="0.0">西</tspan><tspan x="60.0" dy="11.1">宮</tspan><tspan x="60.0" dy="11.1">名</tspan><tspan x="60.0" dy="11.1">塩</tspan></text><text x="73.0" y="257" font-size="8" font-weight="700" fill="#8f9cc4" text-anchor="middle"><tspan x="73.0" dy="0.0">ポ</tspan><tspan x="73.0" dy="9.0">ケ</tspan><tspan x="73.0" dy="9.0">モ</tspan><tspan x="73.0" dy="9.0">ン</tspan></text></g><g><circle cx="133.33333333333331" cy="238" r="5.5" fill="#fff" stroke="#f7a8c8" stroke-width="3"/><text x="133.33333333333331" y="256" font-size="10.5" font-weight="900" fill="#e9edf8" text-anchor="middle"><tspan x="133.33333333333331" dy="0.0">宝</tspan><tspan x="133.33333333333331" dy="11.1">塚</tspan></text></g><g><circle cx="206.66666666666666" cy="238" r="5.5" fill="#fff" stroke="#f7a8c8" stroke-width="3"/><text x="206.66666666666666" y="256" font-size="10.5" font-weight="900" fill="#e9edf8" text-anchor="middle"><tspan x="206.66666666666666" dy="0.0">中</tspan><tspan x="206.66666666666666" dy="11.1">国</tspan><tspan x="206.66666666666666" dy="11.1">池</tspan><tspan x="206.66666666666666" dy="11.1">田</tspan></text></g><g><rect x="262.5" y="223" width="35" height="30" rx="15" fill="#f7a8c8" stroke="#fff" stroke-width="2"/><text x="280.0" y="243.5" font-size="14" font-weight="900" text-anchor="middle" fill="#101733">堺</text></g><text x="170" y="27" font-size="10" font-weight="900" text-anchor="middle" fill="#f7a8c8" opacity=".95">鳥取道 ▶ 中国道 ▶ 播磨道</text><text x="170" y="123" font-size="10" font-weight="900" text-anchor="middle" fill="#f7a8c8" opacity=".95">播磨道 ▶ 中国道（上り）</text><text x="170" y="219" font-size="10" font-weight="900" text-anchor="middle" fill="#f7a8c8" opacity=".95">中国道（上り）▶ 阪神高速</text></svg></div>
+<p class="mapnote"><strong>姫路のあと、いったん西の太子町へ戻ります。</strong>そこで夕食を食べてから東へ。<strong class="ok">18:45に出れば、宝塚を通るのが20時すぎ</strong>——渋滞のピークを丸ごと外せます。</p>
+
+<details style="margin:14px 0 0;background:#0f1730">
+<summary style="padding:12px 13px;font-size:.9rem;padding-right:38px"><span class="em" style="font-size:1.05rem">⚡</span><span class="h"><span class="n" style="font-size:.93rem">ポケモンの一覧（どのSAで何が押せるか）</span></span></summary>
+<div class="inner" style="padding:2px 12px 14px">
+<div class="stbar"><span class="c" id="sacnt">0 / 10</span><span class="bar"><i id="safill"></i></span></div>
+<div class="line">
+
+<div class="sta" data-k="sa0"><span class="d">済</span>
+  <span class="n2">香芝SA（上り）</span>
+  <span class="tm2" style="font-size:.68rem;color:#9b8a66">西名阪・旅行前に取得ずみ</span>
+  <span class="p2"><b class="dup">ピカチュウ</b><b class="leg">ホウオウ ★伝説</b></span>
+  <span class="no">台紙を家から持っていってください。ここで押した2個は再発行されません</span></div>
+<div class="sta" data-k="sa1"><span class="d">8/12</span>
+  <span class="n2">吹田SA（上り）</span>
+  <span class="tm2" style="font-size:.68rem;color:#9b8a66">10:10〜10:35・名神</span>
+  <span class="p2"><b class="dup">ピカチュウ</b><b class="leg">ルギア ★伝説</b></span>
+  <span class="no">★ここでスタンプ用紙をもらいます。上り＝京都方面の車線です</span></div>
+<div class="sta" data-k="sa2"><span class="d">8/13</span>
+  <span class="n2">宝塚北SA</span>
+  <span class="tm2" style="font-size:.68rem;color:#9b8a66">10:10〜10:35・新名神</span>
+  <span class="p2"><b class="dup">ピカチュウ</b><b class="leg">ゼルネアス ★伝説</b></span>
+  <span class="no">西日本最大級のSA。グッズ販売とフォトパネルもあります</span></div>
+<div class="sta" data-k="sa3"><span class="d">8/13</span>
+  <span class="n2">加西SA（下り）</span>
+  <span class="tm2" style="font-size:.68rem;color:#9b8a66">11:25〜12:25・中国道／昼食</span>
+  <span class="p2"><b class="">ミズゴロウ</b><b class="">ジュペッタ</b></span>
+  <span class="no">お昼はここ。フードコートは24時間</span></div>
+<div class="sta" data-k="sa4"><span class="d">8/13</span>
+  <span class="n2">勝央SA（下り）</span>
+  <span class="tm2" style="font-size:.68rem;color:#9b8a66">13:30〜13:45・中国道</span>
+  <span class="p2"><b class="">クワッス</b><b class="">チョロネコ</b></span>
+  <span class="no">トイレと岡山土産だけサッと</span></div>
+<div class="sta" data-k="sa5"><span class="d">8/13</span>
+  <span class="n2">高梁SA【上り】</span>
+  <span class="tm2" style="font-size:.68rem;color:#9b8a66">19:20頃・岡山道／美星への行き</span>
+  <span class="p2"><b class="dup">クワッス</b><b class="">オクタン</b></span>
+  <span class="no">★ここがポイント。行きは【上り】</span></div>
+<div class="sta" data-k="sa6"><span class="d">8/13</span>
+  <span class="n2">高梁SA【下り】</span>
+  <span class="tm2" style="font-size:.68rem;color:#9b8a66">22:00〜22:10・美星からの帰り</span>
+  <span class="p2"><b class="">ワニノコ</b><b class="">イエッサン</b></span>
+  <span class="no">★同じSAでも上下線は別施設＝別ポケモン。寄り道ゼロで2種類ふえます</span></div>
+<div class="sta" data-k="sa7"><span class="d">8/14</span>
+  <span class="n2">蒜山高原SA（下り）</span>
+  <span class="tm2" style="font-size:.68rem;color:#9b8a66">08:50〜09:10・米子道</span>
+  <span class="p2"><b class="dup">ミズゴロウ</b><b class="">エルレイド</b></span>
+  <span class="no">蒜山高原の景色も。20分で切り上げ</span></div>
+<div class="sta" data-k="sa8"><span class="d">8/15</span>
+  <span class="n2">加西SA（上り）</span>
+  <span class="tm2" style="font-size:.68rem;color:#9b8a66">19:25〜19:40・中国道</span>
+  <span class="p2"><b class="">メッソン</b><b class="">マニューラ</b></span>
+  <span class="no">下りとは別会社の別施設。だからポケモンも別</span></div>
+<div class="sta" data-k="sa9"><span class="d">8/15</span>
+  <span class="n2">西宮名塩SA（上り）</span>
+  <span class="tm2" style="font-size:.68rem;color:#9b8a66">20:20〜20:35・中国道</span>
+  <span class="p2"><b class="">アシマリ</b><b class="">ロトム</b></span>
+  <span class="no">渋滞予測は20時で終了。通るのはその後です</span></div>
+</div>
+<div class="legend">
+  <i style="background:#ffe3f0;color:#a83a6e">ふつう</i>
+  <i style="background:#fff2c9;color:#8a6a10">★伝説</i>
+  <i style="background:#eceff5;color:#8a93a8">もう持ってる</i>
+</div>
+<p class="mapnote"><strong>10か所ぜんぶで16種類。</strong>グレーは前に押したのと同じポケモンです（ピカチュウ・ミズゴロウ・クワッス）。<br>
+<strong class="ok">高梁SAだけは上りと下りの両方に寄ります。</strong>美星への行きが【上り】でクワッス＋オクタン、帰りが【下り】でワニノコ＋イエッサン。<strong>ルートを変えずに2種類ふえる、いちばんおいしい場所</strong>です。<br>
+旅行の前後に堺から日帰りで足すなら、<strong>阪和道 岸和田SA（上り＝ポッチャマ／ゾロア、下り＝クワッス／ブラッキー）</strong>と<strong>西名阪 香芝SA（下り＝アシマリ／スターミー）</strong>。ここまでで<strong>21種類</strong>になります。</p>
+
+
+</div></details>
+
+<h3>④ エリアごとの絵地図</h3>
+<p class="lead">高速でびゅーっと行く区間は上の全体図だけ。<strong>歩いてまわる場所は、こっちの絵地図で。</strong></p>
+
+<div class="mapwrap"><p class="maptitle">🏮 8/12 京都駅のまわり</p><svg viewBox="0 0 360 300" xmlns="http://www.w3.org/2000/svg"><rect width="360" height="300" fill="url(#pg)" rx="10"/><rect width="360" height="300" fill="url(#dots)" rx="10"/>
+<rect x="40" y="112" width="280" height="26" rx="6" fill="#d9c9a3" stroke="#c4b184" stroke-width="1.5"/>
+<text x="180" y="130" font-size="11" font-weight="900" text-anchor="middle" fill="#7a6a4a">JR 京 都 駅</text>
+<rect x="40" y="138" width="280" height="15" rx="4" fill="#efe2c2"/>
+<text x="180" y="149.5" font-size="8" text-anchor="middle" fill="#a08e68">地下街ポルタ＝地上に出ずに行けます</text>
+<g stroke="#e8b96a" stroke-width="9" stroke-linecap="round" fill="none" opacity=".45"><path d="M26 224 H 334"/></g>
+<g stroke="#e8734a" stroke-width="3" stroke-dasharray="2 7" stroke-linecap="round" fill="none">
+<path d="M100 68 C 60 104, 50 150, 62 174"/><path d="M62 174 C 110 178, 150 176, 172 168"/>
+<path d="M172 168 C 220 196, 262 202, 288 204"/></g>
+<g transform="translate(24,64) scale(0.9)"><rect x="-2" y="4" width="4" height="8" fill="#a67c52" rx="1"/><circle cx="0" cy="0" r="9" fill="#9fd18a"/><circle cx="-5" cy="4" r="6" fill="#8ec478"/><circle cx="5" cy="3" r="6" fill="#b0dc9c"/></g><g transform="translate(338,72) scale(0.9)"><rect x="-2" y="4" width="4" height="8" fill="#a67c52" rx="1"/><circle cx="0" cy="0" r="9" fill="#9fd18a"/><circle cx="-5" cy="4" r="6" fill="#8ec478"/><circle cx="5" cy="3" r="6" fill="#b0dc9c"/></g><g transform="translate(22,262) scale(0.85)"><rect x="-2" y="4" width="4" height="8" fill="#a67c52" rx="1"/><circle cx="0" cy="0" r="9" fill="#9fd18a"/><circle cx="-5" cy="4" r="6" fill="#8ec478"/><circle cx="5" cy="3" r="6" fill="#b0dc9c"/></g><g transform="translate(338,266) scale(0.85)"><rect x="-2" y="4" width="4" height="8" fill="#a67c52" rx="1"/><circle cx="0" cy="0" r="9" fill="#9fd18a"/><circle cx="-5" cy="4" r="6" fill="#8ec478"/><circle cx="5" cy="3" r="6" fill="#b0dc9c"/></g>
+<text x="290" y="46" font-size="15">☁️</text><text x="46" y="34" font-size="14">🌤</text>
+<g><circle cx="100" cy="52" r="17" fill="#fff" stroke="#e8734a" stroke-width="3.2"/><text x="100" y="58" font-size="17" text-anchor="middle">🍰</text><text x="100" y="83" font-size="11.5" font-weight="800" text-anchor="middle" fill="#3d3222">大丸京都店</text><text x="100" y="95" font-size="9.5" text-anchor="middle" fill="#8a7a5a">14:30 ケーキを買う</text></g>
+<g><circle cx="62" cy="190" r="17" fill="#fff" stroke="#e8734a" stroke-width="3.2"/><text x="62" y="196" font-size="17" text-anchor="middle">🏮</text><text x="62" y="221" font-size="11.5" font-weight="800" text-anchor="middle" fill="#3d3222">さと茂旅館</text><text x="62" y="233" font-size="9.5" text-anchor="middle" fill="#8a7a5a">16:00 チェックイン</text></g>
+<g><circle cx="172" cy="168" r="15" fill="#fff" stroke="#e8734a" stroke-width="3.2"/><text x="172" y="174" font-size="15" text-anchor="middle">🍛</text><text x="172" y="197" font-size="11.5" font-weight="800" text-anchor="middle" fill="#3d3222">味味香</text><text x="172" y="209" font-size="9.5" text-anchor="middle" fill="#8a7a5a">16:40 カレーうどん</text></g>
+<g><circle cx="288" cy="204" r="17" fill="#fff" stroke="#e8734a" stroke-width="3.2"/><text x="288" y="210" font-size="17" text-anchor="middle">🐬</text><text x="288" y="235" font-size="11.5" font-weight="800" text-anchor="middle" fill="#3d3222">京都水族館</text><text x="288" y="247" font-size="9.5" text-anchor="middle" fill="#8a7a5a">18:00 夜のすいぞくかん</text></g>
+<text x="288" y="259" font-size="9" text-anchor="middle" fill="#a89a78">梅小路公園・車で5分</text></svg></div>
+<p class="mapnote"><strong>ぜんぶ京都駅のまわりに集まっています。</strong>味味香は地下街ポルタの中なので、旅館から<strong>地上に出ずに</strong>行けます。水族館だけ車で5分。</p>
+
+<div class="mapwrap"><p class="maptitle">♨️ 8/13 湯原温泉の町</p><svg viewBox="0 0 360 310" xmlns="http://www.w3.org/2000/svg"><rect width="360" height="310" fill="url(#pg)" rx="10"/><rect width="360" height="310" fill="url(#dots)" rx="10"/>
+<g transform="translate(56,52) scale(1.1)"><path d="M-26 12 L0 -18 L26 12 Z" fill="#bcd2a8" stroke="#96b482" stroke-width="1.6"/><path d="M-9 -1 L0 -18 L9 -1 Z" fill="#eef6e6"/></g><g transform="translate(146,44) scale(0.9)"><path d="M-26 12 L0 -18 L26 12 Z" fill="#bcd2a8" stroke="#96b482" stroke-width="1.6"/><path d="M-9 -1 L0 -18 L9 -1 Z" fill="#eef6e6"/></g><g transform="translate(298,50) scale(1.0)"><path d="M-26 12 L0 -18 L26 12 Z" fill="#bcd2a8" stroke="#96b482" stroke-width="1.6"/><path d="M-9 -1 L0 -18 L9 -1 Z" fill="#eef6e6"/></g>
+<path d="M-5 132 C 60 122, 120 150, 190 142 C 260 134, 310 158, 365 150 L365 182 C 310 190, 260 166, 190 174 C 120 182, 60 154, -5 164 Z"
+ fill="#a8d8ea" stroke="#7fc0d8" stroke-width="1.6"/>
+<text x="332" y="128" font-size="9.5" fill="#5b9dbd" font-weight="700">旭川</text>
+<g stroke="#ffffff" stroke-width="1.3" fill="none" opacity=".7"><path d="M40 152 q6 -4 12 0 t12 0"/><path d="M262 158 q6 -4 12 0 t12 0"/></g>
+<text x="180" y="204" font-size="9.5" text-anchor="middle" fill="#a08e68" font-weight="700">カランコロン大通り（はしからはしまで徒歩10分）</text>
+<rect x="26" y="210" width="308" height="12" rx="6" fill="#e8b96a" opacity=".55"/>
+<g><circle cx="140" cy="144" r="15" fill="#fff" stroke="#e8734a" stroke-width="3.2"/><text x="140" y="150" font-size="15" text-anchor="middle">🌉</text><text x="140" y="173" font-size="11.5" font-weight="800" text-anchor="middle" fill="#3d3222">寄りそい橋</text><text x="140" y="185" font-size="9.5" text-anchor="middle" fill="#8a7a5a">45mのつり橋</text></g>
+<g><circle cx="226" cy="144" r="15" fill="#fff" stroke="#e8734a" stroke-width="3.2"/><text x="226" y="150" font-size="15" text-anchor="middle">🛁</text><text x="226" y="173" font-size="11.5" font-weight="800" text-anchor="middle" fill="#3d3222">砂湯</text><text x="226" y="185" font-size="9.5" text-anchor="middle" fill="#8a7a5a">川の中の露天</text></g>
+<g><circle cx="74" cy="232" r="17" fill="#fff" stroke="#e8734a" stroke-width="3.2"/><text x="74" y="238" font-size="17" text-anchor="middle">♨️</text><text x="74" y="263" font-size="11.5" font-weight="800" text-anchor="middle" fill="#3d3222">菊之湯</text><text x="74" y="275" font-size="9.5" text-anchor="middle" fill="#8a7a5a">14:40 チェックイン</text></g>
+<g><circle cx="280" cy="232" r="17" fill="#fff" stroke="#e8734a" stroke-width="3.2"/><text x="280" y="238" font-size="17" text-anchor="middle">🎨</text><text x="280" y="263" font-size="11.5" font-weight="800" text-anchor="middle" fill="#3d3222">ミュージアム</text><text x="280" y="275" font-size="9.5" text-anchor="middle" fill="#8a7a5a">スリッパ卓球</text></g>
+<g transform="translate(20,270) scale(0.9)"><rect x="-2" y="4" width="4" height="8" fill="#a67c52" rx="1"/><circle cx="0" cy="0" r="9" fill="#9fd18a"/><circle cx="-5" cy="4" r="6" fill="#8ec478"/><circle cx="5" cy="3" r="6" fill="#b0dc9c"/></g><g transform="translate(344,266) scale(0.9)"><rect x="-2" y="4" width="4" height="8" fill="#a67c52" rx="1"/><circle cx="0" cy="0" r="9" fill="#9fd18a"/><circle cx="-5" cy="4" r="6" fill="#8ec478"/><circle cx="5" cy="3" r="6" fill="#b0dc9c"/></g><g transform="translate(176,262) scale(0.8)"><rect x="-2" y="4" width="4" height="8" fill="#a67c52" rx="1"/><circle cx="0" cy="0" r="9" fill="#9fd18a"/><circle cx="-5" cy="4" r="6" fill="#8ec478"/><circle cx="5" cy="3" r="6" fill="#b0dc9c"/></g>
+<text x="30" y="34" font-size="16">☀️</text></svg></div>
+<p class="mapnote"><strong>はしからはしまで歩いて10分</strong>のちいさな温泉街。菊之湯から寄りそい橋まで1分、砂湯まで2分、ミュージアムまで5分です。</p>
+
+<div class="mapwrap" style="background:#0f1730;box-shadow:inset 0 0 0 3px #2a3358,0 4px 16px rgba(0,0,0,.4)">
+<p class="maptitle" style="color:#8fa0c8">☄️ 8/13 夜 美星天文台</p><svg viewBox="0 0 360 250" xmlns="http://www.w3.org/2000/svg">
+<defs><linearGradient id="nsky" x1="0" y1="0" x2="0" y2="1">
+<stop offset="0" stop-color="#141d3d"/><stop offset="1" stop-color="#2b3560"/></linearGradient></defs>
+<rect width="360" height="250" fill="url(#nsky)" rx="10"/>
+<g fill="#fff">
+<circle cx="40" cy="34" r="1.6"/><circle cx="92" cy="20" r="1.1"/><circle cx="150" cy="42" r="1.8"/>
+<circle cx="210" cy="26" r="1.3"/><circle cx="268" cy="46" r="1.6"/><circle cx="322" cy="24" r="1.2"/>
+<circle cx="66" cy="70" r="1.3"/><circle cx="180" cy="76" r="1.1"/><circle cx="296" cy="82" r="1.5"/>
+<circle cx="120" cy="96" r="1.1"/><circle cx="240" cy="104" r="1.3"/><circle cx="20" cy="110" r="1.2"/>
+<circle cx="340" cy="120" r="1.1"/><circle cx="86" cy="130" r="1.0"/></g>
+<g opacity=".5"><path d="M20 150 C 100 96, 240 78, 350 30" stroke="#cbb8ff" stroke-width="26" fill="none" stroke-linecap="round" opacity=".22"/></g>
+<text x="180" y="24" font-size="10" text-anchor="middle" fill="#9fb0e8">天の川（南西の空・21時ごろがピーク）</text>
+<g stroke="#ffe9a8" stroke-width="2.2" stroke-linecap="round">
+<path d="M300 40 L272 66"/><path d="M120 56 L100 74"/><path d="M228 92 L212 108"/></g>
+<text x="304" y="36" font-size="9" fill="#ffe9a8">☄️ 流星</text>
+<path d="M-5 200 C 60 176, 140 190, 200 176 C 260 162, 320 182, 365 172 L365 255 L-5 255 Z" fill="#1b2444"/>
+<g transform="translate(180,168)"><path d="M-26 12 L26 12 L26 2 A26 22 0 0 0 -26 2 Z" fill="#e8e2d0"/>
+<rect x="-30" y="12" width="60" height="12" rx="3" fill="#cfc7b0"/>
+<path d="M-6 -14 L6 -14 L4 4 L-4 4 Z" fill="#8fa0c8"/></g>
+<text x="180" y="212" font-size="12" font-weight="800" text-anchor="middle" fill="#ffd166">美星天文台</text>
+<text x="180" y="228" font-size="9.5" text-anchor="middle" fill="#a6b0d0">20:45〜22:00／レジャーシートと上着を</text>
+<text x="34" y="222" font-size="16">🌲</text><text x="330" y="216" font-size="16">🌲</text><text x="66" y="236" font-size="13">🌲</text>
+</svg></div>
+<p class="mapnote"><strong>21時ごろ、南西の空に天の川がいちばん高くのぼります。</strong>流星は放射点（北東）から放射状に流れますが、<strong>空をひろ〜く見わたすのがコツ</strong>。目が慣れるまで15分かかります。</p>
+
+<div class="mapwrap"><p class="maptitle">⛩️ 8/14 出雲大社</p><svg viewBox="0 0 360 336" xmlns="http://www.w3.org/2000/svg"><rect width="360" height="336" fill="url(#pg)" rx="10"/><rect width="360" height="336" fill="url(#dots)" rx="10"/>
+<rect x="118" y="16" width="128" height="56" rx="8" fill="#e6d6b0" stroke="#c9b68a" stroke-width="1.6"/>
+<text x="182" y="48" font-size="12" font-weight="900" text-anchor="middle" fill="#7a6a4a">境　内</text>
+<rect x="16" y="106" width="86" height="48" rx="8" fill="#dfe8f2" stroke="#b8c8dc" stroke-width="1.5"/>
+<text x="59" y="132" font-size="10" font-weight="800" text-anchor="middle" fill="#6a7a94">大駐車場</text>
+<text x="59" y="145" font-size="8.5" text-anchor="middle" fill="#8fa0b8">385台・無料</text>
+<g stroke="#c9a86a" stroke-width="14" stroke-linecap="round" fill="none" opacity=".4"><path d="M180 176 V 246"/></g>
+<text x="240" y="206" font-size="9.5" fill="#a08e68" font-weight="700">松の参道</text>
+<text x="240" y="218" font-size="8.5" fill="#a08e68">（ここは日かげ）</text>
+<g transform="translate(148,196) scale(0.8)"><rect x="-2" y="4" width="4" height="8" fill="#a67c52" rx="1"/><circle cx="0" cy="0" r="9" fill="#9fd18a"/><circle cx="-5" cy="4" r="6" fill="#8ec478"/><circle cx="5" cy="3" r="6" fill="#b0dc9c"/></g><g transform="translate(212,236) scale(0.8)"><rect x="-2" y="4" width="4" height="8" fill="#a67c52" rx="1"/><circle cx="0" cy="0" r="9" fill="#9fd18a"/><circle cx="-5" cy="4" r="6" fill="#8ec478"/><circle cx="5" cy="3" r="6" fill="#b0dc9c"/></g><g transform="translate(148,238) scale(0.75)"><rect x="-2" y="4" width="4" height="8" fill="#a67c52" rx="1"/><circle cx="0" cy="0" r="9" fill="#9fd18a"/><circle cx="-5" cy="4" r="6" fill="#8ec478"/><circle cx="5" cy="3" r="6" fill="#b0dc9c"/></g>
+<g stroke="#e8734a" stroke-width="3" stroke-dasharray="2 7" fill="none" stroke-linecap="round">
+<path d="M84 118 C 104 108, 118 100, 128 96"/>
+<path d="M150 90 C 190 84, 216 100, 226 116"/>
+<path d="M226 148 C 210 190, 188 226, 181 250"/></g>
+<text x="104" y="98" font-size="10" fill="#c96a45" font-weight="900">①</text>
+<text x="196" y="88" font-size="10" fill="#c96a45" font-weight="900">②</text>
+<text x="212" y="180" font-size="10" fill="#c96a45" font-weight="900">③</text>
+<g><circle cx="132" cy="90" r="15" fill="#fff" stroke="#e8734a" stroke-width="3.2"/><text x="132" y="96" font-size="15" text-anchor="middle">⛩️</text><text x="132" y="119" font-size="11.5" font-weight="800" text-anchor="middle" fill="#3d3222">神楽殿</text><text x="132" y="131" font-size="9.5" text-anchor="middle" fill="#8a7a5a">大しめ縄 13.6m</text></g>
+<g><circle cx="228" cy="130" r="15" fill="#fff" stroke="#e8734a" stroke-width="3.2"/><text x="228" y="136" font-size="15" text-anchor="middle">🙏</text><text x="228" y="159" font-size="11.5" font-weight="800" text-anchor="middle" fill="#3d3222">御本殿</text><text x="228" y="171" font-size="9.5" text-anchor="middle" fill="#8a7a5a">二礼四拍手一礼</text></g>
+<g><circle cx="180" cy="266" r="15" fill="#fff" stroke="#e8734a" stroke-width="3.2"/><text x="180" y="272" font-size="15" text-anchor="middle">🗾</text><text x="180" y="295" font-size="11.5" font-weight="800" text-anchor="middle" fill="#3d3222">勢溜の大鳥居</text><text x="180" y="307" font-size="9.5" text-anchor="middle" fill="#8a7a5a">ここが正面入口</text></g>
+<g><circle cx="58" cy="196" r="15" fill="#fff" stroke="#e8734a" stroke-width="3.2"/><text x="58" y="202" font-size="15" text-anchor="middle">🍜</text><text x="58" y="225" font-size="11.5" font-weight="800" text-anchor="middle" fill="#3d3222">出雲そば</text><text x="58" y="237" font-size="9.5" text-anchor="middle" fill="#8a7a5a">11:30 開店と同時に</text></g>
+<text x="330" y="34" font-size="15">☀️</text>
+<text x="180" y="326" font-size="9.5" text-anchor="middle" fill="#8a7a5a">★駐車場が神楽殿のすぐ近く。だから「逆回り」がラクです</text></svg></div>
+<p class="mapnote"><strong>駐車場が神楽殿のすぐ近くなので、「逆回り」がラクです。</strong>ふつうは大鳥居から入りますが、そうすると<strong>帰りが全部のぼり坂</strong>になります。神楽殿→御本殿→参道を下って大鳥居、の順なら、のぼりが分散します。</p>
+
+<div class="mapwrap"><p class="maptitle">🏕️ 8/14 フォレストリア用瀬</p><svg viewBox="0 0 360 280" xmlns="http://www.w3.org/2000/svg"><defs>
+<linearGradient id="pg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fffaf0"/><stop offset="1" stop-color="#fdf3dd"/></linearGradient>
+<pattern id="dots" width="14" height="14" patternUnits="userSpaceOnUse"><circle cx="3" cy="3" r="1" fill="#e6d8b8"/></pattern>
+</defs>
+<rect width="360" height="280" fill="url(#pg)" rx="10"/><rect width="360" height="280" fill="url(#dots)" rx="10"/>
+<g transform="translate(50,60) scale(1.2)"><path d="M-26 12 L0 -18 L26 12 Z" fill="#bcd2a8" stroke="#96b482" stroke-width="1.6"/><path d="M-9 -1 L0 -18 L9 -1 Z" fill="#eef6e6"/></g><g transform="translate(150,50) scale(1.0)"><path d="M-26 12 L0 -18 L26 12 Z" fill="#bcd2a8" stroke="#96b482" stroke-width="1.6"/><path d="M-9 -1 L0 -18 L9 -1 Z" fill="#eef6e6"/></g><g transform="translate(290,62) scale(1.1)"><path d="M-26 12 L0 -18 L26 12 Z" fill="#bcd2a8" stroke="#96b482" stroke-width="1.6"/><path d="M-9 -1 L0 -18 L9 -1 Z" fill="#eef6e6"/></g>
+<path d="M-5 176 C 70 162, 130 196, 200 184 C 270 172, 320 200, 365 190 L365 216 C 320 226, 270 198, 200 210 C 130 222, 70 188, -5 202 Z"
+ fill="#a8d8ea" stroke="#7fc0d8" stroke-width="1.6"/>
+<text x="316" y="172" font-size="9.5" fill="#5b9dbd" font-weight="700">赤波川</text>
+<g fill="#cfc0a0"><ellipse cx="90" cy="192" rx="9" ry="5"/><ellipse cx="150" cy="200" rx="7" ry="4"/><ellipse cx="250" cy="196" rx="8" ry="4.5"/></g>
+<g transform="translate(28,140) scale(1.0)"><rect x="-2" y="4" width="4" height="8" fill="#a67c52" rx="1"/><circle cx="0" cy="0" r="9" fill="#9fd18a"/><circle cx="-5" cy="4" r="6" fill="#8ec478"/><circle cx="5" cy="3" r="6" fill="#b0dc9c"/></g><g transform="translate(336,146) scale(1.0)"><rect x="-2" y="4" width="4" height="8" fill="#a67c52" rx="1"/><circle cx="0" cy="0" r="9" fill="#9fd18a"/><circle cx="-5" cy="4" r="6" fill="#8ec478"/><circle cx="5" cy="3" r="6" fill="#b0dc9c"/></g><g transform="translate(60,246) scale(0.9)"><rect x="-2" y="4" width="4" height="8" fill="#a67c52" rx="1"/><circle cx="0" cy="0" r="9" fill="#9fd18a"/><circle cx="-5" cy="4" r="6" fill="#8ec478"/><circle cx="5" cy="3" r="6" fill="#b0dc9c"/></g><g transform="translate(320,250) scale(0.9)"><rect x="-2" y="4" width="4" height="8" fill="#a67c52" rx="1"/><circle cx="0" cy="0" r="9" fill="#9fd18a"/><circle cx="-5" cy="4" r="6" fill="#8ec478"/><circle cx="5" cy="3" r="6" fill="#b0dc9c"/></g><g transform="translate(120,132) scale(0.8)"><rect x="-2" y="4" width="4" height="8" fill="#a67c52" rx="1"/><circle cx="0" cy="0" r="9" fill="#9fd18a"/><circle cx="-5" cy="4" r="6" fill="#8ec478"/><circle cx="5" cy="3" r="6" fill="#b0dc9c"/></g>
+<g transform="translate(180,118)"><path d="M-40 8 L0 -22 L40 8 Z" fill="#c98f5a" stroke="#a67244" stroke-width="1.8"/>
+<rect x="-32" y="8" width="64" height="30" fill="#e0b384" stroke="#a67244" stroke-width="1.8" rx="2"/>
+<rect x="-8" y="20" width="16" height="18" fill="#8a5f3a" rx="1"/>
+<rect x="-26" y="14" width="12" height="10" fill="#fff3d6" rx="1"/><rect x="14" y="14" width="12" height="10" fill="#fff3d6" rx="1"/></g>
+<text x="180" y="172" font-size="12" font-weight="900" text-anchor="middle" fill="#3d3222">フォレストリア用瀬</text>
+<text x="180" y="185" font-size="9" text-anchor="middle" fill="#8a7a5a">1棟貸し・標高400m</text>
+<g class="sp"><circle cx="76" cy="116" r="15" fill="#fff" stroke="#e8734a" stroke-width="3.2"/>
+<text x="76" y="122" font-size="15" text-anchor="middle">🔥</text>
+<text x="76" y="144" font-size="11.5" font-weight="800" text-anchor="middle" fill="#3d3222">BBQハウス</text>
+<text x="76" y="156" font-size="9.5" text-anchor="middle" fill="#8a7a5a">18:30〜21:00</text></g>
+<g class="sp"><circle cx="286" cy="116" r="15" fill="#fff" stroke="#e8734a" stroke-width="3.2"/>
+<text x="286" y="122" font-size="15" text-anchor="middle">🎆</text>
+<text x="286" y="144" font-size="11.5" font-weight="800" text-anchor="middle" fill="#3d3222">花火</text>
+<text x="286" y="156" font-size="9.5" text-anchor="middle" fill="#8a7a5a">21:00〜21:30</text></g>
+<g class="sp"><circle cx="180" cy="232" r="15" fill="#fff" stroke="#e8734a" stroke-width="3.2"/>
+<text x="180" y="238" font-size="15" text-anchor="middle">💧</text>
+<text x="180" y="260" font-size="11.5" font-weight="800" text-anchor="middle" fill="#3d3222">川あそび</text>
+<text x="180" y="272" font-size="9.5" text-anchor="middle" fill="#8a7a5a">8/15 朝 8:00〜8:40</text></g>
+<text x="30" y="34" font-size="15">⭐</text><text x="330" y="30" font-size="13">✨</text><text x="180" y="34" font-size="12">🌙</text>
+</svg></div>
+<p class="mapnote"><strong>1棟貸しなので、まわりに誰もいません。</strong>BBQ → 花火 → 星空 → 翌朝は川あそび、が全部この敷地とすぐ前の川でできます。</p>
+
+<div class="mapwrap"><p class="maptitle">🏯 8/15 姫路城のまわり</p><svg viewBox="0 0 360 330" xmlns="http://www.w3.org/2000/svg"><rect width="360" height="330" fill="url(#pg)" rx="10"/><rect width="360" height="330" fill="url(#dots)" rx="10"/>
+<g transform="translate(180,60)">
+<rect x="-40" y="30" width="80" height="16" fill="#d8d2c0" stroke="#b8b0a0" stroke-width="1.4"/>
+<path d="M-30 30 L-30 8 L0 -26 L30 8 L30 30 Z" fill="#fdfaf2" stroke="#c9c0ac" stroke-width="1.8"/>
+<path d="M-30 8 L0 -6 L30 8" fill="none" stroke="#8a8270" stroke-width="1.6"/>
+<path d="M-18 -4 L0 -26 L18 -4" fill="#e9e3d4" stroke="#c9c0ac" stroke-width="1.4"/>
+<rect x="-6" y="12" width="5" height="7" fill="#7a7260"/><rect x="2" y="12" width="5" height="7" fill="#7a7260"/></g>
+<text x="180" y="126" font-size="13" font-weight="900" text-anchor="middle" fill="#3d3222">姫路城</text>
+<text x="180" y="140" font-size="9" text-anchor="middle" fill="#8a7a5a">12:20〜14:20／再入城できません</text>
+<g stroke="#e8b96a" stroke-width="13" stroke-linecap="round" fill="none" opacity=".45"><path d="M180 152 V 206"/></g>
+<text x="214" y="200" font-size="9" fill="#a08e68" font-weight="700">大手前通り</text>
+<g stroke="#e8734a" stroke-width="3" stroke-dasharray="2 7" fill="none" stroke-linecap="round">
+<path d="M96 224 C 112 216, 124 210, 136 206"/><path d="M152 194 C 168 178, 176 162, 179 150"/></g>
+<text x="120" y="198" font-size="9" fill="#c96a45" font-weight="800" text-anchor="end">徒歩4〜5分</text>
+<text x="198" y="168" font-size="9" fill="#c96a45" font-weight="800">徒歩10分</text>
+<g><circle cx="146" cy="208" r="15" fill="#fff" stroke="#e8734a" stroke-width="3.2"/><text x="146" y="214" font-size="15" text-anchor="middle">🍽</text><text x="146" y="237" font-size="11.5" font-weight="800" text-anchor="middle" fill="#3d3222">千姫茶屋</text><text x="146" y="249" font-size="9.5" text-anchor="middle" fill="#8a7a5a">11:05 昼ごはん</text></g>
+<g><circle cx="84" cy="240" r="15" fill="#fff" stroke="#e8734a" stroke-width="3.2"/><text x="84" y="246" font-size="15" text-anchor="middle">🅿️</text><text x="84" y="269" font-size="11.5" font-weight="800" text-anchor="middle" fill="#3d3222">大手門駐車場</text><text x="84" y="281" font-size="9.5" text-anchor="middle" fill="#8a7a5a">555台・900円</text></g>
+<g><circle cx="288" cy="252" r="15" fill="#fff" stroke="#e8734a" stroke-width="3.2"/><text x="288" y="258" font-size="15" text-anchor="middle">🐟</text><text x="288" y="281" font-size="11.5" font-weight="800" text-anchor="middle" fill="#3d3222">市立水族館</text><text x="288" y="293" font-size="9.5" text-anchor="middle" fill="#8a7a5a">14:45〜16:20</text></g>
+<text x="288" y="302" font-size="9" text-anchor="middle" fill="#a89a78">手柄山・車で10分</text>
+<g transform="translate(28,120) scale(0.9)"><rect x="-2" y="4" width="4" height="8" fill="#a67c52" rx="1"/><circle cx="0" cy="0" r="9" fill="#9fd18a"/><circle cx="-5" cy="4" r="6" fill="#8ec478"/><circle cx="5" cy="3" r="6" fill="#b0dc9c"/></g><g transform="translate(334,120) scale(0.9)"><rect x="-2" y="4" width="4" height="8" fill="#a67c52" rx="1"/><circle cx="0" cy="0" r="9" fill="#9fd18a"/><circle cx="-5" cy="4" r="6" fill="#8ec478"/><circle cx="5" cy="3" r="6" fill="#b0dc9c"/></g><g transform="translate(30,300) scale(0.85)"><rect x="-2" y="4" width="4" height="8" fill="#a67c52" rx="1"/><circle cx="0" cy="0" r="9" fill="#9fd18a"/><circle cx="-5" cy="4" r="6" fill="#8ec478"/><circle cx="5" cy="3" r="6" fill="#b0dc9c"/></g>
+<text x="40" y="34" font-size="16">☀️</text>
+<text x="342" y="40" font-size="10" fill="#c96a45" font-weight="800" text-anchor="end">この日は晴れ予報！</text></svg></div>
+<p class="mapnote"><strong>千姫茶屋は姫路城の「外」</strong>——大手前通りをはさんだ南向かいです。駐車場から茶屋まで徒歩4〜5分、茶屋から入城口までさらに徒歩10分。<strong class="no">お城の中には食べるところがないので、先にごはんです。</strong></p>
+
+<h3>⑤ スタンプラリー（20か所）</h3>
+<div class="box ans">
+  <span class="big">🖐 着いたらタップ！</span>
+  <p>上の絵地図に出てくる場所を、<strong>ぜんぶで20個</strong>あつめます。<strong>タップすると赤いスタンプが押されます。</strong>もう一度タップすると取り消せます。<br>
+  <span class="no">※スタンプはそのスマホの中だけに保存されます。<strong>「スタンプ係」を1人決めて、その人のスマホで押す</strong>のがおすすめです</span></p>
+</div>
+<div class="stbar"><span class="c" id="stcnt">0 / 20</span><span class="bar"><i id="stfill"></i></span></div>
+<div class="stampgrid"><div class="st" data-k="k1"><span class="ring">🍰</span><span class="nm">大丸でケーキ</span><span class="tm2">8/12 14:30</span></div><div class="st" data-k="k2"><span class="ring">🏮</span><span class="nm">さと茂旅館</span><span class="tm2">8/12 16:00</span></div><div class="st" data-k="k3"><span class="ring">🍛</span><span class="nm">カレーうどん</span><span class="tm2">8/12 16:40</span></div><div class="st" data-k="k4"><span class="ring">🐬</span><span class="nm">夜のすいぞくかん</span><span class="tm2">8/12 18:00</span></div><div class="st" data-k="y1"><span class="ring">♨️</span><span class="nm">菊之湯</span><span class="tm2">8/13 14:40</span></div><div class="st" data-k="y2"><span class="ring">🌉</span><span class="nm">寄りそい橋</span><span class="tm2">8/13 15:20</span></div><div class="st" data-k="y3"><span class="ring">🎨</span><span class="nm">ミュージアム</span><span class="tm2">8/13 15:40</span></div><div class="st" data-k="y4"><span class="ring">☄️</span><span class="nm">美星天文台</span><span class="tm2">8/13 20:45</span></div><div class="st" data-k="i1"><span class="ring">🍜</span><span class="nm">出雲そば</span><span class="tm2">8/14 11:30</span></div><div class="st" data-k="i2"><span class="ring">⛩️</span><span class="nm">神楽殿</span><span class="tm2">8/14 12:25</span></div><div class="st" data-k="i3"><span class="ring">🙏</span><span class="nm">御本殿</span><span class="tm2">8/14 12:45</span></div><div class="st" data-k="i4"><span class="ring">🗾</span><span class="nm">大鳥居</span><span class="tm2">8/14 13:20</span></div><div class="st" data-k="f1"><span class="ring">🔥</span><span class="nm">BBQ</span><span class="tm2">8/14 18:30</span></div><div class="st" data-k="f2"><span class="ring">🎆</span><span class="nm">花火</span><span class="tm2">8/14 21:00</span></div><div class="st" data-k="f3"><span class="ring">✨</span><span class="nm">星空</span><span class="tm2">8/14 21:30</span></div><div class="st" data-k="f4"><span class="ring">💧</span><span class="nm">川あそび</span><span class="tm2">8/15 8:00</span></div><div class="st" data-k="h1"><span class="ring">🍽</span><span class="nm">千姫茶屋</span><span class="tm2">8/15 11:05</span></div><div class="st" data-k="h2"><span class="ring">🏯</span><span class="nm">姫路城</span><span class="tm2">8/15 12:20</span></div><div class="st" data-k="h3"><span class="ring">🐟</span><span class="nm">市立水族館</span><span class="tm2">8/15 14:45</span></div><div class="st" data-k="h4"><span class="ring">🥩</span><span class="nm">えん家</span><span class="tm2">8/15 17:00</span></div></div>
+<div class="box info" id="stdone" style="display:none">
+  <span class="big">🎉 ぜんぶ集まりました！</span>
+  <p>20か所コンプリート。おつかれさまでした！</p>
+</div>
+
+<footer>
+  <p>このページは<a href="index.html">しおり</a>の別冊です。<br>
+  スタンプは、しおり側と同じデータを見ています（同じスマホなら共通です）。</p>
+</footer>
+</div>
+<script>
+(function(){
+  var KEY='tabi2026_v2', OPEN='tabi2026_open_v2';
+  var st={}; try{ st=JSON.parse(localStorage.getItem(KEY)||'{}'); }catch(e){}
+  var items=[].slice.call(document.querySelectorAll('.it'));
+  items.forEach(function(el,i){
+    var cb=el.querySelector('input');
+    if(st['p'+i]){ cb.checked=true; el.classList.add('done'); }
+    cb.addEventListener('change',function(){
+      el.classList.toggle('done',cb.checked);
+      st['p'+i]=cb.checked;
+      try{ localStorage.setItem(KEY,JSON.stringify(st)); }catch(e){}
+      render();
+    });
+  });
+  function render(){
+    var n=items.filter(function(e){return e.classList.contains('done');}).length;
+    var c=document.getElementById('pcnt'), f=document.getElementById('pfill');
+    if(c) c.textContent=n+' / '+items.length;
+    if(f) f.style.width=(items.length?n/items.length*100:0)+'%';
+  }
+  render();
+
+  // 開閉状態を記憶
+  var op={}; try{ op=JSON.parse(localStorage.getItem(OPEN)||'{}'); }catch(e){}
+  var ds=[].slice.call(document.querySelectorAll('details'));
+  ds.forEach(function(d){
+    if(op[d.id]) d.open=true;
+    d.addEventListener('toggle',function(){
+      op[d.id]=d.open;
+      try{ localStorage.setItem(OPEN,JSON.stringify(op)); }catch(e){}
+    });
+  });
+
+  // 旅行期間中は「その日」を自動で開く
+  var t=new Date(), m=t.getMonth()+1, dd=t.getDate(), y=t.getFullYear();
+  if(y===2026&&m===8&&dd>=12&&dd<=15){
+    var id='d'+dd, el=document.getElementById(id);
+    if(el){ el.open=true; el.classList.add('today'); }
+  }
+
+  // URLのハッシュで開く（例 …/#d15）
+  if(location.hash){
+    var h=document.querySelector(location.hash);
+    if(h&&h.tagName==='DETAILS'){ h.open=true; setTimeout(function(){h.scrollIntoView();},60); }
+  }
+
+  var oA=document.getElementById('openAll'), cA=document.getElementById('closeAll');
+  if(oA) oA.addEventListener('click',function(){ ds.forEach(function(d){d.open=true;}); });
+  if(cA) cA.addEventListener('click',function(){ ds.forEach(function(d){d.open=false;}); window.scrollTo({top:0,behavior:'smooth'}); });
+
+
+  // ---- スタンプ＆SA ----
+  function bindStamps(sel, key, cntId, fillId, doneId){
+    var st={}; try{ st=JSON.parse(localStorage.getItem(key)||'{}'); }catch(e){}
+    var els=[].slice.call(document.querySelectorAll(sel));
+    function render(){
+      var n=els.filter(function(e){return e.classList.contains('got');}).length;
+      var c=document.getElementById(cntId), f=document.getElementById(fillId);
+      if(c) c.textContent=n+' / '+els.length;
+      if(f) f.style.width=(els.length?n/els.length*100:0)+'%';
+      var d=doneId&&document.getElementById(doneId);
+      if(d) d.style.display=(n===els.length&&els.length)?'block':'none';
+    }
+    els.forEach(function(el){
+      if(st[el.dataset.k]) el.classList.add('got');
+      el.addEventListener('click',function(){
+        el.classList.toggle('got');
+        st[el.dataset.k]=el.classList.contains('got');
+        try{ localStorage.setItem(key,JSON.stringify(st)); }catch(e){}
+        render();
+      });
+    });
+    render();
+  }
+  bindStamps('.st','tabi2026_stamp','stcnt','stfill','stdone');
+  bindStamps('.sta','tabi2026_sa','sacnt','safill',null);
+  // 路線図のSAノード ⇄ 一覧を同期
+  (function(){
+    var KEY='tabi2026_sa', st={}; try{ st=JSON.parse(localStorage.getItem(KEY)||'{}'); }catch(e){}
+    var nodes=[].slice.call(document.querySelectorAll('.rsa'));
+    function paint(){
+      try{ st=JSON.parse(localStorage.getItem(KEY)||'{}'); }catch(e){}
+      nodes.forEach(function(n){ n.classList.toggle('got', !!st[n.dataset.k]); });
+      var cards=[].slice.call(document.querySelectorAll('.sta'));
+      cards.forEach(function(c){ c.classList.toggle('got', !!st[c.dataset.k]); });
+      var got=cards.filter(function(c){return c.classList.contains('got');}).length;
+      var c1=document.getElementById('sacnt'), f1=document.getElementById('safill');
+      if(c1) c1.textContent=got+' / '+cards.length;
+      if(f1) f1.style.width=(cards.length?got/cards.length*100:0)+'%';
+    }
+    nodes.forEach(function(n){
+      n.addEventListener('click',function(){
+        try{ st=JSON.parse(localStorage.getItem(KEY)||'{}'); }catch(e){}
+        st[n.dataset.k]=!st[n.dataset.k];
+        try{ localStorage.setItem(KEY,JSON.stringify(st)); }catch(e){}
+        paint();
+      });
+    });
+    document.querySelectorAll('.sta').forEach(function(c){ c.addEventListener('click',function(){ setTimeout(paint,0); }); });
+    paint();
+  })();
+
+  // 日フィルタ
+  (function(){
+    var w=document.getElementById('netwrap'); if(!w) return;
+    document.querySelectorAll('.daybtns button').forEach(function(b){
+      b.addEventListener('click',function(){
+        document.querySelectorAll('.daybtns button').forEach(function(x){x.classList.remove('on');});
+        b.classList.add('on');
+        w.className=(b.dataset.d==='all'?'':'f-'+b.dataset.d);
+      });
+    });
+  })();
+  // 上へボタン
+  var top=document.getElementById('top');
+  if(top){ window.addEventListener('scroll',function(){ top.classList.toggle('on',window.scrollY>500); },{passive:true});
+    top.addEventListener('click',function(){ window.scrollTo({top:0,behavior:'smooth'}); }); }
+})();
+</script>
+<script>
+(function(){
+  var mv=document.getElementById('mv'), sv=document.querySelector('#netwrap svg');
+  if(!mv||!sv) return;
+  var W=1000, cur=0;
+  function fit(){ cur = mv.clientWidth; apply(); }
+  function apply(){
+    sv.style.width = cur+'px';
+    document.getElementById('zlab').textContent = (cur<=mv.clientWidth+2) ? '全体表示（＋で大きく）' : Math.round(cur/mv.clientWidth*100)+'%　スワイプで移動';
+  }
+  document.getElementById('zin').onclick=function(){ cur=Math.min(cur*1.45, 2600); apply(); };
+  document.getElementById('zout').onclick=function(){ cur=Math.max(cur/1.45, mv.clientWidth); apply(); };
+  document.getElementById('zfit').onclick=function(){ fit(); mv.scrollTo({left:0,top:0,behavior:'smooth'}); };
+  // マウスドラッグでパン
+  var dn=false,sx=0,sy=0,sl=0,st=0;
+  mv.addEventListener('mousedown',function(e){dn=true;mv.classList.add('drag');sx=e.clientX;sy=e.clientY;sl=mv.scrollLeft;st=mv.scrollTop;});
+  window.addEventListener('mousemove',function(e){ if(!dn)return; mv.scrollLeft=sl-(e.clientX-sx); mv.scrollTop=st-(e.clientY-sy); });
+  window.addEventListener('mouseup',function(){dn=false;mv.classList.remove('drag');});
+  fit();
+  setTimeout(function(){ cur=Math.max(mv.clientWidth*1.7, mv.clientWidth); apply(); },60);
+})();
+</script>
+</body>
+</html>

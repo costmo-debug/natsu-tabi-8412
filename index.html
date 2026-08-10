@@ -1,0 +1,1506 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex,nofollow,noarchive,nosnippet">
+<meta name="googlebot" content="noindex,nofollow">
+<meta name="referrer" content="no-referrer">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#070b18">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="旅のしおり">
+<title>家族旅行のしおり｜2026年8月12日〜15日</title>
+<style>
+  :root{
+    --bg1:#16204a; --bg2:#0a0f22; --bg3:#070b18;
+    --card:#141c39; --card2:#0f1730; --line:#27325e;
+    --tx:#e9edf8; --tx2:#a6b0d0;
+    --acc:#ffd166; --acc2:#7cc4ff; --ok:#5fd39a; --warn:#ff8f7a; --pk:#ff9ecb;
+  }
+  *{box-sizing:border-box;-webkit-text-size-adjust:100%;-webkit-tap-highlight-color:transparent}
+  body{margin:0;background:radial-gradient(ellipse at 50% -5%,var(--bg1) 0%,var(--bg2) 45%,var(--bg3) 100%);
+       background-attachment:fixed;color:var(--tx);
+       font-family:"Hiragino Sans","Yu Gothic",-apple-system,"Segoe UI",sans-serif;
+       line-height:1.72;font-size:16px;padding-bottom:env(safe-area-inset-bottom)}
+  .wrap{max-width:760px;margin:0 auto;padding:0 14px 70px}
+
+  /* ---------- header ---------- */
+  header{text-align:center;padding:30px 6px 22px}
+  h1{font-size:1.5rem;margin:0 0 12px;line-height:1.4;letter-spacing:.03em}
+  .dates{display:inline-block;background:var(--acc);color:#1a1400;font-weight:900;
+         border-radius:999px;padding:5px 18px;font-size:.9rem;letter-spacing:.02em}
+  .route{color:var(--tx2);font-size:.85rem;margin:14px 0 0;line-height:1.85}
+  .route b{color:var(--acc2)}
+
+  /* ---------- controls ---------- */
+  .ctl{display:flex;gap:8px;margin:6px 0 14px}
+  .ctl button{flex:1;background:var(--card2);border:1px solid #3f5a99;border-radius:10px;
+              color:var(--acc2);font-weight:800;font-size:.83rem;padding:10px 8px;cursor:pointer;
+              font-family:inherit}
+  .ctl button:active{background:#16224a}
+
+  /* ---------- accordion ---------- */
+  details{background:var(--card);border:1px solid var(--line);border-radius:14px;
+          margin:9px 0;overflow:hidden}
+  details[open]{border-color:#3d4d86}
+  summary{list-style:none;cursor:pointer;padding:15px 16px;display:flex;align-items:center;gap:12px;
+          font-weight:800;font-size:1.06rem;line-height:1.45;position:relative;padding-right:44px}
+  summary::-webkit-details-marker{display:none}
+  summary:after{content:"";position:absolute;right:18px;top:50%;width:9px;height:9px;
+                border-right:2.5px solid var(--acc2);border-bottom:2.5px solid var(--acc2);
+                transform:translateY(-70%) rotate(45deg);transition:.22s}
+  details[open]>summary:after{transform:translateY(-20%) rotate(225deg)}
+  summary .em{font-size:1.3rem;line-height:1;flex:0 0 auto}
+  summary .h{flex:1;min-width:0}
+  summary .h .n{display:block;color:var(--tx)}
+  summary .h .s{display:block;font-size:.76rem;font-weight:600;color:var(--tx2);margin-top:2px;line-height:1.5}
+  .day>summary{background:linear-gradient(90deg,#1c2652,#141c39)}
+  .day>summary .n{color:var(--acc)}
+  .inner{padding:2px 15px 18px;border-top:1px solid var(--line)}
+  .today>summary{box-shadow:inset 4px 0 0 var(--ok)}
+  .today>summary .h .s:before{content:"今日 ";color:var(--ok);font-weight:900}
+
+  /* ---------- timeline ---------- */
+  .tl{position:relative;margin:14px 0 4px;padding-left:2px}
+  .ev{display:flex;gap:11px;padding:0 0 15px;position:relative}
+  .ev:before{content:"";position:absolute;left:36px;top:22px;bottom:-4px;width:2px;background:var(--line)}
+  .ev:last-child:before{display:none}
+  .tm{flex:0 0 62px;text-align:right;font-size:.78rem;font-weight:800;color:var(--acc2);
+      font-variant-numeric:tabular-nums;line-height:1.45;padding-top:2px;position:relative}
+  .tm:after{content:"";position:absolute;right:-13px;top:7px;width:9px;height:9px;border-radius:50%;
+            background:var(--bg3);border:2.5px solid var(--line)}
+  .ev.key .tm:after{background:var(--acc);border-color:var(--acc)}
+  .ev.opt .tm:after{background:var(--bg3);border-style:dashed}
+  .bd{flex:1;min-width:0;padding-left:10px}
+  .ttl{font-weight:800;font-size:.97rem;margin:0 0 3px;line-height:1.5}
+  .ev.key .ttl{color:var(--acc)}
+  .ds{font-size:.845rem;color:var(--tx2);margin:0;line-height:1.72}
+  .ds strong{color:var(--tx)}
+  .ds .ok{color:var(--ok)}.ds .no{color:var(--warn)}
+
+  /* ---------- boxes ---------- */
+  .box{border-radius:11px;padding:12px 14px;margin:13px 0;font-size:.87rem;line-height:1.72}
+  .box p{margin:0}
+  .ans{background:#102a22;border:1px solid #2f6b4f;border-left:5px solid var(--ok)}
+  .info{background:#101d33;border:1px solid #2c4468;border-left:5px solid var(--acc2)}
+  .alert{background:#2a1420;border:1px solid #74304a;border-left:5px solid var(--warn)}
+  .big{font-size:.97rem;font-weight:800;color:var(--acc);display:block;margin-bottom:6px;line-height:1.5}
+  .box ul,.box ol{padding-left:1.2em;margin:5px 0}
+  .box li{margin:4px 0}
+
+  /* ---------- table ---------- */
+  .tbl{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:12px 0;
+       border-radius:9px;border:1px solid var(--line)}
+  table{border-collapse:collapse;width:100%;min-width:430px;font-size:.83rem}
+  th,td{border:1px solid var(--line);padding:8px 9px;text-align:left;vertical-align:top;line-height:1.62}
+  th{background:#1a2447;color:var(--acc2);font-size:.79rem;white-space:nowrap;font-weight:800}
+  td.t{white-space:nowrap;color:var(--acc2);font-weight:800;font-variant-numeric:tabular-nums}
+  tr.sum td{background:#1a2447;font-weight:800}
+
+  /* ---------- checklist ---------- */
+  .it{background:var(--card2);border:1px solid var(--line);border-radius:10px;margin:7px 0;transition:.2s}
+  .it.done{opacity:.4;border-color:#2f6b4f}
+  .it label{display:flex;gap:11px;padding:11px 12px;cursor:pointer;align-items:flex-start}
+  .it input{display:none}
+  .cbx{flex:0 0 22px;width:22px;height:22px;border-radius:7px;border:2px solid #3f5a99;
+       background:#0b1128;margin-top:1px;position:relative;transition:.18s}
+  .it.done .cbx{background:var(--ok);border-color:var(--ok)}
+  .it.done .cbx:after{content:"✓";position:absolute;inset:0;display:flex;align-items:center;
+                      justify-content:center;color:#06121d;font-weight:900;font-size:.92rem}
+  .it .cbody{flex:1;min-width:0}
+  .it .ct{font-weight:700;font-size:.92rem;margin:0;line-height:1.5}
+  .it.done .ct{text-decoration:line-through}
+  .it .cd{color:var(--tx2);font-size:.8rem;margin:2px 0 0;line-height:1.65}
+  .it .cd strong{color:var(--tx)}
+  .must .ct:before{content:"必須";background:var(--warn);color:#2a0d0d;font-size:.63rem;font-weight:900;
+                   border-radius:999px;padding:1px 7px;margin-right:6px;vertical-align:2px;display:inline-block}
+  .pgr{display:flex;align-items:center;gap:9px;margin:10px 0 4px}
+  .pgr .c{font-size:.86rem;font-weight:900;color:var(--acc);white-space:nowrap;font-variant-numeric:tabular-nums}
+  .bar{flex:1;height:7px;background:#1a2547;border-radius:99px;overflow:hidden}
+  .bar i{display:block;height:100%;width:0;background:linear-gradient(90deg,#7cc4ff,#5fd39a);
+         border-radius:99px;transition:width .4s}
+
+
+  /* ---------- 地図 ---------- */
+  .mapwrap{background:#fdf6e3;border-radius:14px;padding:10px 8px 6px;margin:14px 0;
+           box-shadow:inset 0 0 0 3px #e8dcc0, 0 4px 16px rgba(0,0,0,.35)}
+  .mapwrap svg{display:block;width:100%;height:auto;
+               font-family:"Hiragino Maru Gothic ProN","Yu Gothic",sans-serif}
+  .maptitle{text-align:center;color:#7a6a4a;font-size:.8rem;font-weight:800;margin:2px 0 6px;
+            font-family:"Hiragino Maru Gothic ProN",sans-serif}
+  .mapnote{color:var(--tx2);font-size:.8rem;margin:8px 2px 0;line-height:1.7}
+  .legend{display:flex;flex-wrap:wrap;gap:5px;margin:8px 0 2px;justify-content:center}
+  .legend i{font-style:normal;font-size:.71rem;font-weight:800;border-radius:999px;
+            padding:3px 9px;color:#2a1e05}
+  /* ---------- スタンプ ---------- */
+  .stampgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(96px,1fr));gap:8px;margin:12px 0}
+  .st{background:#fdf6e3;border-radius:12px;padding:9px 5px 7px;text-align:center;cursor:pointer;
+      box-shadow:inset 0 0 0 2px #e2d4b0;position:relative;transition:.18s;user-select:none;
+      font-family:"Hiragino Maru Gothic ProN",sans-serif}
+  .st:active{transform:scale(.94)}
+  .st .ring{width:52px;height:52px;margin:0 auto 5px;border-radius:50%;border:2.5px dashed #c9b68a;
+            display:flex;align-items:center;justify-content:center;font-size:1.5rem;
+            background:#fffdf6;transition:.2s}
+  .st .nm{font-size:.7rem;font-weight:800;color:#5a4a2a;line-height:1.35;display:block}
+  .st .tm2{font-size:.62rem;color:#9b8a66;display:block;margin-top:1px;font-variant-numeric:tabular-nums}
+  .st.got .ring{border:3px solid #d94f3d;border-style:solid;background:#fff0ec;transform:rotate(-8deg)}
+  .st.got:after{content:"すんだ！";position:absolute;top:5px;right:5px;background:#d94f3d;color:#fff;
+                font-size:.56rem;font-weight:900;border-radius:999px;padding:1px 6px;transform:rotate(8deg)}
+  .st.got .nm{color:#a8321f}
+  .stbar{display:flex;align-items:center;gap:9px;margin:10px 0 2px}
+  .stbar .c{font-size:.85rem;font-weight:900;color:var(--acc);white-space:nowrap;font-variant-numeric:tabular-nums}
+
+  /* ---------- ポケモン路線図 ---------- */
+  .line{position:relative;padding:4px 0 4px 46px;margin:10px 0}
+  .line:before{content:"";position:absolute;left:19px;top:12px;bottom:12px;width:9px;border-radius:9px;
+               background:repeating-linear-gradient(180deg,#5b6a92 0 14px,#7385ad 14px 28px)}
+  .sta{position:relative;background:#fdf6e3;border-radius:12px;padding:9px 11px;margin:9px 0;
+       box-shadow:inset 0 0 0 2px #e2d4b0;cursor:pointer;transition:.16s;
+       font-family:"Hiragino Maru Gothic ProN","Yu Gothic",sans-serif}
+  .sta:active{transform:scale(.985)}
+  .sta:before{content:"";position:absolute;left:-32px;top:50%;transform:translateY(-50%);
+              width:17px;height:17px;border-radius:50%;background:#fff;border:4px solid #98a8cc;z-index:2}
+  .sta.got:before{background:#d94f3d;border-color:#d94f3d}
+  .sta.got{box-shadow:inset 0 0 0 3px #d94f3d;background:#fff3ef}
+  .sta .d{font-size:.63rem;font-weight:900;color:#fff;background:#98a8cc;border-radius:999px;
+          padding:1px 7px;display:inline-block;margin-bottom:3px}
+  .sta .n2{font-size:.9rem;font-weight:900;color:#3d3222;display:block;line-height:1.4}
+  .sta .p2{margin-top:4px;display:flex;flex-wrap:wrap;gap:4px}
+  .sta .p2 b{font-size:.7rem;font-weight:800;background:#ffe3f0;color:#a83a6e;border:1.5px solid #f0a8c8;
+             border-radius:6px;padding:1px 7px}
+  .sta .p2 b.leg{background:#fff2c9;color:#8a6a10;border-color:#e8c860}
+  .sta .p2 b.dup{background:#eceff5;color:#8a93a8;border-color:#ccd3e0}
+  .sta.got:after{content:"押した！";position:absolute;top:7px;right:9px;background:#d94f3d;color:#fff;
+                 font-size:.58rem;font-weight:900;border-radius:999px;padding:1px 7px}
+  .sta .no{font-size:.66rem;color:#8a7a5a;display:block;margin-top:3px;line-height:1.5}
+
+  .roadbox{background:#080d22;border-radius:14px;padding:8px 6px 4px;margin:10px 0;
+           box-shadow:inset 0 0 0 2px #1d2750, 0 4px 14px rgba(0,0,0,.5)}
+  .roadbox svg{display:block;width:100%;height:auto;
+      font-family:"Hiragino Sans","Yu Gothic",sans-serif}
+  .roadttl{display:flex;align-items:center;gap:8px;margin:2px 4px 6px}
+  .roadttl b{font-size:.86rem;font-weight:900;color:var(--tx)}
+  .roadttl i{font-style:normal;font-size:.66rem;font-weight:900;border-radius:999px;padding:2px 9px;color:#101733}
+  .rsa .dot{transition:.2s}
+  .rsa.got .dot{fill:#d94f3d;stroke:#ffd9d2}
+  .rkey{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin:10px 0 2px;
+        font-size:.72rem;color:var(--tx2)}
+  .rkey span{display:flex;align-items:center;gap:4px}
+  .rkey b{display:inline-block;width:13px;height:13px;background:#fff8e1;border:2.5px solid #ffd166;border-radius:3px}
+  .rkey em{display:inline-block;width:11px;height:11px;background:#0d1430;border:2.2px solid #cdd7f5;transform:rotate(45deg)}
+  .rkey u{display:inline-block;width:11px;height:11px;border-radius:50%;background:#fff;border:2.5px solid #7cc4ff}
+  .rkey s{display:inline-block;width:11px;height:11px;border-radius:50%;background:#5fe39a;box-shadow:0 0 7px #5fe39a}
+
+  #netwrap svg{display:block;width:100%;height:auto;font-family:"Hiragino Sans","Yu Gothic",sans-serif}
+  .daybtns{display:flex;flex-wrap:wrap;gap:5px;margin:10px 0 4px}
+  .daybtns button{flex:1 1 auto;min-width:62px;border:1.5px solid #3f5a99;background:#0f1730;color:var(--tx2);
+    font-family:inherit;font-weight:900;font-size:.74rem;border-radius:9px;padding:8px 4px;cursor:pointer;transition:.15s}
+  .daybtns button.on{color:#101733}
+  .daybtns button[data-d=all].on{background:#cdd7f5;border-color:#cdd7f5}
+  .daybtns button[data-d=d12].on{background:#ffb84d;border-color:#ffb84d}
+  .daybtns button[data-d=d13].on{background:#7cc4ff;border-color:#7cc4ff}
+  .daybtns button[data-d=d14].on{background:#8fd68a;border-color:#8fd68a}
+  .daybtns button[data-d=d15].on{background:#f7a8c8;border-color:#f7a8c8}
+  #netwrap.f-d12 .rt:not(.d12),#netwrap.f-d13 .rt:not(.d13),
+  #netwrap.f-d14 .rt:not(.d14),#netwrap.f-d15 .rt:not(.d15){opacity:.06}
+  #netwrap .rt{transition:opacity .25s}
+  /* ---------- misc ---------- */
+  h3{font-size:.98rem;margin:22px 0 6px;color:var(--acc2);line-height:1.5}
+  .lead{color:var(--tx2);font-size:.85rem;margin:8px 0}
+  ul{padding-left:1.2em;font-size:.87rem}li{margin:4px 0}
+  a{color:var(--acc2);word-break:break-word}
+  .ok{color:var(--ok)}.no{color:var(--warn)}
+  .chip{display:inline-block;font-size:.66rem;font-weight:900;padding:1px 8px;border-radius:999px;
+        margin-left:5px;vertical-align:2px}
+  .cf{background:var(--ok);color:#06121d}.cb{background:var(--acc);color:#1a1400}
+  .ce{background:#2b3765;color:var(--tx2)}
+  .pkm{display:inline-block;background:#3a2740;border:1px solid #7d4f6a;color:var(--pk);
+       font-size:.72rem;font-weight:800;border-radius:6px;padding:1px 7px;margin:1px 3px 1px 0}
+  .lnk{margin:12px 0 0;font-size:.82rem}
+  .lnk a{display:inline-block;background:var(--card2);border:1px solid #3f5a99;border-radius:8px;
+         padding:6px 11px;margin:0 5px 5px 0;text-decoration:none;font-weight:700}
+  .lnk a.tel{background:#0d2a1f;border-color:#2f6b4f;color:var(--ok)}
+  .top{position:fixed;right:12px;bottom:calc(14px + env(safe-area-inset-bottom));z-index:99;
+       background:var(--acc);color:#1a1400;font-weight:900;font-size:.78rem;border-radius:999px;
+       padding:10px 15px;text-decoration:none;box-shadow:0 3px 14px rgba(0,0,0,.55);
+       opacity:0;pointer-events:none;transition:.25s;border:none;cursor:pointer;font-family:inherit}
+  .top.on{opacity:1;pointer-events:auto}
+  footer{margin-top:36px;padding-top:16px;border-top:1px solid var(--line);
+         color:var(--tx2);font-size:.77rem;line-height:1.75}
+  @media(max-width:400px){
+    .wrap{padding:0 10px 60px} h1{font-size:1.3rem}
+    summary{font-size:.99rem;padding:13px 40px 13px 13px} .inner{padding:2px 12px 16px}
+    .tm{flex:0 0 54px;font-size:.74rem} .ev:before{left:29px}
+  }
+</style>
+</head>
+<body>
+<button class="top" id="top" aria-label="上へ">▲ 上へ</button>
+<div class="wrap">
+
+<header>
+  <h1>🚗 家族旅行のしおり</h1>
+  <span class="dates">2026年8月12日（水）〜15日（土）</span>
+  <p class="route"><b>堺</b> → 京都 → 湯原温泉 → 出雲 → 鳥取 → 姫路 → <b>堺</b><br>
+  3泊4日／5人／走行 約1,050km</p>
+</header>
+
+<div class="box ans">
+  <span class="big">✅ 行程はすべて確定しました</span>
+  <p>宿3軒・食事11食・入場予約、すべて決まっています。残っているのは<strong>出発前の準備5件だけ</strong>。<br>
+  当日その場で見るのは「<strong>神庭の滝に寄るか</strong>（8/13）」と「<strong>姫路城で西の丸まで回るか</strong>（8/15）」の2つで、どちらも寄らなくても行程は崩れません。</p>
+</div>
+
+<div class="tbl">
+<table>
+<tr><th>日</th><th>泊まる</th><th>食べる</th><th>メインイベント</th></tr>
+<tr><td class="t">8/12<br>(水)</td><td>京都駅前<br>さと茂旅館</td><td>昼＝高槻市<br>夕＝味味香</td><td>フルーツ大福<br>夜のすいぞくかん</td></tr>
+<tr><td class="t">8/13<br>(木)</td><td>湯原温泉<br>菊之湯</td><td>朝＝マック<br>昼＝加西SA<br>夕＝宿</td><td>美星天文台<br>ペルセウス座流星群</td></tr>
+<tr><td class="t">8/14<br>(金)</td><td>フォレストリア<br>用瀬</td><td>朝＝宿<br>昼＝出雲そば<br>夕＝BBQ</td><td>出雲大社<br>BBQ・花火・星空</td></tr>
+<tr><td class="t">8/15<br>(土)</td><td>—<br>21時頃帰宅</td><td>昼＝姫路城前<br>夕＝えん家</td><td>姫路城<br>姫路市立水族館</td></tr>
+</table>
+</div>
+
+<div class="ctl">
+  <button id="openAll">＋ ぜんぶ開く</button>
+  <button id="closeAll">− ぜんぶ閉じる</button>
+</div>
+
+<!-- ==================== 8/12 ==================== -->
+<details class="day" id="d12">
+<summary><span class="em">🏮</span><span class="h"><span class="n">8月12日（水）京都</span>
+<span class="s">堺8:45発 → 一心堂でフルーツ大福 → 高槻市 → 大丸でケーキ → さと茂旅館 → 夜のすいぞくかん</span></span></summary>
+<div class="inner">
+
+<div class="tl">
+  <div class="ev"><div class="tm">08:45</div><div class="bd">
+    <p class="ttl">自宅を出発</p>
+    <p class="ds">まず一心堂へ。開店と同時に入るので、少し早めに出ます</p></div></div>
+
+  <div class="ev key"><div class="tm">09:00<br>↓09:20</div><div class="bd">
+    <p class="ttl">🍡 一心堂 本店でフルーツ大福（高槻市へのお土産）</p>
+    <p class="ds">堺市東区日置荘原寺町19-7／<strong>072-285-6798</strong>／9:00〜19:00／<strong>駐車場8台</strong>／萩原天神駅ちかく<br>
+    <strong class="ok">✅ 本来は水曜定休ですが、公式サイトに「8月12日(水)は休まず営業いたします」と告知が出ています。</strong><br>
+    <strong>持ち帰り専門（イートインなし）。カードは使えますが、電子マネー・QR決済は不可</strong>です<br>
+    <span class="no">⚠ フルーツ大福は<strong>消費期限が当日</strong>です（公式明記）。8月なので<strong>保冷剤を多めにもらってください</strong>。渡すまで車のエアコンの効くところに</span></p>
+    <div class="lnk"><a href="https://www.google.com/maps/search/?api=1&query=%E4%B8%80%E5%BF%83%E5%A0%82%E6%9C%AC%E5%BA%97%20%E5%A0%BA%E5%B8%82%E6%9D%B1%E5%8C%BA%E6%97%A5%E7%BD%AE%E8%8D%98%E5%8E%9F%E5%AF%BA%E7%94%BA19-7">📍 地図</a><a href="tel:0722856798" class="tel">📞 072-285-6798</a><a href="https://issindo-osaka.com/">公式サイト</a></div></div></div>
+
+  <div class="ev"><div class="tm">09:30</div><div class="bd">
+    <p class="ttl">近畿道へ（松原ICが最寄り・約15分）</p>
+    <p class="ds">近畿道 → <strong>吹田JCT</strong> → 名神（京都方面）へ</p></div></div>
+
+  <div class="ev"><div class="tm">10:10<br>↓10:35</div><div class="bd">
+    <p class="ttl">吹田SA（上り）</p>
+    <p class="ds"><span class="pkm">ピカチュウ</span><span class="pkm">ルギア ★伝説</span><br>
+    <strong>ここでスタンプ用紙をもらってください。</strong>吹田SA上りは「京都方面」の車線です</p></div></div>
+
+  <div class="ev key"><div class="tm">10:55</div><div class="bd">
+    <p class="ttl">🛣 高槻IC で降ります（茨木ICは通過）</p>
+    <p class="ds"><strong class="ok">茨木ICは使いません。</strong>茨木で降りると国道171号を東へ8kmほど走ることになり、お盆の午前は流れが読めません。<br>
+    <strong>そのまま名神を進んで、ひとつ先の「高槻JCT・IC」で降ります。</strong>名神の上り（京都・大山崎方面）からも下りからも高槻IC出口が使えることは、NEXCO西日本のジャンクション図で確認しました。<br>
+    降りたら<strong>府道79号線</strong>を南へ。高槻ICは高槻市の北のはずれ（大字成合）なので、市街地までもう少し走ります</p></div></div>
+
+  <div class="ev key"><div class="tm">11:15<br>↓13:15</div><div class="bd">
+    <p class="ttl">高槻市 着・昼食</p>
+    <p class="ds">ここで一心堂のフルーツ大福をお渡しします。<br>
+    <span class="no">8/12は水曜。高槻は水曜定休の店が多いので、外で食べるならそこだけご注意を</span></p></div></div>
+
+  <div class="ev"><div class="tm">13:30<br>↓14:00</div><div class="bd">
+    <p class="ttl">高槻市を出発</p>
+    <p class="ds">京都まで約25km・40〜50分</p></div></div>
+
+  <div class="ev key"><div class="tm">14:30<br>↓15:45</div><div class="bd">
+    <p class="ttl">🍰 大丸京都店（四条烏丸）でカットケーキ</p>
+    <p class="ds">地階food売り場 10:00〜20:00。<strong>大丸は元日・1/2以外は無休</strong>なので8/12は営業日です。<br>
+    地階「ごちそうパラダイス」洋菓子売場に集中しています：<strong>マールブランシュ</strong>（苺のショートケーキ712円ほか。生クリームが評判で子ども受け◎）、ヴィタメール、アンテノール、フレイバー（シフォンケーキ）<br>
+    駐車場：四条高倉（9:00〜22:00）／大丸東洞院（9:45〜20:15）とも30分300円、<strong>10,000円以上で2時間無料</strong><br>
+    <span class="ok">保冷剤を多めにもらってください。</span>このあとすぐ旅館の冷蔵庫に入れます</p></div></div>
+
+  <div class="ev key"><div class="tm">16:00<br>↓16:25</div><div class="bd">
+    <p class="ttl">🏮 さと茂旅館 チェックイン ＝ ケーキを冷蔵庫へ</p>
+    <p class="ds">京都駅中央改札から徒歩3分。<strong>全20室が和室で全室バス・トイレ付</strong>（8〜12畳はセパレート）。<strong>全室に冷蔵庫あり</strong>。<br>
+    <span class="ok">ここで一度荷物とケーキを置いてしまうのが、この日の要です</span></p></div></div>
+
+  <div class="ev key"><div class="tm">16:40<br>↓17:45</div><div class="bd">
+    <p class="ttl">🍛 夕食：京のカレーうどん 味味香 京都ポルタ店</p>
+    <p class="ds">京都駅直結（ポルタ地下1階）なので旅館から歩けます。<strong>11:00〜22:00 通し・29席・予約不可</strong>。<br>
+    <span class="no">※カレーだしは片栗粉でとろみをつけるあんかけ風＝とても熱いので、小さい子は冷ましてから</span></p>
+
+    <details style="margin:10px 0 0;background:#0f1730">
+    <summary style="padding:11px 13px;font-size:.9rem;padding-right:38px"><span class="em" style="font-size:1.05rem">🍛</span><span class="h"><span class="n" style="font-size:.93rem">味味香の詳細（行き方・メニュー・地図）</span></span></summary>
+    <div class="inner" style="padding:2px 12px 14px">
+
+      <div class="tbl"><table>
+      <tr><th>項目</th><th>内容</th></tr>
+      <tr><td class="t">店名</td><td><strong>京のカレーうどん 味味香 京都ポルタ店</strong>（みみこう）</td></tr>
+      <tr><td class="t">住所</td><td>京都市下京区塩小路町902<br><strong>京都ポルタ B1F 東エリア「レストラン No.95」</strong></td></tr>
+      <tr><td class="t">電話</td><td><a href="tel:0753523322">075-352-3322</a></td></tr>
+      <tr><td class="t">営業</td><td><strong>11:00〜22:00（L.O. 21:30）</strong><br><span class="ok">通し営業なので、時間がずれても大丈夫です</span></td></tr>
+      <tr><td class="t">定休日</td><td>ポルタの休館日のみ（＝8/12は営業）</td></tr>
+      <tr><td class="t">席</td><td>29席・<span class="no">予約不可</span></td></tr>
+      </table></div>
+
+      <div class="box ans">
+        <span class="big">🚶 行き方（旅館から徒歩5分・地上に出ません）</span>
+        <p>公式の案内は「<strong>京都駅に着いたらすぐ地下に下りれば、ポルタの東エリアに味味香ポルタ店があります</strong>」。<br>
+        目印は<strong>京都ポルタ B1F・東エリアのダイニングゾーン</strong>（ダイニングは11:00〜22:00、物販は20:30まで）。<br>
+        <strong class="ok">地下を通っていけるので、8月の夕方でも涼しいまま行けるのが一番のメリットです。</strong></p>
+      </div>
+
+      <h3 style="margin-top:16px">🍽 メニュー（生魚・うなぎは出てきません）</h3>
+      <div class="tbl"><table>
+      <tr><th>種類</th><th>メニュー</th><th>価格</th></tr>
+      <tr><td class="t">カレーうどん</td><td>鶏肉</td><td>1,280円</td></tr>
+      <tr><td class="t"></td><td>かつ</td><td>1,480円</td></tr>
+      <tr><td class="t ok">出汁のうどん<br>（子ども向き）</td><td class="ok"><strong>京あげきつね</strong></td><td>930円</td></tr>
+      <tr><td class="t ok"></td><td class="ok"><strong>玉子とじ</strong></td><td>930円</td></tr>
+      <tr><td class="t ok">丼</td><td class="ok"><strong>親子丼</strong></td><td>930円</td></tr>
+      <tr><td class="t"></td><td>天丼</td><td>1,280円</td></tr>
+      </table></div>
+      <p class="lead"><strong class="ok">カレーが苦手でも「お出汁のうどん」と「親子丼」で全員まわせます。</strong>野菜が主役の料理はありません。5人で約5,000〜6,000円。</p>
+
+      <div class="lnk">
+        <a href="https://www.google.com/maps/search/?api=1&query=%E5%91%B3%E5%91%B3%E9%A6%99%20%E4%BA%AC%E9%83%BD%E3%83%9D%E3%83%AB%E3%82%BF%E5%BA%97">📍 地図（Googleマップ）</a>
+        <a href="tel:0753523322" class="tel">📞 075-352-3322</a>
+        <a href="https://mimikou.jp/porta/">味味香 公式</a>
+        <a href="https://www.porta.co.jp/shopguide/detail/158">京都ポルタ 店舗ページ</a>
+      </div>
+    </div>
+    </details>
+  </div></div>
+
+  <div class="ev key"><div class="tm">18:00<br>↓20:00</div><div class="bd">
+    <p class="ttl">🐬 京都水族館「夜のすいぞくかん」</p>
+    <p class="ds">梅小路公園まで車5分／徒歩20分。5人で<strong>8,900円</strong>。<br>
+    <strong>18:00 イルカプログラム</strong>／<strong>18:48 日の入り → ライトアップ</strong>／19:15・19:30 ウォーターカーテン／企画展「くらげと傘と風鈴と」の夜ライトアップ。<br>
+    入場受付19:00まで・<strong class="ok">前売り券を買っておいてください</strong></p></div></div>
+
+  <div class="ev"><div class="tm">20:20</div><div class="bd">
+    <p class="ttl">さと茂旅館へ戻る</p>
+    <p class="ds">あとはお風呂に入って寝るだけです</p></div></div>
+
+  <div class="ev key"><div class="tm">20:40<br>↓21:30</div><div class="bd">
+    <p class="ttl">♨️ お風呂</p>
+    <p class="ds">大浴場は<strong>16:00から翌9:00まで、男女別</strong>（公式FAQ）。清掃休止時間の記載はありません。<strong>2階（最大20名）と5階（最大18名）の2ヶ所</strong>で、腰掛けると滝のように湯が出る「背もたれ湯」付き。<br>
+    <span class="ok">時間に追われないので、ゆっくりで大丈夫です</span></p></div></div>
+
+  <div class="ev key"><div class="tm">21:30<br>↓22:00</div><div class="bd">
+    <p class="ttl">🍰 お風呂上がりに、大丸のケーキ</p>
+    <p class="ds">冷蔵庫に入れておいたものを部屋で。<span class="ok">これで初日はおしまいです</span></p></div></div>
+
+  <div class="ev key"><div class="tm">22:00</div><div class="bd">
+    <p class="ttl">🛌 就寝</p>
+    <p class="ds">翌朝は7:30起床・8:30出発。<strong>この日はしっかり寝ておいてください</strong>——8/13は約440kmで、美星から戻るのが23:50になります</p></div></div>
+</div>
+
+<div class="box alert">
+  <span class="big">🅿️ 駐車場だけ、情報が食い違っています</span>
+  <p>さと茂旅館は<strong>公式サイトでは「駐車場なし・近隣コインパーキングを案内」</strong>、JTBと日本旅館協会のページでは<strong>「駐車場あり（有料10台）」</strong>。<br>
+  公式が案内しているコインパーキング：三井のリパーク京都駅北第2（24時間以内2,000円）、タイムズ室町南／中（24時間2,000円）、三井のリパーク京都駅北（1,800円）、タイムズ新町／木津屋橋（1日2,200円）</p>
+</div>
+
+<div class="lnk">
+  <a href="tel:0753716245" class="tel">📞 さと茂旅館 075-371-6245</a>
+  <a href="https://www.satomo.co.jp/">さと茂旅館 公式</a>
+  <a href="https://www.kyoto-aquarium.com/">京都水族館</a>
+  <a href="https://www.daimaru.co.jp/kyoto/">大丸京都店</a>
+</div>
+</div>
+</details>
+
+<!-- ==================== 8/13 ==================== -->
+<details class="day" id="d13">
+<summary><span class="em">☄️</span><span class="h"><span class="n">8月13日（木）湯原温泉・美星天文台</span>
+<span class="s">この日が最長 約440km／ペルセウス座流星群・新月の当たり年</span></span></summary>
+<div class="inner">
+
+<div class="tl">
+  <div class="ev"><div class="tm">07:30</div><div class="bd">
+    <p class="ttl">起床・支度</p>
+    <p class="ds">朝食は買わずに出ます（下のマクドナルドで）</p></div></div>
+
+  <div class="ev"><div class="tm">08:30</div><div class="bd">
+    <p class="ttl">チェックアウト（10:00まで）→ 出発</p></div></div>
+
+  <div class="ev key"><div class="tm">08:45<br>↓09:05</div><div class="bd">
+    <p class="ttl">🍔 マクドナルド 1号線上鳥羽店（ドライブスルー）</p>
+    <p class="ds">京都市南区上鳥羽麻ノ本町17／<strong>24時間営業・DTも24時間</strong>／駐車13台。<br>
+    国道1号沿いで<strong>京都南ICの直前</strong>。寄り道がほぼゼロです。買ったら車内で食べながら高速へ。<br>
+    <strong>朝マックは10:30まで。</strong>5人で1,700〜2,900円が目安。<br>
+    <span class="no">※駐車13台と小さめ。混んでいたら十条大宮店（24時間・DT24時間・駐車37台）が保険。お盆の国道1号は朝から混むので20分みてあります</span><br>
+    <span class="ok">※代案＝旅館の徒歩3〜5分にコンビニが4軒（ローソン京都駅前店24h／ファミマ京都タワー前店24h ほか）。出発前に歩いて買えば車を動かさずに済みます</span></p></div></div>
+
+  <div class="ev"><div class="tm">09:10</div><div class="bd">
+    <p class="ttl">京都南IC → 名神（車内で朝食）</p></div></div>
+
+  <div class="ev"><div class="tm">10:10<br>↓10:35</div><div class="bd">
+    <p class="ttl">宝塚北SA（新名神）</p>
+    <p class="ds"><span class="pkm">ピカチュウ</span><span class="pkm">ゼルネアス ★伝説</span><br>
+    西日本最大級のSA・旗艦店。グッズ販売とフォトパネルもあります</p></div></div>
+
+  <div class="ev key"><div class="tm">11:25<br>↓12:25</div><div class="bd">
+    <p class="ttl">🍽 加西SA（中国道・下り）で昼食</p>
+    <p class="ds"><span class="pkm">ミズゴロウ</span><span class="pkm">ジュペッタ</span><br>
+    1階のフードコート（24時間）。<strong>専門店ブースが並ぶ形ではなく、券売機で食券を買う一体型カウンター</strong>なので、5人バラバラに頼んで同じテーブルで食べられます。<br>
+    <strong>甘口お子さまカレー600円</strong>／うどん・そば700〜880円（和風カレーうどん880円）／カレーライス750円／<strong>ビーフかつめし980円</strong>（加古川名物）／<strong>シン 世界一忙しいラーメン940円</strong>（加西SA下り限定）。<br>
+    <span class="ok">「カツオかな？」とおっしゃっていたのは、<strong>加古川名物「ビーフかつめし」</strong>のことだと思われます（音声入力の変換ちがい）。</span>加西SA下りの看板メニューは<strong>この「ビーフかつめし980円」</strong>と<strong>「シン 世界一忙しいラーメン940円」</strong>の2枚看板なので、現地の券売機でこの2つを探せば間違いありません。<span class="no">※カツオ（鰹）のメニューは確認できませんでした</span><br>
+    <span class="ok">5人でフードコートなら約4,150円。</span>混んでいたら2Fレストラン（平日10:00〜20:00・<strong>キッズコーナーあり</strong>・お子さまランチ1,000円）へ。ただし価格は倍近くになります</p></div></div>
+
+  <div class="ev"><div class="tm">13:30<br>↓13:45</div><div class="bd">
+    <p class="ttl">勝央SA（中国道・下り）</p>
+    <p class="ds"><span class="pkm">クワッス</span><span class="pkm">チョロネコ</span><br>トイレ＋岡山土産だけサッと</p></div></div>
+
+  <div class="ev key"><div class="tm">14:40<br>or 15:40</div><div class="bd">
+    <p class="ttl">♨️ 湯原温泉 菊之湯 チェックイン</p>
+    <p class="ds"><strong>チェックイン時に夕食の時間を確定してください。</strong>17:00にできれば美星に余裕が出ます。<br>
+    <span class="ok">ついでに「深夜0時前に戻るので、玄関の施錠と入り方」も聞いておいてください</span></p></div></div>
+
+  <div class="ev"><div class="tm">15:20<br>↓16:45</div><div class="bd">
+    <p class="ttl">温泉街をさんぽ（徒歩）</p>
+    <p class="ds"><strong>端から端まで徒歩10分</strong>のコンパクトな温泉街（宿17軒）。菊之湯からの徒歩時間：カランコロン大通り1分／寄りそい橋（45mの吊り橋）1分／砂湯2分／街かど物語2分／マスの自然釣場3分／<strong>湯原温泉ミュージアム5分</strong>／独楽の博物館8分。<br>
+    <span class="ok"><strong>おすすめは湯原温泉ミュージアム</strong>（10:00〜18:00・火曜休なので8/13は営業）。1階無料／2階資料館200円、<strong>スリッパ卓球500円/30分</strong>、はんざきだるまの絵付け1,000円〜。お子さんが一番盛り上がるはず</span><br>
+    <span class="no">※ドラゴン射的場は土曜のみ営業なので8/13は休みです</span></p></div></div>
+
+  <div class="ev key"><div class="tm">16:00<br>↓16:45</div><div class="bd">
+    <p class="ttl">♨️ お風呂は夕食前に済ませる</p>
+    <p class="ds"><strong>美星から戻るのが23:50頃。</strong>夜に入ると就寝が1時近くになります。翌朝が早いので<strong>夕食前に入っておくのが正解</strong>です</p></div></div>
+
+  <div class="ev key"><div class="tm">17:00<br>or 17:30</div><div class="bd">
+    <p class="ttl">宿で夕食</p></div></div>
+
+  <div class="ev"><div class="tm">19:00</div><div class="bd">
+    <p class="ttl">美星天文台へ出発</p>
+    <p class="ds">途中<strong>高梁SA（上り＝岡山方面）</strong><span class="pkm">クワッス</span><span class="pkm">オクタン</span>で休憩5〜10分<br>
+    <span class="no">美星町にガソリンスタンドはありません。高速を降りる前に給油を</span></p></div></div>
+
+  <div class="ev key"><div class="tm">20:45<br>↓22:00</div><div class="bd">
+    <p class="ttl">☄️ 美星天文台 ペルセウス座流星群観察会 <span class="chip cf">予約済</span></p>
+    <p class="ds">観察会は<strong>19:00〜翌00:30（受付18:30〜23:30）</strong>／<strong>合計2,000円・現金のみ</strong>（1人500円／未就学児は無料）／<strong class="no">予約完了メールのスクショ提示が必須</strong>（撮影済み ✅）。<br>
+    <strong class="ok">公式が推奨している持ち物：レジャーシート・椅子・ブランケット。</strong>標高400m超なので上着は必須です。<br>
+    <span class="no">※火を使うもの・杭・ペグは使用できません（公式）</span><br>
+    <strong>20:28に天文薄明が終わる</strong>ので、20:45に着いた時にはもう完全な闇です。<strong class="ok">21時台はちょうど天の川のいちばん濃いところ（いて座）が真南にくる時間帯</strong>。下の時間割のとおりに見てください。<br>
+    <span class="ok">当日の中止情報 → <a href="https://www.bao.city.ibara.okayama.jp/?p=4712">観察会のイベントページ</a>／<a href="https://www.bao.city.ibara.okayama.jp/">美星天文台トップ</a></span><br>
+    <span class="no">※着いてみたら閉まっている、という可能性もゼロではありません（悪天候中止だと天文台は休館になり、敷地にも入れません）。その場合は<strong>高梁SAに寄って早めに宿へ戻る</strong>、が代案です。空が持ちそうなら現地判断で延ばす、で臨機応変にいきましょう</span></p></div></div>
+
+  <div class="ev"><div class="tm">22:00<br>↓22:10</div><div class="bd">
+    <p class="ttl">（帰り）高梁SA【下り＝米子方面】</p>
+    <p class="ds"><span class="pkm">ワニノコ</span><span class="pkm">イエッサン</span><br>
+    <strong class="ok">上りと下りで別のポケモンです。</strong>行きの上りがクワッス＋オクタン、帰りの下りがワニノコ＋イエッサン。<strong>寄り道ゼロで2種類増えます</strong>（スタンプは24時間押せます）</p></div></div>
+
+  <div class="ev"><div class="tm">23:50<br>↓00:15</div><div class="bd">
+    <p class="ttl">湯原着 → 就寝</p>
+    <p class="ds">翌朝8:00朝食なので、<strong>7時間45分は眠れる計算</strong>です</p></div></div>
+
+  <div class="ev opt"><div class="tm">◆</div><div class="bd">
+    <p class="ttl">― ここから下は「余裕があれば」の候補です ―</p>
+    <p class="ds">上の流れが確定版。<strong>時間が余ったときだけ</strong>、下を差し込んでください</p></div></div>
+
+  <div class="ev opt"><div class="tm">14:00<br>↓15:00</div><div class="bd">
+    <p class="ttl">（余裕があれば）神庭の滝</p>
+    <p class="ds">久世ICで降りて約30分。<strong>落差110m・幅20m</strong>の名瀑で、駐車場から遊歩道5分。<strong>野生のニホンザル約160〜170匹</strong>が生息（会えない日もあります）。<br>
+    8:30〜17:15（最終受付16:30）・駐車場無料／<strong>5人で1,800円</strong>。<br>
+    <span class="no">※寄ると湯原着が15:30になり、温泉街の散策時間が減ります。<strong>加西SAを予定より早く出られたら</strong>、が判断基準です</span></p></div></div>
+</div>
+
+<div class="tbl"><table>
+<tr><th>時刻</th><th>空のどこを見るか</th><th>何が見えるか</th><th>流星の目安</th></tr>
+<tr><td class="t">20:45<br>〜21:00</td><td>まず<strong>どこも見ない</strong>（目を慣らす）</td><td>レジャーシートを敷いて寝転がるだけの15分。<strong>目が暗さに慣れるのに最低15分</strong>かかります。ここでスマホを見ると全部やり直し</td><td class="no">数える前の準備時間</td></tr>
+<tr><td class="t ok">21:00<br>〜21:40</td><td class="ok"><strong>真南、こぶし2つ半ぶんの高さ</strong>（いて座）</td><td class="ok"><strong>天の川の本番。</strong>いて座＝銀河の中心方向が南の高度約26°でこの日の最高高度。そこから頭の真上（こと座ベガは高度85°でほぼ天頂）へ、天の川が背骨のように流れます。<strong>夏の大三角</strong>＝ベガ85°／デネブ62°／アルタイル57°で全部頭上</td><td>1時間に<strong>5〜8個</strong></td></tr>
+<tr><td class="t">21:40<br>〜22:00</td><td><strong>北東、低いところ</strong>（ペルセウス座）＋空全体</td><td>放射点のペルセウス座が北東から昇ってくる時間。ただし高度はまだ11°→16°と低く、<strong>放射点そのものを凝視するのは逆効果</strong>。低い放射点のときは、地平線をなめるように流れる<strong>長い流星（出現数は少ないが1本が派手）</strong>が出ます</td><td>1時間に<strong>8〜11個</strong></td></tr>
+<tr><td class="t no">22:00</td><td class="no" colspan="3"><strong>ここで撤収の予定です</strong>（下の「もう少し粘るなら」参照）</td></tr>
+<tr><td class="t">〜23:00</td><td>空全体（放射点は北東・高度23°）</td><td>放射点が上がるほど数が増えます</td><td>1時間に<strong>約15個</strong></td></tr>
+<tr><td class="t">〜00:30<br>（観察会終了）</td><td>空全体（放射点は北東・高度30°）</td><td>天の川のいて座側は南西に傾いて低くなります</td><td>1時間に<strong>約20個</strong></td></tr>
+<tr><td class="t">明け方<br>3〜4時台</td><td>空全体（放射点は高度50〜60°）</td><td>ここが本当のピーク。<span class="no">ただし観察会は00:30で終了なので、この時間帯は選択肢にありません</span></td><td>1時間に<strong>約35個</strong>（国立天文台）</td></tr>
+</table></div>
+
+<div class="box info">
+  <span class="big">⏳ 22:00で帰るのが惜しくなったら</span>
+  <p>翌8/14は<strong>8:00朝食・8:45出発</strong>。湯原までの帰りは約1時間50分＋SA休憩なので、逆算するとこうなります。</p>
+  <ul style="margin:0">
+    <li><strong>22:00撤収</strong>（今の予定）→ 23:50着・00:15就寝 → <strong class="ok">睡眠7時間45分</strong>。流星は合計10〜15個くらい</li>
+    <li><strong>23:00まで粘る</strong>→ 00:50着・01:15就寝 → <strong>睡眠6時間45分</strong>。流星は<strong>+15個</strong>、放射点が23°まで上がって数がはっきり増える1時間</li>
+    <li><strong>00:30の終了まで</strong>→ 02:20着・02:45就寝 → <strong class="no">睡眠5時間15分</strong>。翌日は出雲大社まで走る日なので、ここは正直きついです</li>
+  </ul>
+  <p><strong class="ok">おすすめは22:00撤収のまま。</strong>どうしても、というときの落としどころが23:00です。<br>
+  <span class="ok">小さい子がいるので、22:00に一度「帰るよ」と声をかけて、車に乗ってから決めるくらいがちょうどいいと思います</span></p>
+</div>
+
+<div class="box alert">
+  <span class="big">🔎 確認できたこと／できなかったこと</span>
+  <p><strong class="ok">確認できたこと：</strong>極大は8月13日11時頃・8月13日は新月・明け方で1時間に約35個（<a href="https://www.nao.ac.jp/astro/sky/2026/08-topics03.html">国立天文台</a>）／観察会19:00〜翌00:30・受付18:30〜23:30・1人500円（未就学児無料）・現金のみ・予約完了メールの提示必須・レジャーシート／椅子／ブランケット推奨・火気／杭／ペグ禁止・当日14時頃までに中止告知（<a href="https://www.bao.city.ibara.okayama.jp/?p=4712">美星天文台 観察会ページ</a>）。「<strong>ペルセウス座は21時ごろに昇ってくる</strong>」も公式の記載です。</p>
+  <p><strong class="no">確認できなかったこと：</strong>上の表の<strong>時間帯ごとの流星の個数と、天の川・星の高度は、公式発表の数字ではありません。</strong>国立天文台の「明け方に約35個」を放射点の高さで割り戻したこちらの概算です（放射点が低いほど見える数は減ります）。<strong>実際の数は空の暗さと雲でいくらでも変わります</strong>ので、±で幅があるものとして見てください。当日の望遠鏡で何の天体を見せてくれるかも、公式には「望遠鏡による天体観察」としか出ておらず、対象は不明です。</p>
+</div>
+
+<div class="box ans">
+  <span class="big">☄️ 2026年のペルセウス座流星群は「当たり年」です</span>
+  <ul style="margin:0">
+    <li><strong>極大は8月13日11時頃</strong>（日本では昼間）。そのため見頃は「12日夜〜13日未明」と「<strong>13日夜〜14日未明</strong>」の2夜で、<strong class="ok">私たちが行く13日の夜はそのど真ん中</strong>です</li>
+    <li><strong class="ok">8月13日は新月。月明かりの影響をまったく受けません。</strong>条件としては最高です</li>
+    <li>暗い空なら13日の夜明け頃で1時間に約35個。<strong>21時頃から流星は出始めます</strong></li>
+    <li>目が暗さに慣れるまで<strong>最低15分</strong>。空を広く見渡すのがコツ</li>
+  </ul>
+</div>
+
+<div class="box alert">
+  <span class="big">⏰ 8/13の14時、公式サイトを見てください</span>
+  <p><strong>「降雨等の悪天候が予想される場合、当日14時頃までにホームページで中止を告知します」</strong>と公式にあります。ちょうど<strong>湯原に着く直前</strong>なので、その頃に一度確認を。</p>
+</div>
+
+<div class="box info">
+  <span class="big">🔦 白い懐中電灯は使わないでください</span>
+  <p><strong>白い光を一瞬でも浴びると、暗さに慣れた目が15〜20分ぶんリセットされます。</strong>まわりの人にも迷惑になります。<br>
+  <span class="ok">わざわざ赤いライトを買う必要はありません。<strong>懐中電灯やスマホのライトに赤いセロファンを輪ゴムで留めるだけ</strong>で十分です（100均・110円）。</span><br>
+  おまけの利点として<strong>虫が寄ってきません</strong>。虫は青〜紫外線寄りの光に集まるので、白色LEDは蚊やガを呼びます。<br>
+  駐車場から会場までの暗い道は白でOK。<strong>観望が始まったら赤に切り替える</strong>、という使い分けで十分です</p>
+</div>
+
+<div class="lnk">
+  <a href="tel:0867622111" class="tel">📞 菊之湯 0867-62-2111</a>
+  <a href="tel:0866874222" class="tel">📞 美星天文台 0866-87-4222</a>
+  <a href="https://www.bao.city.ibara.okayama.jp/?p=4712">観察会ページ（当日14時に中止確認）</a>
+  <a href="https://www.bao.city.ibara.okayama.jp/">美星天文台 公式トップ</a>
+  <a href="https://www.nao.ac.jp/astro/sky/2026/08-topics03.html">国立天文台 流星群</a>
+</div>
+</div>
+</details>
+
+<!-- ==================== 8/14 ==================== -->
+<details class="day" id="d14">
+<summary><span class="em">⛩️</span><span class="h"><span class="n">8月14日（金）出雲・BBQ・花火</span>
+<span class="s">出雲大社 → 鳥取のログハウス／18:00着・BBQ18:30・花火21:00（ともに許可済み）</span></span></summary>
+<div class="inner">
+
+<div class="box ans">
+  <span class="big">⏱ 15分早めて、18:00着にしました</span>
+  <p>「朝は早めに出る」「18:00頃に宿に着きたい」に合わせて、<strong>出発を 08:45 → 08:30 に15分前倒しし、その15分をそのまま午後に流しました。</strong>各スポットの滞在時間は一つも削っていません（SA20分・そば50分・参拝60分・道の駅15分・買い出し50分）。<br>
+  <span class="ok">結果、出雲発 13:30（ご希望の「14:00前に出発」を満たします）、宿着 18:00、BBQ着火まで 30分の余裕。</span></p>
+</div>
+
+<div class="tl">
+  <div class="ev"><div class="tm">07:45</div><div class="bd">
+    <p class="ttl">菊之湯で朝食</p>
+    <p class="ds">チェックイン時に<strong>「朝食は7:45で」</strong>とお伝えください（8:00しか無理なら、出発が15分後ろ倒しになるだけで行程は崩れません）。<br>
+    <span class="no">※食事の場所（お食事処か部屋食か）は未確認です。下の「宿に電話で確認すること」を見てください</span></p></div></div>
+
+  <div class="ev key"><div class="tm">08:30</div><div class="bd">
+    <p class="ttl">湯原温泉を出発</p>
+    <p class="ds"><strong>今日は約370km、旅の中で2番目に長い日です。</strong>前夜のうちに荷物を車へ戻しておくと、朝が10分違います</p></div></div>
+
+  <div class="ev"><div class="tm">08:50<br>↓09:10</div><div class="bd">
+    <p class="ttl">蒜山高原SA（米子道・下り）</p>
+    <p class="ds"><span class="pkm">ミズゴロウ</span><span class="pkm">エルレイド</span><br>
+    蒜山高原の景色も気持ちいい場所です。<strong>ここは20分で切り上げてください</strong><br>
+    <span class="ok">※「ミズゴロウのサービスエリア」とおっしゃっていたのは、このSAのことです（ここのポケモンがミズゴロウ）</span></p></div></div>
+
+  <div class="ev key"><div class="tm">11:20</div><div class="bd">
+    <p class="ttl">出雲大社 大駐車場 着</p>
+    <p class="ds">385台・<strong>無料</strong>・6:00〜20:00。<strong>神楽殿のすぐ北西</strong>。満車なら第2駐車場（360台）か古代出雲歴史博物館駐車場（244台）。<br>
+    <span class="no">お盆は神門通りが渋滞します。ここが今日いちばんの遅延ポイントです</span></p></div></div>
+
+  <div class="ev key"><div class="tm">11:30<br>↓12:20</div><div class="bd">
+    <p class="ttl">🍜 出雲そば</p>
+    <p class="ds"><strong class="no">4店とも予約不可でした。開店直後に並ぶのが唯一の対策です。</strong>全店とも境内の外。<br>
+    <strong>① そば処 八雲 本店（本命）</strong>＝76〜78席・お子様定食あり・座敷用子供椅子あり・<strong>大駐車場の目の前</strong>・4店で唯一うどん/丼もある・カード全対応／10:00〜15:00<br>
+    ② 荒木屋＝64席（座敷40）・無料駐車場15台・そばぜんざい550円／11:00〜16:00<br>
+    ③ 田中屋＝44席・キッズメニュー「うさぎさんプレート」・<span class="no">駐車場は軽3台のみ・現金/PayPayのみ</span><br>
+    ④ かねや＝最安だが<span class="no">終了が早い</span><br>
+    <span class="ok">8/14はどの店も定休日に当たりません。</span>ただし「売り切れ次第終了」なので早めに<br>
+    <strong>小さい子には「釜揚げそば」</strong>が安全（温かい・つゆの量を調節できる・薬味を抜ける・器の積み替えなし）</p></div></div>
+
+  <div class="ev key"><div class="tm">12:25<br>↓13:25</div><div class="bd">
+    <p class="ttl">⛩️ 出雲大社 参拝（神楽殿からの逆回り）</p>
+    <p class="ds">大駐車場に停めているので、神楽殿 → 勢溜 → 正式順路と回るのがラクです。<strong class="ok">「下り参道」は行きが下り＝帰りが登りなので、この回り方だと登りが分散して、いちばん下の子が最後にバテません。</strong><br>
+    ①神楽殿（<strong>大注連縄は長さ13.6m・重さ5.2t</strong>）→ ②御本殿 西側遥拝所（<strong>御神座は西向きなので、ここが神様の正面</strong>）→ ③素鵞社（本殿の真後ろ）→ ④八足門 → ⑤拝殿（<strong>二礼四拍手一礼</strong>）→ ⑥銅鳥居 → ⑦ムスビの御神像 → ⑧<strong>松の参道</strong>（樹齢400年超・<strong class="ok">ここは日陰で涼しい</strong>）→ ⑨祓橋 → ⑩祓社 → ⑪勢溜の大鳥居<br>
+    <span class="no">松の参道以外はほぼ日向です。帽子と水筒は必須</span></p></div></div>
+
+  <div class="ev key"><div class="tm">13:30</div><div class="bd">
+    <p class="ttl">出雲を出発 → 鳥取へ</p>
+    <p class="ds"><strong class="ok">ご希望の「14:00前に出発」は、この行程で満たせています（元の13:45発でもOKでしたが、15分前倒しして余裕を作りました）。</strong>約185km・<strong>約3時間10分</strong>（山陰道の無料区間＋国道9号）。この旅で最長の移動区間です。休憩は1回だけ<br>
+    <span class="no">※13:40を過ぎそうなら、神門通りでの寄り道はその場で打ち切ってください</span></p></div></div>
+
+  <div class="ev"><div class="tm">15:00<br>↓15:15</div><div class="bd">
+    <p class="ttl">🚻 道の駅 大山恵みの里（お手洗い休憩15分）</p>
+    <p class="ds">山陰道 名和IC下車すぐ／9:00〜18:00／無料駐車場60台。出雲から約100km・1時間30分——<strong>ちょうど中間点で、小さい子の限界とも合います</strong>。トイレ18器以上＋多目的、授乳室あり。<br>
+    晴れていれば大山がきれいに見えます。<strong>ソフトクリームだけ食べて出るくらいがちょうどいい</strong><br>
+    <span class="ok">※買い出しはここではせず、次のエスマートでまとめてやります（二度手間になるのと、生鮮品を早く積むと保たないため）</span></p></div></div>
+
+  <div class="ev key"><div class="tm">16:40<br>↓17:30</div><div class="bd">
+    <p class="ttl">🛒 エスマート鳥取南IC店で買い出し（50分）</p>
+    <p class="ds">鳥取南ICのすぐそば、宿へ向かう道の途中です。9:00〜21:00。<strong>ダイソー併設</strong>。<br>
+    <strong>店内の回り方（1周30分）：</strong>⓪鮮魚カウンターで<strong>「発泡スチロールの箱をください」</strong>→カート下段へ → ①青果 → ②鮮魚 → ③<strong>精肉（ここに時間をかける）</strong> → ④パン・日配 → ⑤中央棚（調味料・日用品）→ ⑥飲料 → ⑦<strong class="ok">氷は必ず最後</strong> → ⑧レジ<br>
+    袋詰め台で<strong>箱に「氷→肉→氷→魚」の順</strong>で重ねれば、30分の車内は余裕で持ちます。箱は<strong>足元ではなく荷室の日陰側</strong>へ。<br>
+    <span class="no">※炭・網・トング・火おこし・照明・焚き火はレンタルに含まれるので買わないでください</span><br>
+    <span class="ok">※翌朝（8/15）の朝食もここで買っておきます。ダイソーで<strong>虫よけの追加・蚊取り線香</strong>を足すならここで</span></p></div></div>
+
+  <div class="ev key"><div class="tm">18:00</div><div class="bd">
+    <p class="ttl">🏕️ フォレストリア用瀬 着・チェックイン</p>
+    <p class="ds">標高400m・1棟貸切。<strong>日の入りは18:53</strong>。まだ十分明るいうちに着けます。荷下ろしは最小限にして、まず炭に火を<br>
+    <span class="ok">※着いてすぐ、明るいうちに<strong>虫よけを全員に塗っておく</strong>のがコツです。暗くなってからだと塗り残しが出ます</span></p></div></div>
+
+  <div class="ev"><div class="tm">18:15</div><div class="bd">
+    <p class="ttl">🔥 BBQハウスへ移動・準備</p>
+    <p class="ds">フォレストリアには<strong>屋内BBQハウスと屋外BBQエリアの両方</strong>があります。食材と発泡箱を運んで、テーブルと照明をセットしてから着火。<br>
+    <span class="ok">雨や虫がつらければ屋内ハウスに切り替えられます。<strong>小さい子が限界ならこちら</strong></span></p></div></div>
+
+  <div class="ev key"><div class="tm">18:30<br>↓21:00</div><div class="bd">
+    <p class="ttl">🔥 BBQ <span class="chip cf">許可済</span></p>
+    <p class="ds"><strong class="ok">公式FAQで確認：BBQセット3,000円なら「炭を用意し、炭おこしまでスタッフが行います」。持っていくのは食材・タレ・飲み物だけです。</strong>屋根付きなので雨でもできます。<br>
+    <span class="no">※「器具・照明・テーブル・椅子・網・トング・焚き火」まで込みかは公式に明記がなく<strong>未確認</strong>。電話で「3,000円に何が付くか」だけ聞いておくと確実です。<strong>紙皿・紙コップは公式が「ご用意はございません」と明記</strong>しているので必ず持参を。虫よけも含まれません</span><br>
+    <strong>18:30に着火 → 18:53に日の入り → 19:10頃から焼き始め</strong>という流れ。暗くなる頃には炭が安定しているので、いちばん段取りのいい時間割です。<br>
+    <span class="ok">※押したら19:00開始でも問題ありません（照明がレンタルに含まれています）</span></p></div></div>
+
+  <div class="ev key"><div class="tm">21:00<br>↓21:30</div><div class="bd">
+    <p class="ttl">🎆 手持ち花火 <span class="chip cf">許可済</span></p>
+    <p class="ds">BBQの火が残っているうちにやると着火がラクです。<strong class="no">水を張ったバケツ（またはペットボトルの水）を必ず用意してください。</strong><br>
+    <strong class="ok">※花火 → 星空の順が正解です。</strong>先に星を見ると、花火の明るさで目がリセットされてしまいます</p></div></div>
+
+  <div class="ev key"><div class="tm">21:30<br>↓22:30</div><div class="bd">
+    <p class="ttl">✨ 宿の前で星空</p>
+    <p class="ds"><strong>照明を消してから15〜20分</strong>で目が慣れます。花火の片づけをしている時間がちょうど目慣らしになります。まず南西の天の川 → 22時以降は流星が増えます<br>
+    <span class="no">※ここが今日いちばん蚊に刺される時間帯です。BBQ前に塗った虫よけはこのあたりで切れますので、<strong>花火の前に一度塗り直し</strong>を</span></p></div></div>
+
+  <div class="ev"><div class="tm">22:30<br>〜</div><div class="bd">
+    <p class="ttl">🚿 シャワー（または翌朝に）</p>
+    <p class="ds">1棟貸切なので順番待ちなし。眠かったら朝で大丈夫です。<span class="ok">虫よけを塗っているので、子どもだけでも寝る前に洗い流せると良いです</span></p></div></div>
+</div>
+
+<div class="box alert">
+  <span class="big">📞 宿に電話で確認すること（菊之湯の食事場所）</span>
+  <p><strong>聞くことは2つだけです。</strong>「8/13の夕食と 8/14の朝食は、<strong>お食事処（大広間）ですか、お部屋ですか</strong>」と、「<strong>朝食を 7:45 からにできますか</strong>」。<br>
+  <strong>✅ 調べてわかったこと：</strong>公式サイトの「館内施設」に<strong>「お食事処」が掲載されています</strong>（千屋牛・奈義牛などを出す食事施設）。宴会場・大広間という名前の施設は公式サイトには出てきませんでした。<br>
+  <strong class="no">❓ わからなかったこと（未確認）：</strong>公式のお料理ページ・客室ページ・FAQのどれにも、<strong>夕食・朝食の会場が明記されていません</strong>。部屋食プランの有無も、<strong>今回の予約プランがどちらになっているか</strong>も、ネットでは確認できませんでした。<strong>電話が確実です。</strong><br>
+  <span class="ok">大広間だった場合は、「子ども連れなので、できれば端の席で」と一言添えておくと楽です。部屋食なら、朝の片づけを待たずに出発できるかも確認を</span></p>
+</div>
+
+<div class="box info">
+  <span class="big">🤔 「参拝→そば」の順にするか？（両論併記）</span>
+  <p>ご希望では「参拝してからお蕎麦」の順でしたが、行程表はあえて<strong>そば先</strong>のままにしてあります。理由を両方並べます。<br>
+  <strong class="ok">■ そば先（現行・推奨）</strong>…出雲そばの4店は<strong>全店予約不可・売り切れ次第終了</strong>。お盆の11:30ならまだ席も蕎麦もあります。<strong>先に食べれば、子どもの空腹と暑さを同時に潰せる</strong>のも大きいです（参拝は日向を歩く60分）。<br>
+  <strong class="no">■ 参拝先にする場合</strong>…<strong>11:25 参拝 → 12:25 そば → 13:20 駐車場戻り → 13:30 出発</strong>という入れ替えになります（発時刻は同じ）。メリットは<strong>参拝が比較的すいている時間帯になる</strong>こと。デメリットは<strong>12:25にそば屋に入ることになるため、売り切れと行列のリスクが上がる</strong>こと。④かねやはこの時間だと危ういです。<br>
+  <strong>判断のタイミング：</strong>大駐車場に着いた11:20に、八雲本店（駐車場の目の前）の行列を見て決められます。<span class="ok">行列が短ければそのままそば、すでに長ければ先に参拝して出直し——という使い分けが一番現実的です。</span></p>
+</div>
+
+<div class="box info">
+  <span class="big">🛒 買い出しの大枠（何を買うか）</span>
+  <p>青果／鮮魚／<strong>精肉（ここが主役）</strong>／焼きそば・ごはん／パン・翌朝食／飲み物／<strong>氷</strong>。<br>
+  <span class="ok">✅ <strong>包丁・まな板・鍋・フライパン・食器・炊飯器・電子レンジ・電気ケトル・トースターは備え付け</strong>（公式FAQ）。<strong>調味料も醤油・砂糖・塩・こしょう・ソース・食用油まであります</strong>。炭と炭おこしもレンタルに込み。</span><br>
+  <span class="no">買うのは<strong>食材・焼肉のタレ・飲み物・氷</strong>と、<strong>紙皿・紙コップ・割り箸</strong>（公式が「用意なし」と明記）だけです。</span><br>
+  <span class="ok">30分で終われば、そのぶんが丸ごと余裕になります（17:10発＝17:40宿着で、BBQまで約50分）</span></p>
+</div>
+
+<div class="lnk">
+  <a href="tel:0867622111" class="tel">📞 菊之湯 0867-62-2111</a>
+  <a href="tel:0858754051" class="tel">📞 フォレストリア用瀬 0858-75-4051</a>
+  <a href="tel:0858853977" class="tel">📞 エスマート鳥取南IC店 0858-85-3977</a>
+  <a href="https://www.yubara-kikunoyu.com/facility/">菊之湯 館内施設（公式）</a>
+  <a href="https://www.forest-ria.com/">フォレストリア 公式</a>
+  <a href="https://izumo-yakumo.com/">そば処 八雲 本店</a>
+  <a href="https://izumooyashiro.or.jp/">出雲大社</a>
+</div>
+</div>
+</details>
+
+<!-- ==================== 8/15 ==================== -->
+<details class="day" id="d15">
+<summary><span class="em">🏯</span><span class="h"><span class="n">8月15日（土）姫路城・帰宅</span>
+<span class="s">川遊び → 姫路城 → 水族館 → えん家 太子店17:00（予約済）→ 21時頃 堺着</span></span></summary>
+<div class="inner">
+
+<div class="box alert">
+  <span class="big">⚠ 姫路城で先に知っておくこと（すべて公式）</span>
+  <ul style="margin:0">
+    <li><strong class="no">再入城できません。</strong>だから昼食を先に済ませる流れにしています。入城前にトイレ・給水・日焼け止めを</li>
+    <li><strong class="no">有料エリアの中に飲食店・売店はありません。</strong>売店は改札を出てすぐ横＝<strong>退城後</strong></li>
+    <li><strong class="no">ベビーカーは原則使用できません</strong>（入城時に所定の場所へ）。小さい子も自力で歩く前提。<strong>抱っこ紐を</strong></li>
+    <li><strong class="no">天守内に冷房はありません。</strong>公式が「6〜10月は熱中症が疑われる方が非常に多い」と注意喚起しています</li>
+    <li><strong class="ok">給水機は「改札口前」と「備前丸」。</strong>公式が<strong>蓋つきマイボトルの持参</strong>を推奨。人数分持っていってください</li>
+    <li>クールスポット：改札口前（自販機・給水機・ミストファン）／二の丸いの門付近（テント・ベンチ）／水の一門前（ミストファン）／<strong>備前丸（ミストファン・給水機・テント・ベンチ）</strong></li>
+    <li><strong>「手ぶら観光」を公式が呼びかけ。</strong>階段が多いのでリュックで両手を空けて</li>
+    <li><strong class="no">令和8年7月上旬〜令和9年7月下旬は保存修理工事中。</strong>ニの櫓・水の一門などが対象で、備前丸の一部が資材置き場。<strong>訪問日はこの期間中</strong>です</li>
+    <li>混雑時は1時間程度の待ちが出ることがある、と公式。<strong>当日の待ち時間は「大入実況」で見られます</strong></li>
+  </ul>
+</div>
+
+<div class="tl">
+  <div class="ev"><div class="tm">07:30</div><div class="bd">
+    <p class="ttl">起床・朝食（前夜に買っておいたもの）</p></div></div>
+
+  <div class="ev key"><div class="tm">08:00<br>↓08:40</div><div class="bd">
+    <p class="ttl">💧 赤波川で水遊び（40分）</p>
+    <p class="ds">花崗岩が川に削られてできた甌穴が南北1.2kmに30以上。姫路城に入るために1時間 → 40分に短縮しています。<br>
+    <span class="no">※岩場なので裸足は危険。マリンシューズを。深さが読めない穴があるので、小さい子には浮力体を</span><br>
+    <span class="ok">※濡れた水着を入れるビニール袋を人数分</span></p></div></div>
+
+  <div class="ev key"><div class="tm">09:00</div><div class="bd">
+    <p class="ttl">フォレストリア用瀬を出発</p>
+    <p class="ds">用瀬IC → 鳥取道 → 佐用JCT → 中国道 → 播磨道 → 山陽道／約125km<br>
+    <strong class="ok">給油はここで。</strong>JA-SS用瀬SS（7:00〜20:00）が最終スタンドです</p></div></div>
+
+  <div class="ev key"><div class="tm">11:00</div><div class="bd">
+    <p class="ttl">🅿️ 大手門駐車場 着</p>
+    <p class="ds">姫路市本町68番地／<strong>普通車555台・終日営業</strong>／3時間以内600円・<strong>超過〜24時間900円</strong>（今回は3時間半なので900円）。現金・カード・電子マネー可／<strong>姫路城正面入口まで徒歩約10分</strong>。<br>
+    <span class="no">※満車なら 姫山駐車場（246台・同料金）→ 城の北駐車場（148台・最初の30分無料）。大手前公園地下駐車場は2026年2月23日から長期閉鎖中なので、例年より満車リスクは高めです</span></p></div></div>
+
+  <div class="ev key"><div class="tm">11:05<br>↓12:00</div><div class="bd">
+    <p class="ttl">🍽 昼食：千姫茶屋（本命）</p>
+    <p class="ds"><strong class="ok">場所：姫路城の「外」です。</strong>大手前通りをはさんで<strong>城の南向かい</strong>、市の複合施設「<strong>イーグレひめじ</strong>」の1階。姫路市本町68-290／<strong>079-288-4567</strong>。<br>
+    <strong>大手門駐車場から徒歩4〜5分、そこから入城口までさらに徒歩10分</strong>という位置関係です。<span class="no">城の有料エリアの中には飲食店がないので、必然的に「外で先に食べる」形になります</span><br>
+    <strong>11:00開店・年中無休・全席禁煙・60〜70席・座敷あり・カード可。</strong>そして<strong class="ok">お子さんにはミニうどんかふりかけご飯が無料でつきます</strong>。<br>
+    うどん640〜1,650円／そば880〜1,870円／穴子丼セット2,420円／しらす丼2,376円。<span class="no">L.O.14:30なので昼のみの営業です</span><br>
+    <strong class="ok">✅ PayPayが使えるので、この分の現金は用意しなくて大丈夫です。</strong><br>
+    <strong>ほかの候補：</strong>たまごや（姫路のブランド卵「夢そだち」のTKG専門・ご飯と卵おかわり自由・<span class="no">22席のみ</span>・生魚も野菜もうなぎも出てこない）／グリル天平（姫路肉汁ハンバーグ・<span class="no">11:30開店・16席・現金のみ</span>）<br>
+    <span class="ok">食べ終わったらトイレとマイボトルへの給水を。再入城できません</span></p></div></div>
+
+  <div class="ev"><div class="tm">12:10</div><div class="bd">
+    <p class="ttl">徒歩で入城口へ（約10分）</p></div></div>
+
+  <div class="ev key"><div class="tm">12:20<br>↓14:20</div><div class="bd">
+    <p class="ttl">🏯 姫路城</p>
+    <p class="ds"><strong>おとな1人2,500円／<span class="ok">18歳未満は無料</span>＝合計5,000円</strong>（2026年3月に改定）。入城は16:00まで。<br>
+    所要の目安は<strong>天守群のみ約1時間／西の丸を含む全域で90〜120分</strong>。<br>
+    <strong class="ok">判断ポイント：12:20の時点で待ち時間が30分を超えていたら、西の丸は諦めて天守群だけに絞ってください。</strong>そうすれば水族館の時間が守れます</p></div></div>
+
+  <div class="ev"><div class="tm">14:30</div><div class="bd">
+    <p class="ttl">駐車場を出発 → 手柄山へ</p>
+    <p class="ds">約3km・10分</p></div></div>
+
+  <div class="ev key"><div class="tm">14:45<br>↓16:20</div><div class="bd">
+    <p class="ttl">🐟 姫路市立水族館</p>
+    <p class="ds">9:00〜17:00（入館16:30まで）／<strong>5人で1,700円</strong>。<br>
+    手柄山第1立体駐車場：477台・8:30〜22:00・<strong>時間に関係なく1回200円</strong>・3Fが館内直結。<br>
+    <span class="no">館内に売店・レストランはありません（自販機1台のみ）</span><br>
+    <span class="ok">屋上の「じゃぶじゃぶ小川」で魚と遊べます（朝の川遊びの続きに）</span></p></div></div>
+
+  <div class="ev"><div class="tm">16:30</div><div class="bd">
+    <p class="ttl">出発 → 太子町へ</p>
+    <p class="ds">約12km・20〜25分（太子竜野バイパス経由）<br>
+    <span class="no">※太子町は姫路の西隣。堺とは逆方向に戻る形です</span></p></div></div>
+
+  <div class="ev key"><div class="tm">17:00<br>↓18:45</div><div class="bd">
+    <p class="ttl">🥩 夕食：姫路ステーキ 溶岩焼き えん家 太子店 <span class="chip cf">予約済</span></p>
+    <p class="ds">揖保郡太子町東保323-4／<strong>079-263-7729</strong>／<strong>全席禁煙</strong>／30台／46席／半個室・座敷あり<br>
+    <strong>牛ヘレステーキ 100g 2,233円／150g 3,146円／200g 4,059円</strong>（脂の少ない赤身）／えん家ステーキ100g 1,518円〜／黒毛和牛×天草豚ハンバーグ180g 1,628円／<strong class="ok">お子様セット748円</strong>（白ご飯・カットステーキ・ウィンナー・ハンバーグ・ミニサラダ・ゼリー・ドリンク）／御膳セット＋495円（ご飯大盛り無料）<br>
+    <strong class="no">⚠ 支払いは現金かPayPayのみ。カード・電子マネーは使えません</strong></p></div></div>
+
+  <div class="ev"><div class="tm">18:45</div><div class="bd">
+    <p class="ttl">太子町を出発</p>
+    <p class="ds">太子東ランプ → 姫路バイパス → 第二神明 → 阪神高速、または山陽道</p></div></div>
+
+  <div class="ev"><div class="tm">19:25<br>↓19:40</div><div class="bd">
+    <p class="ttl">加西SA（中国道・上り）</p>
+    <p class="ds"><span class="pkm">メッソン</span><span class="pkm">マニューラ</span>／スタンプとトイレだけ15分</p></div></div>
+
+  <div class="ev"><div class="tm">20:20<br>↓20:35</div><div class="bd">
+    <p class="ttl">西宮名塩SA（中国道・上り）</p>
+    <p class="ds"><span class="pkm">アシマリ</span><span class="pkm">ロトム</span>／スタンプとトイレだけ15分。<strong>渋滞予測は20:00で終了</strong>なので、ここを通るのはその後。キッズルームがフードコート併設</p></div></div>
+
+  <div class="ev key"><div class="tm">21:00<br>〜21:30</div><div class="bd">
+    <p class="ttl">🏠 堺 着 — おつかれさまでした</p></div></div>
+</div>
+
+<div class="box ans">
+  <span class="big">🚗 帰り道は「ルート」ではなく「時間」をずらします</span>
+  <p>NEXCO西日本の公式予測（8/15・土・上り）：<strong>中国道 宝塚西トンネル付近／神戸JCT⇒宝塚IC／14:00〜20:00・ピーク16時・最大10km・通過40分</strong>（通常10分）。<br>
+  <strong class="no">山陽道に逃げても神戸JCTで合流するので、渋滞そのものは避けられません。</strong>できるのは時間をずらすことだけ。<br>
+  <strong class="ok">→ 18:45に太子町を出れば、宝塚を通るのが20:00過ぎ。</strong>渋滞予測の時間帯を丸ごと外せます。しかも加西SAと西宮名塩SAを両方通るので<strong>ポケモンも4種</strong>。<br>
+  「渋滞をよけるために早く帰る」のではなく「<strong>どうせ食べるなら渋滞が緩むまでゆっくり食べる</strong>」——これが一番ラクです。渋滞の車内で「お腹すいた」が始まるのが、いちばんしんどいので。</p>
+</div>
+
+<div class="lnk">
+  <a href="tel:0792637729" class="tel">📞 えん家 太子店 079-263-7729</a>
+  <a href="tel:0792884567" class="tel">📞 千姫茶屋 079-288-4567</a>
+  <a href="tel:0792970321" class="tel">📞 姫路市立水族館 079-297-0321</a>
+  <a href="https://www.city.himeji.lg.jp/castle/">姫路城 公式</a>
+  <a href="https://www.himejicastle.jp/">大入実況（待ち時間）</a>
+</div>
+</div>
+</details>
+
+<!-- ==================== 持ち物 ==================== -->
+<details id="pack">
+<summary><span class="em">🎒</span><span class="h"><span class="n">持ち物リスト</span>
+<span class="s">タップでチェック。「必須」＝忘れると当日リカバリーできないもの</span></span></summary>
+<div class="inner">
+
+<div class="pgr"><span class="c" id="pcnt">0 / 0</span><span class="bar"><i id="pfill"></i></span></div>
+
+<div class="box info">
+  <span class="big">🔖 「必須」マークの意味</span>
+  <p><strong>忘れたとき、当日その場でリカバリーできないもの</strong>につけています。<strong>8/13の美星（山の上・買える店なし）</strong>と<strong>8/15（姫路→帰宅で買い物に寄る場所なし）</strong>という2つの「逃げ場のない場面」があるので、そこで使う物が多めです。<br>
+  <span class="ok">逆に8/14はエスマート＋ダイソーに寄るので、その日に使う物は忘れてもなんとかなります。</span></p>
+</div>
+
+<h3>1. 貴重品・スマホ</h3>
+<div class="it must"><label><input type="checkbox"><span class="cbx"></span><span class="cbody">
+  <p class="ct">現金 3万円</p>
+  <p class="cd">カードが使えない場面：<strong>えん家 太子店 12,000〜15,000円</strong>（現金かPayPay）／<strong class="no">美星天文台 2,000円ちょうど（現金のみ・ここだけはPayPay不可）</strong>／出雲そばの一部（本命の八雲本店はカード可）／<strong>8/12の京都の駐車代 約3,000円</strong>／手柄山の駐車場200円は小銭で<br>
+  <span class="ok">✅ <strong>8/15の昼食（千姫茶屋）はPayPayが使えるので、この分の現金は不要です</strong></span></p>
+</span></label></div>
+<div class="it must"><label><input type="checkbox"><span class="cbx"></span><span class="cbody">
+  <p class="ct">美星の予約完了メールのスクショ <span class="ok">✅撮影済み</span></p>
+  <p class="cd">あとは<strong>2台とも</strong>に入っているかの確認だけ。美星は山の上で電波が弱い可能性があります</p>
+</span></label></div>
+<div class="it must"><label><input type="checkbox"><span class="cbx"></span><span class="cbody">
+  <p class="ct">京都水族館の前売りチケット（5人8,900円）</p>
+  <p class="cd">当日券の列に並ぶと<strong>18:00のイルカプログラムに間に合わない</strong>おそれがあります</p>
+</span></label></div>
+<div class="it must"><label><input type="checkbox"><span class="cbx"></span><span class="cbody">
+  <p class="ct">ETCカードが車に挿さっているか</p>
+  <p class="cd">総走行 約1,050km。ここでつまずくと初日の吹田SAから狂います</p>
+</span></label></div>
+<div class="it must"><label><input type="checkbox"><span class="cbx"></span><span class="cbody">
+  <p class="ct">充電器・モバイルバッテリー・車載USB（複数口）</p>
+  <p class="cd">スタンプラリー・地図・チケット・写真、全部スマホです。車載は<strong>2口以上</strong>。ケーブルは予備を1本</p>
+</span></label></div>
+<div class="it"><label><input type="checkbox"><span class="cbx"></span><span class="cbody">
+  <p class="ct">免許証・健康保険証（5人分）・お薬手帳</p>
+  <p class="cd">医療証もあれば一緒に</p>
+</span></label></div>
+<div class="it"><label><input type="checkbox"><span class="cbx"></span><span class="cbody">
+  <p class="ct">ポケモンのスタンプ台紙（すでに押してあるもの）</p>
+  <p class="cd"><strong class="no">忘れると、香芝SAで押したピカチュウとホウオウ（★伝説）が消えます。</strong>台紙は新しくもらえても、押した2個は戻りません</p>
+</span></label></div>
+
+<h3>2. 暑さ対策（連日34〜36℃）</h3>
+<div class="it must"><label><input type="checkbox"><span class="cbx"></span><span class="cbody">
+  <p class="ct">蓋つきマイボトル 5本</p>
+  <p class="cd"><strong class="ok">姫路城は「改札口前」と「備前丸」に給水機があります。</strong>有料エリアに売店はないので、これがあると飲み物代がまるごと浮きます</p>
+</span></label></div>
+<div class="it must"><label><input type="checkbox"><span class="cbx"></span><span class="cbody">
+  <p class="ct">帽子 5つ・日焼け止め</p>
+  <p class="cd">姫路城は駐車場から徒歩10分＋城内はほぼ日陰なし。出雲大社の参道も同じです</p>
+</span></label></div>
+
+<div class="it"><label><input type="checkbox"><span class="cbx"></span><span class="cbody">
+  <p class="ct">冷却タオル・保冷剤・携帯扇風機</p>
+  <p class="cd">保冷剤は8/14のログハウス（冷凍庫あり）で凍らせ直せます</p>
+</span></label></div>
+<div class="it"><label><input type="checkbox"><span class="cbx"></span><span class="cbody">
+  <p class="ct">晴雨兼用の折りたたみ傘 2本</p>
+  <p class="cd">姫路城の入城待ちは屋外。予報では<strong>午後に内陸で局地的な雷雨</strong>の可能性もあり、日除けと雨対策を1本で兼ねられます</p>
+</span></label></div>
+
+<h3>3. 8/13夜：美星天文台</h3>
+<div class="it must"><label><input type="checkbox"><span class="cbx"></span><span class="cbody">
+  <p class="ct">レジャーシート（厚手）</p>
+  <p class="cd">公式が推奨。<strong>流星は「空を広く見渡す」ほど見つかる</strong>ので、寝転がれるのが理想です</p>
+</span></label></div>
+<div class="it"><label><input type="checkbox"><span class="cbx"></span><span class="cbody">
+  <p class="ct">折りたたみ椅子（できればリクライニング）</p>
+  <p class="cd">これも公式推奨。<strong>上を向き続けると首が痛くなります。</strong>背もたれが倒れるタイプが1〜2脚あると交代で楽できます</p>
+</span></label></div>
+<div class="it must"><label><input type="checkbox"><span class="cbx"></span><span class="cbody">
+  <p class="ct">上着・ブランケット（人数分）</p>
+  <p class="cd"><strong>美星町は標高400m超。</strong>昼35℃でも夜は20℃台前半。半袖のままだと子どもは30分で「帰りたい」と言い出します</p>
+</span></label></div>
+<div class="it"><label><input type="checkbox"><span class="cbx"></span><span class="cbody">
+  <p class="ct">明かり（買わなくてOK・スマホで足ります）</p>
+  <p class="cd"><strong>「なんで懐中電灯がいるの？」への答え：正直、必須ではありません。</strong>スマホのライトで足ります。<br>
+  必要になる場面は3つ——①<strong>美星天文台で、駐車場から観察会場までの暗い道</strong>（ダークスカイの町なので街灯が極端に少ないです）②<strong>8/14のフォレストリアで、花火のあと片づけと夜のトイレ移動</strong>（山の中の1棟貸しです）③足元の段差。<br>
+  <strong class="no">ただし白い光は、暗さに慣れた目を15〜20分ぶんリセットします。</strong>自分だけでなく、まわりの人の目も。だから観察が始まったら赤くしたい——というだけの話です。<br>
+  <span class="ok">お金をかけない解：<strong>スマホのライトに赤いセロファンを輪ゴムで留める（110円）</strong>、または<strong>画面の明るさを最低＋ナイトモード</strong>。星座アプリにも赤画面モードが付いているものが多いです。<strong>わざわざ懐中電灯を買う必要はありません。</strong></span></p>
+</span></label></div>
+<div class="it must"><label><input type="checkbox"><span class="cbx"></span><span class="cbody">
+  <p class="ct">🦟 虫よけ（野外向けの強力なもの）＋かゆみ止め</p>
+  <p class="cd"><strong>使う場面は2つ。</strong>①<strong>8/13夜の美星天文台</strong>（山の上・屋外1時間以上）②<strong>8/14夜のフォレストリア</strong>（標高400mの林間で、BBQ→花火→星空と<strong class="no">3〜4時間ぶっ通しの屋外</strong>）。②のほうが条件は厳しいです。<br>
+  <strong class="ok">■ 買うなら「イカリジン15%」が第一候補。</strong>日本の一般用医薬品・防除用医薬部外品では、有効成分は<strong>ディート</strong>か<strong>イカリジン</strong>のどちらかで、濃度が高いほど<strong>持続時間</strong>が長くなります（虫を寄せつけない強さ自体は濃度で変わりません）。<br>
+  ・<strong>イカリジン15%</strong>＝効果が<strong>6〜8時間</strong>持続。<strong class="ok">年齢制限も1日の使用回数制限もありません</strong>。小さい子がいるので、<strong>これなら家族全員で1本を共用できます</strong>。蚊のほかブユ・アブ・マダニにも対応（イカリジン5%は同じ成分ですが持続が短く、林間の3〜4時間には塗り直しが増えます）<br>
+  ・<strong>ディート30%</strong>＝<strong>6〜8時間</strong>持続で最強クラスですが、<strong class="no">12歳未満には使えません</strong>。<strong>ディート10〜15%</strong>なら子どもにも使えますが持続は<strong>2〜3時間</strong>で、しかも<strong class="no">生後6か月未満は使用不可／6か月〜2歳未満は1日1回まで／2〜12歳未満は1日1〜3回まで</strong>という回数の縛りがあります。<strong>塗り直しが必要な今回の使い方とは相性が悪いです</strong><br>
+  <strong>■ 塗り方：</strong>スプレーは<strong>手のひらに出してから顔・首に伸ばす</strong>（顔に直接吹かない）。<strong>服の上からではなく肌に</strong>。塗り残しは<strong>足首・耳の後ろ・うなじ</strong>が定番です。<strong class="ok">8/14は宿に着いた18:00の明るいうちに全員に塗り、21:00の花火前にもう一度</strong>——これで星空まで持ちます。<br>
+  <strong>■ 併用すると効きます：</strong>蚊取り線香や電池式の携帯蚊取り器を<strong>風上に1〜2個</strong>置くと、屋外BBQでは体感が変わります。<span class="no">フォレストリアのレンタル（器具・照明・テーブル・椅子・網・トング・炭・火おこし・焚き火）に虫よけは含まれません。</span><span class="ok">エスマート併設のダイソーで足せます</span><br>
+  <strong>かゆみ止め</strong>も必ずセットで（子ども用の低刺激タイプ）。<span class="no">美星は山の上で売っている店がありません。家から持って行くこと</span></p>
+</span></label></div>
+<div class="it"><label><input type="checkbox"><span class="cbx"></span><span class="cbody">
+  <p class="ct">飲み物とちょっとした軽食</p>
+  <p class="cd">夕食が17:00〜17:30なので、21時台には子どもがお腹をすかせます。<span class="ok">禁止されているのは「現地で火を使うこと」なので、買ってきた温かい物や保温ボトルのスープは問題ありません</span></p>
+</span></label></div>
+
+<h3>4. 8/14：BBQと花火</h3>
+<div class="it must"><label><input type="checkbox"><span class="cbx"></span><span class="cbody">
+  <p class="ct">🎆 手持ち花火の大袋（1,000〜2,000円）</p>
+  <p class="cd">5人なら大袋1つ。着火は<strong>BBQの火か焚き火から</strong>取れます（焚き火はレンタルに含まれます）</p>
+</span></label></div>
+<div class="it must"><label><input type="checkbox"><span class="cbx"></span><span class="cbody">
+  <p class="ct">🪣 水を張るバケツ（またはペットボトルの水2L）</p>
+  <p class="cd"><strong>現地にあるか未確認なので、これだけは必ず。</strong>消し忘れがいちばん危ないです</p>
+</span></label></div>
+<div class="it must"><label><input type="checkbox"><span class="cbx"></span><span class="cbody">
+  <p class="ct">🍽 紙皿・紙コップ・割り箸</p>
+  <p class="cd"><strong class="no">フォレストリアの公式FAQに「紙皿・紙コップのご用意はございません。ご持参いただくことをおすすめしております」と明記</strong>されていました。しかも<strong>2食ぶん</strong>（8/14のBBQと8/15の朝食）。<br>
+  <span class="ok">※<strong>包丁・まな板・鍋・フライパン・食器・炊飯器・電子レンジ・電気ケトル・トースターは全部そろっています</strong>（公式FAQ）。調味料も<strong>醤油・砂糖・塩・こしょう・ソース・食用油</strong>まで備え付け。持っていくのは紙皿・紙コップ・割り箸だけで足ります</span></p>
+</span></label></div>
+<div class="it"><label><input type="checkbox"><span class="cbx"></span><span class="cbody">
+  <p class="ct">アルミホイル・除菌ウェットティッシュ</p>
+  <p class="cd">ホイルは焼きそばや野菜の包み焼きに。<br>
+  <span class="ok">✅ <strong>包丁・まな板は備え付けがあります</strong>（公式FAQで確認）。キッチンばさみも持っていかなくて大丈夫です</span></p>
+</span></label></div>
+
+<h3>5. 8/15朝：川遊び</h3>
+
+<div class="it must"><label><input type="checkbox"><span class="cbx"></span><span class="cbody">
+  <p class="ct">サンダル（全員ぶん・車に積んでおく）</p>
+  <p class="cd"><strong class="no">岩場なので裸足は危険です。</strong>甌穴のふちは滑ります。<strong>かかとが留まるストラップ付き</strong>のものを。<span class="ok">ガッツリ泳がないので、これで十分です</span></p>
+</span></label></div>
+
+<div class="it must"><label><input type="checkbox"><span class="cbx"></span><span class="cbody">
+  <p class="ct">バスタオル 5枚＋濡れ物用ビニール袋</p>
+  <p class="cd"><strong>3軒のうち、バスタオルが確実に備え付けなのは「さと茂旅館」だけ</strong>でした（公式のアメニティ一覧に明記）。<strong class="no">フォレストリアは公式に「タオル」としか書かれておらず、バスタオルかどうか不明。</strong>菊之湯も公式に宿泊時の記載なし（阪急交通社の設備表では「バスタオル○」）。<br>
+  <strong class="ok">→ 5枚持っていくのが正解です。</strong>川遊びの拭き上げにも、そのまま使えます。<br>
+  濡れ物用のビニール袋も忘れずに。8/15は帰宅まで12時間あるので、密閉しないと<strong class="no">車内が生乾きの匂いになります</strong></p>
+</span></label></div>
+<div class="it must"><label><input type="checkbox"><span class="cbx"></span><span class="cbody">
+  <p class="ct">8/15の朝に使うものを、前夜のうちに車へ</p>
+  <p class="cd"><strong>乾いた靴下と歩きやすい靴</strong>——<strong class="no">姫路城の天守は靴を脱いで上がります</strong>（袋に入れて持ち歩く）。濡れた靴やマリンシューズだと急階段がつらいです。<strong>両手が空くリュック</strong>も（公式が「手ぶら観光」を呼びかけ）</p>
+</span></label></div>
+
+<h3>6. 子ども関係</h3>
+
+<div class="it must"><label><input type="checkbox"><span class="cbx"></span><span class="cbody">
+  <p class="ct">酔い止め</p>
+  <p class="cd"><strong>8/13は440km、8/14は370km。</strong>中国道も米子道もカーブとトンネルが多い山道です</p>
+</span></label></div>
+<div class="it must"><label><input type="checkbox"><span class="cbx"></span><span class="cbody">
+  <p class="ct">救急セット（絆創膏・体温計・常備薬・虫刺され）</p>
+  <p class="cd">川遊びと山道があるので<strong>絆創膏は多めに</strong></p>
+</span></label></div>
+<div class="it"><label><input type="checkbox"><span class="cbx"></span><span class="cbody">
+  <p class="ct">車内の暇つぶし・おやつ・飴</p>
+  <p class="cd">出雲→鳥取の<strong>3時間10分</strong>が最長。<strong>タブレットは前夜に充電＋動画をダウンロード</strong>（山間部は電波が切れます）。飴は耳抜きにも使えます</p>
+</span></label></div>
+<div class="it"><label><input type="checkbox"><span class="cbx"></span><span class="cbody">
+  <p class="ct">ぬいぐるみ 4体（寝るときのお気に入り）</p>
+  <p class="cd">宿が3軒とも変わるので、<strong>いつものぬいぐるみがあると寝つきが違います</strong>。名前は控えてありますので、当日ご確認を（このページは公開されているので、あえて書いていません）</p>
+</span></label></div>
+
+<h3>7. 宿泊（3泊）</h3>
+<div class="it"><label><input type="checkbox"><span class="cbx"></span><span class="cbody">
+  <p class="ct">4日分の服（予備を多めに）・下着・靴下・パジャマ</p>
+  <p class="cd">汗をかく旅行なので<strong>Tシャツは1日2枚計算</strong>。川遊びとBBQもあるので、予備は多めに。<span class="ok">日ごとに袋を分けておくと、宿が3軒変わっても迷いません</span><br>
+  <strong>パジャマは全員ぶん。</strong>旅館2軒は浴衣がありますが、<strong class="no">フォレストリア（8/14）は浴衣・パジャマの記載がありません</strong></p>
+</span></label></div>
+<div class="it"><label><input type="checkbox"><span class="cbx"></span><span class="cbody">
+  <p class="ct">歯ブラシ・シャンプー類</p>
+  <p class="cd"><span class="ok">✅ フォレストリアは公式に<strong>「タオル、歯ブラシ、櫛、ドライヤーなど充実のアメニティを完備」</strong>と書かれていました。歯ブラシは持っていかなくて大丈夫です。</span><br>
+  <span class="no">ただしシャンプー・ボディソープの記載はありません。</span>こだわりがあれば持参を。<strong>さと茂旅館はシャンプー・リンス・ボディソープ・石鹸・歯ブラシ・浴衣・ドライヤーまで完備</strong>（公式明記）</p>
+</span></label></div>
+
+<h3>7.5 体のケア・便利グッズ</h3>
+<div class="it"><label><input type="checkbox"><span class="cbx"></span><span class="cbody">
+  <p class="ct">フットマッサージ器・首の電気マッサージ器</p>
+  <p class="cd">ディズニーに持っていくやつと、最近買ったもの。<strong>今回はディズニーより歩きます</strong>——8/14の出雲大社の参道、8/15の姫路城（駐車場から徒歩10分＋城内2時間＋急階段）。<br>
+  <span class="ok">運転も4日で約1,050km。<strong>宿に着いてから使えるように、コンセントの近くに置ける形で積んでおいてください</strong></span></p>
+</span></label></div>
+
+<div class="it"><label><input type="checkbox"><span class="cbx"></span><span class="cbody">
+  <p class="ct">日中用・BBQ用のタオル（バスタオルとは別に）</p>
+  <p class="cd">首にかける/汗を拭く用。<strong>34〜36℃の日中に外を歩く日が3日あります。</strong>BBQでも手を拭いたり熱いものを持ったりで1〜2枚。<span class="ok">濡らして首に巻くだけでかなり違います</span></p>
+</span></label></div>
+
+<div class="it"><label><input type="checkbox"><span class="cbx"></span><span class="cbody">
+  <p class="ct">ペットボトルのドリンクホルダー（水筒代わり）</p>
+  <p class="cd">保冷カバーがあれば、買ったペットボトルがそのまま水筒になります。<br>
+  <span class="no">※ただし姫路城は「改札口前」と「備前丸」に給水機があるので、<strong>そこだけは蓋つきボトルのほうが得です</strong>（給水機で足せるので）</span></p>
+</span></label></div>
+
+<div class="it"><label><input type="checkbox"><span class="cbx"></span><span class="cbody">
+  <p class="ct">仕事用のノートパソコン（念のため）</p>
+  <p class="cd"><span class="ok">✅ <strong>フォレストリアはWi-Fi完備</strong>（公式）。さと茂旅館・菊之湯も旅館なので、たいてい使えます。</span><br>
+  <strong>車上荒らし対策だけ。</strong>姫路城で3時間半、水族館で1時間半、車を離れます。<strong class="no">見えるところに置かないでください</strong></p>
+</span></label></div>
+
+<h3>8. 車</h3>
+<div class="it"><label><input type="checkbox"><span class="cbx"></span><span class="cbody">
+  <p class="ct">袋類をまとめて（ここで1回チェックすれば足ります）</p>
+  <p class="cd"><strong>大きいゴミ袋2〜3枚</strong>（BBQ用）／<strong>レジ袋10枚ほど</strong>（濡れた花火・車酔い・濡れた水着・仕分け）／<strong>車内に1枚吊るす</strong>／<strong>汚れ物用の大きい袋1枚</strong>。<span class="ok">車酔い用とティッシュだけはダッシュボードか座席のポケットへ</span></p>
+</span></label></div>
+<div class="it"><label><input type="checkbox"><span class="cbx"></span><span class="cbody">
+  <p class="ct">サンシェード</p>
+  <p class="cd">姫路城で3時間半駐車します。戻ったときの車内温度がまるで違います</p>
+</span></label></div>
+
+<h3>9. 出発前に「買う」ものだけ</h3>
+<div class="tbl">
+<table>
+<tr><th>物</th><th>どこで</th><th>目安</th></tr>
+<tr><td class="no"><strong>紙皿・紙コップ・割り箸</strong></td><td>100均・スーパー</td><td>330〜660円</td></tr>
+
+
+
+<tr><td><strong>手持ち花火の大袋</strong></td><td>スーパー・ホームセンター</td><td>1,000〜2,000円</td></tr>
+<tr><td><strong>赤いセロファン</strong><br><span style="font-size:.9em">スマホのライトに巻くだけ</span></td><td class="ok">100均</td><td>110円</td></tr>
+
+
+
+<tr><td class="no"><strong>虫よけ（イカリジン15%）・かゆみ止め</strong></td><td>ドラッグストア</td><td>1,000〜2,000円<br><span class="ok">※年齢・回数の制限なしで家族共用できます</span></td></tr>
+<tr><td><strong>蚊取り線香 or 電池式蚊取り器</strong></td><td class="ok">100均・ホームセンター</td><td>110〜1,500円<br><span class="ok">※8/14のBBQ用。レンタルに含まれません</span></td></tr>
+<tr><td><strong>蓋つきマイボトル</strong></td><td class="ok">100均でも可</td><td>110〜1,500円</td></tr>
+<tr><td>酔い止め・ビニール袋</td><td>ドラッグストア・100均</td><td>800〜1,500円</td></tr>
+<tr><td><strong>おやつ（塩分・水分のとれるもの）</strong><br><span style="font-size:.9em">タブレットのかわりに</span></td><td class="ok">スーパー</td><td>1,000〜2,000円</td></tr>
+<tr><td>ペットボトルの保冷ホルダー</td><td class="ok">100均</td><td>110〜1,000円</td></tr>
+</table>
+</div>
+
+<div class="box ans">
+  <span class="big">💡 現地で買えるので、忘れても慌てなくていいもの</span>
+  <p><strong>8/14の16:55に寄るエスマート鳥取南IC店（21:00まで）には、ダイソーが併設されています。</strong>花火・紙皿・割り箸・ビニール袋・キッチンばさみ・アルミホイル・保冷バッグ・氷・発泡スチロールの箱は全部ここで揃います。<br>
+  <strong class="no">逆に、ここでは買えないのが「美星天文台で使うもの」です。</strong>美星は8/13、エスマートは翌日の8/14。順番が逆です。<br>
+  <strong class="ok">レジャーシート・折りたたみ椅子・上着・虫よけ・赤いセロファン、この5つだけは家から持っていってください。</strong>（レジャーシートと椅子はお持ちとのことなので、買うのは虫よけとセロファンだけです）</p>
+</div>
+</div>
+</details>
+
+<!-- ==================== 準備 ==================== -->
+<details id="prep">
+<summary><span class="em">✅</span><span class="h"><span class="n">出発前にやること</span>
+<span class="s">残り5件。未確定はゼロです</span></span></summary>
+<div class="inner">
+
+<div class="box ans">
+  <span class="big">🎉 未確定はゼロになりました</span>
+  <p>宿3軒・食事11食・入場予約、すべて確定。<strong>フォレストリアからBBQ 18:30と手持ち花火のOKも出ました。</strong>残っているのは「買う・撮る・用意する」だけで、判断を要するものはひとつもありません。</p>
+</div>
+
+<div class="tbl">
+<table>
+<tr><th>#</th><th>やること</th><th>いつ</th></tr>
+<tr><td class="t">1</td><td><strong>京都水族館の前売り券</strong>を買う（5人8,900円）</td><td>出発前</td></tr>
+<tr><td class="t">2</td><td><strong>現金3万円</strong>を用意（えん家・美星がカード不可）</td><td>出発前</td></tr>
+<tr><td class="t">3</td><td><strong>花火セット</strong>を買う（＋水を張るバケツ）</td><td>出発前</td></tr>
+<tr><td class="t">4</td><td><strong>マイボトル人数分</strong>＋濡れ物用ビニール袋</td><td>出発前</td></tr>
+<tr><td class="t">5</td><td><strong>お盆の臨時休業</strong>を確認（味味香・加西SA・出雲そば・千姫茶屋）</td><td>前日夜</td></tr>
+</table>
+</div>
+
+<div class="box info">
+  <span class="big">✅ 済んだこと</span>
+  <p>美星天文台の予約完了メールのスクショ／えん家 太子店 17:00 の予約／フォレストリアのBBQ・花火の許可／出雲そばの順位づけ／姫路城に入ることの決定／帰り道のルートと時間<br>
+  <span class="ok">えん家は予約が入っているので、臨時休業の確認は不要です</span></p>
+</div>
+
+<div class="box alert">
+  <span class="big">🤔 当日その場で決めればいいこと（2つだけ）</span>
+  <ul style="margin:0">
+    <li><strong>8/13：神庭の滝に寄るか</strong>（5人で1,800円）。<strong>判断は加西SAを出る12:25頃。</strong>疲れ具合を見て決めれば十分です</li>
+    <li><strong>8/15：姫路城で西の丸まで回るか。</strong>待ちが30分を超えたら天守群だけに。公式の「大入実況」で当日の待ち時間が見られます</li>
+  </ul>
+  <p style="margin-top:6px">どちらも寄らなくても行程は崩れません。</p>
+</div>
+</div>
+</details>
+
+<!-- ==================== 天気 ==================== -->
+<details id="weather">
+<summary><span class="em">🌤</span><span class="h"><span class="n">天気</span>
+<span class="s"><strong>2026年8月9日 18:00発表</strong>が最新。8/13の星空指数は<strong>100</strong>／出発まで毎日ウォッチします</span></span></summary>
+<div class="inner">
+
+<div class="box ans">
+  <span class="big">🔄 このページの天気は 2026年8月9日発表のものです</span>
+  <div class="tbl"><table>
+  <tr><th>データ</th><th>発表日時</th></tr>
+  <tr><td>井原市の星空指数</td><td class="ok"><strong>8月9日 18:00発表</strong></td></tr>
+  <tr><td>井原市の10日間予報</td><td>8月9日 00:00発表</td></tr>
+  <tr><td>姫路城・鳥取市</td><td>8月9日 17:00発表</td></tr>
+  <tr><td>京都市</td><td>8月8日 19:00発表</td></tr>
+  <tr><td>ウェザーニュース 井原市</td><td>8月9日 17:40時点</td></tr>
+  </table></div>
+  <p><strong class="ok">8/13・8/14・8/15はいずれも改善</strong>しました。とくに<strong class="ok">8/15の姫路は「晴・降水確率10%」</strong>。<strong class="no">悪くなったのは8/12だけ</strong>です。</p>
+</div>
+
+<h3>4日間の予報（行き先ごと）</h3>
+<div class="tbl">
+<table>
+<tr><th>日</th><th>場所</th><th>天気</th><th>気温</th><th>降水</th></tr>
+<tr><td class="t">8/12<br>(水)</td><td>京都</td><td class="no"><strong>曇一時雨</strong><br><span style="font-size:.9em">降水量13mm</span></td><td>29℃/24℃</td><td class="no"><strong>90%</strong></td></tr>
+<tr class="sum"><td class="t">8/13<br>(木)</td><td>井原・美星</td><td class="ok"><strong>晴時々曇</strong><br><span style="font-size:.9em">※WNは「くもり時々雨」</span></td><td>32℃/23℃</td><td>40%<br><span style="font-size:.9em">WN 30%</span></td></tr>
+<tr><td class="t">8/14<br>(金)</td><td>鳥取</td><td class="ok">晴時々曇</td><td>35℃/24℃</td><td class="ok">20%</td></tr>
+<tr><td class="t"></td><td><span style="font-size:.9em">（井原・美星）</span></td><td class="ok"><strong>晴</strong></td><td>33℃/24℃</td><td class="ok"><strong>10%</strong></td></tr>
+<tr><td class="t">8/15<br>(土)</td><td>姫路</td><td class="ok"><strong>晴</strong></td><td>34℃/24℃</td><td class="ok"><strong>10%</strong></td></tr>
+</table>
+</div>
+<p class="lead">tenki.jp（井原市・京都市・鳥取市・姫路城）＝8月9日発表／ウェザーニュース（井原市）＝8月9日17:40。<strong>まだ3〜6日先なので、8/11〜12にもう一度見てください。</strong></p>
+
+<div class="box alert">
+  <span class="big">☔ いちばん気になるのは8/12の京都です（降水確率90%）</span>
+  <p><strong>この日の目玉は「夜のすいぞくかん」（18:00〜20:00）で、京都水族館は屋外エリアが多い施設です。</strong>とくに<strong>18:00のイルカプログラムは屋外スタジアム</strong>。<br>
+  ただし<strong class="ok">オオサンショウウオ・クラゲ・ペンギン館・企画展は屋内</strong>なので、雨でも中止にはなりません（イルカプログラムだけは荒天時に内容変更の可能性あり）。<br>
+  <strong>対策は3つだけです。</strong></p>
+  <ul style="margin:6px 0 0">
+    <li><strong>折りたたみ傘かレインコートを人数分。</strong>ベビーカーがない分、傘よりレインコートのほうが動きやすいです</li>
+    <li><strong>着替えを1セット、車ではなく手荷物に。</strong>旅館に帰ってから風呂なので、濡れても致命傷にはなりません</li>
+    <li><strong>大丸→旅館→水族館の順は変えないこと。</strong>旅館に一度寄る流れなので、濡れた荷物を置いていけます</li>
+  </ul>
+  <p style="margin-top:6px"><span class="ok">なお8/12は<strong>最高29℃</strong>と、この4日間でいちばん涼しい予報です。雨のぶん暑さはマシになります。</span></p>
+</div>
+
+<div class="box ans">
+  <span class="big">⭐ 8/13の夜：いまのところ「見える」側です</span>
+  <p><strong>降水確率では星が見えるかどうかは分かりません。</strong>雨が降らなくても曇っていたらアウトなので、<strong class="ok">見るべきは「雲量」です。</strong>そこに特化した指標がありました。</p>
+  <div class="tbl"><table>
+  <tr><th>日</th><th>井原市の星空指数</th><th>コメント</th></tr>
+  <tr><td class="t">8/12</td><td>60</td><td>明るい星ならよく見えそうだよ</td></tr>
+  <tr class="sum"><td class="t">8/13</td><td class="ok"><strong>100</strong></td><td class="ok"><strong>空一杯の星空を楽しめそうだ！</strong></td></tr>
+  <tr><td class="t">8/14</td><td class="ok"><strong>100</strong></td><td class="ok">空一杯の星空を楽しめそうだ！</td></tr>
+  <tr><td class="t">8/15</td><td class="ok">100</td><td>空一杯の星空を楽しめそうだ！</td></tr>
+  </table></div>
+  <p class="lead">2026年8月9日 18:00発表・10日先まで掲載。</p>
+  <p><strong>星空指数は0〜100で、雲の量から「星がどれだけ見えるか」を出した指標です</strong>（日本気象協会）。<strong class="ok">8/13が100 ＝ 現時点では最高評価</strong>。<br>
+  <strong>そして8月13日は新月で月明かりゼロ。</strong>極大の夜にあたる当たり年でもあります。<strong class="ok">条件はそろっています。</strong><br>
+  <span class="no">※ただし4日先の予報です。まだ動きます。</span></p>
+</div>
+
+<div class="box info">
+  <span class="big">👀 出発まで毎日ウォッチします</span>
+  <p>雲の状態を、<strong>次の4回チェックして、そのつどお知らせします</strong>。</p>
+  <div class="tbl"><table>
+  <tr><th>いつ</th><th>何を見るか</th></tr>
+  <tr><td class="t">8/10<br>20:00</td><td>星空指数の推移。方向性の確認</td></tr>
+  <tr><td class="t">8/11<br>20:00</td><td class="ok"><strong>ここが節目。</strong>1時間ごと予報は3日先までなので、<strong>この日から8/13の時間帯別の天気が見えます</strong></td></tr>
+  <tr><td class="t">8/12<br>20:00</td><td>京都に泊まっている夜。<strong>翌日の21時台の天気を時刻ごとに</strong></td></tr>
+  <tr class="sum"><td class="t">8/13<br>14:30</td><td class="ok"><strong>当日の最終判定。</strong>美星天文台の公式に<strong>中止告知が出ていないか</strong>を確認します（公式は「当日14時頃までに告知」と明記）。湯原に着く直前の時間です</td></tr>
+  </table></div>
+  <p style="margin-top:6px"><strong>もし雲が多そう／中止だった場合の代案：</strong>そのまま湯原温泉でゆっくりして、<strong class="ok">翌8/14の夜にフォレストリア用瀬で星を見る</strong>。標高400mの1棟貸しで、こちらも星空指数100です。<strong>2夜のうちどちらかで見られればいい</strong>と考えれば、かなり分がいい賭けです。</p>
+</div>
+
+<div class="box alert">
+  <span class="big">🔭 SCWとGPVの見方（結論：いまは見なくていいです）</span>
+  <p><strong class="ok">先に結論から。8/11までは星空指数だけ見ていれば十分です。</strong>SCWの細かい予報は8/11午前までしか出ておらず、8/13を見るには「広域」という粗いモデルに切り替える必要があって、そこが分かりにくいところです。<strong>本当に役に立つのは8/12から。</strong></p>
+
+  <p style="margin-top:10px"><strong>そのうえで、SCWは色の意味さえ分かればすごく簡単です。</strong></p>
+  <div class="tbl"><table>
+  <tr><th>色</th><th>意味</th></tr>
+  <tr><td class="ok"><strong>まっ黒</strong></td><td class="ok"><strong>雲がない ＝ 星が見える</strong></td></tr>
+  <tr><td>グレー</td><td>雲がそこそこ（濃いほど雲が多い）</td></tr>
+  <tr><td class="no"><strong>まっ白</strong></td><td class="no"><strong>雲量100% ＝ 見えない</strong></td></tr>
+  <tr><td style="color:#b39ddb"><strong>紫・青</strong></td><td>雨が降っている</td></tr>
+  </table></div>
+  <p><strong>つまり「自分がいる場所が黒ければ勝ち」</strong>、それだけです。左端に出ている縦の目盛りが 0〜100 の雲量（Total Cloud Cover）です。</p>
+
+  <p style="margin-top:10px"><strong>使い方は3つだけ</strong></p>
+  <ol style="margin:4px 0">
+    <li><strong>下の真ん中のバーを左右に動かす</strong>と時刻が変わります（「08/13(木) 21:00」のように表示されます）</li>
+    <li><strong>右下のボタンでモデルを切り替え</strong>——「局地」は細かいけど<strong>約2日先まで</strong>、「広域」は粗いけど<strong>10日先まで</strong>。<span class="no">8/13を見るには「広域」にする必要があります</span></li>
+    <li>右側の「<strong>雨量・雲量</strong>」が押された状態にしておく（初期状態でそうなっています）</li>
+  </ol>
+
+  <p style="margin-top:10px"><strong class="ok">下のボタンなら、美星の上空・8/13 21時に合わせた状態で直接開きます。</strong>自分で操作しなくて大丈夫です。</p>
+  <p style="text-align:center;margin:10px 0 4px">
+    <a href="https://supercweather.com/?lat=34.673&lng=133.548&model=gsm&element=cp&zl=7&abstimejst=2026-08-13T21:00" style="display:inline-block;background:#2a1a08;border:2px solid var(--acc);border-radius:12px;padding:12px 18px;text-decoration:none;color:var(--acc);font-weight:800;font-size:.92rem;line-height:1.5">🌥 SCWで「8/13 21時の美星の空」を見る →<br>
+    <span style="font-size:.78rem;font-weight:600;color:var(--tx2)">画面の中心が美星天文台です</span></a>
+  </p>
+
+  <p style="margin-top:10px"><strong class="no">なお、今この広域モデルで8/13 21時を見ると、美星のあたりは「まっ黒」ではなく薄いグレーでした。</strong>星空指数100とは少し食い違います。<strong>4日先の粗いモデルなので当てにしすぎないでください</strong>が、「100だから確実」とも言い切れない、というのが正直なところです。<span class="ok">8/12に細かいモデル（局地）で見直せば、はっきりします。</span></p>
+</div>
+
+<div class="box ans">
+  <span class="big">🌡 8/13の21時、美星天文台は何℃か</span>
+  <p>ご質問の件です。<strong>ずばりの時間別予報はまだ出ていない</strong>（3時間予報は8/11までしか出ていません）ので、次のように見積もりました。</p>
+  <div class="tbl"><table>
+  <tr><th>根拠</th><th>数字</th></tr>
+  <tr><td>井原市 8/13の予報</td><td>最高32℃／<strong>最低23℃</strong></td></tr>
+  <tr><td>21時の気温は「最低＋2〜3℃」<br><span style="font-size:.9em">※8/10・8/11の実際の3時間予報から</span></td><td>井原市で <strong>25〜26℃</strong></td></tr>
+  <tr><td class="ok">美星町は標高400m超<br><span style="font-size:.9em">井原市街は約60m。標高100mにつき約0.6℃下がる</span></td><td class="ok"><strong>−2℃</strong></td></tr>
+  <tr class="sum"><td><strong>→ 21時ごろの美星</strong></td><td><strong class="ok">およそ 23〜24℃</strong></td></tr>
+  <tr><td>22時ごろ</td><td>22〜23℃</td></tr>
+  </table></div>
+  <p style="margin-top:8px"><strong class="ok">結論：寒くはありません。</strong>「夜は冷える」と身構えるほどではなく、<strong>半袖＋薄手の長袖パーカー1枚で十分</strong>です。<br>
+  ただし<strong>1時間以上、動かずに座っている</strong>のと、<strong>山の上なので風が通る</strong>ので、体感は数字より下がります。<strong>薄手の長袖は人数分あったほうがいい</strong>、というくらいの温度です。<span class="no">厚手のブランケットまでは要りません</span>。<br>
+  <span class="no">※これは予報からの推計です。数字そのものが発表されているわけではありません。8/12になったら3時間予報で実際の値が見られます</span></p>
+</div>
+
+<div class="box info">
+  <span class="big">🌡 日中はやはり暑いです</span>
+  <p><strong>8/14の鳥取が35℃、8/15の姫路が34℃。</strong>晴れるぶん、暑さは前回の見立てどおりです。<br>
+  <strong class="no">姫路城の天守内に冷房はありません。</strong>8/15は降水確率10%＝ほぼ確実に晴れなので、<strong>帽子・マイボトル・日傘は本当に効きます</strong>。姫路城は紫外線が「非常に強い」と予報にも出ています。</p>
+</div>
+
+<div class="lnk">
+  <a href="https://tenki.jp/forecast/7/36/6610/33207/10days.html">tenki.jp 井原市</a>
+  <a href="https://tenki.jp/forecast/7/36/6610/33207/3hours.html">井原市 3時間ごと（8/12以降ここで気温を）</a>
+  <a href="https://weathernews.jp/onebox/tenki/okayama/33207/">ウェザーニュース 井原市</a>
+  <a href="https://tenki.jp/forecast/6/29/6110/26100/10days.html">tenki.jp 京都市</a>
+  <a href="https://tenki.jp/leisure/6/31/209/25815/10days.html">tenki.jp 姫路城</a>
+  <a href="https://tenki.jp/forecast/7/34/6910/31201/10days.html">tenki.jp 鳥取市</a>
+  <a href="https://tenki.jp/indexes/starry_sky/7/36/6610/33207/">⭐ 井原市の星空指数（いちばん見るべき）</a>
+  <a href="https://supercweather.com/">SCW（雲量マップ）</a>
+  <a href="http://weather-gpv.info/">GPV気象予報</a>
+  <a href="https://www.windy.com/34.673/133.548?clouds,34.673,133.548,9">Windy（美星上空の雲）</a>
+  <a href="https://tenki.jp/radar/7/36/">岡山県の雨雲レーダー</a>
+  <a href="https://www.bao.city.ibara.okayama.jp/">美星天文台（8/13の14時に中止確認）</a>
+</div>
+</div>
+</details>
+
+<!-- ==================== 地図 ==================== -->
+<a class="card main" href="map.html" style="display:block;background:#131c3f;border:2px solid #7cc4ff;border-radius:14px;padding:16px;margin:12px 0;text-decoration:none">
+  <p style="font-size:1.06rem;font-weight:900;margin:0 0 4px;color:#7cc4ff">🗺 ルートマップ・スタンプラリー →</p>
+  <p style="font-size:.84rem;color:var(--tx2);margin:0;line-height:1.65">高速道路の全体マップ（動きます・拡大できます）／日ごとの路線図／エリアの絵地図／<strong style="color:var(--tx)">20か所のスタンプラリー</strong>。別ページで開きます</p>
+</a>
+
+<!-- ==================== 費用 ==================== -->
+<details id="money">
+<summary><span class="em">💰</span><span class="h"><span class="n">費用のめやす</span>
+<span class="s">宿泊費を除いて 約10万8,200〜14万8,900円</span></span></summary>
+<div class="inner">
+
+<div class="tbl">
+<table>
+<tr><th>日</th><th>最小</th><th>最大</th></tr>
+<tr><td class="t">8/12（京都）</td><td>22,000</td><td>30,800</td></tr>
+<tr><td class="t">8/13（湯原・美星）</td><td>20,300</td><td>23,800</td></tr>
+<tr><td class="t">8/14（出雲・BBQ）</td><td>16,500</td><td>21,500</td></tr>
+<tr><td class="t">8/15（姫路城・帰路）</td><td>29,400</td><td>36,800</td></tr>
+<tr><td class="t">おみやげほか</td><td>20,000</td><td>36,000</td></tr>
+<tr class="sum"><td>合計（宿泊費を除く）</td><td>108,200</td><td>148,900</td></tr>
+</table>
+</div>
+<p class="lead"><strong>現実的な着地は12万〜13万円あたり</strong>とみています。宿泊費を入れた総額は<strong>約22万7,000円〜29万円</strong>の見込みです。</p>
+
+<h3>入場料・駐車場（確定しているもの）</h3>
+<div class="tbl">
+<table>
+<tr><th>施設</th><th>内訳</th><th>金額</th></tr>
+<tr><td>京都水族館</td><td>夜のすいぞくかん（5人）</td><td class="t">8,900円</td></tr>
+<tr><td>美星天文台</td><td>1人500円・未就学児は無料／<span class="no">現金のみ</span></td><td class="t">2,000円</td></tr>
+<tr><td><strong>姫路城</strong></td><td>おとな1人2,500円／<span class="ok">18歳未満は無料</span></td><td class="t">5,000円</td></tr>
+<tr><td>大手門駐車場</td><td>3時間超なので900円</td><td class="t">900円</td></tr>
+<tr><td>姫路市立水族館</td><td>入館料（5人）</td><td class="t">1,700円</td></tr>
+<tr><td>手柄山第1立体</td><td>時間に関係なく1回</td><td class="t">200円</td></tr>
+<tr class="sum"><td colspan="2">合計</td><td class="t">18,700円</td></tr>
+</table>
+</div>
+
+<div class="box alert">
+  <span class="big">💴 カードが使えないところ</span>
+  <ul style="margin:0">
+    <li><strong class="no">えん家 太子店：12,000〜15,000円・現金かPayPayのみ</strong>（ここが一番大きい）</li>
+    <li><strong>美星天文台：2,000円ちょうど・現金のみ</strong></li>
+    <li>出雲そば：田中屋などは現金/PayPayのみ（<span class="ok">本命の八雲本店はカード可</span>）</li>
+    <li>手柄山の駐車場200円 → <strong>小銭も少し</strong></li>
+  </ul>
+</div>
+</div>
+</details>
+
+<!-- ==================== 給油 ==================== -->
+<details id="fuel">
+<summary><span class="em">⛽</span><span class="h"><span class="n">給油の計画</span>
+<span class="s">総走行 約1,050km／給油は2回でまわります</span></span></summary>
+<div class="inner">
+
+<p class="lead">内訳は 8/12 約60km／<strong>8/13 約440km</strong>（京都→湯原240＋美星往復200）／<strong>8/14 約370km</strong>／8/15 約190km。燃費12km/Lなら<strong>2回</strong>で足ります。</p>
+
+<div class="box ans">
+  <span class="big">⛽ 入れるタイミング</span>
+  <ol style="margin:0">
+    <li><strong>8/13、湯原温泉に着いたあと（久世・真庭市街）</strong>——この日は美星往復200kmがあり、しかも<strong class="no">美星町にガソリンスタンドがありません</strong>（公式が注意喚起）。ここが肝心です</li>
+    <li><strong>8/15の朝、フォレストリアを出たあと</strong>——<strong>JA-SS 用瀬SS</strong>（鳥取市用瀬町鷹狩729-1・<strong>7:00〜20:00</strong>・セルフ）が赤波へ入る手前の<strong>最終スタンド</strong>です</li>
+  </ol>
+  <p style="margin-top:6px"><span class="ok">8/14の夜ではなく8/15の朝に入れるのが正解です。</span>8/14は買い出しからBBQまで余裕が15分しかありません。用瀬SSは7:00開店、チェックアウトは10:00なので、翌朝なら時間の取り合いになりません。<br>
+  <span class="no">※JAいなば燃料センターのサイトに「盆休みなど営業変更あり」の注記があるため、閉まっていた場合に備えて鳥取市街のスタンドも頭に入れておくと安心です</span></p>
+</div>
+</div>
+</details>
+
+<!-- ==================== ポケモン ==================== -->
+<details id="poke">
+<summary><span class="em">⚡</span><span class="h"><span class="n">ポケモン スタンプラリー</span>
+<span class="s">今のプランで16種類。スタンプは24時間押せます</span></span></summary>
+<div class="inner">
+
+<div class="box ans">
+  <span class="big">✅ 香芝SAでピカチュウとホウオウを取得済み</span>
+  <p><strong>押した台紙を家から持っていってください。</strong>台紙は新しくもらえても、押した2個は戻ってきません。<br>
+  <span class="ok">上り・下りは施設が分かれている場合があり、その場合はポケモンも別です（高梁SA・蒜山高原SA・大佐SA・岸和田SA・香芝SAなど）。</span></p>
+</div>
+
+<div class="tbl">
+<table>
+<tr><th>日</th><th>SA・PA</th><th>パートナー</th><th>旅の仲間／伝説</th></tr>
+<tr><td class="t">済</td><td>香芝SA（上り）</td><td><span class="pkm">ピカチュウ ✅</span></td><td><span class="pkm">ホウオウ ★伝説 ✅</span></td></tr>
+<tr><td class="t">8/12</td><td>吹田SA（上り）</td><td><span class="pkm">ピカチュウ</span></td><td><span class="pkm">ルギア ★伝説</span></td></tr>
+<tr><td class="t">8/13</td><td>宝塚北SA</td><td><span class="pkm">ピカチュウ</span></td><td><span class="pkm">ゼルネアス ★伝説</span></td></tr>
+<tr><td class="t">8/13</td><td>加西SA（下り）</td><td><span class="pkm">ミズゴロウ</span></td><td><span class="pkm">ジュペッタ</span></td></tr>
+<tr><td class="t">8/13</td><td>勝央SA（下り）</td><td><span class="pkm">クワッス</span></td><td><span class="pkm">チョロネコ</span></td></tr>
+<tr><td class="t">8/13</td><td>高梁SA（<strong>上り</strong>）</td><td><span class="pkm">クワッス</span></td><td><span class="pkm">オクタン</span></td></tr>
+<tr><td class="t">8/13</td><td>高梁SA（<strong>下り</strong>）</td><td><span class="pkm">ワニノコ</span></td><td><span class="pkm">イエッサン</span></td></tr>
+<tr><td class="t">8/14</td><td>蒜山高原SA（下り）</td><td><span class="pkm">ミズゴロウ</span></td><td><span class="pkm">エルレイド</span></td></tr>
+<tr><td class="t">8/15</td><td>加西SA（上り）</td><td><span class="pkm">メッソン</span></td><td><span class="pkm">マニューラ</span></td></tr>
+<tr><td class="t">8/15</td><td>西宮名塩SA（上り）</td><td><span class="pkm">アシマリ</span></td><td><span class="pkm">ロトム</span></td></tr>
+</table>
+</div>
+
+<div class="box info">
+  <span class="big">➕ 旅行の前後に、堺から日帰りで足せる場所</span>
+  <p>阪和道 <strong>岸和田SA（上り）＝ポッチャマ／ゾロア</strong>、<strong>（下り）＝クワッス／ブラッキー</strong>、西名阪 <strong>香芝SA（下り）＝アシマリ／スターミー</strong>。ここまで足すと<strong>21種類</strong>になります。<br>
+  <span class="no">※公式PDFに「一部店舗でスタンプ押印・グッズ販売ができない場合がある」との注記があります。出発前に特設サイトの最新情報をご確認ください</span></p>
+</div>
+</div>
+</details>
+
+<!-- ==================== 電話帳 ==================== -->
+<details id="tel">
+<summary><span class="em">📞</span><span class="h"><span class="n">電話番号・リンク集</span>
+<span class="s">困ったときはここから</span></span></summary>
+<div class="inner">
+
+<div class="tbl">
+<table>
+<tr><th>いつ</th><th>どこ</th><th>電話</th></tr>
+<tr><td class="t">8/12</td><td>さと茂旅館</td><td><a href="tel:0753716245">075-371-6245</a></td></tr>
+<tr><td class="t">8/13</td><td>湯原温泉 菊之湯</td><td><a href="tel:0867622111">0867-62-2111</a></td></tr>
+<tr><td class="t">8/13</td><td><strong>美星天文台</strong></td><td><a href="tel:0866874222">0866-87-4222</a></td></tr>
+<tr><td class="t">8/13</td><td>神庭の滝（真庭市）</td><td><a href="tel:0867442701">0867-44-2701</a></td></tr>
+<tr><td class="t">8/14</td><td>そば処 八雲 本店</td><td><a href="tel:0853530257">0853-53-0257</a></td></tr>
+<tr><td class="t">8/14</td><td>エスマート鳥取南IC店</td><td><a href="tel:0858853977">0858-85-3977</a></td></tr>
+<tr><td class="t">8/14</td><td><strong>フォレストリア用瀬</strong></td><td><a href="tel:0858754051">0858-75-4051</a></td></tr>
+<tr><td class="t">8/15</td><td>千姫茶屋</td><td><a href="tel:0792884567">079-288-4567</a></td></tr>
+<tr><td class="t">8/15</td><td>姫路城</td><td><a href="tel:0792851146">079-285-1146</a></td></tr>
+<tr><td class="t">8/15</td><td>姫路市立水族館</td><td><a href="tel:0792970321">079-297-0321</a></td></tr>
+<tr><td class="t">8/15</td><td><strong>えん家 太子店</strong></td><td><a href="tel:0792637729">079-263-7729</a></td></tr>
+</table>
+</div>
+
+<div class="lnk">
+  <a href="https://www.kyoto-aquarium.com/">京都水族館</a>
+  <a href="https://www.bao.city.ibara.okayama.jp/">美星天文台</a>
+  <a href="https://www.forest-ria.com/">フォレストリア用瀬</a>
+  <a href="https://www.city.himeji.lg.jp/castle/">姫路城</a>
+  <a href="https://www.city.himeji.lg.jp/aqua/">姫路市立水族館</a>
+  <a href="https://www.w-nexco.co.jp/">NEXCO西日本</a>
+</div>
+</div>
+</details>
+
+<footer>
+  <p><strong>更新：2026年8月9日</strong><br>
+  料金・営業時間・持ち物は各施設の公式サイトで確認したものです。<strong>お盆の臨時休業までは公表されていない</strong>ので、前日に味味香・加西SA・出雲そば・千姫茶屋の4つだけ見ておいてください。<br>
+  天気は8月9日発表の予報に取り直しました。<strong>8/11〜12にもう一度</strong>ご確認を。<br>
+  チェックの状態は、このスマホの中だけに保存されます（共有されません）。</p>
+</footer>
+
+</div>
+
+<script>
+(function(){
+  var KEY='tabi2026_v2', OPEN='tabi2026_open_v2';
+  var st={}; try{ st=JSON.parse(localStorage.getItem(KEY)||'{}'); }catch(e){}
+  var items=[].slice.call(document.querySelectorAll('.it'));
+  items.forEach(function(el,i){
+    var cb=el.querySelector('input');
+    if(st['p'+i]){ cb.checked=true; el.classList.add('done'); }
+    cb.addEventListener('change',function(){
+      el.classList.toggle('done',cb.checked);
+      st['p'+i]=cb.checked;
+      try{ localStorage.setItem(KEY,JSON.stringify(st)); }catch(e){}
+      render();
+    });
+  });
+  function render(){
+    var n=items.filter(function(e){return e.classList.contains('done');}).length;
+    document.getElementById('pcnt').textContent=n+' / '+items.length;
+    document.getElementById('pfill').style.width=(items.length?n/items.length*100:0)+'%';
+  }
+  render();
+
+  // 開閉状態を記憶
+  var op={}; try{ op=JSON.parse(localStorage.getItem(OPEN)||'{}'); }catch(e){}
+  var ds=[].slice.call(document.querySelectorAll('details'));
+  ds.forEach(function(d){
+    if(op[d.id]) d.open=true;
+    d.addEventListener('toggle',function(){
+      op[d.id]=d.open;
+      try{ localStorage.setItem(OPEN,JSON.stringify(op)); }catch(e){}
+    });
+  });
+
+  // 旅行期間中は「その日」を自動で開く
+  var t=new Date(), m=t.getMonth()+1, dd=t.getDate(), y=t.getFullYear();
+  if(y===2026&&m===8&&dd>=12&&dd<=15){
+    var id='d'+dd, el=document.getElementById(id);
+    if(el){ el.open=true; el.classList.add('today'); }
+  }
+
+  // URLのハッシュで開く（例 …/#d15）
+  if(location.hash){
+    var h=document.querySelector(location.hash);
+    if(h&&h.tagName==='DETAILS'){ h.open=true; setTimeout(function(){h.scrollIntoView();},60); }
+  }
+
+  document.getElementById('openAll').addEventListener('click',function(){ ds.forEach(function(d){d.open=true;}); });
+  document.getElementById('closeAll').addEventListener('click',function(){
+    ds.forEach(function(d){d.open=false;});
+    window.scrollTo({top:0,behavior:'smooth'});
+  });
+
+
+  // ---- スタンプ＆SA ----
+  function bindStamps(sel, key, cntId, fillId, doneId){
+    var st={}; try{ st=JSON.parse(localStorage.getItem(key)||'{}'); }catch(e){}
+    var els=[].slice.call(document.querySelectorAll(sel));
+    function render(){
+      var n=els.filter(function(e){return e.classList.contains('got');}).length;
+      var c=document.getElementById(cntId), f=document.getElementById(fillId);
+      if(c) c.textContent=n+' / '+els.length;
+      if(f) f.style.width=(els.length?n/els.length*100:0)+'%';
+      var d=doneId&&document.getElementById(doneId);
+      if(d) d.style.display=(n===els.length&&els.length)?'block':'none';
+    }
+    els.forEach(function(el){
+      if(st[el.dataset.k]) el.classList.add('got');
+      el.addEventListener('click',function(){
+        el.classList.toggle('got');
+        st[el.dataset.k]=el.classList.contains('got');
+        try{ localStorage.setItem(key,JSON.stringify(st)); }catch(e){}
+        render();
+      });
+    });
+    render();
+  }
+  bindStamps('.st','tabi2026_stamp','stcnt','stfill','stdone');
+  bindStamps('.sta','tabi2026_sa','sacnt','safill',null);
+  // 路線図のSAノード ⇄ 一覧を同期
+  (function(){
+    var KEY='tabi2026_sa', st={}; try{ st=JSON.parse(localStorage.getItem(KEY)||'{}'); }catch(e){}
+    var nodes=[].slice.call(document.querySelectorAll('.rsa'));
+    function paint(){
+      try{ st=JSON.parse(localStorage.getItem(KEY)||'{}'); }catch(e){}
+      nodes.forEach(function(n){ n.classList.toggle('got', !!st[n.dataset.k]); });
+      var cards=[].slice.call(document.querySelectorAll('.sta'));
+      cards.forEach(function(c){ c.classList.toggle('got', !!st[c.dataset.k]); });
+      var got=cards.filter(function(c){return c.classList.contains('got');}).length;
+      var c1=document.getElementById('sacnt'), f1=document.getElementById('safill');
+      if(c1) c1.textContent=got+' / '+cards.length;
+      if(f1) f1.style.width=(cards.length?got/cards.length*100:0)+'%';
+    }
+    nodes.forEach(function(n){
+      n.addEventListener('click',function(){
+        try{ st=JSON.parse(localStorage.getItem(KEY)||'{}'); }catch(e){}
+        st[n.dataset.k]=!st[n.dataset.k];
+        try{ localStorage.setItem(KEY,JSON.stringify(st)); }catch(e){}
+        paint();
+      });
+    });
+    document.querySelectorAll('.sta').forEach(function(c){ c.addEventListener('click',function(){ setTimeout(paint,0); }); });
+    paint();
+  })();
+
+  // 日フィルタ
+  (function(){
+    var w=document.getElementById('netwrap'); if(!w) return;
+    document.querySelectorAll('.daybtns button').forEach(function(b){
+      b.addEventListener('click',function(){
+        document.querySelectorAll('.daybtns button').forEach(function(x){x.classList.remove('on');});
+        b.classList.add('on');
+        w.className='roadbox'+(b.dataset.d==='all'?'':' f-'+b.dataset.d);
+      });
+    });
+  })();
+  // 上へボタン
+  var top=document.getElementById('top');
+  if(top){ window.addEventListener('scroll',function(){ top.classList.toggle('on',window.scrollY>500); },{passive:true});
+    top.addEventListener('click',function(){ window.scrollTo({top:0,behavior:'smooth'}); }); }
+})();
+</script>
+</body>
+</html>
