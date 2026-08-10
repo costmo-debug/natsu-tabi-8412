@@ -3,7 +3,6 @@ import { el, RM } from '../util.js';
 import { NET_LABELS } from '../map/netmap.js';
 import { DAYCOL } from '../data/tokens.js';
 import { snap, sheetIdx } from './sheet.js';
-import { curPage } from './book.js';
 import { V1, V2, LBL1, LBL2, AREA_M0 } from '../boot.js';
 import { poseArea } from './sheet.js';
 export var TTL={1:['旅行スタンプラリー','8がつ14にち（きん）12:25 ・ いずも'],
@@ -22,7 +21,6 @@ export function go(n){
     if(n===2) requestAnimationFrame(function(){
       if(V2){ V2.ready(); if(!V2.posed){ V2.posed=true; if(AREA_M0) poseArea(AREA_M0); } }
       snap(sheetIdx); if(LBL2) LBL2.now(); });
-    if(n===3) requestAnimationFrame(function(){ el('pages').scrollLeft=curPage*el('pages').clientWidth; });
   };
   if(document.startViewTransition && !RM.matches){ document.startViewTransition(run); }
   else { run(); }

@@ -11,7 +11,7 @@ import { renderBook, gotoPageOf, showReward } from './book.js';
 import { buildAreaBar } from './sheet.js';
 import { rebuildMaps } from '../boot.js';
 import { count, total } from '../data/stamps.js';
-import { pressStamp } from '../core/store.js';
+import { pressStamp, removeStamp } from '../core/store.js';
 import { getPersonId } from '../core/person.js';
 import { catBlock } from './cat.js';
 
@@ -54,6 +54,21 @@ export async function acquire(k){
     if(c) c.classList.add('pop');
     if(count()===total()) setTimeout(showReward,900);
   });
+}
+/* B-2：おした スタンプを もう いちど タップ → 事後確認 → けす
+   （押す ときは 事前確認なし・けす ときだけ 聞く、が Sir の 意図） */
+export async function removeStampUI(k){
+  if(!k || !got(k)) return;
+  if(!window.confirm('この スタンプを けしますか？')) return;
+  try{
+    await removeStamp(getPersonId(), k);
+  }catch(e){
+    toast('けせませんでした');
+    return;
+  }
+  delete GOT[k];
+  renderSheet(); renderBook(); buildAreaBar();
+  rebuildMaps();
 }
 export function replay(){
   var k='i2';

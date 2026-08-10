@@ -2,7 +2,7 @@
 import { el } from '../util.js';
 import { esc } from '../util.js';
 import { got, count, total, findStamp, PUSHABLE, EMPTY_DEMO } from '../data/stamps.js';
-import { acquire, replay } from './acquire.js';
+import { acquire, replay, removeStampUI } from './acquire.js';
 import { catId, catBlock, CAT_PROV } from './cat.js';
 import { stampArtSrc, hasStampArt } from '../data/stampArt.js';
 import { confetti } from '../fx/confetti.js';
@@ -24,8 +24,9 @@ export function slotHTML(k,idx){
   var st=findStamp(k), g=got(k), now=(k===PUSHABLE && !g);
   var cls='slot'+(g?' got':'')+(now?' now':'');
   var rot=ROT[idx%ROT.length];
-  var tag=now?'button':'div';
-  return '<'+tag+' class="'+cls+'" data-k="'+k+'"'+(now?' data-push="1"':'')
+  var tag=(now||g)?'button':'div';
+  var attrs=(now?' data-push="1"':'')+(g?' data-remove="1"':'');
+  return '<'+tag+' class="'+cls+'" data-k="'+k+'"'+attrs
        + ' style="--rot:'+(g?rot:0)+'deg">'
        + (g?'<span class="ink"></span><span class="ink2"></span>':'')
        + '<span class="en">'+(hasStampArt(k)
@@ -47,19 +48,21 @@ export function renderBook(){
   el('pnum1').textContent=n+' / '+tt;
 
   var h=[];
-  PAGES.forEach(function(pg,pi){
-    var done=pg.ks.filter(function(k){return got(k);}).length;
-    h.push('<div class="page" data-p="'+pi+'"><div class="paper">');
-    if(n===0 && pi===0){
-      h.push('<div class="note" style="margin:0 0 16px;text-align:center">'
-           + '<b style="display:block;font-size:16px;margin-bottom:4px">スタンプは まだ 0こ です</b>'
-           + '8がつ12にち 10:10 の すいたSA（のぼり）で だいしを もらう ところから はじまります。</div>');
-    }
-    if(pg.ks.indexOf(PUSHABLE)>=0 && !got(PUSHABLE) && !EMPTY_DEMO){
-      var ps=findStamp(PUSHABLE);
-      h.push('<button class="bigbtn" data-push="1" data-k="'+PUSHABLE+'">'
+  if(n===0){
+    h.push('<div class="note" style="margin:16px 0 16px;text-align:center">'
+         + '<b style="display:block;font-size:16px;margin-bottom:4px">スタンプは まだ 0こ です</b>'
+         + '8がつ12にち 10:10 の すいたSA（のぼり）で だいしを もらう ところから はじまります。</div>');
+  }
+  if(!EMPTY_DEMO && !got(PUSHABLE)){
+    var ps=findStamp(PUSHABLE);
+    if(ps){
+      h.push('<button class="bigbtn" style="margin-top:'+(n===0?'0':'16px')+'" data-push="1" data-k="'+PUSHABLE+'">'
            + ps.e+' いま 「'+esc(ps.n)+'」が おせます</button>');
     }
+  }
+  PAGES.forEach(function(pg,pi){
+    var done=pg.ks.filter(function(k){return got(k);}).length;
+    h.push('<div class="paper">');
     h.push('<h3>'+esc(pg.t)+'　<span style="color:var(--pop)">'+done+'／'+pg.ks.length+'</span></h3>');
     h.push('<p>'+esc(pg.sub)+'</p>');
     h.push('<div class="slots">');
@@ -69,40 +72,23 @@ export function renderBook(){
       h.push('<button class="subbtn" id="rewardBtn" style="margin-top:16px">ごほうびの え を みる（デモ）</button>');
       h.push('<button class="subbtn" id="replayBtn">もういちど えんしゅつ を みる</button>');
     }
-    h.push('</div></div>');
+    h.push('</div>');
   });
   el('pages').innerHTML=h.join('');
-  el('pdots').innerHTML=PAGES.map(function(p,i){
-    return '<span class="pdot'+(i===curPage?' on':'')+'"></span>';
-  }).join('')+'<span class="pnum" id="pnum">'+(curPage+1)+' / '+PAGES.length+'</span>';
 
   Array.prototype.forEach.call(el('pages').querySelectorAll('[data-push]'),function(b){
     b.addEventListener('click',function(){ acquire(b.getAttribute('data-k')); });
   });
+  Array.prototype.forEach.call(el('pages').querySelectorAll('[data-remove]'),function(b){
+    b.addEventListener('click',function(){ removeStampUI(b.getAttribute('data-k')); });
+  });
   var rb=el('rewardBtn'); if(rb) rb.addEventListener('click',showReward);
   var pb=el('replayBtn'); if(pb) pb.addEventListener('click',replay);
-  el('pages').scrollLeft = curPage * el('pages').clientWidth;
 }
-export function initPages(){
-  var p=el('pages');
-  p.addEventListener('scroll',function(){
-    var w=p.clientWidth||1, i=Math.round(p.scrollLeft/w);
-    if(i!==curPage){
-      curPage=Math.max(0,Math.min(PAGES.length-1,i));
-      Array.prototype.forEach.call(el('pdots').querySelectorAll('.pdot'),function(d,j){
-        d.classList.toggle('on', j===curPage);
-      });
-      var pn=el('pnum'); if(pn) pn.textContent=(curPage+1)+' / '+PAGES.length;
-    }
-  });
-}
+export function initPages(){}
 export function gotoPageOf(k){
-  for(var i=0;i<PAGES.length;i++){ if(PAGES[i].ks.indexOf(k)>=0){ curPage=i; break; } }
-  var p=el('pages');
-  p.scrollTo({left:curPage*p.clientWidth, behavior:RM.matches?'auto':'smooth'});
-  Array.prototype.forEach.call(el('pdots').querySelectorAll('.pdot'),function(d,j){
-    d.classList.toggle('on', j===curPage); });
-  var pn=el('pnum'); if(pn) pn.textContent=(curPage+1)+' / '+PAGES.length;
+  var t=el('pages').querySelector('.slot[data-k="'+k+'"]');
+  if(t) t.scrollIntoView({block:'center', behavior:RM.matches?'auto':'smooth'});
 }
 
 /* ---------- 10. スタンプを おした ときの えんしゅつ（はでに） ---------- */
