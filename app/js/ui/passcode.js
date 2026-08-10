@@ -19,9 +19,13 @@ function openSetup(afterDone) {
   scr.classList.add('on');
   digitsWrap.classList.remove('on');
   input.value = '';
+  el('passUseBtn').style.display = '';
+  el('passNoBtn').style.display = '';
   function close() { scr.classList.remove('on'); }
   el('passUseBtn').onclick = function () {
     digitsWrap.classList.add('on'); input.value = ''; input.focus();
+    el('passUseBtn').style.display = 'none';
+    el('passNoBtn').style.display = 'none';
   };
   el('passNoBtn').onclick = async function () {
     await setPasscodeDisabled();
