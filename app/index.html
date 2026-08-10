@@ -92,17 +92,24 @@
     <section class="scr on" id="scr1" aria-label="ぜんたいの ちず">
       <div class="bar" id="dayBar"></div>
       <div class="mapbody">
-        <div class="mapv" id="mapv"><div class="mapfit" id="mapfit"></div></div>
-        <div class="lblv" id="mapLbl" aria-hidden="true"></div>
-        <div class="legend">
-          <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2 8h9" stroke="#4a5b6e" stroke-width="2" stroke-linecap="round"/><path d="M9 4.5 14 8l-5 3.5Z" fill="#4a5b6e"/></svg>
-          <span>やじるし＝すすむ むき</span>
-        </div>
-        <div class="mctl mctl-top">
-          <div class="zoom">
-            <button class="zb" data-z="in" aria-label="ちずを おおきくする">＋</button>
-            <button class="zb" data-z="out" aria-label="ちずを ちいさくする">−</button>
-            <button class="zb small" data-z="fit" aria-label="ちず ぜんたい をみる">ぜんぶ</button>
+        <div class="mapview">
+          <div class="mapv" id="mapv"><div class="mapfit" id="mapfit"></div></div>
+          <div class="lblv" id="mapLbl" aria-hidden="true"></div>
+          <div class="legend">
+            <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2 8h9" stroke="#4a5b6e" stroke-width="2" stroke-linecap="round"/><path d="M9 4.5 14 8l-5 3.5Z" fill="#4a5b6e"/></svg>
+            <span>やじるし＝すすむ むき</span>
+          </div>
+          <div class="mctl mctl-top">
+            <div class="zoom">
+              <button class="zb" data-z="in" aria-label="ちずを おおきくする">＋</button>
+              <button class="zb" data-z="out" aria-label="ちずを ちいさくする">−</button>
+              <button class="zb small" data-z="fit" aria-label="ちず ぜんたい をみる">ぜんぶ</button>
+            </div>
+          </div>
+          <div class="mctl mctl-bot">
+            <button class="fab" id="btnHere" aria-label="いま いるところ に もどる">
+              <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><circle cx="12" cy="12" r="8.4"/><path d="M12 1.6V4M12 20v2.4M1.6 12H4M20 12h2.4"/></svg>
+            </button>
           </div>
         </div>
         <!-- 下の情報は この1枚だけ。しらせ（くろい おび）は この1行目に まとめた -->
@@ -122,11 +129,6 @@
             <div class="progbar"><i id="pbar1" style="width:0%"></i></div>
             <div class="n" id="pnum1">0 / 30</div>
           </div>
-        </div>
-        <div class="mctl mctl-bot">
-          <button class="fab" id="btnHere" aria-label="いま いるところ に もどる">
-            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><circle cx="12" cy="12" r="8.4"/><path d="M12 1.6V4M12 20v2.4M1.6 12H4M20 12h2.4"/></svg>
-          </button>
         </div>
       </div>
     </section>
