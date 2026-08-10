@@ -1,5 +1,5 @@
 "use strict";
-import { el } from '../util.js';
+import { el, browserName } from '../util.js';
 import { catBlock, CAT_PROV } from './cat.js';
 export var ICONS={
   load:'<div class="spin"></div>',
@@ -11,7 +11,7 @@ export var ICONS={
 export var STATES={
   load:{t:'ちずを よみこんでいます',m:'あと すこし まってください。よみこみが おわると、いま いるところ が ちずに 出ます。',a:'とじる'},
   gpsfail:{t:'いま いるところ が わかりません',m:'そらが 見えない ところに いるため、ばしょが とれませんでした。そとに 出るか、「てで おす」ボタンで じぶんで おしてください。',a:'てで おす'},
-  denied:{t:'いちじょうほう が ことわられています',m:'この たんまつ で いちじょうほう が「きょかしない」に なっています。せってい → Safari → いちじょうほう を「きょか」に かえてから、この がめんに もどってください。',a:'やりかたを 見る'},
+  denied:{t:'いちじょうほう が ことわられています',m:'この たんまつ で いちじょうほう が「きょかしない」に なっています。iPhoneの「せってい」アプリ → {{browser}} → いちじょうほう を「アプリの しよう中は きょか」に かえてから、この がめんに もどって「とじる」を おしてください（ブラウザの なかの せっていでは ありません）。',a:'とじる'},
   empty:{t:'スタンプは まだ 0こ です',m:'8がつ12にち 10:10 の すいたSA（のぼり）で だいしを もらう ところから はじまります。',a:'スタンプちょう を ひらく'},
   offline:{t:'いま つながっていません',m:'おした スタンプは この たんまつ に ちゃんと のこって います。でんぱが もどったら じどうで おくります。',a:'わかった'}
 };
@@ -27,7 +27,7 @@ export function showState(kind){
     : ICONS[kind];
   el('stCatNote').textContent = pose ? CAT_PROV : '';
   el('stTtl').textContent=s.t;
-  el('stMsg').textContent=s.m;
+  el('stMsg').textContent=s.m.replace('{{browser}}', browserName());
   el('stAct').textContent=s.a;
   el('state').classList.toggle('bad', kind==='gpsfail'||kind==='denied');
   el('state').classList.add('on');
