@@ -5,8 +5,8 @@ import { DAYCOL } from '../data/tokens.js';
 import { snap, sheetIdx } from './sheet.js';
 import { V1, V2, LBL1, LBL2, AREA_M0 } from '../boot.js';
 import { poseArea } from './sheet.js';
-export var TTL={1:['旅行スタンプラリー','8がつ14にち（きん）12:25 ・ いずも'],
-         2:['スポットの まわり','8がつ14にち（きん）12:25 ・ けいだい'],
+export var TTL={1:['旅行スタンプラリー',''],
+         2:['スポットの まわり',''],
          3:['スタンプちょう','たび20こ ＋ サービスエリア10こ'],
          4:['せってい','きろく・あいことば・あとから おす']};
 export function go(n){

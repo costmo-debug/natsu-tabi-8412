@@ -58,9 +58,19 @@ export function renderBook(){
            + ps.e+' いま 「'+esc(ps.n)+'」が おせます</button></div>');
     }
   }
+  var slotCount=0;
   PAGES.forEach(function(pg){
-    pg.ks.forEach(function(k){ h.push(slotHTML(k)); });
+    pg.ks.forEach(function(k){ h.push(slotHTML(k)); slotCount++; });
   });
+  /* 5れつの グリッドに あまりが 出る ぶんは、ねこの えで うめる（データに ひもづかない かざり） */
+  var COLS=5, rest=slotCount%COLS;
+  if(rest){
+    var fillPoses=['cat-cheer','cat-guide','cat-travel'];
+    for(var fi=0; fi<COLS-rest; fi++){
+      h.push('<div class="slot fillcat" aria-hidden="true">'
+           + catBlock(fillPoses[fi%fillPoses.length],64)+'</div>');
+    }
+  }
   el('pages').innerHTML=h.join('');
 
   Array.prototype.forEach.call(el('pages').querySelectorAll('[data-push]'),function(b){
