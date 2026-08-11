@@ -30,9 +30,9 @@ export function slotHTML(k){
   return '<'+tag+' class="'+cls+'" data-k="'+k+'" data-open="1"'
        + ' style="--gc:var(--d'+GID(gk)+');--gcbg:var(--d'+GID(gk)+'bg)"'
        + ' aria-label="'+esc(st.n)+'（'+(g?'ゲットずみ':(now?'いま おせる':'まだ'))+'）">'
-       + '<span class="en">'+((g||now)&&hasStampArt(k)
+       + '<span class="en">'+(g&&hasStampArt(k)
            ? '<img src="'+stampArtSrc(k)+'" alt="'+esc(st.n)+'" loading="lazy">'
-           : (g||now)
+           : g
              ? '<span class="enph" aria-hidden="true">'+esc(st.e||'？')+'</span>'
              : '<span class="enph mystery" aria-hidden="true">？</span>')
            + (now?'<span class="shine" aria-hidden="true"></span>':'')+'</span>'
@@ -94,9 +94,9 @@ export function openStampModal(k){
   var g=got(k), now=(!g && (getManualMode() || k===PUSHABLE));
   var gk=GROUP_KEY_OF[k]||'kyoto';
   el('smArt').style.setProperty('--gc','var(--d'+GID(gk)+')');
-  el('smArt').innerHTML=(g||now)&&hasStampArt(k)
+  el('smArt').innerHTML=g&&hasStampArt(k)
     ? '<img src="'+stampArtSrc(k)+'" alt="'+esc(st.n)+'">'
-    : (g||now)
+    : g
       ? '<span aria-hidden="true">'+esc(st.e||'？')+'</span>'
       : '<span class="mystery" aria-hidden="true">？</span>';
   el('smName').textContent=st.n;
