@@ -229,6 +229,7 @@ export async function removeStamp(personId, stampId) {
   var existing = await req(os.get(id));
   if (existing) os.delete(id);
   await done(t);
+  removeEmergency(id);
   return { removed: !!existing };
 }
 
@@ -447,6 +448,19 @@ function pushEmergency(rec) {
     self.localStorage.setItem(LS_EMERGENCY, JSON.stringify(arr));
     return true;
   } catch (e) { return false; }
+}
+
+/* けした スタンプが、ひなん場所（localStorage）に のこっていたら、
+   つぎに 開いた ときに 書きもどされて 復活する バグを ふせぐ */
+function removeEmergency(id) {
+  try {
+    var arr = readEmergency();
+    var left = arr.filter(function (r) { return r.id !== id; });
+    if (left.length !== arr.length) {
+      if (left.length) self.localStorage.setItem(LS_EMERGENCY, JSON.stringify(left));
+      else self.localStorage.removeItem(LS_EMERGENCY);
+    }
+  } catch (e) { /* noop */ }
 }
 
 export async function drainEmergency() {
