@@ -1,7 +1,7 @@
 "use strict";
 import { el, esc, RM } from './util.js';
 import { STAMPS, SAS, GOT, setEmptyDemo, setPushable, count, total, applyGotRecords } from './data/stamps.js';
-import { listStamps, drainEmergency, addPerson, setCurrentPerson, exportAll, exportFileName, requestPersist } from './core/store.js';
+import { listStamps, purgeEmergencyQueue, addPerson, setCurrentPerson, exportAll, exportFileName, requestPersist } from './core/store.js';
 import { gateThenEnter, openPasscodeSettings } from './ui/passcode.js';
 import { getPersonId } from './core/person.js';
 import { startLiveTracking } from './geo/live.js';
@@ -46,7 +46,7 @@ async function loadPersisted(){
     requestPersist().catch(function(){});
     await addPerson({id:pid, name:pid});
     await setCurrentPerson(pid);
-    await drainEmergency();
+    purgeEmergencyQueue();
     var rows=await listStamps(pid);
     applyGotRecords(rows);
   }catch(e){

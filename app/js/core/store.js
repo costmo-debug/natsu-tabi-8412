@@ -463,6 +463,16 @@ function removeEmergency(id) {
   } catch (e) { /* noop */ }
 }
 
+/* 段6是正・重要：ひなん場所（localStorage）を 書きもどす しくみ が、
+   けした あとに 復活する バグの げんいん だった（removeStamp は 同じ id の ぶんしか けさない ので、
+   古い たんまつ に 残った ぶんが 消しきれない ことが あった）。
+   この きろく（スタンプの おす・けす）は 容量が とても 小さく、容量オーバーで
+   ひなん場所を つかう ケースは 現実には ほぼ 起きない。害の ほうが 大きいと 判断し、
+   起動の たびに ひなん場所は まるごと 消す（書きもどしを しない）ことに した。 */
+export function purgeEmergencyQueue() {
+  try { self.localStorage.removeItem(LS_EMERGENCY); } catch (e) { /* noop */ }
+}
+
 export async function drainEmergency() {
   var arr = readEmergency();
   if (!arr.length) return { moved: 0, left: 0 };
