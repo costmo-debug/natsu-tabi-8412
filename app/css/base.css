@@ -112,8 +112,14 @@ main{flex:1 1 auto;position:relative;overflow:hidden}
 .nextcard{position:absolute;left:16px;right:16px;bottom:16px;z-index:3;padding:8px 16px 12px;
   border-radius:var(--r3);background:var(--surf);box-shadow:var(--sh3)}
 #scr1 .nextcard{position:static;flex:0 0 auto;left:auto;right:auto;bottom:auto;
-  margin:8px 16px calc(12px + env(safe-area-inset-bottom))}
-.nowline{display:flex;align-items:center;gap:8px;min-height:20px;
+  margin:8px 16px calc(12px + env(safe-area-inset-bottom));padding:4px 16px 0;
+  touch-action:none}
+.ncgrip{display:flex;flex-direction:column;align-items:center;gap:4px;padding:6px 0 4px;cursor:pointer}
+.ncgrip .bar2{width:36px;height:4px;border-radius:var(--r4);background:var(--line)}
+.ncbody{max-height:0;opacity:0;overflow:hidden;
+  transition:max-height 280ms var(--ez2),opacity 200ms var(--ez1)}
+.nextcard.expanded .ncbody{max-height:180px;opacity:1;padding-bottom:12px}
+.nowline{display:flex;align-items:center;gap:8px;min-height:20px;width:100%;
   font-size:11px;font-weight:700;color:var(--ink2);line-height:1.5;
   transition:color 200ms var(--ez1)}
 .nowline .dot{flex:0 0 auto;width:8px;height:8px;border-radius:var(--r4);background:var(--pop)}
@@ -331,6 +337,8 @@ a.fine{color:var(--ink3);text-decoration:underline}
 .adultbtn{min-height:44px;padding:8px 12px;border-radius:var(--r2);background:var(--surf2);
   color:var(--ink);font-size:14px;font-weight:700;text-align:left}
 .adultbtn:active{background:var(--line)}
+.togglerow{display:flex;align-items:center;justify-content:space-between;gap:12px;cursor:pointer}
+.togglerow input{flex:0 0 auto;width:22px;height:22px}
 #laterList{max-height:60vh;overflow-y:auto;-webkit-overflow-scrolling:touch}
 
 /* しらせの おび。ちず画面では 下カードの1行目に まとめるので ここには 出さない */

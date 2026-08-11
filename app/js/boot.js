@@ -5,7 +5,7 @@ import { listStamps, drainEmergency, addPerson, setCurrentPerson, exportAll, exp
 import { gateThenEnter, openPasscodeSettings } from './ui/passcode.js';
 import { getPersonId } from './core/person.js';
 import { startLiveTracking } from './geo/live.js';
-import { renderNextCard } from './ui/nextcard.js';
+import { renderNextCard, initNextCard } from './ui/nextcard.js';
 import { buildNetMap, NET_LABELS, NETW, NETH, NET_ME } from './map/netmap.js';
 import { buildAreaMap, SPOT_LABELS, AREAS } from './map/areamap.js';
 import { curArea } from './ui/sheet.js';
@@ -65,6 +65,7 @@ export async function boot(){
         ['#scr2 .mctl','#sheet','.tabs']);
 
   renderNextCard();
+  initNextCard();
   V1=makeView('mapv','mapfit',NETW,NETH,0,function(){ LBL1.update(); });
   V2=makeView('spotv','spotfit',m0.w,m0.h,152,function(){ LBL2.update(); });
   V1.ready(); applyFilter();

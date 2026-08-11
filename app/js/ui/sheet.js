@@ -1,6 +1,6 @@
 "use strict";
 import { el, esc } from '../util.js';
-import { got, findStamp, PUSHABLE, distText, zoneText, llText, zones, plRuby, rb } from '../data/stamps.js';
+import { got, findStamp, PUSHABLE, distText, zoneText, llText, zones, plRuby, rb, getManualMode } from '../data/stamps.js';
 import { DAYCOL } from '../data/tokens.js';
 import { AREAS, AREA_ORDER, areaOf, buildAreaMap, SPOT_LABELS } from '../map/areamap.js';
 import { acquire } from './acquire.js';
@@ -50,20 +50,21 @@ export var AREA_HINT={
 export function areaStamps(a){ return AREAS[a].ks.concat((AREAS[a].away||[]).map(function(x){return x.k;})); }
 
 export function renderSheet(){
-  var A=AREAS[curArea], st=findStamp(curSpot), g=got(curSpot), now=(curSpot===PUSHABLE && !g);
+  var A=AREAS[curArea], st=findStamp(curSpot), g=got(curSpot);
+  var manual=getManualMode();
+  var now=(!g && (manual || curSpot===PUSHABLE));
   var dist=distText(curSpot);
   var h=[];
+  if(manual){
+    h.push('<p class="manualnote" style="margin:0 0 8px;font-size:11px;font-weight:700;color:var(--pop)">'
+         + '今は おせる モードです</p>');
+  }
   h.push('<button class="getbtn" id="getBtn"'+(now?'':' disabled')+'>');
   h.push('<span class="disk">'+artOrPh(curSpot,st)+'</span><span class="tx">');
   if(g){ h.push('<b>スタンプ ゲット ずみ</b><span>'+st.d+' '+st.t+' に おしました</span>'); }
   else if(now){ h.push('<b>いま おせます！</b><span>'+esc(st.n)+' の スタンプを おす</span>'); }
-  else { h.push('<b>ちかづくと おせます</b><span>ここから '+dist+'（てで おすことも できます）</span>'); }
+  else { h.push('<b>ちかづくと おせます</b><span>ここから '+dist+'</span>'); }
   h.push('</span></button>');
-
-  if(!g && !now){
-    h.push('<button class="subbtn" id="manualBtn" style="margin-top:16px">'
-         + 'でんぱが なくても てで おす</button>');
-  }
 
   h.push('<div class="detail">');
   h.push('<h3>'+esc(st.n)+'</h3>');
@@ -85,7 +86,7 @@ export function renderSheet(){
   var ks=areaStamps(curArea);
   h.push('<div class="slist">');
   ks.forEach(function(k){
-    var t2=findStamp(k), g2=got(k), n2=(k===PUSHABLE && !g2);
+    var t2=findStamp(k), g2=got(k), n2=(!g2 && (manual || k===PUSHABLE));
     h.push('<button class="srow" data-k="'+k+'" aria-current="'+(k===curSpot)+'">');
     h.push('<span class="ic">'+artOrPh(k,t2)+'</span><span class="tx"><b>'+esc(t2.n)+'</b>'
          + '<span>'+esc(t2.d)+' '+esc(t2.t)+' ・ '+esc(t2.pk)+'</span></span>');
@@ -104,9 +105,7 @@ export function renderSheet(){
   el('areaTtl').innerHTML=esc(A.ttl).replace('用瀬', rb('用瀬','もちがせ'));
 
   var gb=el('getBtn');
-  if(gb && !gb.disabled) gb.addEventListener('click',function(){ acquire(PUSHABLE); });
-  var mb=el('manualBtn');
-  if(mb) mb.addEventListener('click',function(){ acquire(curSpot); });
+  if(gb && !gb.disabled) gb.addEventListener('click',function(){ acquire(curSpot); });
   Array.prototype.forEach.call(el('sheetBody').querySelectorAll('.srow'),function(b){
     b.addEventListener('click',function(){
       var k=b.getAttribute('data-k'), a=areaOf(k);

@@ -1,8 +1,10 @@
 "use strict";
 import { el, esc } from '../util.js';
-import { got, findStamp } from '../data/stamps.js';
-import { PAGES } from './book.js';
+import { got, findStamp, getManualMode, setManualMode } from '../data/stamps.js';
+import { PAGES, renderBook } from './book.js';
 import { acquire } from './acquire.js';
+import { renderSheet, buildAreaBar } from './sheet.js';
+import { rebuildMaps } from '../boot.js';
 
 export function renderLaterList(){
   var h=[], any=false;
@@ -35,6 +37,14 @@ export function openLater(){
   el('laterPicker').classList.add('on');
 }
 export function initSettings(){
+  var mm=el('manualModeChk');
+  if(mm){
+    mm.checked=getManualMode();
+    mm.addEventListener('change',function(){
+      setManualMode(mm.checked);
+      renderSheet(); renderBook(); buildAreaBar(); rebuildMaps();
+    });
+  }
   el('btnLater').addEventListener('click',openLater);
   el('laterClose').addEventListener('click',function(){ el('laterPicker').classList.remove('on'); });
   el('laterPicker').addEventListener('click',function(e){

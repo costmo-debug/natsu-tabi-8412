@@ -1,7 +1,7 @@
 "use strict";
 import { el } from '../util.js';
 import { esc } from '../util.js';
-import { got, count, total, findStamp, PUSHABLE, EMPTY_DEMO } from '../data/stamps.js';
+import { got, count, total, findStamp, PUSHABLE, EMPTY_DEMO, getManualMode } from '../data/stamps.js';
 import { acquire, replay, removeStampUI } from './acquire.js';
 import { catId, catBlock, CAT_PROV } from './cat.js';
 import { stampArtSrc, hasStampArt } from '../data/stampArt.js';
@@ -21,7 +21,7 @@ export var ROT=[-5,4,-3,6,-6,3,-4,5];
 export var curPage=0;
 
 export function slotHTML(k,idx){
-  var st=findStamp(k), g=got(k), now=(k===PUSHABLE && !g);
+  var st=findStamp(k), g=got(k), now=(!g && (getManualMode() || k===PUSHABLE));
   var cls='slot'+(g?' got':'')+(now?' now':'');
   var rot=ROT[idx%ROT.length];
   var tag=(now||g)?'button':'div';

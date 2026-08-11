@@ -22,6 +22,31 @@ function farText(meters){
   return (meters / 1000).toFixed(meters < 10000 ? 1 : 0) + ' km さき';
 }
 
+export function initNextCard(){
+  var card=document.getElementById('nextcard'), grip=document.getElementById('ncgrip');
+  if(!card||!grip) return;
+  var dragging=false, y0=0, moved=false;
+  grip.addEventListener('pointerdown',function(e){
+    dragging=true; moved=false; y0=e.clientY;
+    if(grip.setPointerCapture) grip.setPointerCapture(e.pointerId);
+  });
+  grip.addEventListener('pointermove',function(e){
+    if(!dragging) return;
+    if(Math.abs(e.clientY-y0)>6) moved=true;
+  });
+  function up(e){
+    if(!dragging) return; dragging=false;
+    if(!moved){ card.classList.toggle('expanded'); return; }
+    var dy=e.clientY-y0;
+    if(dy<-6) card.classList.add('expanded');
+    else if(dy>6) card.classList.remove('expanded');
+  }
+  grip.addEventListener('pointerup',up);
+  grip.addEventListener('pointercancel',up);
+  grip.addEventListener('keydown',function(e){
+    if(e.key==='Enter'||e.key===' '){ e.preventDefault(); card.classList.toggle('expanded'); }
+  });
+}
 export function renderNextCard(now){
   now = now || new Date();
   var info = tripDayInfo(now);

@@ -1,7 +1,7 @@
 "use strict";
 import { T, iso, pt, G, shade, isoBox, isoRoof, hexClamp, isoCone, isoShadow, offsetPts, isoPath, roadLadder, dirArrows, rnd, projR } from '../map/iso.js';
 import { el, esc } from '../util.js';
-import { zones, mpdLon, MPD_LAT, got, findStamp, PUSHABLE } from '../data/stamps.js';
+import { zones, mpdLon, MPD_LAT, got, findStamp, PUSHABLE, getManualMode, metersBetween } from '../data/stamps.js';
 import { catUse, catRect } from '../ui/cat.js';
 import { art_tower, art_dome, art_castle, art_camp } from './landmarks.js';
 import { steamG } from './motion.js';
@@ -10,12 +10,12 @@ export var SPOT_LABELS = [];
 export var AREAS = {
   kyoto:{ ttl:'きょうとえき の まわり', chip:'きょうと', day:'d12', mpp:40, K:11,
     ref:{k:'k3', gx:28, gy:55}, plate:[-3,-7,43,63],
-    ks:['k1','k3','k2','k4'], focus:'k3',
+    ks:['k1','k3','k2','k4'], focus:'k3', cat:[28,55],
     art:{k1:{f:'dept',  top:46}, k2:{f:'ryokan',top:40},
          k3:{f:'porta', top:40}, k4:{f:'aqua',  top:42}} },
   yubara:{ ttl:'ゆばら おんせん の まわり', chip:'ゆばら', day:'d13', mpp:12, K:11,
     ref:{k:'y1', gx:14, gy:30}, plate:[1,-2,37,62],
-    ks:['y2','y1','y3'], focus:'y1',
+    ks:['y2','y1','y3'], focus:'y1', cat:[14,30],
     art:{y1:{f:'bath',top:44}, y2:{f:'bridge',top:34}, y3:{f:'museum',top:42}} },
   izumo:{ ttl:'いずもたいしゃ の まわり', chip:'いずも', day:'d14', mpp:12, K:11,
     ref:{k:'i2', gx:14, gy:12}, plate:[-3,-3,43,112],
@@ -24,18 +24,18 @@ export var AREAS = {
          i1:{f:'soba',  top:52}, i4:{f:'torii', top:82}} },
   mochigase:{ ttl:'もちがせ の まわり', chip:'もちがせ', day:'d14', mpp:12, K:11,
     ref:{k:'f1', gx:18, gy:30}, plate:[1,3,37,59],
-    ks:['f1','f3','f2','f4'], focus:'f1',
+    ks:['f1','f3','f2','f4'], focus:'f1', cat:[18,30],
     nudge:{f1:[-4.5,-3.5], f2:[6,5], f3:[4.5,-10]},
     manual:{f4:[7,45]},
     art:{f1:{f:'bbq',top:40}, f2:{f:'fireworks',top:44}, f3:{f:'deck',top:34}, f4:{f:'river',top:26}} },
   himeji:{ ttl:'ひめじじょう の まわり', chip:'ひめじ', day:'d15', mpp:18, K:11,
     ref:{k:'h2', gx:16, gy:10}, plate:[-1,-4,35,62],
-    ks:['h2','h1'], focus:'h2',
+    ks:['h2','h1'], focus:'h2', cat:[16,10],
     away:[{k:'h3', g:[3,58], d:'2.5km みなみにし'},{k:'h4', g:[1,40], d:'10km にし'}],
     art:{h2:{f:'castle',top:96}, h1:{f:'teahouse',top:44}} },
   bisei:{ ttl:'びせい てんもんだい の まわり', chip:'びせい', day:'d13', mpp:12, K:11,
     ref:{k:'y4', gx:18, gy:26}, plate:[1,1,35,51],
-    ks:['y4'], focus:'y4',
+    ks:['y4'], focus:'y4', cat:[18,26],
     art:{y4:{f:'obs',top:64}} }
 };
 export var AREA_ORDER=['kyoto','yubara','bisei','izumo','mochigase','himeji'];
@@ -332,7 +332,7 @@ export function buildAreaMap(key){
 
   /* はんてい円（1スタンプ ＝ 1つ いじょう）。じめんに 楕円で 見せる */
   A.ks.forEach(function(k){
-    var g2=got(k), now=(k===PUSHABLE && !g2);
+    var g2=got(k), now=(!g2 && (getManualMode() || k===PUSHABLE));
     areaZones(A,k).forEach(function(zz){
       var c=iso(zz.g[0],zz.g[1],0), rp=projR(zz.r/A.mpp), rr=rp[0], rry=rp[1];
       s.push('<ellipse cx="'+c[0].toFixed(1)+'" cy="'+c[1].toFixed(1)+'" rx="'+rr.toFixed(1)
@@ -366,7 +366,7 @@ export function buildAreaMap(key){
 
   /* ピン（アイコン＋じょうたいバッジ・タップできる）。1つの円 に 1つ */
   A.ks.forEach(function(k){
-    var st=findStamp(k), g2=got(k), now=(k===PUSHABLE && !g2);
+    var st=findStamp(k), g2=got(k), now=(!g2 && (getManualMode() || k===PUSHABLE));
     var cfg=A.art[k]||{top:60};
     var zs=areaZones(A,k);
     zs.forEach(function(zz,zi){
@@ -418,9 +418,14 @@ export function buildAreaMap(key){
 
   /* いま いるところ＝ねこ。GPS が とれた ときは そこを (geo2grid で この エリアの マス目に なおして) つかい、
      まだ とれて いない ときは デモの ちてん（いずも だけ 用意ずみ）に おちる */
-  var meG = (LIVE.lat!=null && LIVE.lon!=null) ? geo2grid(A, LIVE.lat, LIVE.lon) : A.cat;
+  var haveLive=(LIVE.lat!=null && LIVE.lon!=null);
+  var meG = haveLive ? geo2grid(A, LIVE.lat, LIVE.lon) : A.cat;
   if(meG){
-    var mp=iso(meG[0],meG[1],0);
+    var MRG=3;
+    var cx0=p[0]+MRG, cx1=p[2]-MRG, cy0=p[1]+MRG, cy1=p[3]-MRG;
+    var farAway=haveLive && (meG[0]<cx0-6 || meG[0]>cx1+6 || meG[1]<cy0-6 || meG[1]>cy1+6);
+    var showG=[Math.max(cx0,Math.min(cx1,meG[0])), Math.max(cy0,Math.min(cy1,meG[1]))];
+    var mp=iso(showG[0],showG[1],0);
     s.push('<g><ellipse cx="'+mp[0].toFixed(1)+'" cy="'+mp[1].toFixed(1)+'" rx="18" ry="9" fill="#d1332e" opacity=".28">'
          + '<animate attributeName="rx" values="14;40;14" dur="1s" repeatCount="indefinite"/>'
          + '<animate attributeName="ry" values="7;20;7" dur="1s" repeatCount="indefinite"/>'
@@ -429,7 +434,16 @@ export function buildAreaMap(key){
     s.push('</g>');
     var cr=catRect(mp[0],mp[1],1.5);
     var freshTxt2=lastGoodText();
-    SPOT_LABELS.push({t:'いま ここ！'+(freshTxt2?'（さいご取得：'+freshTxt2+'）':''), kind:'me', prio:120, col:'#d1332e',
+    var meTxt;
+    if(farAway){
+      var z0=zones(A.ref.k)[0];
+      var dm=z0 ? metersBetween([LIVE.lat,LIVE.lon],[z0[0],z0[1]]) : null;
+      var dTxt = dm==null ? '' : (dm<1000 ? Math.round(dm/10)*10+' m' : (dm/1000).toFixed(dm<10000?1:0)+' km');
+      meTxt='ここから '+dTxt+' はなれています';
+    }else{
+      meTxt='いま ここ！'+(freshTxt2?'（さいご取得：'+freshTxt2+'）':'');
+    }
+    SPOT_LABELS.push({t:meTxt, kind:'me', prio:120, col:'#d1332e',
                       x:mp[0], y:cr.y+2, keep:[mp[0]-cr.x,2,cr.w,cr.h]});
   }
 

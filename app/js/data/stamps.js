@@ -128,6 +128,11 @@ export function plRuby(k){ var s=findStamp(k); return s? rb(s.pl,s.pk) : ''; }
 export function setEmptyDemo(v){ EMPTY_DEMO = v; }
 export function setPushable(k){ PUSHABLE = k; }
 
+/* 「いまは 近づいて なくても おせる」モード。せってい画面で 切りかえる（でんぱが なくても てで おす、の 置きかえ） */
+export var MANUAL_MODE = false;
+export function getManualMode(){ return MANUAL_MODE; }
+export function setManualMode(v){ MANUAL_MODE = !!v; }
+
 /* --- F-20・F-44・F-54・F-55 いまの いちから おせる 1か所を きめる ------ */
 /* いちばん 近い はんてい円の 中に 入っている スタンプを 1つだけ 返す（無ければ null）。
    1つの スタンプが 複数の円を もつ ときは、いちばん 近い円 までの きょりで くらべる（F-54-3）。 */
