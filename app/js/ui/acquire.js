@@ -1,6 +1,6 @@
 "use strict";
 import { el } from '../util.js';
-import { got, GOT, findStamp, setPushable } from '../data/stamps.js';
+import { got, GOT, findStamp } from '../data/stamps.js';
 import { thud, chime } from '../fx/sound.js';
 import { buzz } from '../fx/stampanim.js';
 import { toast } from './toast.js';
@@ -69,10 +69,4 @@ export async function removeStampUI(k){
   delete GOT[k];
   renderSheet(); renderBook(); buildAreaBar();
   rebuildMaps();
-}
-export function replay(){
-  var k='i2';
-  delete GOT[k]; PUSHABLE=k;
-  renderSheet(); renderBook();
-  setTimeout(function(){ acquire(k); },400);
 }

@@ -560,18 +560,4 @@ export async function requestPersist() {
   return await navigator.storage.persist();
 }
 
-/* ---------- 全消し（検証用） ---------- */
-
-export async function wipe() {
-  var db = await open();
-  var t = db.transaction([S_STAMPS, S_PEOPLE, S_META, S_BALLAST, S_PHOTOS], 'readwrite');
-  t.objectStore(S_STAMPS).clear();
-  t.objectStore(S_PEOPLE).clear();
-  t.objectStore(S_META).clear();
-  t.objectStore(S_BALLAST).clear();
-  t.objectStore(S_PHOTOS).clear();
-  await done(t);
-  try { self.localStorage.removeItem(LS_EMERGENCY); } catch (e) { /* noop */ }
-}
-
 export var DB_NAME_EXPORT = DB_NAME;

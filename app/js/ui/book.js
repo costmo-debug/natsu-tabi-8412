@@ -1,7 +1,7 @@
 "use strict";
 import { el } from '../util.js';
 import { esc } from '../util.js';
-import { got, count, total, findStamp, PUSHABLE, EMPTY_DEMO, getManualMode, distText } from '../data/stamps.js';
+import { got, count, total, findStamp, PUSHABLE, getManualMode, distText } from '../data/stamps.js';
 import { acquire, removeStampUI } from './acquire.js';
 import { catId, catBlock, CAT_PROV } from './cat.js';
 import { stampArtSrc, hasStampArt } from '../data/stampArt.js';
@@ -53,7 +53,7 @@ export function renderBook(){
     : (n===tt ? 'ぜんぶ あつまりました！' : 'のこり '+(tt-n)+'こ。');
 
   var h=[];
-  if(!EMPTY_DEMO && !got(PUSHABLE)){
+  if(!got(PUSHABLE)){
     var ps=findStamp(PUSHABLE);
     if(ps){
       h.push('<div class="bignote"><button class="bigbtn" data-push="1" data-k="'+PUSHABLE+'">'

@@ -1,6 +1,6 @@
 "use strict";
 import { el, esc, RM } from './util.js';
-import { STAMPS, SAS, GOT, setEmptyDemo, setPushable, count, total, applyGotRecords } from './data/stamps.js';
+import { GOT, total, applyGotRecords } from './data/stamps.js';
 import { listStamps, purgeEmergencyQueue, addPerson, setCurrentPerson, exportAll, exportFileName, requestPersist, getGotLocalMap, pressStamp, removeStamp } from './core/store.js';
 import { gateThenEnter, openPasscodeSettings } from './ui/passcode.js';
 import { getPersonId } from './core/person.js';
@@ -138,30 +138,11 @@ export async function boot(){
     if(isOn()) chime();
   });
 
-  var plist=[['load','よみこみ中'],['gpsfail','いちじょうほう が とれない'],
-             ['denied','いちじょうほう が ことわられた'],['empty','スタンプ0この からっぽ'],
-             ['offline','オフライン']];
-  el('pList').innerHTML=plist.map(function(p){
-    return '<button data-st="'+p[0]+'">'+p[1]+'<small>'+esc(STATES[p[0]].t)+'</small></button>';
-  }).join('')
-   + '<button data-st="resetEmpty">からっぽ デモを もどす<small>スタンプちょうを 17こ に もどします</small></button>'
-   + '<button data-st="fillAll">ぜんぶ あつめた ことにする<small>ごほうびの え を みる</small></button>';
-  el('btnState').addEventListener('click',function(){ el('picker').classList.add('on'); });
-  el('pClose').addEventListener('click',function(){ el('picker').classList.remove('on'); });
-  el('picker').addEventListener('click',function(e){ if(e.target===el('picker')) el('picker').classList.remove('on'); });
-  Array.prototype.forEach.call(el('pList').querySelectorAll('button'),function(b){
-    b.addEventListener('click',function(){
-      var k=b.getAttribute('data-st');
-      el('picker').classList.remove('on');
-      if(k==='empty'){ setEmptyDemo(true); renderBook(); renderSheet(); go(3); showState('empty'); return; }
-      if(k==='resetEmpty'){ setEmptyDemo(false); renderBook(); renderSheet(); go(3); return; }
-      if(k==='fillAll'){ setEmptyDemo(false);
-        STAMPS.concat(SAS).forEach(function(x){GOT[x.k]=1;});
-        renderBook(); renderSheet(); buildAreaBar(); rebuildMaps();
-        go(3); showReward(); return; }
-      showState(k);
-    });
-  });
+  /* 段6是正：ここに あった「デバッグよう じょうたい ピッカー」は index.html から
+     見た目（HTML）だけ 先に 消えて JSの 配線が 残って いた。存在しない 要素（btnState/
+     pList/picker）を つかもうとして 例外が おき、この せんから 下の コード（GPS 起動を
+     ふくむ）が いっさい 動いて いなかった（Sir 実証・2026-08-11・本番化点検で 発見）。
+     デモよう画面は 本番では 不要なので、まるごと 削除して 修正した */
   el('stAct').addEventListener('click',hideState);
   el('rwClose').addEventListener('click',function(){ el('reward').classList.remove('on'); });
 

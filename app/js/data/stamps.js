@@ -74,8 +74,7 @@ export var GOT = {};
    残っていた。GPS判定（geo/live.js）が 動くまでの あいだ、近くに いなくても 金枠が
    出てしまう げんいんだった。ほんばんは "何も おせない" を あらわす null から はじめる */
 export var PUSHABLE = null;
-export var EMPTY_DEMO = false;
-export function got(k){return EMPTY_DEMO ? false : !!GOT[k];}
+export function got(k){return !!GOT[k];}
 export function total(){return STAMPS.length + SAS.length;}
 export function count(){var n=0;STAMPS.concat(SAS).forEach(function(s){if(got(s.k))n++;});return n;}
 export function findStamp(k){var a=STAMPS.concat(SAS);
@@ -128,7 +127,6 @@ export function plRuby(k){ var s=findStamp(k); return s? rb(s.pl,s.pk) : ''; }
 /* --- ねこの さしこみ口（ここ1か所） ------------------------------------- */
 /* とどいていない すがた は cat-guide に おちる */
 
-export function setEmptyDemo(v){ EMPTY_DEMO = v; }
 export function setPushable(k){ PUSHABLE = k; }
 
 /* 「いまは 近づいて なくても おせる」モード。せってい画面で 切りかえる（でんぱが なくても てで おす、の 置きかえ） */
