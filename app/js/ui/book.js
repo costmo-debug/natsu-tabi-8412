@@ -30,9 +30,11 @@ export function slotHTML(k){
   return '<'+tag+' class="'+cls+'" data-k="'+k+'" data-open="1"'
        + ' style="--gc:var(--d'+GID(gk)+');--gcbg:var(--d'+GID(gk)+'bg)"'
        + ' aria-label="'+esc(st.n)+'（'+(g?'ゲットずみ':(now?'いま おせる':'まだ'))+'）">'
-       + '<span class="en">'+(hasStampArt(k)
+       + '<span class="en">'+((g||now)&&hasStampArt(k)
            ? '<img src="'+stampArtSrc(k)+'" alt="'+esc(st.n)+'" loading="lazy">'
-           : '<span class="enph" aria-hidden="true">'+esc(st.e||'？')+'</span>')
+           : (g||now)
+             ? '<span class="enph" aria-hidden="true">'+esc(st.e||'？')+'</span>'
+             : '<span class="enph mystery" aria-hidden="true">？</span>')
            + (now?'<span class="shine" aria-hidden="true"></span>':'')+'</span>'
        + '<span class="nm">'+esc(st.n)+'</span>'
        + (g?'<span class="mk" aria-hidden="true">✓</span>':'')
