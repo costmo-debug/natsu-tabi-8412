@@ -67,7 +67,7 @@ export async function boot(){
   renderNextCard();
   initNextCard();
   V1=makeView('mapv','mapfit',NETW,NETH,0,function(){ LBL1.update(); });
-  V2=makeView('spotv','spotfit',m0.w,m0.h,152,function(){ LBL2.update(); });
+  V2=makeView('spotv','spotfit',m0.w,m0.h,64,function(){ LBL2.update(); });
   V1.ready(); applyFilter();
   requestAnimationFrame(function(){
     V1.centerOn(NET_ME[0], NET_ME[1], V1.coverScale(), false);

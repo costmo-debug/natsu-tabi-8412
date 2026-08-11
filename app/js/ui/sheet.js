@@ -121,7 +121,7 @@ export var AREA_S0=0.575;   /* しょうにんずみ の いずも の 見え方
 export function poseArea(m){
   if(!V2) return;
   V2.setSize(m.w,m.h); V2.fit(false);
-  var v=el('spotv'), vw=v.clientWidth, vh=v.clientHeight-152;
+  var v=el('spotv'), vw=v.clientWidth, vh=v.clientHeight-64;
   if(!vw||!vh) return;
   var all=(AREAS[curArea].poseAll!==false);
   var need=all ? Math.min(vw/(m.box.w+140), vh/(m.box.h+140)) : AREA_S0;
@@ -161,7 +161,7 @@ export function buildAreaBar(){
 export var sheet, sheetStops=[], sheetIdx=0;
 export function calcStops(){
   var h=sheet.parentElement.clientHeight||600, full=h*0.92;
-  sheetStops=[full-152, full-h*0.52, 0];
+  sheetStops=[full-64, full-h*0.52, 0];
 }
 export function snap(i){
   sheetIdx=Math.max(0,Math.min(2,i));
