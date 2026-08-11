@@ -11,7 +11,7 @@ import { buildAreaMap, SPOT_LABELS, AREAS } from './map/areamap.js';
 import { curArea } from './ui/sheet.js';
 import { buildBar, applyFilter, netLabelItems, curDay, go, setCurDay } from './ui/screens.js';
 import { buildAreaBar, renderSheet, initSheet, bindPins, setArea, curSpot, setCurSpot, snap } from './ui/sheet.js';
-import { renderBook, initPages, curPage, setCurPage } from './ui/book.js';
+import { renderBook, initPages, curPage, setCurPage, initStampModal } from './ui/book.js';
 import { showReward } from './ui/book.js';
 import { confetti, partsLen } from './fx/confetti.js';
 import { makeLabelLayer } from './map/labels.js';
@@ -56,7 +56,7 @@ export async function boot(){
   AREA_M0=m0;
   el('spotfit').innerHTML=m0.svg;
   buildBar(); buildAreaBar();
-  renderSheet(); renderBook(); initSheet(); initPages(); bindPins();
+  renderSheet(); renderBook(); initSheet(); initPages(); bindPins(); initStampModal();
 
   /* ふだ の 層。きんしたい ＝ 上のチップ帯・右上のボタン・下のカード・下パネル・タブバー */
   LBL1=makeLabelLayer('mapv','mapLbl', netLabelItems,

@@ -1,40 +1,43 @@
 "use strict";
 import { el } from '../util.js';
 import { esc } from '../util.js';
-import { got, count, total, findStamp, PUSHABLE, EMPTY_DEMO, getManualMode } from '../data/stamps.js';
-import { acquire, replay, removeStampUI } from './acquire.js';
+import { got, count, total, findStamp, PUSHABLE, EMPTY_DEMO, getManualMode, distText } from '../data/stamps.js';
+import { acquire, removeStampUI } from './acquire.js';
 import { catId, catBlock, CAT_PROV } from './cat.js';
 import { stampArtSrc, hasStampArt } from '../data/stampArt.js';
 import { confetti } from '../fx/confetti.js';
 import { chime } from '../fx/sound.js';
 import { RM } from '../util.js';
 export var PAGES = [
-  {t:'きょうと',        sub:'8がつ12にち（すい）',        ks:['k1','k2','k3','k4']},
-  {t:'ゆばら・びせい',  sub:'8がつ13にち（もく）',        ks:['y1','y2','y3','y4']},
-  {t:'いずも',          sub:'8がつ14にち（きん）',        ks:['i1','i2','i3','i4']},
-  {t:'もちがせ',        sub:'8がつ14にち よる 〜 15にち あさ', ks:['f1','f2','f3','f4']},
-  {t:'ひめじ',          sub:'8がつ15にち（ど）',          ks:['h1','h2','h3','h4']},
-  {t:'サービスエリア ①',sub:'すいた・たからづかきた・かさい・しょうおう', ks:['sa1','sa2','sa3','sa4']},
-  {t:'サービスエリア ②',sub:'たかはし のぼり／くだり・ひるぜん・かさい・なじお',   ks:['sa5','sa6','sa7','sa8','sa9']}
+  {t:'きょうと',        sub:'8がつ12にち（すい）',        ks:['k1','k2','k3','k4'],        g:'kyoto'},
+  {t:'ゆばら・びせい',  sub:'8がつ13にち（もく）',        ks:['y1','y2','y3','y4'],        g:'yubara'},
+  {t:'いずも',          sub:'8がつ14にち（きん）',        ks:['i1','i2','i3','i4'],        g:'izumo'},
+  {t:'もちがせ',        sub:'8がつ14にち よる 〜 15にち あさ', ks:['f1','f2','f3','f4'], g:'mochigase'},
+  {t:'ひめじ',          sub:'8がつ15にち（ど）',          ks:['h1','h2','h3','h4'],        g:'himeji'},
+  {t:'サービスエリア ①',sub:'すいた・たからづかきた・かさい・しょうおう', ks:['sa1','sa2','sa3','sa4'], g:'sa1'},
+  {t:'サービスエリア ②',sub:'たかはし のぼり／くだり・ひるぜん・かさい・なじお',   ks:['sa5','sa6','sa7','sa8','sa9'], g:'sa2'}
 ];
+export var GROUP_KEY_OF={};
+PAGES.forEach(function(pg){ pg.ks.forEach(function(k){ GROUP_KEY_OF[k]=pg.g; }); });
 export var ROT=[-5,4,-3,6,-6,3,-4,5];
 export var curPage=0;
 
-export function slotHTML(k,idx){
+export function slotHTML(k){
   var st=findStamp(k), g=got(k), now=(!g && (getManualMode() || k===PUSHABLE));
-  var cls='slot'+(g?' got':'')+(now?' now':'');
-  var rot=ROT[idx%ROT.length];
-  var tag=(now||g)?'button':'div';
-  var attrs=(now?' data-push="1"':'')+(g?' data-remove="1"':'');
-  return '<'+tag+' class="'+cls+'" data-k="'+k+'"'+attrs
-       + ' style="--rot:'+(g?rot:0)+'deg">'
-       + (g?'<span class="ink"></span><span class="ink2"></span>':'')
+  var gk=GROUP_KEY_OF[k]||'kyoto';
+  var cls='slot g-'+gk+(g?' got':'')+(now?' now':'');
+  var tag='button';
+  return '<'+tag+' class="'+cls+'" data-k="'+k+'" data-open="1"'
+       + ' style="--gc:var(--d'+GID(gk)+');--gcbg:var(--d'+GID(gk)+'bg)"'
+       + ' aria-label="'+esc(st.n)+'（'+(g?'ゲットずみ':(now?'いま おせる':'まだ'))+'）">'
        + '<span class="en">'+(hasStampArt(k)
            ? '<img src="'+stampArtSrc(k)+'" alt="'+esc(st.n)+'" loading="lazy">'
-           : '<span class="enph" aria-hidden="true">？</span>')+'</span>'
-       + '<span class="sn">'+esc(st.n)+'</span>'
-       + '<span class="sd">'+esc(st.d==='まえ'?'りょこうまえ':st.d+' '+(st.t||''))+'</span>'
+           : '<span class="enph" aria-hidden="true">'+esc(st.e||'？')+'</span>')+'</span>'
+       + (g?'<span class="mk" aria-hidden="true">✓</span>':'')
        + '</'+tag+'>';
+}
+function GID(gk){
+  return {kyoto:12,yubara:13,izumo:14,mochigase:15,himeji:16,sa1:17,sa2:18}[gk]||12;
 }
 export function renderBook(){
   var n=count(), tt=total(), c=2*Math.PI*40;
@@ -44,51 +47,72 @@ export function renderBook(){
   el('bookLead').textContent = n===0
     ? 'まだ 1こも ありません。さいしょは 8/12 の すいたSA です。'
     : (n===tt ? 'ぜんぶ あつまりました！' : 'のこり '+(tt-n)+'こ。');
-  el('pbar1').style.width=(n/tt*100).toFixed(1)+'%';
-  el('pnum1').textContent=n+' / '+tt;
 
   var h=[];
-  if(n===0){
-    h.push('<div class="note" style="margin:16px 0 16px;text-align:center">'
-         + '<b style="display:block;font-size:16px;margin-bottom:4px">スタンプは まだ 0こ です</b>'
-         + '8がつ12にち 10:10 の すいたSA（のぼり）で だいしを もらう ところから はじまります。</div>');
-  }
   if(!EMPTY_DEMO && !got(PUSHABLE)){
     var ps=findStamp(PUSHABLE);
     if(ps){
-      h.push('<button class="bigbtn" style="margin-top:'+(n===0?'0':'16px')+'" data-push="1" data-k="'+PUSHABLE+'">'
-           + ps.e+' いま 「'+esc(ps.n)+'」が おせます</button>');
+      h.push('<div class="bignote"><button class="bigbtn" data-push="1" data-k="'+PUSHABLE+'">'
+           + ps.e+' いま 「'+esc(ps.n)+'」が おせます</button></div>');
     }
   }
-  PAGES.forEach(function(pg,pi){
-    var done=pg.ks.filter(function(k){return got(k);}).length;
-    h.push('<div class="paper">');
-    h.push('<h3>'+esc(pg.t)+'　<span style="color:var(--pop)">'+done+'／'+pg.ks.length+'</span></h3>');
-    h.push('<p>'+esc(pg.sub)+'</p>');
-    h.push('<div class="slots">');
-    pg.ks.forEach(function(k,ki){ h.push(slotHTML(k,pi*3+ki)); });
-    h.push('</div>');
-    if(pi===PAGES.length-1){
-      h.push('<button class="subbtn" id="rewardBtn" style="margin-top:16px">ごほうびの え を みる（デモ）</button>');
-      h.push('<button class="subbtn" id="replayBtn">もういちど えんしゅつ を みる</button>');
-    }
-    h.push('</div>');
+  PAGES.forEach(function(pg){
+    pg.ks.forEach(function(k){ h.push(slotHTML(k)); });
   });
   el('pages').innerHTML=h.join('');
 
   Array.prototype.forEach.call(el('pages').querySelectorAll('[data-push]'),function(b){
     b.addEventListener('click',function(){ acquire(b.getAttribute('data-k')); });
   });
-  Array.prototype.forEach.call(el('pages').querySelectorAll('[data-remove]'),function(b){
-    b.addEventListener('click',function(){ removeStampUI(b.getAttribute('data-k')); });
+  Array.prototype.forEach.call(el('pages').querySelectorAll('[data-open]'),function(b){
+    b.addEventListener('click',function(){ openStampModal(b.getAttribute('data-k')); });
   });
-  var rb=el('rewardBtn'); if(rb) rb.addEventListener('click',showReward);
-  var pb=el('replayBtn'); if(pb) pb.addEventListener('click',replay);
 }
 export function initPages(){}
 export function gotoPageOf(k){
   var t=el('pages').querySelector('.slot[data-k="'+k+'"]');
   if(t) t.scrollIntoView({block:'center', behavior:RM.matches?'auto':'smooth'});
+}
+
+/* ---------- 9b. マスを タップ した ときの 拡大表示 ---------- */
+export function openStampModal(k){
+  var st=findStamp(k); if(!st) return;
+  var g=got(k), now=(!g && (getManualMode() || k===PUSHABLE));
+  var gk=GROUP_KEY_OF[k]||'kyoto';
+  el('smArt').style.setProperty('--gc','var(--d'+GID(gk)+')');
+  el('smArt').innerHTML=hasStampArt(k)
+    ? '<img src="'+stampArtSrc(k)+'" alt="'+esc(st.n)+'">'
+    : '<span aria-hidden="true">'+esc(st.e||'？')+'</span>';
+  el('smName').textContent=st.n;
+  el('smPlace').textContent='ばしょ：'+(st.pl||'');
+  el('smWhen').textContent='よてい：'+st.d+' '+(st.t||'');
+
+  var stEl=el('smState'), actEl=el('smAct');
+  stEl.className='smState'; actEl.innerHTML='';
+  if(g){
+    stEl.classList.add('got');
+    stEl.textContent='スタンプ ゲット ずみ';
+    var rm=document.createElement('button');
+    rm.className='doRemove'; rm.textContent='けす';
+    rm.addEventListener('click',function(){ removeStampUI(k); closeStampModal(); });
+    actEl.appendChild(rm);
+  }else if(now){
+    stEl.classList.add('now');
+    stEl.textContent='いま おせます！';
+    var ps=document.createElement('button');
+    ps.className='doPush'; ps.textContent='おす';
+    ps.addEventListener('click',function(){ acquire(k); closeStampModal(); });
+    actEl.appendChild(ps);
+  }else{
+    stEl.textContent='ちかづくと おせます（いま '+distText(k)+'）';
+  }
+  el('stampModal').classList.add('on');
+}
+export function closeStampModal(){ el('stampModal').classList.remove('on'); }
+export function initStampModal(){
+  var m=el('stampModal'); if(!m) return;
+  el('smClose').addEventListener('click',closeStampModal);
+  m.addEventListener('click',function(e){ if(e.target===m) closeStampModal(); });
 }
 
 /* ---------- 10. スタンプを おした ときの えんしゅつ（はでに） ---------- */
@@ -115,13 +139,7 @@ export function showReward(){
 
 /* ---------- 11. かみふぶき（Canvas・つぶ50こ／さいだい100こ） ---------- */
 export function initScrollLinked(){
-  var ok = window.CSS && CSS.supports && CSS.supports('animation-timeline','view()');
-  if(!ok || RM.matches) return;
-  var st=document.createElement('style');
-  st.textContent='.paper{animation:paperIn 300ms cubic-bezier(0.05,0.7,0.1,1) both;'
-    + 'animation-timeline:view();animation-range:entry 0% entry 60%}'
-    + '@keyframes paperIn{from{opacity:.35;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}';
-  document.head.appendChild(st);
+  /* 1がめん グリッドに なった ため、view() れんどう は もう つかわない */
 }
 
 /* ---------- 16. きどう ---------- */

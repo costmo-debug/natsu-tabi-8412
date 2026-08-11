@@ -5,7 +5,7 @@
  */
 'use strict';
 
-var CACHE = 'tabi-shell-v15';
+var CACHE = 'tabi-shell-v16';
 
 /* アプリ本体。HTML / CSS / JS / 画像を すべて 先に 入れる。
    地図そのものは SVG を JS が その場で 組み立てる ので、絵の 部品（猫・スタンプ）だけ 入れればよい。 */
