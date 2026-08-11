@@ -144,16 +144,17 @@ main{flex:1 1 auto;position:relative;overflow:hidden}
 
 .sheet{position:absolute;left:0;right:0;bottom:0;height:92%;z-index:6;background:var(--surf);
   box-shadow:var(--sh2);border-radius:var(--r3) var(--r3) 0 0;display:flex;flex-direction:column;
-  transform:translateY(calc(100% - 64px));transition:transform 350ms var(--ez2);touch-action:none}
+  transform:translateY(calc(100% - 48px));transition:transform 350ms var(--ez2);touch-action:none}
 .sheet.nomove{transition:none}
 .sheet.bounce .grip{animation:gripBounce 250ms var(--ez2) 1 both}
 @keyframes gripBounce{0%{transform:translateY(-4px)}60%{transform:translateY(4px)}100%{transform:translateY(0)}}
-.grip{flex:0 0 auto;min-height:56px;display:flex;flex-direction:column;align-items:center;
-  justify-content:center;gap:8px;padding:8px 16px 4px}
+.grip{flex:0 0 auto;min-height:44px;display:flex;flex-direction:column;align-items:center;
+  justify-content:center;gap:4px;padding:6px 16px 2px}
 .grip .bar2{width:48px;height:4px;border-radius:var(--r4);background:var(--line)}
-.grip .ttl{display:flex;align-items:baseline;gap:8px;width:100%}
-.grip .ttl h2{margin:0;font-size:20px;font-weight:700;line-height:1.5;flex:1}
-.grip .ttl .cnt{font-size:13px;font-weight:700;color:var(--ink2);line-height:1.5}
+.grip .ttl{display:flex;align-items:baseline;gap:8px;width:100%;min-width:0}
+.grip .ttl h2{margin:0;font-size:15px;font-weight:700;line-height:1.4;flex:1;min-width:0;
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.grip .ttl .cnt{flex:0 0 auto;font-size:12px;font-weight:700;color:var(--ink2);line-height:1.4}
 .sheetbody{flex:1 1 auto;overflow-y:auto;-webkit-overflow-scrolling:touch;
   padding:0 16px calc(24px + env(safe-area-inset-bottom))}
 
@@ -229,18 +230,28 @@ main{flex:1 1 auto;position:relative;overflow:hidden}
   padding:2px;border:2px solid var(--gc,var(--line));background:var(--gcbg,var(--surf2));
   overflow:hidden;transition:transform 120ms var(--ez1)}
 .slot.g-sa2{border-style:dashed}
-.slot .en{width:100%;height:100%;display:block;border-radius:8px;overflow:hidden;
-  filter:grayscale(1) opacity(.4)}
+.slot .en{position:relative;width:100%;height:100%;display:block;border-radius:8px;overflow:hidden;
+  filter:grayscale(1) opacity(.55)}
 .slot .en img{width:100%;height:100%;object-fit:cover;display:block}
 .slot .enph{width:100%;height:100%;display:flex;align-items:center;justify-content:center;
   font-size:20px;background:var(--surf2)}
+.slot .nm{position:absolute;left:2px;right:2px;bottom:2px;padding:2px 4px;border-radius:6px;
+  background:rgba(29,43,58,.62);color:#fff;font-size:9px;font-weight:700;line-height:1.3;
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis;text-align:center;pointer-events:none}
 .slot.got{background:var(--surf)}
 .slot.got .en{filter:none}
+.slot.got .nm{background:rgba(23,119,61,.72)}
 .slot.got .mk{position:absolute;top:2px;right:2px;width:16px;height:16px;border-radius:50%;
   background:var(--gc,var(--pop));color:var(--surf);font-size:10px;font-weight:700;
   display:flex;align-items:center;justify-content:center;box-shadow:0 0 0 2px var(--surf)}
 .slot.now{box-shadow:0 0 0 3px var(--pop);animation:nowPulse 1.6s var(--ez1) infinite}
-@keyframes nowPulse{0%,100%{box-shadow:0 0 0 3px var(--pop)}50%{box-shadow:0 0 0 5px var(--pop)}}
+.slot.now .en{filter:none}
+.slot.now .nm{background:var(--pop)}
+@keyframes nowPulse{0%,100%{box-shadow:0 0 0 3px var(--pop)}50%{box-shadow:0 0 0 6px var(--pop)}}
+.slot .shine{position:absolute;inset:0;pointer-events:none;
+  background:linear-gradient(115deg,transparent 20%,rgba(255,255,255,.85) 45%,rgba(255,255,255,.85) 55%,transparent 80%);
+  transform:translateX(-120%);animation:shineSweep 2.2s ease-in-out infinite}
+@keyframes shineSweep{0%{transform:translateX(-120%)}45%{transform:translateX(120%)}100%{transform:translateX(120%)}}
 .slot.pop{animation:stampSlam 400ms var(--ez2) 1 both}
 @keyframes stampSlam{
   0%{transform:scale(1.9) rotate(-10deg);opacity:0}
@@ -382,6 +393,8 @@ a.fine{color:var(--ink3);text-decoration:underline}
 
 @media (prefers-reduced-motion: reduce){
   .slot.pop{animation:none}
+  .slot.now{animation:none}
+  .slot .shine{animation:none;display:none}
   .sheet.bounce .grip{animation:none}
   .pbox{animation:none}
   .spin{animation:none;border-top-color:var(--ink3)}
