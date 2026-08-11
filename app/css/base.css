@@ -244,12 +244,15 @@ main{flex:1 1 auto;position:relative;overflow:hidden}
 .slot.got .mk{position:absolute;top:2px;right:2px;width:16px;height:16px;border-radius:50%;
   background:var(--gc,var(--pop));color:var(--surf);font-size:10px;font-weight:700;
   display:flex;align-items:center;justify-content:center;box-shadow:0 0 0 2px var(--surf)}
-.slot.now{box-shadow:0 0 0 3px var(--pop);animation:nowPulse 1.6s var(--ez1) infinite}
+.slot.now{border-color:#e8b400;box-shadow:0 0 0 3px #ffd447;animation:nowPulse 1.6s var(--ez1) infinite}
 .slot.now .en{filter:none}
-.slot.now .nm{background:var(--pop)}
-@keyframes nowPulse{0%,100%{box-shadow:0 0 0 3px var(--pop)}50%{box-shadow:0 0 0 6px var(--pop)}}
+.slot.now .nm{background:linear-gradient(90deg,#c98a00,#ffd447,#c98a00);color:#3a2900}
+@keyframes nowPulse{
+  0%,100%{box-shadow:0 0 0 3px #ffd447}
+  50%{box-shadow:0 0 8px 6px #ffe58a}
+}
 .slot .shine{position:absolute;inset:0;pointer-events:none;
-  background:linear-gradient(115deg,transparent 20%,rgba(255,255,255,.85) 45%,rgba(255,255,255,.85) 55%,transparent 80%);
+  background:linear-gradient(115deg,transparent 20%,rgba(255,222,120,.95) 45%,rgba(255,244,200,1) 50%,rgba(255,222,120,.95) 55%,transparent 80%);
   transform:translateX(-120%);animation:shineSweep 2.2s ease-in-out infinite}
 @keyframes shineSweep{0%{transform:translateX(-120%)}45%{transform:translateX(120%)}100%{transform:translateX(120%)}}
 .slot.pop{animation:stampSlam 400ms var(--ez2) 1 both}
