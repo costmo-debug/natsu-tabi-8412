@@ -1,7 +1,7 @@
 "use strict";
 import { el, esc, RM } from './util.js';
 import { STAMPS, SAS, GOT, setEmptyDemo, setPushable, count, total, applyGotRecords } from './data/stamps.js';
-import { listStamps, drainEmergency, addPerson, setCurrentPerson, exportAll, exportFileName } from './core/store.js';
+import { listStamps, drainEmergency, addPerson, setCurrentPerson, exportAll, exportFileName, requestPersist } from './core/store.js';
 import { gateThenEnter, openPasscodeSettings } from './ui/passcode.js';
 import { getPersonId } from './core/person.js';
 import { startLiveTracking } from './geo/live.js';
@@ -40,6 +40,10 @@ export function rebuildMaps(){
 async function loadPersisted(){
   var pid=getPersonId();
   try{
+    /* 段6是正：ブラウザに「この保存領域は消さないで」と 一度 お願いしておく。
+       頼まなければ「消えても よい あつかい」の ままに なる ことがある（とくに iPhone）。
+       失敗しても きろく自体は 動くので、ここは 投げっぱなしで よい */
+    requestPersist().catch(function(){});
     await addPerson({id:pid, name:pid});
     await setCurrentPerson(pid);
     await drainEmergency();
