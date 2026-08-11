@@ -19,6 +19,37 @@ var S_META = 'meta';
 var S_BALLAST = 'ballast';
 var S_PHOTOS = 'photos';
 var LS_EMERGENCY = 'tabi.emergency.stamps';
+var LS_GOT = 'tabi.got.v1';
+
+/* 段6是正：IndexedDB は 非同期・複数ステップ の しくみ で、
+   iPhoneが アプリを 裏に まわす タイミングと ぶつかると、書きこみが
+   ちゃんと 終わる 前に とめられて しまう ことが ある（うたがい）。
+   localStorage は 1回の 呼び出しで 同期的に 書きおわる ため、こちらを
+   「ほんとうに おした/けした か」の 正本 として 二重に 持たせておき、
+   きどう時に IndexedDB の 中身と つきあわせて 自己しゅうふく する。
+   まち＝ personId ごとの { stampId: 1（おした） | 0（けした） } */
+function readGotMap(){
+  try{
+    var raw = self.localStorage && self.localStorage.getItem(LS_GOT);
+    return raw ? JSON.parse(raw) : {};
+  }catch(e){ return {}; }
+}
+function writeGotMap(map){
+  try{ self.localStorage.setItem(LS_GOT, JSON.stringify(map)); }catch(e){ /* noop */ }
+}
+function markGotLocal(personId, stampId, val){
+  try{
+    var map = readGotMap();
+    var pkey = String(personId);
+    if(!map[pkey]) map[pkey] = {};
+    map[pkey][String(stampId)] = val ? 1 : 0;
+    writeGotMap(map);
+  }catch(e){ /* noop */ }
+}
+export function getGotLocalMap(personId){
+  var map = readGotMap();
+  return map[String(personId)] || {};
+}
 
 export var EXPORT_SCHEMA = 'tabi-stamp-export/1';
 var APP_NAME = '旅行スタンプラリー';
@@ -156,6 +187,9 @@ export async function getCurrentPerson() { return await metaGet('currentPersonId
 export async function pressStamp(input, opts) {
   opts = opts || {};
   var attemptFree = opts.autoFree !== false;
+  /* さきに 同期で（IndexedDBの 結果を まつ まえに）「おした」を 書いておく。
+     あとの IndexedDB 書きこみが 裏送りで 打ち切られても、この 1行だけは 確実に のこる */
+  markGotLocal(input.personId, input.stampId, true);
   try {
     return await writePress(input);
   } catch (e) {
@@ -182,6 +216,7 @@ export async function pressStamp(input, opts) {
         error: String((e && e.name) || e)
       };
     }
+    markGotLocal(input.personId, input.stampId, false);
     throw e;
   }
 }
@@ -222,6 +257,8 @@ async function writePress(input) {
 }
 
 export async function removeStamp(personId, stampId) {
+  /* さきに 同期で「けした」を 書いておく（おす時と おなじ りゆう） */
+  markGotLocal(personId, stampId, false);
   var db = await open();
   var t = db.transaction([S_STAMPS], 'readwrite');
   var os = t.objectStore(S_STAMPS);

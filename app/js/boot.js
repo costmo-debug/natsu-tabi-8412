@@ -1,7 +1,7 @@
 "use strict";
 import { el, esc, RM } from './util.js';
 import { STAMPS, SAS, GOT, setEmptyDemo, setPushable, count, total, applyGotRecords } from './data/stamps.js';
-import { listStamps, purgeEmergencyQueue, addPerson, setCurrentPerson, exportAll, exportFileName, requestPersist } from './core/store.js';
+import { listStamps, purgeEmergencyQueue, addPerson, setCurrentPerson, exportAll, exportFileName, requestPersist, getGotLocalMap, pressStamp, removeStamp } from './core/store.js';
 import { gateThenEnter, openPasscodeSettings } from './ui/passcode.js';
 import { getPersonId } from './core/person.js';
 import { startLiveTracking } from './geo/live.js';
@@ -49,6 +49,20 @@ async function loadPersisted(){
     purgeEmergencyQueue();
     var rows=await listStamps(pid);
     applyGotRecords(rows);
+    /* 段6是正・自己しゅうふく：同期の ひかえ（localStorage）と IndexedDB の
+       中身が くいちがって いたら、ひかえ の ほうを 正本 として 合わせる。
+       ひかえ に 記録が 無い スタンプは さわらない（IndexedDB の 結果を そのまま 使う） */
+    var local = getGotLocalMap(pid);
+    var haveIds = {}; rows.forEach(function(r){ haveIds[r.stampId]=1; });
+    Object.keys(local).forEach(function(k){
+      if(local[k]===1){
+        GOT[k]=1;
+        if(!haveIds[k]) pressStamp({personId:pid, stampId:k}).catch(function(){});
+      }else if(local[k]===0){
+        delete GOT[k];
+        if(haveIds[k]) removeStamp(pid,k).catch(function(){});
+      }
+    });
   }catch(e){
     console.warn('きろくの よみこみに しっぱいしました',e);
   }
