@@ -5,7 +5,8 @@ import { listStamps, purgeEmergencyQueue, addPerson, setCurrentPerson, exportAll
 import { gateThenEnter, openPasscodeSettings } from './ui/passcode.js';
 import { getPersonId } from './core/person.js';
 import { startLiveTracking } from './geo/live.js';
-import { renderNextCard, initNextCard } from './ui/nextcard.js';
+import { renderNextCard, initNextCard, showGeoInfo } from './ui/nextcard.js';
+import { GEO_INFO } from './data/geoInfo.js';
 import { buildNetMap, NET_LABELS, NETW, NETH, NET_ME } from './map/netmap.js';
 import { buildAreaMap, SPOT_LABELS, AREAS } from './map/areamap.js';
 import { curArea } from './ui/sheet.js';
@@ -78,7 +79,12 @@ export async function boot(){
 
   /* ふだ の 層。きんしたい ＝ 上のチップ帯・右上のボタン・下のカード・下パネル・タブバー */
   LBL1=makeLabelLayer('mapv','mapLbl', netLabelItems,
-        ['#scr1 .mctl','#nextcard','.tabs']);
+        ['#scr1 .mctl','#nextcard','.tabs'],
+        function(key,title){
+          var text=GEO_INFO[key];
+          if(!text) return;
+          showGeoInfo(title||key, text);
+        });
   LBL2=makeLabelLayer('spotv','spotLbl', function(){return SPOT_LABELS;},
         ['#scr2 .mctl','#sheet','.tabs']);
 

@@ -9,6 +9,39 @@ import { esc } from '../util.js';
 
 var DAY_KEY = {12:'k2', 13:'y1', 14:'f1'};
 
+/* 段5：地名タップの いちじ表示。#nextcard を「その ばしょの せつめい」に 差しかえ、
+ * すこし たつか・ほかの ところを タップしたら もとの 表示に もどす。 */
+var geoTimer=null, geoActive=false, geoWasExpanded=false;
+function onGeoOutsideTap(e){
+  if(e.target.closest && e.target.closest('[data-key]')) return;
+  hideGeoInfo();
+}
+function hideGeoInfo(){
+  if(!geoActive) return;
+  geoActive=false;
+  if(geoTimer){ clearTimeout(geoTimer); geoTimer=null; }
+  document.removeEventListener('pointerdown', onGeoOutsideTap, true);
+  var card=document.getElementById('nextcard');
+  if(card) card.classList.toggle('expanded', geoWasExpanded);
+  renderNextCard();
+}
+export function showGeoInfo(title, text){
+  var card=document.getElementById('nextcard');
+  if(!card) return;
+  var ntx=card.querySelector('.ntx'), nm=card.querySelector('.nm');
+  if(!ntx||!nm) return;
+  if(!geoActive) geoWasExpanded = card.classList.contains('expanded');
+  card.classList.add('expanded');
+  ntx.innerHTML = '<span class="k">' + esc(title) + '</span>'
+    + '<span class="v geoinfo">' + esc(text) + '</span>';
+  nm.innerHTML = '';
+  geoActive = true;
+  if(geoTimer) clearTimeout(geoTimer);
+  geoTimer = setTimeout(hideGeoInfo, 6000);
+  document.removeEventListener('pointerdown', onGeoOutsideTap, true);
+  document.addEventListener('pointerdown', onGeoOutsideTap, true);
+}
+
 function tripDayInfo(now){
   var y = now.getFullYear(), m = now.getMonth() + 1, d = now.getDate();
   if (y === 2026 && m === 8 && DAY_KEY[d]) return { kind: 'stamp', key: DAY_KEY[d] };
@@ -48,6 +81,11 @@ export function initNextCard(){
   });
 }
 export function renderNextCard(now){
+  if(geoActive){
+    geoActive=false;
+    if(geoTimer){ clearTimeout(geoTimer); geoTimer=null; }
+    document.removeEventListener('pointerdown', onGeoOutsideTap, true);
+  }
   now = now || new Date();
   var info = tripDayInfo(now);
   var card = document.getElementById('nextcard');

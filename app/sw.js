@@ -5,7 +5,7 @@
  */
 'use strict';
 
-var CACHE = 'tabi-shell-v28';
+var CACHE = 'tabi-shell-v29';
 
 /* アプリ本体。HTML / CSS / JS / 画像を すべて 先に 入れる。
    地図そのものは SVG を JS が その場で 組み立てる ので、絵の 部品（猫・スタンプ）だけ 入れればよい。 */
@@ -20,6 +20,7 @@ var SHELL = [
   './js/util.js',
   './js/core/person.js',
   './js/core/store.js',
+  './js/data/geoInfo.js',
   './js/data/nodes.js',
   './js/data/stampArt.js',
   './js/data/stamps.js',

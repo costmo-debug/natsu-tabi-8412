@@ -133,6 +133,8 @@ main{flex:1 1 auto;position:relative;overflow:hidden}
 .nextcard .k{display:block;font-size:11px;font-weight:700;color:var(--ink2);letter-spacing:.08em;line-height:1.5}
 .nextcard .v{display:block;font-size:20px;font-weight:700;line-height:1.5;
   overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.nextcard .v.geoinfo{font-size:14px;font-weight:400;white-space:normal;overflow:visible;
+  text-overflow:clip;line-height:1.6}
 .nrow .nm{flex:0 0 auto;text-align:right}
 .nrow .nm b{display:block;font-size:16px;font-weight:700;color:var(--pop);line-height:1.5}
 .nrow .nm span{display:block;font-size:11px;color:var(--ink2);line-height:1.5}

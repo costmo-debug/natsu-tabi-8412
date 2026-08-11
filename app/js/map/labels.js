@@ -8,9 +8,30 @@ export function labelWidth(t){
 }
 export function rectHit(a,b){ return a.x<b.x+b.w && a.x+a.w>b.x && a.y<b.y+b.h && a.y+a.h>b.y; }
 
-export function makeLabelLayer(hostId, layerId, getItems, forbidSel){
+export function makeLabelLayer(hostId, layerId, getItems, forbidSel, onTapKey){
   var host=el(hostId), lay=el(layerId), pending=0;
   var stat={items:0,drawn:0,dots:0,off:0,overlap:0,outside:0,band:0};
+
+  /* 段5：ふだ タップ。ドラッグ（ちずの パン）と まちがえない ように、
+     うごいた りょう が しきい値を こえたら タップ あつかいに しない（sheet.js の grip と 同じ しくみ） */
+  if(onTapKey){
+    var tap=null;
+    lay.addEventListener('pointerdown',function(e){
+      var t=e.target.closest && e.target.closest('[data-key]');
+      if(!t){ tap=null; return; }
+      tap={x:e.clientX,y:e.clientY,moved:false,key:t.getAttribute('data-key'),title:t.getAttribute('data-title')||''};
+    });
+    lay.addEventListener('pointermove',function(e){
+      if(!tap) return;
+      if(Math.abs(e.clientX-tap.x)>6 || Math.abs(e.clientY-tap.y)>6) tap.moved=true;
+    });
+    lay.addEventListener('pointerup',function(){
+      if(!tap) return;
+      var t=tap; tap=null;
+      if(!t.moved) onTapKey(t.key, t.title);
+    });
+    lay.addEventListener('pointercancel',function(){ tap=null; });
+  }
 
   function forbidden(){
     var hr=host.getBoundingClientRect(), out=[];
@@ -50,9 +71,10 @@ export function makeLabelLayer(hostId, layerId, getItems, forbidSel){
     /* 全部を いちどに 見る ひろい とき は 6つ ぜんぶが かさなって うるさい ので、
        ある程度 大きく した とき（tf.s >= 0.55）だけ 出す（main 裁定＝画面に 入っている 県名だけ） */
     var prefOn = tf.s>=0.55;
-    var prefItems=[], normItems=[];
+    var prefItems=[], seaItems=[], normItems=[];
     live.forEach(function(a){
       if(a.it.kind==='pref'){ if(prefOn) prefItems.push(a); }
+      else if(a.it.kind==='sea'){ seaItems.push(a); }
       else normItems.push(a);
     });
     /* 府県名の 出た 場所は、あとから おく ふだが 軽く 重ならない ように 場所とりの じゃまリストへ 足す
@@ -62,6 +84,8 @@ export function makeLabelLayer(hostId, layerId, getItems, forbidSel){
       out.push(drawPrefLabel(a,W,H));
       occupied.push({x:r.x,y:r.y,w:r.w,h:r.h});
     });
+    /* 海の なまえ ＝ 画面いっぱいで 隠れにくい ので、府県名と 同じく 場所とりの 外で そのまま 出す */
+    seaItems.forEach(function(a){ out.push(drawSeaLabel(a)); });
     live=normItems;
 
     /* ピンの まる と ねこ は 先に とっておく（ふだが 上に かぶらない ように） */
@@ -137,9 +161,10 @@ export function makeLabelLayer(hostId, layerId, getItems, forbidSel){
            + '" font-size="13" font-weight="700" fill="#ffffff" text-anchor="middle">'+esc(it.t)+'</text>');
       return '<g>'+s.join('')+'</g>';
     }
-    s.push('<rect class="lbbox" x="'+r.x.toFixed(1)+'" y="'+r.y.toFixed(1)+'" width="'+r.w+'" height="'+r.h
+    var dk = it.key ? ' data-key="'+esc(it.key)+'" data-title="'+esc(it.t)+'" style="pointer-events:auto"' : '';
+    s.push('<rect class="lbbox"'+dk+' x="'+r.x.toFixed(1)+'" y="'+r.y.toFixed(1)+'" width="'+r.w+'" height="'+r.h
          + '" rx="11" fill="#ffffff" stroke="'+col+'" stroke-width="3"/>');
-    s.push('<text x="'+cx.toFixed(1)+'" y="'+(r.y+15.5).toFixed(1)
+    s.push('<text'+dk+' x="'+cx.toFixed(1)+'" y="'+(r.y+15.5).toFixed(1)
          + '" font-size="13" font-weight="700" fill="#1d2b3a" text-anchor="middle">'+esc(it.t)+'</text>');
     if(it.got===true){
       s.push('<circle cx="'+(r.x+r.w-1).toFixed(1)+'" cy="'+(r.y+2).toFixed(1)
@@ -159,17 +184,26 @@ export function makeLabelLayer(hostId, layerId, getItems, forbidSel){
   }
   function drawPrefLabel(a,W,H){
     var b=prefBox(a,W,H), fs=b.fs, cx=b.cx, cy=b.cy;
-    return '<text x="'+cx.toFixed(1)+'" y="'+cy.toFixed(1)+'" font-size="'+fs+'" font-weight="700" '
+    var dk = a.it.key ? ' data-key="'+esc(a.it.key)+'" data-title="'+esc(a.it.t)+'" style="pointer-events:auto"' : '';
+    return '<text'+dk+' x="'+cx.toFixed(1)+'" y="'+cy.toFixed(1)+'" font-size="'+fs+'" font-weight="700" '
       + 'fill="'+(a.it.col||'#1d2b3a')+'" stroke="#ffffff" stroke-width="'+Math.round(fs*0.14)+'" '
       + 'paint-order="stroke" stroke-linejoin="round" text-anchor="middle" opacity=".78">'
       + esc(a.it.t)+'</text>';
   }
+  /* 段5：海の なまえ。府県名と 同じ 場所とりの 外あつかい・タップで 説明を 出す */
+  function drawSeaLabel(a){
+    var it=a.it, dk = it.key ? ' data-key="'+esc(it.key)+'" data-title="'+esc(it.t)+'" style="pointer-events:auto"' : '';
+    return '<text'+dk+' x="'+a.sx.toFixed(1)+'" y="'+a.sy.toFixed(1)+'" font-size="21" font-weight="700" '
+      + 'fill="#e8f6ff" stroke="#2b7fae" stroke-width="4" paint-order="stroke" '
+      + 'text-anchor="middle">'+esc(it.t)+'</text>';
+  }
   /* おく ばしょが ない ふだ ＝ ひきだし線つきの 点。大きくすると 名前が 出る */
   function drawDot(a){
     var col=a.it.col||'#c9d3de';
+    var dk = a.it.key ? ' data-key="'+esc(a.it.key)+'" data-title="'+esc(a.it.t)+'" style="pointer-events:auto"' : '';
     return '<g><path d="M'+a.sx.toFixed(1)+' '+(a.sy+14).toFixed(1)+'L'+a.sx.toFixed(1)+' '+a.sy.toFixed(1)
       + '" stroke="'+col+'" stroke-width="2" opacity=".7"/>'
-      + '<circle class="lbdot" cx="'+a.sx.toFixed(1)+'" cy="'+a.sy.toFixed(1)+'" r="5.5" fill="'+col
+      + '<circle class="lbdot"'+dk+' cx="'+a.sx.toFixed(1)+'" cy="'+a.sy.toFixed(1)+'" r="5.5" fill="'+col
       + '" stroke="#ffffff" stroke-width="2.4"/></g>';
   }
 

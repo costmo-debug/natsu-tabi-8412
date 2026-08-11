@@ -136,7 +136,7 @@ export function buildNetMap(){
     var head=iso(g[0],g[1],top*T.NODE_SC);
     NET_LABELS.push({t:nd.n, x:head[0], y:head[1], day:nd.day||'', prio:prio, keep:keep,
                      col:(nd.day?DAYCOL[nd.day]:'#c9d3de'),
-                     got:(nd.t==='sa'? got(nd.s) : null)});
+                     got:(nd.t==='sa'? got(nd.s) : null), key:nd.k});
   });
   /* 段3：脇役ランドマーク（ランドマーク台帳 §2） */
   drawLandmarks(props, NET_LABELS);
@@ -144,22 +144,22 @@ export function buildNetMap(){
   props.sort(function(a,b){return a.z-b.z;});
   s.push(props.map(function(p){return p.svg;}).join(''));
 
-  /* うみ の なまえ（海は 画面いっぱいで 隠れにくい ので そのまま 書く） */
-  [[50,4.0,'にほんかい',0],[46,98.6,'せとないかい',0],[84,95.0,'おおさかわん',0]].forEach(function(t){
+  /* うみ の なまえ（海は 画面いっぱいで 隠れにくい ので そのまま 書く）。
+     段5：湖の名前と 同じく ラベル層（NET_LABELS）へ わたし、タップで 説明を 見られる ようにする
+     （kind:'sea' ＝ 箱の わく なしの おおきい 文字。府県名の 別あつかいと 同じ しくみ） */
+  [[50,4.0,'にほんかい'],[46,98.6,'せとないかい'],[84,95.0,'おおさかわん']].forEach(function(t){
     var c=iso(t[0],t[1],0);
-    s.push('<text x="'+c[0].toFixed(1)+'" y="'+c[1].toFixed(1)+'" font-size="21" font-weight="700" '
-         + 'fill="#e8f6ff" stroke="#2b7fae" stroke-width="4" paint-order="stroke" '
-         + 'text-anchor="middle">'+t[2]+'</text>');
+    NET_LABELS.push({t:t[2], x:c[0], y:c[1], prio:95, kind:'sea', keep:[0,0,0,0], key:t[2]});
   });
   /* みずうみ の なまえ ＝ 判断待ち#2 の main 回答（札の層に含める）に従い ラベル層へ わたす */
   [[18.5,19.4,'しんじこ'],[27.5,23.6,'なかうみ']].forEach(function(t){
     var c=iso(t[0],t[1],0);
-    NET_LABELS.push({t:t[2], x:c[0], y:c[1], prio:55, keep:[0,0,0,0], col:'#2b7fae'});
+    NET_LABELS.push({t:t[2], x:c[0], y:c[1], prio:55, keep:[0,0,0,0], col:'#2b7fae', key:t[2]});
   });
   /* 段4：府県名（main 裁定＝画面に入っている県名だけ・それぞれ大きく・2〜3個 同時可） */
   PREF_NAMES.forEach(function(pn){
     var c=iso(pn[0],pn[1],0);
-    NET_LABELS.push({t:pn[2], x:c[0], y:c[1], prio:90, kind:'pref', keep:[0,0,0,0], col:pn[3]});
+    NET_LABELS.push({t:pn[2], x:c[0], y:c[1], prio:90, kind:'pref', keep:[0,0,0,0], col:pn[3], key:pn[2]});
   });
 
   /* いま いるところ＝ねこ。GPS から とれた ときは その ちてん（LIVE.abstract）を つかい、
