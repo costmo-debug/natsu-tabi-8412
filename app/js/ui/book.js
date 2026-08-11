@@ -94,9 +94,11 @@ export function openStampModal(k){
   var g=got(k), now=(!g && (getManualMode() || k===PUSHABLE));
   var gk=GROUP_KEY_OF[k]||'kyoto';
   el('smArt').style.setProperty('--gc','var(--d'+GID(gk)+')');
-  el('smArt').innerHTML=hasStampArt(k)
+  el('smArt').innerHTML=(g||now)&&hasStampArt(k)
     ? '<img src="'+stampArtSrc(k)+'" alt="'+esc(st.n)+'">'
-    : '<span aria-hidden="true">'+esc(st.e||'？')+'</span>';
+    : (g||now)
+      ? '<span aria-hidden="true">'+esc(st.e||'？')+'</span>'
+      : '<span class="mystery" aria-hidden="true">？</span>';
   el('smName').textContent=st.n;
   el('smPlace').textContent='ばしょ：'+(st.pl||'');
   el('smWhen').textContent='よてい：'+st.d+' '+(st.t||'');
