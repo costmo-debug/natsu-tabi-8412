@@ -60,7 +60,7 @@ export async function boot(){
 
   /* ふだ の 層。きんしたい ＝ 上のチップ帯・右上のボタン・下のカード・下パネル・タブバー */
   LBL1=makeLabelLayer('mapv','mapLbl', netLabelItems,
-        ['#scr1 .mctl','#scr1 .legend','#nextcard','.tabs']);
+        ['#scr1 .mctl','#nextcard','.tabs']);
   LBL2=makeLabelLayer('spotv','spotLbl', function(){return SPOT_LABELS;},
         ['#scr2 .mctl','#sheet','.tabs']);
 
