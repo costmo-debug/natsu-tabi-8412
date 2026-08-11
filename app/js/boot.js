@@ -49,11 +49,22 @@ async function loadPersisted(){
     await setCurrentPerson(pid);
     purgeEmergencyQueue();
     var rows=await listStamps(pid);
+    var local = getGotLocalMap(pid);
+    /* 段6是正・じゅうよう：「ブラウザの データさくじょ」を すると、localStorage（ひかえ）だけ
+       消えて IndexedDB（もう一方）が 消えのこる ことが 実機で わかった（Sir 実証）。
+       ひかえが まっさら（1件も 記録が 無い）なのに IndexedDB に 行が 残っている のは、
+       ふつうの つかいかたでは 起きない くいちがいな ので、「消しのこり」と みなして
+       IndexedDB の ほうを 消して そろえる（ひかえを 正本と する） */
+    if(Object.keys(local).length===0 && rows.length>0){
+      for(var ri=0; ri<rows.length; ri++){
+        try{ await removeStamp(pid, rows[ri].stampId); }catch(e2){ /* noop */ }
+      }
+      rows = [];
+    }
     applyGotRecords(rows);
     /* 段6是正・自己しゅうふく：同期の ひかえ（localStorage）と IndexedDB の
        中身が くいちがって いたら、ひかえ の ほうを 正本 として 合わせる。
        ひかえ に 記録が 無い スタンプは さわらない（IndexedDB の 結果を そのまま 使う） */
-    var local = getGotLocalMap(pid);
     var haveIds = {}; rows.forEach(function(r){ haveIds[r.stampId]=1; });
     Object.keys(local).forEach(function(k){
       if(local[k]===1){

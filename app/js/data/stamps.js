@@ -66,10 +66,10 @@ export var SAS = [
    z:[[34.828805,135.295702,150,'西宮名塩SA（上り）']]}
 ];
 
-/* デモの「いま」＝2026年8月14日（金）12:25・出雲大社の境内 */
+/* 段6是正：ここは モックアップの ころの 見本データ（さいしょから 15こ おした ことに する）
+   が 残って いた。きどうの たびに これが 復活して しまい、「けした スタンプが もどる」
+   ふしぎな げんしょうの 正体だった（Sir 実証・2026-08-11）。ほんばんは 空っぽ から はじめる */
 export var GOT = {};
-['k1','k2','k3','k4','y1','y2','y3','y4','i1',
- 'sa1','sa2','sa3','sa4','sa5','sa6','sa7'].forEach(function(k){GOT[k]=1;});
 export var PUSHABLE = 'i2';
 export var EMPTY_DEMO = false;
 export function got(k){return EMPTY_DEMO ? false : !!GOT[k];}
