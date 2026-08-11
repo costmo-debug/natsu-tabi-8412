@@ -179,6 +179,18 @@
       </div>
     </section>
 
+    <section class="scr" id="scr4" aria-label="せってい">
+      <div class="settingsWrap">
+        <h2 class="settingsTtl">せってい</h2>
+        <div class="settingsList">
+          <a class="adultlink" href="../index.html" target="_blank" rel="noopener">もとの しおりを ひらく</a>
+          <button class="adultbtn" id="btnExport">きろくを ほぞんする</button>
+          <button class="adultbtn" id="btnPasscode">あいことばの せってい</button>
+          <button class="adultbtn" id="btnLater">あとから おす（おしわすれを おす）</button>
+        </div>
+      </div>
+    </section>
+
   </main>
 
   <nav class="tabs" role="tablist" aria-label="がめんの きりかえ">
@@ -193,6 +205,10 @@
     <button class="tab" role="tab" aria-selected="false" data-scr="3">
       <svg viewBox="0 0 24 24"><path d="M4.4 4.6A2.4 2.4 0 0 1 6.8 3.2h12.8v14.4H6.8a2.4 2.4 0 0 0-2.4 2.4Z"/><circle cx="12.6" cy="10" r="3.4"/></svg>
       <span class="lb">スタンプ</span><span class="dotmark"></span>
+    </button>
+    <button class="tab" role="tab" aria-selected="false" data-scr="4">
+      <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 13.5a7.6 7.6 0 0 0 0-3l2-1.6-2-3.4-2.4 1a7.6 7.6 0 0 0-2.6-1.5L14 2.6h-4l-.4 2.4a7.6 7.6 0 0 0-2.6 1.5l-2.4-1-2 3.4 2 1.6a7.6 7.6 0 0 0 0 3l-2 1.6 2 3.4 2.4-1a7.6 7.6 0 0 0 2.6 1.5l.4 2.4h4l.4-2.4a7.6 7.6 0 0 0 2.6-1.5l2.4 1 2-3.4Z"/></svg>
+      <span class="lb">せってい</span><span class="dotmark"></span>
     </button>
   </nav>
 
@@ -221,15 +237,14 @@
     <button class="act" id="rwClose">とじる</button>
   </div>
 
-  <!-- F-38（Q-80）：子どもの画面には出さない導線。おとなが自分で開く折りたたみの中にだけ置く -->
-  <details class="adultbox" id="adultBox">
-    <summary>おとなの人へ</summary>
-    <div class="adultpanel">
-      <a class="adultlink" href="../index.html" target="_blank" rel="noopener">もとの しおりを ひらく</a>
-      <button class="adultbtn" id="btnExport">きろくを ほぞんする</button>
-      <button class="adultbtn" id="btnPasscode">あいことばの せってい</button>
+  <div class="picker" id="laterPicker">
+    <div class="pbox">
+      <h2>あとから おす</h2>
+      <p class="lead">まだ おしていない スタンプを えらんで、おした ことに できます。</p>
+      <div id="laterList"></div>
+      <button id="laterClose" style="background:var(--surf2);text-align:center;margin-top:12px">とじる</button>
     </div>
-  </details>
+  </div>
 
 </div>
 

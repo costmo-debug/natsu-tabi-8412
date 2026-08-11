@@ -22,6 +22,7 @@ import { toast } from './ui/toast.js';
 import { showState, hideState, STATES } from './ui/states.js';
 import { sizeFx } from './fx/confetti.js';
 import { initScrollLinked } from './ui/book.js';
+import { initSettings } from './ui/settings.js';
 export var V1=null, V2=null, LBL1=null, LBL2=null, AREA_M0=null;
 /* ちず2まい を まとめて 作りなおす（スタンプが ふえた ときなど） */
 export function rebuildMaps(){
@@ -76,6 +77,7 @@ export async function boot(){
   Array.prototype.forEach.call(document.querySelectorAll('.tab'),function(b){
     b.addEventListener('click',function(){ go(+b.getAttribute('data-scr')); });
   });
+  initSettings();
   Array.prototype.forEach.call(document.querySelectorAll('[data-z]'),function(b){
     b.addEventListener('click',function(){
       var m=b.getAttribute('data-z');
