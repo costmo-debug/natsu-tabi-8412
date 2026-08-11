@@ -70,7 +70,10 @@ export var SAS = [
    が 残って いた。きどうの たびに これが 復活して しまい、「けした スタンプが もどる」
    ふしぎな げんしょうの 正体だった（Sir 実証・2026-08-11）。ほんばんは 空っぽ から はじめる */
 export var GOT = {};
-export var PUSHABLE = 'i2';
+/* 段6是正・つづき：PUSHABLE も 同じしゅるいの 見本データ（'i2'＝かぐらでん 決め打ち）が
+   残っていた。GPS判定（geo/live.js）が 動くまでの あいだ、近くに いなくても 金枠が
+   出てしまう げんいんだった。ほんばんは "何も おせない" を あらわす null から はじめる */
+export var PUSHABLE = null;
 export var EMPTY_DEMO = false;
 export function got(k){return EMPTY_DEMO ? false : !!GOT[k];}
 export function total(){return STAMPS.length + SAS.length;}
